@@ -3,10 +3,10 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Vectorem — 26 outils, un seul tableau de bord</title>
-<meta name="description" content="Vectorem regroupe 26 outils pour Android — égaliseur, minuteur, rappels, presse-papiers, scanner réseau, tableau blanc — dans une seule app, sans compte.">
+<title>Vectorem — 25 outils, un seul tableau de bord</title>
+<meta name="description" content="Vectorem regroupe 25 outils pour Android — égaliseur, minuteur, rappels, presse-papiers, scanner réseau, tableau blanc — dans une seule app, sans compte, avec des pubs facultatives.">
 <meta name="theme-color" content="#F5F1E8">
-<meta property="og:title" content="Vectorem — 26 outils, un seul tableau de bord">
+<meta property="og:title" content="Vectorem — 25 outils, un seul tableau de bord">
 <meta property="og:description" content="Une boîte à outils Android modulaire : tu actives ce que tu utilises, tes données restent sur ton téléphone.">
 <meta property="og:type" content="website">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 108 108'%3E%3Crect width='108' height='108' fill='%23101010'/%3E%3Cpath d='M58 30L86 58L58 86L30 58Z' fill='none' stroke='%23F5F1E8' stroke-width='3.5'/%3E%3Cpath fill-rule='evenodd' fill='%23FFD426' d='M54 26L82 54L54 82L26 54ZM54 42L66 54L54 66L42 54Z'/%3E%3Cpath d='M54 26L82 54L54 82L26 54ZM54 42L66 54L54 66L42 54Z' fill='none' stroke='%23F5F1E8' stroke-width='4.5'/%3E%3C/svg%3E">
@@ -92,6 +92,7 @@ section{padding:64px 0}
 .badge{display:inline-flex;align-items:center;gap:6px;padding:4px 8px;background:var(--bg-block-sunken);color:var(--text-strong);border:var(--stroke-hair);border-radius:var(--radius-1);font:800 10px/1 var(--font-ui);letter-spacing:.12em;text-transform:uppercase;white-space:nowrap}
 .badge.warn{background:var(--warning);color:#101010}
 .badge.live{background:var(--success);color:#101010}
+.badge.premium{background:var(--brand);color:var(--on-brand)}
 
 /* ---- hero ---- */
 .hero{padding-top:48px}
@@ -266,16 +267,16 @@ footer .wrap{display:flex;flex-direction:column;gap:24px}
       <div class="eyebrow-row">
         <span class="badge live">Android</span>
         <span class="badge">Sans compte</span>
-        <span class="badge">Sans publicité</span>
+        <span class="badge">Pubs facultatives</span>
       </div>
-      <h1>26 outils. Une seule app.</h1>
+      <h1>25 outils. Une seule app.</h1>
       <p class="lede">Égaliseur, minuteur, rappels, presse-papiers, scanner réseau, tableau blanc… Chaque outil est un module : tu l'actives, tu le désactives. Le tableau de bord n'affiche que ce que tu utilises vraiment, et tes données restent sur ton téléphone.</p>
       <div class="ctas">
-        <a class="btn btn-primary" href="#outils">Voir les 26 outils <svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14" /> <path d="m12 5 7 7-7 7" /></svg></a>
+        <a class="btn btn-primary" href="#outils">Voir les 25 outils <svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14" /> <path d="m12 5 7 7-7 7" /></svg></a>
         <a class="btn btn-ghost" href="#confidentialite">Comment on gère les permissions</a>
       </div>
       <div class="stat-row">
-        <div class="stat"><span class="num">26</span><span class="cap">Outils</span></div>
+        <div class="stat"><span class="num">25</span><span class="cap">Outils</span></div>
         <div class="stat"><span class="num">4</span><span class="cap">Catégories</span></div>
         <div class="stat"><span class="num">0</span><span class="cap">Compte requis</span></div>
       </div>
@@ -333,7 +334,7 @@ footer .wrap{display:flex;flex-direction:column;gap:24px}
   <div class="wrap">
     <div class="section-head">
       <h2>La bibliothèque d'outils</h2>
-      <p>26 outils répartis en 4 catégories. Chacun se retrouve dans la Bibliothèque, en grille ou en liste, et se réordonne sur le tableau de bord.</p>
+      <p>25 outils répartis en 4 catégories. Chacun se retrouve dans la Bibliothèque, en grille ou en liste, et se réordonne sur le tableau de bord. Les outils marqués Premium se débloquent à vie en regardant une courte pub, toujours facultative.</p>
     </div>
 
     <div class="cat-block">
@@ -345,7 +346,8 @@ footer .wrap{display:flex;flex-direction:column;gap:24px}
       <div class="tool-grid">
         <div class="tool">
           <div class="tool-top"><span class="ic"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M10 5H3" /> <path d="M12 19H3" /> <path d="M14 3v4" /> <path d="M16 17v4" /> <path d="M21 12h-9" /> <path d="M21 19h-5" /> <path d="M21 5h-7" /> <path d="M8 10v4" /> <path d="M8 12H3" /></svg></span><span class="tool-name">Égaliseur</span></div>
-          <p class="tool-desc">5 bandes, 8 presets et un Sound Boost séparé, appliqués au son global du téléphone.</p>
+          <p class="tool-desc">Version simple gratuite avec 4 presets. Bandes manuelles, 8 presets, presets perso et Sound Boost en Premium.</p>
+          <div class="tool-tags"><span class="badge premium">Premium (avancé)</span></div>
         </div>
         <div class="tool">
           <div class="tool-top"><span class="ic"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 19v3" /> <path d="M19 10v2a7 7 0 0 1-14 0v-2" /> <rect x="9" y="2" width="6" height="13" rx="3" /></svg></span><span class="tool-name">Dictaphone</span></div>
@@ -358,7 +360,8 @@ footer .wrap{display:flex;flex-direction:column;gap:24px}
         </div>
         <div class="tool">
           <div class="tool-top"><span class="ic"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M12.83 2.18a2 2 0 0 0-1.66 0L2.6 6.08a1 1 0 0 0 0 1.83l8.58 3.91a2 2 0 0 0 1.66 0l8.58-3.9a1 1 0 0 0 0-1.83z" /> <path d="M2 12a1 1 0 0 0 .58.91l8.6 3.91a2 2 0 0 0 1.65 0l8.58-3.9A1 1 0 0 0 22 12" /> <path d="M2 17a1 1 0 0 0 .58.91l8.6 3.91a2 2 0 0 0 1.65 0l8.58-3.9A1 1 0 0 0 22 17" /></svg></span><span class="tool-name">Son spatial</span></div>
-          <p class="tool-desc">Élargit la scène stéréo, simule le volume d'une pièce et règle la balance gauche-droite.</p>
+          <p class="tool-desc">Largeur stéréo et balance gratuites. Réverbération et basses en Premium.</p>
+          <div class="tool-tags"><span class="badge premium">Premium (avancé)</span></div>
         </div>
         <div class="tool">
           <div class="tool-top"><span class="ic"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M11 4.702a.705.705 0 0 0-1.203-.498L6.413 7.587A1.4 1.4 0 0 1 5.416 8H3a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h2.416a1.4 1.4 0 0 1 .997.413l3.383 3.384A.705.705 0 0 0 11 19.298z" /> <path d="M16 9a5 5 0 0 1 0 6" /> <path d="M19.364 18.364a9 9 0 0 0 0-12.728" /></svg></span><span class="tool-name">Sonomètre</span></div>
@@ -407,18 +410,13 @@ footer .wrap{display:flex;flex-direction:column;gap:24px}
       <div class="cat-header cat-screen-h">
         <svg class="i ic" viewBox="0 0 24 24" aria-hidden="true"><rect width="14" height="20" x="5" y="2" rx="2" ry="2" /> <path d="M12 18h.01" /></svg>
         <h3>Écran &amp; outils physiques</h3>
-        <span class="count">4 outils</span>
+        <span class="count">3 outils</span>
       </div>
       <div class="tool-grid">
         <div class="tool">
           <div class="tool-top"><span class="ic"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="m21 21-4.34-4.34" /> <circle cx="11" cy="11" r="8" /></svg></span><span class="tool-name">Boîte à outils</span></div>
           <p class="tool-desc">Niveau à bulle, lampe torche, loupe, boussole et détecteur de champ magnétique.</p>
           <div class="tool-tags"><span class="badge">Caméra</span></div>
-        </div>
-        <div class="tool">
-          <div class="tool-top"><span class="ic"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M22 12h-2.48a2 2 0 0 0-1.93 1.46l-2.35 8.36a.25.25 0 0 1-.48 0L9.24 2.18a.25.25 0 0 0-.48 0l-2.35 8.36A2 2 0 0 1 4.49 12H2" /></svg></span><span class="tool-name">Pouls</span></div>
-          <p class="tool-desc">Estime ton rythme cardiaque avec le doigt sur l'objectif et le flash. Une estimation, pas un dispositif médical.</p>
-          <div class="tool-tags"><span class="badge">Caméra</span><span class="badge warn">Bêta</span></div>
         </div>
         <div class="tool">
           <div class="tool-top"><span class="ic"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M2 6c.6.5 1.2 1 2.5 1C7 7 7 5 9.5 5c2.6 0 2.4 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1" /> <path d="M2 12c.6.5 1.2 1 2.5 1 2.5 0 2.5-2 5-2 2.6 0 2.4 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1" /> <path d="M2 18c.6.5 1.2 1 2.5 1 2.5 0 2.5-2 5-2 2.6 0 2.4 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1" /></svg></span><span class="tool-name">Sismographe</span></div>
@@ -428,7 +426,7 @@ footer .wrap{display:flex;flex-direction:column;gap:24px}
         <div class="tool">
           <div class="tool-top"><span class="ic"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M15.707 21.293a1 1 0 0 1-1.414 0l-1.586-1.586a1 1 0 0 1 0-1.414l5.586-5.586a1 1 0 0 1 1.414 0l1.586 1.586a1 1 0 0 1 0 1.414z" /> <path d="m18 13-1.375-6.874a1 1 0 0 0-.746-.776L3.235 2.028a1 1 0 0 0-1.207 1.207L5.35 15.879a1 1 0 0 0 .776.746L13 18" /> <path d="m2.3 2.3 7.286 7.286" /> <circle cx="11" cy="11" r="2" /></svg></span><span class="tool-name">Tableau blanc</span></div>
           <p class="tool-desc">Un calepin de dessin libre : dessine, annote et exporte, sans compte ni cloud.</p>
-          <div class="tool-tags"><span class="badge">Aucune permission</span></div>
+          <div class="tool-tags"><span class="badge premium">Premium</span></div>
         </div>
       </div>
     </div>
@@ -447,6 +445,7 @@ footer .wrap{display:flex;flex-direction:column;gap:24px}
         <div class="tool">
           <div class="tool-top"><span class="ic"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="m18 16 4-4-4-4" /> <path d="m6 8-4 4 4 4" /> <path d="m14.5 4-5 16" /></svg></span><span class="tool-name">Boîte à outils texte</span></div>
           <p class="tool-desc">Base64, empreintes MD5/SHA, formatage JSON et conversion d'unités.</p>
+          <div class="tool-tags"><span class="badge premium">Premium</span></div>
         </div>
         <div class="tool">
           <div class="tool-top"><span class="ic"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><rect width="5" height="5" x="3" y="3" rx="1" /> <rect width="5" height="5" x="16" y="3" rx="1" /> <rect width="5" height="5" x="3" y="16" rx="1" /> <path d="M21 16h-3a2 2 0 0 0-2 2v3" /> <path d="M21 21v.01" /> <path d="M12 7v3a2 2 0 0 1-2 2H7" /> <path d="M3 12h.01" /> <path d="M12 3h.01" /> <path d="M12 16v.01" /> <path d="M16 12h1" /> <path d="M21 12v.01" /> <path d="M12 21v-1" /></svg></span><span class="tool-name">Code QR</span></div>
@@ -465,10 +464,11 @@ footer .wrap{display:flex;flex-direction:column;gap:24px}
         <div class="tool">
           <div class="tool-top"><span class="ic"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 22a1 1 0 0 1 0-20 10 9 0 0 1 10 9 5 5 0 0 1-5 5h-2.25a1.75 1.75 0 0 0-1.4 2.8l.3.4a1.75 1.75 0 0 1-1.4 2.8z" /> <circle cx="13.5" cy="6.5" r=".5" fill="currentColor" /> <circle cx="17.5" cy="10.5" r=".5" fill="currentColor" /> <circle cx="6.5" cy="12.5" r=".5" fill="currentColor" /> <circle cx="8.5" cy="7.5" r=".5" fill="currentColor" /></svg></span><span class="tool-name">Palette</span></div>
           <p class="tool-desc">Extrais les couleurs dominantes d'une photo, puis exporte-les en image.</p>
+          <div class="tool-tags"><span class="badge premium">Premium</span></div>
         </div>
         <div class="tool">
           <div class="tool-top"><span class="ic"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><rect width="12" height="12" x="2" y="10" rx="2" ry="2" /> <path d="m17.92 14 3.5-3.5a2.24 2.24 0 0 0 0-3l-5-4.92a2.24 2.24 0 0 0-3 0L10 6" /> <path d="M6 18h.01" /> <path d="M10 14h.01" /> <path d="M15 6h.01" /> <path d="M18 9h.01" /></svg></span><span class="tool-name">Tirage au sort</span></div>
-          <p class="tool-desc">Dé, pile ou face, tirage de noms dans une liste.</p>
+          <p class="tool-desc">Dés jusqu'au d100, pile ou face, nombres, listes, roue de la fortune et équipes.</p>
         </div>
         <div class="tool">
           <div class="tool-top"><span class="ic"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M16.247 7.761a6 6 0 0 1 0 8.478" /> <path d="M19.075 4.933a10 10 0 0 1 0 14.134" /> <path d="M4.925 19.067a10 10 0 0 1 0-14.134" /> <path d="M7.753 16.239a6 6 0 0 1 0-8.478" /> <circle cx="12" cy="12" r="2" /></svg></span><span class="tool-name">Morse</span></div>
@@ -507,17 +507,17 @@ footer .wrap{display:flex;flex-direction:column;gap:24px}
     </div>
     <div class="privacy-grid">
       <div>
-        <div class="perm-card" role="img" aria-label="Exemple de carte de permission pour l'outil Pouls">
+        <div class="perm-card" role="img" aria-label="Exemple de carte de permission pour l'outil Sonomètre">
           <div class="perm-head">
             <svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z" /> <path d="M12 8v4" /> <path d="M12 16h.01" /></svg>
             <span>Permission</span>
           </div>
           <div class="perm-body">
-            <h4>Caméra</h4>
-            <p>Le pouls se lit en posant le doigt sur l'objectif et le flash : la caméra observe juste les variations de lumière.</p>
+            <h4>Micro</h4>
+            <p>Le sonomètre mesure le niveau sonore ambiant via le micro de l'appareil.</p>
             <ul class="perm-list">
-              <li class="ok"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5" /></svg> Image analysée en direct, jamais enregistrée ni envoyée</li>
-              <li class="no"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M18 6 6 18" /> <path d="m6 6 12 12" /></svg> Aucune photo prise, aucun accès réseau</li>
+              <li class="ok"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5" /></svg> Mesuré uniquement pendant que l'écran est ouvert</li>
+              <li class="no"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M18 6 6 18" /> <path d="m6 6 12 12" /></svg> Rien n'est enregistré ni envoyé ailleurs, aucun fichier créé</li>
             </ul>
             <div class="perm-actions" aria-hidden="true">
               <span class="btn btn-ghost">Refuser</span>
@@ -525,7 +525,7 @@ footer .wrap{display:flex;flex-direction:column;gap:24px}
             </div>
           </div>
         </div>
-        <p class="perm-note">Exemple : la carte affichée par l'outil Pouls.</p>
+        <p class="perm-note">Exemple : la carte affichée par l'outil Sonomètre.</p>
       </div>
 
       <ul class="principle-list">
@@ -533,7 +533,7 @@ footer .wrap{display:flex;flex-direction:column;gap:24px}
           <span class="n"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z" /> <path d="M14 2v4a2 2 0 0 0 2 2h4" /> <path d="M10 9H8" /> <path d="M16 13H8" /> <path d="M16 17H8" /></svg></span>
           <div>
             <h4>Ce que l'outil fait</h4>
-            <p>Chaque demande explique l'usage concret — « le flux est lu et analysé en direct », pas « autorise pour profiter de toutes les fonctionnalités ».</p>
+            <p>Chaque demande explique l'usage concret — « le son est mesuré en direct », pas « autorise pour profiter de toutes les fonctionnalités ».</p>
           </div>
         </li>
         <li>
@@ -554,7 +554,7 @@ footer .wrap{display:flex;flex-direction:column;gap:24px}
           <span class="n"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><rect width="14" height="20" x="5" y="2" rx="2" ry="2" /> <path d="M12 18h.01" /></svg></span>
           <div>
             <h4>Tes données restent sur ton téléphone</h4>
-            <p>Pas de compte, pas de statistiques, pas de publicité. Seule exception, quand tu la lances toi-même : le Test de vitesse envoie des requêtes à Cloudflare pour mesurer ta connexion. <a href="https://themandawalker.github.io/vectorem-privacy/">Lire la politique de confidentialité</a>.</p>
+            <p>Pas de compte, pas de statistiques. Deux fonctions contactent un service extérieur, uniquement quand tu les lances toi-même : le Test de vitesse (Cloudflare) et les pubs facultatives (Google AdMob). <a href="https://themandawalker.github.io/vectorem-privacy/">Lire la politique de confidentialité</a>.</p>
           </div>
         </li>
       </ul>
@@ -566,7 +566,7 @@ footer .wrap{display:flex;flex-direction:column;gap:24px}
   <div class="wrap">
     <div class="section-head">
       <h2>Personnalise ton tableau de bord</h2>
-      <p>Thème, couleur de marque et densité d'affichage se règlent depuis les Réglages, sans toucher à la structure des cartes. Essaie-les ici.</p>
+      <p>Thème, couleur de marque et densité d'affichage se règlent depuis les Réglages, sans toucher à la structure des cartes. Les dégradés de marque et l'accueil personnalisable sont des options Premium. Essaie les réglages de base ici.</p>
     </div>
     <div class="personalize-grid">
       <div class="setting-card">
@@ -600,6 +600,7 @@ footer .wrap{display:flex;flex-direction:column;gap:24px}
     </div>
 
     <ul class="also">
+      <li><span class="ic"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><rect width="7" height="7" x="3" y="3" rx="1" /> <rect width="7" height="7" x="14" y="3" rx="1" /> <rect width="7" height="7" x="14" y="14" rx="1" /> <rect width="7" height="7" x="3" y="14" rx="1" /></svg></span><div><b>Accueil personnalisable <span class="badge premium">Premium</span></b><span class="d">Choisis l'ordre des sections et ajoute-en : note rapide, tâches à cocher, minuteur rapide, batterie et stockage.</span></div></li>
       <li><span class="ic"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2" /> <path d="M10 4v4" /> <path d="M2 8h20" /> <path d="M6 4v4" /></svg></span><div><b>3 widgets d'accueil</b><span class="d">Lancement rapide, un seul outil, ou Tâches &amp; Rappels.</span></div></li>
       <li><span class="ic"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><rect width="20" height="5" x="2" y="3" rx="1" /> <path d="M4 8v11a2 2 0 0 0 2 2h2" /> <path d="M20 8v11a2 2 0 0 1-2 2h-2" /> <path d="m9 15 3-3 3 3" /> <path d="M12 12v9" /></svg></span><div><b>Sauvegarde &amp; restauration</b><span class="d">Exporte tes données dans un fichier, restaure-les quand tu veux.</span></div></li>
       <li><span class="ic"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 10a2 2 0 0 0-2 2c0 1.02-.1 2.51-.26 4" /> <path d="M14 13.12c0 2.38 0 6.38-1 8.88" /> <path d="M17.29 21.02c.12-.6.43-2.3.5-3.02" /> <path d="M2 12a10 10 0 0 1 18-6" /> <path d="M2 16h.01" /> <path d="M21.8 16c.2-2 .131-5.354 0-6" /> <path d="M5 19.5C5.5 18 6 15 6 12a6 6 0 0 1 .34-2" /> <path d="M8.65 22c.21-.66.45-1.32.57-2" /> <path d="M9 6.8a6 6 0 0 1 9 5.2v2" /></svg></span><div><b>Verrouillage de l'app</b><span class="d">Empreinte, visage ou code du téléphone, géré par Android.</span></div></li>
@@ -611,7 +612,7 @@ footer .wrap{display:flex;flex-direction:column;gap:24px}
 
 <section class="cta-final">
   <div class="wrap">
-    <h2>Un tableau de bord. Vingt-six outils. Aucun de trop.</h2>
+    <h2>Un tableau de bord. Vingt-cinq outils. Aucun de trop.</h2>
     <div class="ctas">
       <a class="btn btn-primary" href="#outils">Explorer la bibliothèque <svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14" /> <path d="m12 5 7 7-7 7" /></svg></a>
       <a class="btn btn-ghost" href="https://themandawalker.github.io/vectorem-privacy/">Confidentialité</a>
