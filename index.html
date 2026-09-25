@@ -3,10 +3,10 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Vectorem — 25 outils, un seul tableau de bord</title>
-<meta name="description" content="Vectorem regroupe 25 outils pour Android — égaliseur, minuteur, rappels, tableau blanc, roue de la fortune — dans une seule app modulaire, sans compte. Essaie-les ici.">
+<title>Vectorem — plus de 25 outils, un seul tableau de bord</title>
+<meta name="description" content="Vectorem regroupe plus de 25 outils pour Android — minuteur, rappels, séries d'habitudes, égaliseur, QR, roue de la fortune — dans une seule app modulaire, sans compte. Essaie-les ici.">
 <meta name="theme-color" content="#F5F1E8">
-<meta property="og:title" content="Vectorem — 25 outils, un seul tableau de bord">
+<meta property="og:title" content="Vectorem — plus de 25 outils, un seul tableau de bord">
 <meta property="og:description" content="Une boîte à outils Android modulaire : tu actives ce que tu utilises, tes données restent sur ton téléphone.">
 <meta property="og:type" content="website">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 108 108'%3E%3Crect width='108' height='108' fill='%23101010'/%3E%3Cpath d='M58 30L86 58L58 86L30 58Z' fill='none' stroke='%23F5F1E8' stroke-width='3.5'/%3E%3Cpath fill-rule='evenodd' fill='%23FFD426' d='M54 26L82 54L54 82L26 54ZM54 42L66 54L54 66L42 54Z'/%3E%3Cpath d='M54 26L82 54L54 82L26 54ZM54 42L66 54L54 66L42 54Z' fill='none' stroke='%23F5F1E8' stroke-width='4.5'/%3E%3C/svg%3E">
@@ -110,7 +110,6 @@ section{padding:72px 0}
 .badge{display:inline-flex;align-items:center;gap:6px;padding:4px 8px;background:var(--bg-block-sunken);color:var(--text-strong);border:var(--stroke-hair);border-radius:var(--radius-1);font:800 10px/1 var(--font-ui);letter-spacing:.12em;text-transform:uppercase;white-space:nowrap}
 .badge.warn{background:var(--warning);color:#101010}
 .badge.live{background:var(--success);color:#101010}
-.badge.premium{background:var(--brand);color:var(--on-brand)}
 .badge .dot{width:7px;height:7px;background:currentColor;border-radius:50%;animation:pulse 1.6s ease-in-out infinite}
 @keyframes pulse{50%{opacity:.25;transform:scale(.7)}}
 
@@ -311,23 +310,24 @@ section{padding:72px 0}
 .tc-more p{padding-top:8px;border-top:var(--stroke-hair);margin-top:8px;font-size:12.5px;color:var(--text-body)}
 .empty{grid-column:1/-1;text-align:center;padding:40px;border:var(--stroke);border-style:dashed;color:var(--text-muted);font-weight:700}
 
-/* ---- Premium (démo) ---- */
-.premium-grid{margin-top:34px;display:grid;grid-template-columns:1fr 1fr;gap:28px;align-items:start}
-@media (max-width:860px){ .premium-grid{grid-template-columns:1fr} }
-.lockwrap{position:relative}
-.lockwrap.locked .lock-cover{opacity:1;pointer-events:auto}
-.lock-cover{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:repeating-linear-gradient(45deg,transparent 0 12px,rgba(128,128,128,.12) 12px 24px);opacity:0;pointer-events:none;transition:opacity .3s}
-.lock-cover span{display:inline-flex;align-items:center;gap:8px;padding:8px 12px;background:var(--bg-block);border:var(--stroke);box-shadow:var(--shadow-1);font:800 12px/1 var(--font-ui);letter-spacing:.06em;text-transform:uppercase}
-.lock-cover svg{width:16px;height:16px;stroke-width:2.5}
-.lockwrap.locked .locked-fade{opacity:.4;filter:grayscale(.6)}
-.locked-fade{transition:opacity .3s,filter .3s}
-.free-list{display:flex;flex-direction:column;gap:12px}
-.free-list li{display:flex;gap:12px;align-items:flex-start;border:var(--stroke);background:var(--bg-block);padding:12px 14px;box-shadow:var(--shadow-1)}
-.free-list .ic{width:34px;height:34px;flex:0 0 auto;border:var(--stroke-hair);display:flex;align-items:center;justify-content:center;background:var(--bg-block-sunken)}
-.free-list svg{width:17px;height:17px;stroke-width:2.25}
-.free-list b{display:block;font:800 14px/1.2 var(--font-ui)}
-.free-list span.d{display:block;margin-top:3px;font-size:12.5px;color:var(--text-body)}
-.free-list li.pro .ic{background:var(--brand);color:var(--on-brand)}
+/* ---- Séries & plus ---- */
+.duo-grid{margin-top:34px;display:grid;grid-template-columns:1fr 1fr;gap:28px;align-items:start}
+@media (max-width:860px){ .duo-grid{grid-template-columns:1fr} }
+.feat-list{display:flex;flex-direction:column;gap:12px}
+.feat-list li{display:flex;gap:12px;align-items:flex-start;border:var(--stroke);background:var(--bg-block);padding:12px 14px;box-shadow:var(--shadow-1)}
+.feat-list .ic{width:34px;height:34px;flex:0 0 auto;border:var(--stroke-hair);display:flex;align-items:center;justify-content:center;background:var(--brand);color:var(--on-brand)}
+.feat-list svg{width:17px;height:17px;stroke-width:2.25}
+.feat-list b{display:block;font:800 14px/1.2 var(--font-ui)}
+.feat-list span.d{display:block;margin-top:3px;font-size:12.5px;color:var(--text-body)}
+.streak-top{display:flex;align-items:flex-end;justify-content:space-between;gap:12px}
+.streak-num{display:block;font:900 56px/1 var(--font-display,var(--font-ui));color:var(--cat-time)}
+.streak-cap,.streak-goal{font:800 11px/1.2 var(--font-ui);letter-spacing:.12em;text-transform:uppercase;color:var(--text-muted)}
+.week{display:grid;grid-template-columns:repeat(7,1fr);gap:6px}
+.week .day{aspect-ratio:1;min-width:0;border:var(--stroke);background:var(--bg-block-sunken);font:900 13px/1 var(--font-ui);color:var(--text-body);cursor:pointer;transition:transform .2s var(--ease-spring),background .15s}
+.week .day:hover{transform:translate(-2px,-2px)}
+.week .day[aria-pressed="true"]{background:var(--cat-time);color:var(--on-time);box-shadow:var(--shadow-1)}
+.week .day.today{outline:2px dashed currentColor;outline-offset:2px}
+.report{border-left:4px solid var(--cat-time);padding:8px 12px;background:var(--bg-block-sunken);font-size:13.5px;min-height:3.2em}
 
 /* ---- confidentialité ---- */
 .privacy-grid{margin-top:34px;display:grid;grid-template-columns:.9fr 1.1fr;gap:32px;align-items:start}
@@ -445,7 +445,7 @@ footer .wrap{display:flex;flex-direction:column;gap:24px}
     <nav class="site-nav" id="siteNav" aria-label="Sections">
       <a href="#essayer">Essayer</a>
       <a href="#outils">Outils</a>
-      <a href="#premium">Premium</a>
+      <a href="#series">Séries</a>
       <a href="#confidentialite">Confidentialité</a>
       <a href="#personnalisation">Personnaliser</a>
     </nav>
@@ -470,17 +470,18 @@ footer .wrap{display:flex;flex-direction:column;gap:24px}
         <span class="badge live"><span class="dot"></span> Android</span>
         <span class="badge">Sans compte</span>
         <span class="badge">Données locales</span>
+        <span class="badge">Bêta</span>
       </div>
       <h1 class="reveal" style="--d:80ms">Une seule app pour
         <span class="rot" aria-live="polite"><span class="rot-inner"><span class="rot-word" id="rotWord">mixer le son</span></span></span>
       </h1>
-      <p class="lede reveal" style="--d:160ms">Égaliseur, minuteur, rappels, tableau blanc, roue de la fortune… 25 outils, chacun est un module : tu l'actives, tu le désactives. Le tableau de bord n'affiche que ce que tu utilises vraiment.</p>
+      <p class="lede reveal" style="--d:160ms">Minuteur, rappels, séries d'habitudes, égaliseur, QR, roue de la fortune… Plus de 25 outils, chacun est un module : tu l'actives, tu le désactives. Le tableau de bord n'affiche que ce que tu utilises vraiment.</p>
       <div class="ctas reveal" style="--d:240ms">
         <a class="btn btn-primary" href="#essayer">Essayer maintenant <svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14" /> <path d="m12 5 7 7-7 7" /></svg></a>
-        <a class="btn btn-ghost" href="#outils">Voir les 25 outils</a>
+        <a class="btn btn-ghost" href="#outils">Voir tous les outils</a>
       </div>
       <div class="stat-row reveal" style="--d:320ms">
-        <div class="stat"><span class="num" data-count="25">0</span><span class="cap">Outils</span></div>
+        <div class="stat"><span class="num" data-count="26">0</span><span class="cap">Outils</span></div>
         <div class="stat"><span class="num" data-count="4">0</span><span class="cap">Catégories</span></div>
         <div class="stat"><span class="num" data-count="0">0</span><span class="cap">Compte requis</span></div>
       </div>
@@ -504,7 +505,7 @@ footer .wrap{display:flex;flex-direction:column;gap:24px}
             <div class="scr-label">Prochain événement</div>
             <div class="scr-event"><div class="ev-num"><span id="phDays">12</span><small>JOURS</small></div><div><b>Anniversaire de Léa</b><small id="phEvDate">3 oct. 2026</small></div></div>
             <div class="scr-label">Statistiques</div>
-            <div class="scr-stats"><div><b>14</b><small>ouvertures</small></div><div><b>5/25</b><small>outils actifs</small></div><div><b>Minuteur</b><small>le + utilisé</small></div></div>
+            <div class="scr-stats"><div><b>14</b><small>ouvertures</small></div><div><b>5/26</b><small>outils actifs</small></div><div><b>Minuteur</b><small>le + utilisé</small></div></div>
           </div>
           <!-- Mes outils -->
           <div class="scr" data-screen="tools">
@@ -623,48 +624,55 @@ footer .wrap{display:flex;flex-direction:column;gap:24px}
   <div class="wrap">
     <div class="section-head reveal">
       <span class="kicker">La bibliothèque</span>
-      <h2>25 outils, 4 catégories</h2>
+      <h2>26 outils, 4 catégories</h2>
       <p>Filtre, cherche, touche une carte pour en savoir plus. Chaque outil se retrouve dans la Bibliothèque de l'app, en grille ou en liste.</p>
     </div>
     <div class="toolbar reveal">
       <div class="search"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="m21 21-4.34-4.34" /> <circle cx="11" cy="11" r="8" /></svg><input id="toolSearch" type="search" placeholder="Chercher un outil (ex. minuteur, QR, roue…)" aria-label="Chercher un outil"></div>
       <div class="row" id="catChips"></div>
-      <span class="count" id="toolCount">25 / 25</span>
+      <span class="count" id="toolCount">26 / 26</span>
     </div>
     <div class="tool-grid2" id="toolGrid"></div>
+    <p class="tiny reveal" style="margin-top:18px">Quelques fonctions avancées se débloquent avec une courte vidéo, seulement si tu la lances. Rien n'est affiché sans ton accord.</p>
   </div>
 </section>
 
-<!-- ================= PREMIUM ================= -->
-<section id="premium" style="padding-top:24px">
+<!-- ================= SÉRIES & PLUS ================= -->
+<section id="series" style="padding-top:24px">
   <div class="wrap">
     <div class="section-head reveal">
-      <span class="kicker">Simple ou complet</span>
-      <h2>La version simple suffit. Le reste se débloque à vie.</h2>
-      <p>L'Égaliseur et le Son spatial marchent gratuitement dans leur version simple. Palette, Tableau blanc, Boîte à outils texte et les fonctions avancées se débloquent une fois, pour toujours.</p>
+      <span class="kicker">Nouveau dans la 1.1</span>
+      <h2>Tenir une habitude, sans y penser</h2>
+      <p>Séries suit tes objectifs du quotidien : sport, lecture, instrument. Lie un objectif au minuteur, au Pomodoro ou à tes tâches, et la journée se valide toute seule.</p>
     </div>
-    <div class="premium-grid">
+    <div class="duo-grid">
       <div class="reveal">
         <div class="play-card">
-          <div class="play-head h-audio"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M10 5H3" /> <path d="M12 19H3" /> <path d="M14 3v4" /> <path d="M16 17v4" /> <path d="M21 12h-9" /> <path d="M21 19h-5" /> <path d="M21 5h-7" /> <path d="M8 10v4" /> <path d="M8 12H3" /></svg><h3>Égaliseur</h3><span class="badge premium" id="proBadge">Version simple</span></div>
+          <div class="play-head h-time"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z" /></svg><h3>Séries</h3><span class="badge">Touche un jour</span></div>
           <div class="play-body">
-            <div class="lockwrap locked" id="proWrap">
-              <div class="locked-fade"><div class="stage" style="padding:16px 18px"><div class="eq-demo" id="proEq"></div></div></div>
-              <div class="lock-cover"><span><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><rect width="18" height="11" x="3" y="11" rx="2" ry="2" /> <path d="M7 11V7a5 5 0 0 1 10 0v4" /></svg> Bandes manuelles · Premium</span></div>
+            <div class="streak-top"><div><span class="streak-num" id="stNum">0</span><span class="streak-cap">jours de suite</span></div><div class="streak-goal">Lecture · 20 min</div></div>
+            <div class="week" id="stWeek"><button type="button" class="day" data-i="0" aria-pressed="false"><span>L</span></button><button type="button" class="day" data-i="1" aria-pressed="false"><span>M</span></button><button type="button" class="day" data-i="2" aria-pressed="false"><span>M</span></button><button type="button" class="day" data-i="3" aria-pressed="false"><span>J</span></button><button type="button" class="day" data-i="4" aria-pressed="false"><span>V</span></button><button type="button" class="day" data-i="5" aria-pressed="false"><span>S</span></button><button type="button" class="day" data-i="6" aria-pressed="false"><span>D</span></button></div>
+            <div>
+              <div class="tiny" style="margin-bottom:8px">Outils liés à l'objectif</div>
+              <div class="row" id="stLinks">
+                <button class="chip" type="button" aria-pressed="true" data-k="minuteur">Minuteur</button>
+                <button class="chip" type="button" aria-pressed="false" data-k="pomodoro">Pomodoro</button>
+                <button class="chip" type="button" aria-pressed="false" data-k="tâches">Tâches</button>
+              </div>
+              <div class="row" id="stMode" style="margin-top:8px">
+                <button class="chip" type="button" aria-pressed="true" data-m="ou">Un seul suffit</button>
+                <button class="chip" type="button" aria-pressed="false" data-m="et">Tous requis</button>
+              </div>
             </div>
-            <div class="row" id="proPresets"></div>
-            <button class="btn btn-primary btn-sm" id="proUnlock" type="button">Débloquer (démo)</button>
-            <p class="tiny" id="proNote">4 presets gratuits. Les bandes manuelles, 4 autres presets, tes presets perso et le Sound Boost sont en Premium.</p>
+            <p class="report" id="stReport" aria-live="polite"></p>
           </div>
         </div>
       </div>
-      <ul class="free-list">
-        <li class="reveal"><span class="ic"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M10 5H3" /> <path d="M12 19H3" /> <path d="M14 3v4" /> <path d="M16 17v4" /> <path d="M21 12h-9" /> <path d="M21 19h-5" /> <path d="M21 5h-7" /> <path d="M8 10v4" /> <path d="M8 12H3" /></svg></span><div><b>Égaliseur</b><span class="d">Gratuit : 4 presets. Premium : bandes manuelles, 8 presets, presets perso, Sound Boost.</span></div></li>
-        <li class="reveal" style="--d:60ms"><span class="ic"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M12.83 2.18a2 2 0 0 0-1.66 0L2.6 6.08a1 1 0 0 0 0 1.83l8.58 3.91a2 2 0 0 0 1.66 0l8.58-3.9a1 1 0 0 0 0-1.83z" /> <path d="M2 12a1 1 0 0 0 .58.91l8.6 3.91a2 2 0 0 0 1.65 0l8.58-3.9A1 1 0 0 0 22 12" /> <path d="M2 17a1 1 0 0 0 .58.91l8.6 3.91a2 2 0 0 0 1.65 0l8.58-3.9A1 1 0 0 0 22 17" /></svg></span><div><b>Son spatial</b><span class="d">Gratuit : largeur stéréo et balance. Premium : réverbération et basses.</span></div></li>
-        <li class="reveal pro" style="--d:120ms"><span class="ic"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M15.707 21.293a1 1 0 0 1-1.414 0l-1.586-1.586a1 1 0 0 1 0-1.414l5.586-5.586a1 1 0 0 1 1.414 0l1.586 1.586a1 1 0 0 1 0 1.414z" /> <path d="m18 13-1.375-6.874a1 1 0 0 0-.746-.776L3.235 2.028a1 1 0 0 0-1.207 1.207L5.35 15.879a1 1 0 0 0 .776.746L13 18" /> <path d="m2.3 2.3 7.286 7.286" /> <circle cx="11" cy="11" r="2" /></svg></span><div><b>Tableau blanc <span class="badge premium">Premium</span></b><span class="d">Un calepin de dessin libre avec export.</span></div></li>
-        <li class="reveal pro" style="--d:180ms"><span class="ic"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 22a1 1 0 0 1 0-20 10 9 0 0 1 10 9 5 5 0 0 1-5 5h-2.25a1.75 1.75 0 0 0-1.4 2.8l.3.4a1.75 1.75 0 0 1-1.4 2.8z" /> <circle cx="13.5" cy="6.5" r=".5" fill="currentColor" /> <circle cx="17.5" cy="10.5" r=".5" fill="currentColor" /> <circle cx="6.5" cy="12.5" r=".5" fill="currentColor" /> <circle cx="8.5" cy="7.5" r=".5" fill="currentColor" /></svg></span><div><b>Palette <span class="badge premium">Premium</span></b><span class="d">Couleurs dominantes d'une photo, exportées en image.</span></div></li>
-        <li class="reveal pro" style="--d:240ms"><span class="ic"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="m18 16 4-4-4-4" /> <path d="m6 8-4 4 4 4" /> <path d="m14.5 4-5 16" /></svg></span><div><b>Boîte à outils texte <span class="badge premium">Premium</span></b><span class="d">Base64, MD5/SHA, JSON, conversions d'unités.</span></div></li>
-        <li class="reveal pro" style="--d:300ms"><span class="ic"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><rect width="7" height="7" x="3" y="3" rx="1" /> <rect width="7" height="7" x="14" y="3" rx="1" /> <rect width="7" height="7" x="14" y="14" rx="1" /> <rect width="7" height="7" x="3" y="14" rx="1" /></svg></span><div><b>Accueil personnalisable <span class="badge premium">Premium</span></b><span class="d">Ordre des sections, et de nouvelles sections en plus.</span></div></li>
+      <ul class="feat-list">
+        <li class="reveal"><span class="ic"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><rect width="7" height="7" x="3" y="3" rx="1" /> <rect width="7" height="7" x="14" y="3" rx="1" /> <rect width="7" height="7" x="14" y="14" rx="1" /> <rect width="7" height="7" x="3" y="14" rx="1" /></svg></span><div><b>Widgets d'écran d'accueil</b><span class="d">Lancement rapide, un outil en direct, Tâches &amp; Rappels, et Séries avec validation du jour en un geste.</span></div></li>
+        <li class="reveal" style="--d:60ms"><span class="ic"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><rect width="18" height="11" x="3" y="11" rx="2" ry="2" /> <path d="M7 11V7a5 5 0 0 1 10 0v4" /></svg></span><div><b>Verrouillage de l'app</b><span class="d">Empreinte, visage ou code de ton téléphone, à chaque retour dans l'app. Désactivé par défaut.</span></div></li>
+        <li class="reveal" style="--d:120ms"><span class="ic"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 15V3" /> <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" /> <path d="m7 10 5 5 5-5" /></svg></span><div><b>Sauvegarde dans un fichier</b><span class="d">Exporte tes données dans un fichier, garde-le où tu veux, réimporte-le sur un autre téléphone. Vectorem n'a pas de serveur.</span></div></li>
+        <li class="reveal" style="--d:180ms"><span class="ic"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="m5 8 6 6" /> <path d="m4 14 6-6 2-3" /> <path d="M2 5h12" /> <path d="M7 2h1" /> <path d="m22 22-5-10-5 10" /> <path d="M14 18h6" /></svg></span><div><b>Français ou anglais</b><span class="d">La langue de l'app se choisit dans les Réglages, indépendamment de celle du téléphone.</span></div></li>
       </ul>
     </div>
   </div>
@@ -690,7 +698,7 @@ footer .wrap{display:flex;flex-direction:column;gap:24px}
         <li class="reveal"><span class="n"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z" /> <path d="M14 2v4a2 2 0 0 0 2 2h4" /> <path d="M10 9H8" /> <path d="M16 13H8" /> <path d="M16 17H8" /></svg></span><div><h4>Ce que l'outil fait</h4><p>Chaque demande explique l'usage concret — « le son est mesuré en direct », pas « autorise pour profiter de toutes les fonctionnalités ».</p></div></li>
         <li class="reveal" style="--d:70ms"><span class="n"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M4.929 4.929 19.07 19.071" /> <circle cx="12" cy="12" r="10" /></svg></span><div><h4>Ce qu'il ne fait pas</h4><p>Pas de capture silencieuse. Ce qui n'est pas nécessaire à l'outil n'est jamais demandé.</p></div></li>
         <li class="reveal" style="--d:140ms"><span class="n"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 14 4 9l5-5" /> <path d="M4 9h10.5a5.5 5.5 0 0 1 5.5 5.5a5.5 5.5 0 0 1-5.5 5.5H11" /></svg></span><div><h4>Ce qui se passe si tu refuses</h4><p>Seul l'outil concerné reste inactif : le reste de l'app continue de fonctionner.</p></div></li>
-        <li class="reveal" style="--d:210ms"><span class="n"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><rect width="14" height="20" x="5" y="2" rx="2" ry="2" /> <path d="M12 18h.01" /></svg></span><div><h4>Tes données restent sur ton téléphone</h4><p>Pas de compte, pas de statistiques. Deux fonctions contactent un service extérieur, uniquement quand tu les lances toi-même : le Test de vitesse (Cloudflare) et la vidéo qui débloque une fonction (Google AdMob). <a href="https://themandawalker.github.io/vectorem-privacy/">Lire la politique de confidentialité</a>.</p></div></li>
+        <li class="reveal" style="--d:210ms"><span class="n"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><rect width="14" height="20" x="5" y="2" rx="2" ry="2" /> <path d="M12 18h.01" /></svg></span><div><h4>Tes données restent sur ton téléphone</h4><p>Pas de compte, pas de mesure d'audience. Deux fonctions contactent un service extérieur, uniquement quand tu les lances toi-même : le Test de vitesse (Cloudflare) et la vidéo facultative qui débloque une fonction avancée (Google AdMob). <a href="https://themandawalker.github.io/vectorem-privacy/">Lire la politique de confidentialité</a>.</p></div></li>
       </ul>
     </div>
   </div>
@@ -737,7 +745,7 @@ footer .wrap{display:flex;flex-direction:column;gap:24px}
 
     <div class="section-head reveal" style="margin-top:56px">
       <h2 style="font-size:clamp(22px,3vw,30px)">Ton accueil, section par section</h2>
-      <p>Monte, descends, masque : essaie le constructeur d'accueil (Premium dans l'app).</p>
+      <p>Monte, descends, masque : essaie le constructeur d'accueil.</p>
     </div>
     <div class="builder">
       <div class="sec-list reveal" id="secList"></div>
@@ -753,7 +761,7 @@ footer .wrap{display:flex;flex-direction:column;gap:24px}
     <span class="fl o" style="--s:80px;left:88%;top:8%"></span>
   </div>
   <div class="wrap">
-    <h2 class="reveal">Un tableau de bord. Vingt-cinq outils. Aucun de trop.</h2>
+    <h2 class="reveal">Un tableau de bord. Plus de vingt-cinq outils. Aucun de trop.</h2>
     <div class="ctas reveal" style="--d:100ms">
       <a class="btn btn-primary" href="#essayer">Rejouer la démo <svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14" /> <path d="m12 5 7 7-7 7" /></svg></a>
       <a class="btn btn-ghost" href="https://themandawalker.github.io/vectorem-privacy/">Confidentialité</a>
@@ -779,7 +787,7 @@ footer .wrap{display:flex;flex-direction:column;gap:24px}
 </footer>
 
 <script>
-window.__icons={"arrow-right": "<svg class=\"i\" viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M5 12h14\" /> <path d=\"m12 5 7 7-7 7\" /></svg>", "ban": "<svg class=\"i\" viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M4.929 4.929 19.07 19.071\" /> <circle cx=\"12\" cy=\"12\" r=\"10\" /></svg>", "bell": "<svg class=\"i\" viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M10.268 21a2 2 0 0 0 3.464 0\" /> <path d=\"M3.262 15.326A1 1 0 0 0 4 17h16a1 1 0 0 0 .74-1.673C19.41 13.956 18 12.499 18 8A6 6 0 0 0 6 8c0 4.499-1.411 5.956-2.738 7.326\" /></svg>", "calculator": "<svg class=\"i\" viewBox=\"0 0 24 24\" aria-hidden=\"true\"><rect width=\"16\" height=\"20\" x=\"4\" y=\"2\" rx=\"2\" /> <line x1=\"8\" x2=\"16\" y1=\"6\" y2=\"6\" /> <line x1=\"16\" x2=\"16\" y1=\"14\" y2=\"18\" /> <path d=\"M16 10h.01\" /> <path d=\"M12 10h.01\" /> <path d=\"M8 10h.01\" /> <path d=\"M12 14h.01\" /> <path d=\"M8 14h.01\" /> <path d=\"M12 18h.01\" /> <path d=\"M8 18h.01\" /></svg>", "calendar": "<svg class=\"i\" viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M8 2v4\" /> <path d=\"M16 2v4\" /> <rect width=\"18\" height=\"18\" x=\"3\" y=\"4\" rx=\"2\" /> <path d=\"M3 10h18\" /></svg>", "check": "<svg class=\"i\" viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M20 6 9 17l-5-5\" /></svg>", "chevron-down": "<svg class=\"i\" viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"m6 9 6 6 6-6\" /></svg>", "chevron-up": "<svg class=\"i\" viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"m18 15-6-6-6 6\" /></svg>", "clipboard-list": "<svg class=\"i\" viewBox=\"0 0 24 24\" aria-hidden=\"true\"><rect width=\"8\" height=\"4\" x=\"8\" y=\"2\" rx=\"1\" ry=\"1\" /> <path d=\"M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2\" /> <path d=\"M12 11h4\" /> <path d=\"M12 16h4\" /> <path d=\"M8 11h.01\" /> <path d=\"M8 16h.01\" /></svg>", "clock": "<svg class=\"i\" viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M12 6v6l4 2\" /> <circle cx=\"12\" cy=\"12\" r=\"10\" /></svg>", "code-xml": "<svg class=\"i\" viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"m18 16 4-4-4-4\" /> <path d=\"m6 8-4 4 4 4\" /> <path d=\"m14.5 4-5 16\" /></svg>", "coins": "<svg class=\"i\" viewBox=\"0 0 24 24\" aria-hidden=\"true\"><circle cx=\"8\" cy=\"8\" r=\"6\" /> <path d=\"M18.09 10.37A6 6 0 1 1 10.34 18\" /> <path d=\"M7 6h1v4\" /> <path d=\"m16.71 13.88.7.71-2.82 2.82\" /></svg>", "cpu": "<svg class=\"i\" viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M12 20v2\" /> <path d=\"M12 2v2\" /> <path d=\"M17 20v2\" /> <path d=\"M17 2v2\" /> <path d=\"M2 12h2\" /> <path d=\"M2 17h2\" /> <path d=\"M2 7h2\" /> <path d=\"M20 12h2\" /> <path d=\"M20 17h2\" /> <path d=\"M20 7h2\" /> <path d=\"M7 20v2\" /> <path d=\"M7 2v2\" /> <rect x=\"4\" y=\"4\" width=\"16\" height=\"16\" rx=\"2\" /> <rect x=\"8\" y=\"8\" width=\"8\" height=\"8\" rx=\"1\" /></svg>", "dices": "<svg class=\"i\" viewBox=\"0 0 24 24\" aria-hidden=\"true\"><rect width=\"12\" height=\"12\" x=\"2\" y=\"10\" rx=\"2\" ry=\"2\" /> <path d=\"m17.92 14 3.5-3.5a2.24 2.24 0 0 0 0-3l-5-4.92a2.24 2.24 0 0 0-3 0L10 6\" /> <path d=\"M6 18h.01\" /> <path d=\"M10 14h.01\" /> <path d=\"M15 6h.01\" /> <path d=\"M18 9h.01\" /></svg>", "file-text": "<svg class=\"i\" viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z\" /> <path d=\"M14 2v4a2 2 0 0 0 2 2h4\" /> <path d=\"M10 9H8\" /> <path d=\"M16 13H8\" /> <path d=\"M16 17H8\" /></svg>", "gauge": "<svg class=\"i\" viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"m12 14 4-4\" /> <path d=\"M3.34 19a10 10 0 1 1 17.32 0\" /></svg>", "home": "<svg class=\"i\" viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8\" /> <path d=\"M3 10a2 2 0 0 1 .709-1.528l7-6a2 2 0 0 1 2.582 0l7 6A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z\" /></svg>", "hourglass": "<svg class=\"i\" viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M5 22h14\" /> <path d=\"M5 2h14\" /> <path d=\"M17 22v-4.172a2 2 0 0 0-.586-1.414L12 12l-4.414 4.414A2 2 0 0 0 7 17.828V22\" /> <path d=\"M7 2v4.172a2 2 0 0 0 .586 1.414L12 12l4.414-4.414A2 2 0 0 0 17 6.172V2\" /></svg>", "key-round": "<svg class=\"i\" viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M2.586 17.414A2 2 0 0 0 2 18.828V21a1 1 0 0 0 1 1h3a1 1 0 0 0 1-1v-1a1 1 0 0 1 1-1h1a1 1 0 0 0 1-1v-1a1 1 0 0 1 1-1h.172a2 2 0 0 0 1.414-.586l.814-.814a6.5 6.5 0 1 0-4-4z\" /> <circle cx=\"16.5\" cy=\"7.5\" r=\".5\" fill=\"currentColor\" /></svg>", "layers": "<svg class=\"i\" viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M12.83 2.18a2 2 0 0 0-1.66 0L2.6 6.08a1 1 0 0 0 0 1.83l8.58 3.91a2 2 0 0 0 1.66 0l8.58-3.9a1 1 0 0 0 0-1.83z\" /> <path d=\"M2 12a1 1 0 0 0 .58.91l8.6 3.91a2 2 0 0 0 1.65 0l8.58-3.9A1 1 0 0 0 22 12\" /> <path d=\"M2 17a1 1 0 0 0 .58.91l8.6 3.91a2 2 0 0 0 1.65 0l8.58-3.9A1 1 0 0 0 22 17\" /></svg>", "layout-grid": "<svg class=\"i\" viewBox=\"0 0 24 24\" aria-hidden=\"true\"><rect width=\"7\" height=\"7\" x=\"3\" y=\"3\" rx=\"1\" /> <rect width=\"7\" height=\"7\" x=\"14\" y=\"3\" rx=\"1\" /> <rect width=\"7\" height=\"7\" x=\"14\" y=\"14\" rx=\"1\" /> <rect width=\"7\" height=\"7\" x=\"3\" y=\"14\" rx=\"1\" /></svg>", "list-checks": "<svg class=\"i\" viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M13 5h8\" /> <path d=\"M13 12h8\" /> <path d=\"M13 19h8\" /> <path d=\"m3 17 2 2 4-4\" /> <path d=\"m3 7 2 2 4-4\" /></svg>", "lock": "<svg class=\"i\" viewBox=\"0 0 24 24\" aria-hidden=\"true\"><rect width=\"18\" height=\"11\" x=\"3\" y=\"11\" rx=\"2\" ry=\"2\" /> <path d=\"M7 11V7a5 5 0 0 1 10 0v4\" /></svg>", "mic": "<svg class=\"i\" viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M12 19v3\" /> <path d=\"M19 10v2a7 7 0 0 1-14 0v-2\" /> <rect x=\"9\" y=\"2\" width=\"6\" height=\"13\" rx=\"3\" /></svg>", "moon": "<svg class=\"i\" viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M20.985 12.486a9 9 0 1 1-9.473-9.472c.405-.022.617.46.402.803a6 6 0 0 0 8.268 8.268c.344-.215.825-.004.803.401\" /></svg>", "network": "<svg class=\"i\" viewBox=\"0 0 24 24\" aria-hidden=\"true\"><rect x=\"16\" y=\"16\" width=\"6\" height=\"6\" rx=\"1\" /> <rect x=\"2\" y=\"16\" width=\"6\" height=\"6\" rx=\"1\" /> <rect x=\"9\" y=\"2\" width=\"6\" height=\"6\" rx=\"1\" /> <path d=\"M5 16v-3a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v3\" /> <path d=\"M12 12V8\" /></svg>", "palette": "<svg class=\"i\" viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M12 22a1 1 0 0 1 0-20 10 9 0 0 1 10 9 5 5 0 0 1-5 5h-2.25a1.75 1.75 0 0 0-1.4 2.8l.3.4a1.75 1.75 0 0 1-1.4 2.8z\" /> <circle cx=\"13.5\" cy=\"6.5\" r=\".5\" fill=\"currentColor\" /> <circle cx=\"17.5\" cy=\"10.5\" r=\".5\" fill=\"currentColor\" /> <circle cx=\"6.5\" cy=\"12.5\" r=\".5\" fill=\"currentColor\" /> <circle cx=\"8.5\" cy=\"7.5\" r=\".5\" fill=\"currentColor\" /></svg>", "pen-tool": "<svg class=\"i\" viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M15.707 21.293a1 1 0 0 1-1.414 0l-1.586-1.586a1 1 0 0 1 0-1.414l5.586-5.586a1 1 0 0 1 1.414 0l1.586 1.586a1 1 0 0 1 0 1.414z\" /> <path d=\"m18 13-1.375-6.874a1 1 0 0 0-.746-.776L3.235 2.028a1 1 0 0 0-1.207 1.207L5.35 15.879a1 1 0 0 0 .776.746L13 18\" /> <path d=\"m2.3 2.3 7.286 7.286\" /> <circle cx=\"11\" cy=\"11\" r=\"2\" /></svg>", "pie-chart": "<svg class=\"i\" viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M21 12c.552 0 1.005-.449.95-.998a10 10 0 0 0-8.953-8.951c-.55-.055-.998.398-.998.95v8a1 1 0 0 0 1 1z\" /> <path d=\"M21.21 15.89A10 10 0 1 1 8 2.83\" /></svg>", "qr-code": "<svg class=\"i\" viewBox=\"0 0 24 24\" aria-hidden=\"true\"><rect width=\"5\" height=\"5\" x=\"3\" y=\"3\" rx=\"1\" /> <rect width=\"5\" height=\"5\" x=\"16\" y=\"3\" rx=\"1\" /> <rect width=\"5\" height=\"5\" x=\"3\" y=\"16\" rx=\"1\" /> <path d=\"M21 16h-3a2 2 0 0 0-2 2v3\" /> <path d=\"M21 21v.01\" /> <path d=\"M12 7v3a2 2 0 0 1-2 2H7\" /> <path d=\"M3 12h.01\" /> <path d=\"M12 3h.01\" /> <path d=\"M12 16v.01\" /> <path d=\"M16 12h1\" /> <path d=\"M21 12v.01\" /> <path d=\"M12 21v-1\" /></svg>", "radio": "<svg class=\"i\" viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M16.247 7.761a6 6 0 0 1 0 8.478\" /> <path d=\"M19.075 4.933a10 10 0 0 1 0 14.134\" /> <path d=\"M4.925 19.067a10 10 0 0 1 0-14.134\" /> <path d=\"M7.753 16.239a6 6 0 0 1 0-8.478\" /> <circle cx=\"12\" cy=\"12\" r=\"2\" /></svg>", "search": "<svg class=\"i\" viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"m21 21-4.34-4.34\" /> <circle cx=\"11\" cy=\"11\" r=\"8\" /></svg>", "settings": "<svg class=\"i\" viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M9.671 4.136a2.34 2.34 0 0 1 4.659 0 2.34 2.34 0 0 0 3.319 1.915 2.34 2.34 0 0 1 2.33 4.033 2.34 2.34 0 0 0 0 3.831 2.34 2.34 0 0 1-2.33 4.033 2.34 2.34 0 0 0-3.319 1.915 2.34 2.34 0 0 1-4.659 0 2.34 2.34 0 0 0-3.32-1.915 2.34 2.34 0 0 1-2.33-4.033 2.34 2.34 0 0 0 0-3.831A2.34 2.34 0 0 1 6.35 6.051a2.34 2.34 0 0 0 3.319-1.915\" /> <circle cx=\"12\" cy=\"12\" r=\"3\" /></svg>", "shield-alert": "<svg class=\"i\" viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z\" /> <path d=\"M12 8v4\" /> <path d=\"M12 16h.01\" /></svg>", "shield-check": "<svg class=\"i\" viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z\" /> <path d=\"m9 12 2 2 4-4\" /></svg>", "sliders-horizontal": "<svg class=\"i\" viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M10 5H3\" /> <path d=\"M12 19H3\" /> <path d=\"M14 3v4\" /> <path d=\"M16 17v4\" /> <path d=\"M21 12h-9\" /> <path d=\"M21 19h-5\" /> <path d=\"M21 5h-7\" /> <path d=\"M8 10v4\" /> <path d=\"M8 12H3\" /></svg>", "smartphone": "<svg class=\"i\" viewBox=\"0 0 24 24\" aria-hidden=\"true\"><rect width=\"14\" height=\"20\" x=\"5\" y=\"2\" rx=\"2\" ry=\"2\" /> <path d=\"M12 18h.01\" /></svg>", "sticky-note": "<svg class=\"i\" viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M16 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V8Z\" /> <path d=\"M15 3v4a2 2 0 0 0 2 2h4\" /></svg>", "sun": "<svg class=\"i\" viewBox=\"0 0 24 24\" aria-hidden=\"true\"><circle cx=\"12\" cy=\"12\" r=\"4\" /> <path d=\"M12 2v2\" /> <path d=\"M12 20v2\" /> <path d=\"m4.93 4.93 1.41 1.41\" /> <path d=\"m17.66 17.66 1.41 1.41\" /> <path d=\"M2 12h2\" /> <path d=\"M20 12h2\" /> <path d=\"m6.34 17.66-1.41 1.41\" /> <path d=\"m19.07 4.93-1.41 1.41\" /></svg>", "timer": "<svg class=\"i\" viewBox=\"0 0 24 24\" aria-hidden=\"true\"><line x1=\"10\" x2=\"14\" y1=\"2\" y2=\"2\" /> <line x1=\"12\" x2=\"15\" y1=\"14\" y2=\"11\" /> <circle cx=\"12\" cy=\"14\" r=\"8\" /></svg>", "triangle": "<svg class=\"i\" viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M13.73 4a2 2 0 0 0-3.46 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z\" /></svg>", "undo-2": "<svg class=\"i\" viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M9 14 4 9l5-5\" /> <path d=\"M4 9h10.5a5.5 5.5 0 0 1 5.5 5.5a5.5 5.5 0 0 1-5.5 5.5H11\" /></svg>", "volume-2": "<svg class=\"i\" viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M11 4.702a.705.705 0 0 0-1.203-.498L6.413 7.587A1.4 1.4 0 0 1 5.416 8H3a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h2.416a1.4 1.4 0 0 1 .997.413l3.383 3.384A.705.705 0 0 0 11 19.298z\" /> <path d=\"M16 9a5 5 0 0 1 0 6\" /> <path d=\"M19.364 18.364a9 9 0 0 0 0-12.728\" /></svg>", "waves": "<svg class=\"i\" viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M2 6c.6.5 1.2 1 2.5 1C7 7 7 5 9.5 5c2.6 0 2.4 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1\" /> <path d=\"M2 12c.6.5 1.2 1 2.5 1 2.5 0 2.5-2 5-2 2.6 0 2.4 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1\" /> <path d=\"M2 18c.6.5 1.2 1 2.5 1 2.5 0 2.5-2 5-2 2.6 0 2.4 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1\" /></svg>", "x": "<svg class=\"i\" viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M18 6 6 18\" /> <path d=\"m6 6 12 12\" /></svg>"};
+window.__icons={"flame": "<svg class=\"i\" viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z\" /></svg>", "arrow-right": "<svg class=\"i\" viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M5 12h14\" /> <path d=\"m12 5 7 7-7 7\" /></svg>", "ban": "<svg class=\"i\" viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M4.929 4.929 19.07 19.071\" /> <circle cx=\"12\" cy=\"12\" r=\"10\" /></svg>", "bell": "<svg class=\"i\" viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M10.268 21a2 2 0 0 0 3.464 0\" /> <path d=\"M3.262 15.326A1 1 0 0 0 4 17h16a1 1 0 0 0 .74-1.673C19.41 13.956 18 12.499 18 8A6 6 0 0 0 6 8c0 4.499-1.411 5.956-2.738 7.326\" /></svg>", "calculator": "<svg class=\"i\" viewBox=\"0 0 24 24\" aria-hidden=\"true\"><rect width=\"16\" height=\"20\" x=\"4\" y=\"2\" rx=\"2\" /> <line x1=\"8\" x2=\"16\" y1=\"6\" y2=\"6\" /> <line x1=\"16\" x2=\"16\" y1=\"14\" y2=\"18\" /> <path d=\"M16 10h.01\" /> <path d=\"M12 10h.01\" /> <path d=\"M8 10h.01\" /> <path d=\"M12 14h.01\" /> <path d=\"M8 14h.01\" /> <path d=\"M12 18h.01\" /> <path d=\"M8 18h.01\" /></svg>", "calendar": "<svg class=\"i\" viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M8 2v4\" /> <path d=\"M16 2v4\" /> <rect width=\"18\" height=\"18\" x=\"3\" y=\"4\" rx=\"2\" /> <path d=\"M3 10h18\" /></svg>", "check": "<svg class=\"i\" viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M20 6 9 17l-5-5\" /></svg>", "chevron-down": "<svg class=\"i\" viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"m6 9 6 6 6-6\" /></svg>", "chevron-up": "<svg class=\"i\" viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"m18 15-6-6-6 6\" /></svg>", "clipboard-list": "<svg class=\"i\" viewBox=\"0 0 24 24\" aria-hidden=\"true\"><rect width=\"8\" height=\"4\" x=\"8\" y=\"2\" rx=\"1\" ry=\"1\" /> <path d=\"M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2\" /> <path d=\"M12 11h4\" /> <path d=\"M12 16h4\" /> <path d=\"M8 11h.01\" /> <path d=\"M8 16h.01\" /></svg>", "clock": "<svg class=\"i\" viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M12 6v6l4 2\" /> <circle cx=\"12\" cy=\"12\" r=\"10\" /></svg>", "code-xml": "<svg class=\"i\" viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"m18 16 4-4-4-4\" /> <path d=\"m6 8-4 4 4 4\" /> <path d=\"m14.5 4-5 16\" /></svg>", "coins": "<svg class=\"i\" viewBox=\"0 0 24 24\" aria-hidden=\"true\"><circle cx=\"8\" cy=\"8\" r=\"6\" /> <path d=\"M18.09 10.37A6 6 0 1 1 10.34 18\" /> <path d=\"M7 6h1v4\" /> <path d=\"m16.71 13.88.7.71-2.82 2.82\" /></svg>", "cpu": "<svg class=\"i\" viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M12 20v2\" /> <path d=\"M12 2v2\" /> <path d=\"M17 20v2\" /> <path d=\"M17 2v2\" /> <path d=\"M2 12h2\" /> <path d=\"M2 17h2\" /> <path d=\"M2 7h2\" /> <path d=\"M20 12h2\" /> <path d=\"M20 17h2\" /> <path d=\"M20 7h2\" /> <path d=\"M7 20v2\" /> <path d=\"M7 2v2\" /> <rect x=\"4\" y=\"4\" width=\"16\" height=\"16\" rx=\"2\" /> <rect x=\"8\" y=\"8\" width=\"8\" height=\"8\" rx=\"1\" /></svg>", "dices": "<svg class=\"i\" viewBox=\"0 0 24 24\" aria-hidden=\"true\"><rect width=\"12\" height=\"12\" x=\"2\" y=\"10\" rx=\"2\" ry=\"2\" /> <path d=\"m17.92 14 3.5-3.5a2.24 2.24 0 0 0 0-3l-5-4.92a2.24 2.24 0 0 0-3 0L10 6\" /> <path d=\"M6 18h.01\" /> <path d=\"M10 14h.01\" /> <path d=\"M15 6h.01\" /> <path d=\"M18 9h.01\" /></svg>", "file-text": "<svg class=\"i\" viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z\" /> <path d=\"M14 2v4a2 2 0 0 0 2 2h4\" /> <path d=\"M10 9H8\" /> <path d=\"M16 13H8\" /> <path d=\"M16 17H8\" /></svg>", "gauge": "<svg class=\"i\" viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"m12 14 4-4\" /> <path d=\"M3.34 19a10 10 0 1 1 17.32 0\" /></svg>", "home": "<svg class=\"i\" viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8\" /> <path d=\"M3 10a2 2 0 0 1 .709-1.528l7-6a2 2 0 0 1 2.582 0l7 6A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z\" /></svg>", "hourglass": "<svg class=\"i\" viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M5 22h14\" /> <path d=\"M5 2h14\" /> <path d=\"M17 22v-4.172a2 2 0 0 0-.586-1.414L12 12l-4.414 4.414A2 2 0 0 0 7 17.828V22\" /> <path d=\"M7 2v4.172a2 2 0 0 0 .586 1.414L12 12l4.414-4.414A2 2 0 0 0 17 6.172V2\" /></svg>", "key-round": "<svg class=\"i\" viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M2.586 17.414A2 2 0 0 0 2 18.828V21a1 1 0 0 0 1 1h3a1 1 0 0 0 1-1v-1a1 1 0 0 1 1-1h1a1 1 0 0 0 1-1v-1a1 1 0 0 1 1-1h.172a2 2 0 0 0 1.414-.586l.814-.814a6.5 6.5 0 1 0-4-4z\" /> <circle cx=\"16.5\" cy=\"7.5\" r=\".5\" fill=\"currentColor\" /></svg>", "layers": "<svg class=\"i\" viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M12.83 2.18a2 2 0 0 0-1.66 0L2.6 6.08a1 1 0 0 0 0 1.83l8.58 3.91a2 2 0 0 0 1.66 0l8.58-3.9a1 1 0 0 0 0-1.83z\" /> <path d=\"M2 12a1 1 0 0 0 .58.91l8.6 3.91a2 2 0 0 0 1.65 0l8.58-3.9A1 1 0 0 0 22 12\" /> <path d=\"M2 17a1 1 0 0 0 .58.91l8.6 3.91a2 2 0 0 0 1.65 0l8.58-3.9A1 1 0 0 0 22 17\" /></svg>", "layout-grid": "<svg class=\"i\" viewBox=\"0 0 24 24\" aria-hidden=\"true\"><rect width=\"7\" height=\"7\" x=\"3\" y=\"3\" rx=\"1\" /> <rect width=\"7\" height=\"7\" x=\"14\" y=\"3\" rx=\"1\" /> <rect width=\"7\" height=\"7\" x=\"14\" y=\"14\" rx=\"1\" /> <rect width=\"7\" height=\"7\" x=\"3\" y=\"14\" rx=\"1\" /></svg>", "list-checks": "<svg class=\"i\" viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M13 5h8\" /> <path d=\"M13 12h8\" /> <path d=\"M13 19h8\" /> <path d=\"m3 17 2 2 4-4\" /> <path d=\"m3 7 2 2 4-4\" /></svg>", "lock": "<svg class=\"i\" viewBox=\"0 0 24 24\" aria-hidden=\"true\"><rect width=\"18\" height=\"11\" x=\"3\" y=\"11\" rx=\"2\" ry=\"2\" /> <path d=\"M7 11V7a5 5 0 0 1 10 0v4\" /></svg>", "mic": "<svg class=\"i\" viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M12 19v3\" /> <path d=\"M19 10v2a7 7 0 0 1-14 0v-2\" /> <rect x=\"9\" y=\"2\" width=\"6\" height=\"13\" rx=\"3\" /></svg>", "moon": "<svg class=\"i\" viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M20.985 12.486a9 9 0 1 1-9.473-9.472c.405-.022.617.46.402.803a6 6 0 0 0 8.268 8.268c.344-.215.825-.004.803.401\" /></svg>", "network": "<svg class=\"i\" viewBox=\"0 0 24 24\" aria-hidden=\"true\"><rect x=\"16\" y=\"16\" width=\"6\" height=\"6\" rx=\"1\" /> <rect x=\"2\" y=\"16\" width=\"6\" height=\"6\" rx=\"1\" /> <rect x=\"9\" y=\"2\" width=\"6\" height=\"6\" rx=\"1\" /> <path d=\"M5 16v-3a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v3\" /> <path d=\"M12 12V8\" /></svg>", "palette": "<svg class=\"i\" viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M12 22a1 1 0 0 1 0-20 10 9 0 0 1 10 9 5 5 0 0 1-5 5h-2.25a1.75 1.75 0 0 0-1.4 2.8l.3.4a1.75 1.75 0 0 1-1.4 2.8z\" /> <circle cx=\"13.5\" cy=\"6.5\" r=\".5\" fill=\"currentColor\" /> <circle cx=\"17.5\" cy=\"10.5\" r=\".5\" fill=\"currentColor\" /> <circle cx=\"6.5\" cy=\"12.5\" r=\".5\" fill=\"currentColor\" /> <circle cx=\"8.5\" cy=\"7.5\" r=\".5\" fill=\"currentColor\" /></svg>", "pen-tool": "<svg class=\"i\" viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M15.707 21.293a1 1 0 0 1-1.414 0l-1.586-1.586a1 1 0 0 1 0-1.414l5.586-5.586a1 1 0 0 1 1.414 0l1.586 1.586a1 1 0 0 1 0 1.414z\" /> <path d=\"m18 13-1.375-6.874a1 1 0 0 0-.746-.776L3.235 2.028a1 1 0 0 0-1.207 1.207L5.35 15.879a1 1 0 0 0 .776.746L13 18\" /> <path d=\"m2.3 2.3 7.286 7.286\" /> <circle cx=\"11\" cy=\"11\" r=\"2\" /></svg>", "pie-chart": "<svg class=\"i\" viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M21 12c.552 0 1.005-.449.95-.998a10 10 0 0 0-8.953-8.951c-.55-.055-.998.398-.998.95v8a1 1 0 0 0 1 1z\" /> <path d=\"M21.21 15.89A10 10 0 1 1 8 2.83\" /></svg>", "qr-code": "<svg class=\"i\" viewBox=\"0 0 24 24\" aria-hidden=\"true\"><rect width=\"5\" height=\"5\" x=\"3\" y=\"3\" rx=\"1\" /> <rect width=\"5\" height=\"5\" x=\"16\" y=\"3\" rx=\"1\" /> <rect width=\"5\" height=\"5\" x=\"3\" y=\"16\" rx=\"1\" /> <path d=\"M21 16h-3a2 2 0 0 0-2 2v3\" /> <path d=\"M21 21v.01\" /> <path d=\"M12 7v3a2 2 0 0 1-2 2H7\" /> <path d=\"M3 12h.01\" /> <path d=\"M12 3h.01\" /> <path d=\"M12 16v.01\" /> <path d=\"M16 12h1\" /> <path d=\"M21 12v.01\" /> <path d=\"M12 21v-1\" /></svg>", "radio": "<svg class=\"i\" viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M16.247 7.761a6 6 0 0 1 0 8.478\" /> <path d=\"M19.075 4.933a10 10 0 0 1 0 14.134\" /> <path d=\"M4.925 19.067a10 10 0 0 1 0-14.134\" /> <path d=\"M7.753 16.239a6 6 0 0 1 0-8.478\" /> <circle cx=\"12\" cy=\"12\" r=\"2\" /></svg>", "search": "<svg class=\"i\" viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"m21 21-4.34-4.34\" /> <circle cx=\"11\" cy=\"11\" r=\"8\" /></svg>", "settings": "<svg class=\"i\" viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M9.671 4.136a2.34 2.34 0 0 1 4.659 0 2.34 2.34 0 0 0 3.319 1.915 2.34 2.34 0 0 1 2.33 4.033 2.34 2.34 0 0 0 0 3.831 2.34 2.34 0 0 1-2.33 4.033 2.34 2.34 0 0 0-3.319 1.915 2.34 2.34 0 0 1-4.659 0 2.34 2.34 0 0 0-3.32-1.915 2.34 2.34 0 0 1-2.33-4.033 2.34 2.34 0 0 0 0-3.831A2.34 2.34 0 0 1 6.35 6.051a2.34 2.34 0 0 0 3.319-1.915\" /> <circle cx=\"12\" cy=\"12\" r=\"3\" /></svg>", "shield-alert": "<svg class=\"i\" viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z\" /> <path d=\"M12 8v4\" /> <path d=\"M12 16h.01\" /></svg>", "shield-check": "<svg class=\"i\" viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z\" /> <path d=\"m9 12 2 2 4-4\" /></svg>", "sliders-horizontal": "<svg class=\"i\" viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M10 5H3\" /> <path d=\"M12 19H3\" /> <path d=\"M14 3v4\" /> <path d=\"M16 17v4\" /> <path d=\"M21 12h-9\" /> <path d=\"M21 19h-5\" /> <path d=\"M21 5h-7\" /> <path d=\"M8 10v4\" /> <path d=\"M8 12H3\" /></svg>", "smartphone": "<svg class=\"i\" viewBox=\"0 0 24 24\" aria-hidden=\"true\"><rect width=\"14\" height=\"20\" x=\"5\" y=\"2\" rx=\"2\" ry=\"2\" /> <path d=\"M12 18h.01\" /></svg>", "sticky-note": "<svg class=\"i\" viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M16 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V8Z\" /> <path d=\"M15 3v4a2 2 0 0 0 2 2h4\" /></svg>", "sun": "<svg class=\"i\" viewBox=\"0 0 24 24\" aria-hidden=\"true\"><circle cx=\"12\" cy=\"12\" r=\"4\" /> <path d=\"M12 2v2\" /> <path d=\"M12 20v2\" /> <path d=\"m4.93 4.93 1.41 1.41\" /> <path d=\"m17.66 17.66 1.41 1.41\" /> <path d=\"M2 12h2\" /> <path d=\"M20 12h2\" /> <path d=\"m6.34 17.66-1.41 1.41\" /> <path d=\"m19.07 4.93-1.41 1.41\" /></svg>", "timer": "<svg class=\"i\" viewBox=\"0 0 24 24\" aria-hidden=\"true\"><line x1=\"10\" x2=\"14\" y1=\"2\" y2=\"2\" /> <line x1=\"12\" x2=\"15\" y1=\"14\" y2=\"11\" /> <circle cx=\"12\" cy=\"14\" r=\"8\" /></svg>", "triangle": "<svg class=\"i\" viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M13.73 4a2 2 0 0 0-3.46 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z\" /></svg>", "undo-2": "<svg class=\"i\" viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M9 14 4 9l5-5\" /> <path d=\"M4 9h10.5a5.5 5.5 0 0 1 5.5 5.5a5.5 5.5 0 0 1-5.5 5.5H11\" /></svg>", "volume-2": "<svg class=\"i\" viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M11 4.702a.705.705 0 0 0-1.203-.498L6.413 7.587A1.4 1.4 0 0 1 5.416 8H3a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h2.416a1.4 1.4 0 0 1 .997.413l3.383 3.384A.705.705 0 0 0 11 19.298z\" /> <path d=\"M16 9a5 5 0 0 1 0 6\" /> <path d=\"M19.364 18.364a9 9 0 0 0 0-12.728\" /></svg>", "waves": "<svg class=\"i\" viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M2 6c.6.5 1.2 1 2.5 1C7 7 7 5 9.5 5c2.6 0 2.4 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1\" /> <path d=\"M2 12c.6.5 1.2 1 2.5 1 2.5 0 2.5-2 5-2 2.6 0 2.4 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1\" /> <path d=\"M2 18c.6.5 1.2 1 2.5 1 2.5 0 2.5-2 5-2 2.6 0 2.4 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1\" /></svg>", "x": "<svg class=\"i\" viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M18 6 6 18\" /> <path d=\"m6 6 12 12\" /></svg>"};
 (function(){
 'use strict';
 var $ = function(s, r){ return (r || document).querySelector(s); };
@@ -865,7 +873,7 @@ var io = ('IntersectionObserver' in window) ? new IntersectionObserver(function(
 $$('.reveal').forEach(function(n){ if (io) io.observe(n); else { n.classList.add('in'); $$('[data-count]', n).forEach(countUp); } });
 
 /* ---------- mot qui tourne ---------- */
-var words = ['mixer le son', 'cadrer ta journée', 'tirer au sort', 'noter une idée', 'mesurer le bruit', 'scanner un QR', 'dessiner vite', 'chronométrer'];
+var words = ['mixer le son', 'cadrer ta journée', 'tirer au sort', 'noter une idée', 'mesurer le bruit', 'scanner un QR', 'tenir une habitude', 'chronométrer'];
 var wi = 0, rotWord = $('#rotWord');
 if (!reduce) setInterval(function(){
   wi = (wi + 1) % words.length;
@@ -918,7 +926,6 @@ var PRESETS = {
   'Flat': [0, 0, 0, 0, 0], 'Bass': [8, 4, 0, 0, 0], 'Vocal': [-2, 2, 6, 4, 0], 'Treble': [-2, -2, 0, 4, 8],
   'Électro': [6, 2, -2, 2, 6], 'Classique': [2, 0, 0, 0, 3], 'Podcast': [-4, 0, 6, 5, -2], 'Nuit': [-6, -3, 0, 2, -2]
 };
-var FREE = ['Flat', 'Bass', 'Vocal', 'Treble'];
 function buildEq(container, opts){
   opts = opts || {};
   container.innerHTML = '';
@@ -975,29 +982,30 @@ phDice.forEach(function(d){ d.style.cursor = 'pointer'; d.addEventListener('clic
 
 /* ---------- outils : données ---------- */
 var TOOLS = [
-  { n: 'Égaliseur', cat: 'audio', icon: 'sliders-horizontal', d: 'Version simple gratuite avec 4 presets. Bandes manuelles, 8 presets, presets perso et Sound Boost en Premium.', tags: ['Premium (avancé)'], more: 'Agit sur le son global du téléphone, via l\'effet système. Aucune permission de micro.' },
+  { n: 'Égaliseur', cat: 'audio', icon: 'sliders-horizontal', d: '5 bandes réglables, presets, tes propres réglages et un Sound Boost.', tags: [], more: 'Agit sur le son global du téléphone, via l\'effet système. Aucune permission de micro.' },
   { n: 'Dictaphone', cat: 'audio', icon: 'mic', d: 'Enregistre, renomme et réécoute des mémos vocaux. Rien n\'est envoyé ailleurs.', tags: ['Micro'], more: 'Les fichiers restent dans l\'espace privé de l\'app. Le micro n\'est demandé qu\'à l\'activation.' },
   { n: 'Métronome', cat: 'audio', icon: 'triangle', d: 'Repère visuel et sonore, tempo réglable ou tapé au doigt, subdivisions en croches.', tags: [], more: 'Aucune permission.' },
-  { n: 'Son spatial', cat: 'audio', icon: 'layers', d: 'Largeur stéréo et balance gratuites. Réverbération et basses en Premium.', tags: ['Premium (avancé)'], more: 'Se perçoit surtout au casque.' },
+  { n: 'Son spatial', cat: 'audio', icon: 'layers', d: 'Largeur stéréo, balance, réverbération et basses.', tags: [], more: 'Se perçoit surtout au casque.' },
   { n: 'Sonomètre', cat: 'audio', icon: 'volume-2', d: 'Mesure le niveau sonore ambiant en direct, calibrable pour affiner la précision.', tags: ['Micro'], more: 'Mesuré uniquement pendant que l\'écran est ouvert, rien n\'est enregistré.' },
   { n: 'Chrono & minuteur', cat: 'time', icon: 'clock', d: 'Chronomètre avec tours horodatés, minuteur personnalisable et compte à rebours simple.', tags: ['Notifications'], more: 'Sonne même si l\'app est fermée.' },
   { n: 'Pomodoro', cat: 'time', icon: 'hourglass', d: 'Cycles de concentration et de pause, durées personnalisables.', tags: ['Notifications'], more: 'Une notification à chaque changement de phase.' },
   { n: 'Rappels', cat: 'time', icon: 'bell', d: 'À une heure précise ou personnalisée, avec répétition quotidienne possible.', tags: ['Notifications'], more: 'Reprogrammés automatiquement après un redémarrage du téléphone.' },
   { n: 'Tâches', cat: 'time', icon: 'list-checks', d: 'Importance et échéance optionnelle, triées automatiquement par urgence. Sans compte.', tags: ['Notifications'], more: 'Une notification à l\'échéance, seulement pour les tâches datées.' },
+  { n: 'Séries', cat: 'time', icon: 'flame', d: 'Tiens une habitude chaque jour. Un objectif peut se valider tout seul via le minuteur, le Pomodoro ou tes tâches.', tags: ['Nouveau'], more: 'Un rapport de la semaine écrit en clair, et un widget pour valider le jour sans ouvrir l\'app.' },
   { n: 'Événements', cat: 'time', icon: 'calendar', d: 'Un « J-N » toujours à jour vers une date à venir, avec répétition annuelle possible.', tags: ['Notifications'], more: 'Parfait pour les anniversaires : la date se recalcule chaque année.' },
-  { n: 'Boîte à outils', cat: 'screen', icon: 'search', d: 'Niveau à bulle, lampe torche, loupe, boussole et détecteur de champ magnétique.', tags: ['Caméra'], more: 'La caméra ne sert qu\'à la loupe : rien n\'est photographié.' },
+  { n: 'Boîte à outils', cat: 'screen', icon: 'search', d: 'Niveau à bulle, lampe, loupe, boussole, luxmètre, baromètre et détecteur de métaux.', tags: ['Caméra'], more: 'La caméra ne sert qu\'à la loupe : rien n\'est photographié.' },
   { n: 'Sismographe', cat: 'screen', icon: 'waves', d: 'Détecte vibrations et petits chocs via l\'accéléromètre, tracé en direct et journal des secousses.', tags: ['Aucune permission'], more: 'Utilise les capteurs de mouvement, sans aucune permission.' },
-  { n: 'Tableau blanc', cat: 'screen', icon: 'pen-tool', d: 'Un calepin de dessin libre : dessine, annote et exporte, sans compte ni cloud.', tags: ['Premium'], more: 'Exporte une image avec un petit logo discret dans le coin.' },
+  { n: 'Tableau blanc', cat: 'screen', icon: 'pen-tool', d: 'Un calepin de dessin libre : dessine, annote et exporte, sans compte ni cloud.', tags: [], more: 'Exporte une image avec un petit logo discret dans le coin.' },
   { n: 'Calculatrice', cat: 'system', icon: 'calculator', d: 'Mémoire (M+ / M−), pourcentage et historique de session.', tags: [], more: 'Fonctionne sans réseau.' },
-  { n: 'Boîte à outils texte', cat: 'system', icon: 'code-xml', d: 'Base64, empreintes MD5/SHA, formatage JSON et conversion d\'unités.', tags: ['Premium'], more: 'Tout se calcule sur l\'appareil.' },
-  { n: 'Code QR', cat: 'system', icon: 'qr-code', d: 'Scanne un code avec la caméra, ou génère le tien à partir d\'un texte ou d\'un lien.', tags: ['Caméra'], more: 'Aucune photo prise ni envoyée : l\'image est lue en direct.' },
+  { n: 'Boîte à outils texte', cat: 'system', icon: 'code-xml', d: 'Base64, empreintes MD5/SHA, formatage JSON et conversion d\'unités.', tags: [], more: 'Tout se calcule sur l\'appareil.' },
+  { n: 'QR & texte', cat: 'system', icon: 'qr-code', d: 'Scanne un code, génère le tien, ou extrais le texte d\'une photo.', tags: ['Caméra'], more: 'Aucune photo prise ni envoyée : l\'image est lue en direct.' },
   { n: 'Presse-papiers', cat: 'system', icon: 'clipboard-list', d: 'Historique de ce que tu copies, avec épinglage et recherche.', tags: ['Bêta'], more: 'Capture uniquement quand l\'écran est ouvert (Android bloque le reste).' },
   { n: 'Notes rapides', cat: 'system', icon: 'sticky-note', d: 'Capture une idée en quelques secondes : texte brut, tout reste sur le téléphone.', tags: [], more: 'Ajoutable aussi depuis l\'accueil.' },
-  { n: 'Palette', cat: 'system', icon: 'palette', d: 'Extrais les couleurs dominantes d\'une photo, puis exporte-les en image.', tags: ['Premium'], more: 'Nombre de couleurs, format HEX/RGB et mise en page réglables.' },
+  { n: 'Palette', cat: 'system', icon: 'palette', d: 'Extrais les couleurs dominantes d\'une photo, puis exporte-les en image.', tags: [], more: 'Nombre de couleurs, format HEX/RGB et mise en page réglables.' },
   { n: 'Tirage au sort', cat: 'system', icon: 'dices', d: 'Dés jusqu\'au d100, pile ou face, nombres, listes, roue de la fortune et équipes.', tags: [], more: 'Historique des tirages inclus.' },
   { n: 'Morse', cat: 'system', icon: 'radio', d: 'Traduit du texte en morse, en son ou en flash, et décode les flashs ou bips détectés.', tags: ['Caméra ou micro'], more: 'Les permissions ne sont demandées que pour la détection.' },
   { n: 'Infos appareil', cat: 'system', icon: 'cpu', d: 'RAM, stockage, batterie, écran, processeur, réseau — les infos techniques de ton téléphone.', tags: [], more: 'Lecture seule.' },
-  { n: 'Scanneur réseau', cat: 'system', icon: 'network', d: 'IP locale, passerelle, appareils sur le réseau et ports ouverts.', tags: ['Internet'], more: 'Sonde uniquement ton réseau local.' },
+  { n: 'Scanneur réseau', cat: 'system', icon: 'network', d: 'IP locale, passerelle, appareils Wi-Fi et Bluetooth à proximité, ports ouverts.', tags: ['Internet', 'Bluetooth'], more: 'Sonde uniquement ton réseau local.' },
   { n: 'Test de vitesse', cat: 'system', icon: 'gauge', d: 'Débit descendant, montant et latence, avec résultats archivés localement.', tags: ['Internet'], more: 'Contacte Cloudflare uniquement quand tu lances un test.' },
   { n: 'Vectorbit 39', cat: 'system', icon: 'key-round', d: 'Chiffre un message avec une seed basée sur l\'heure et un secret partagé.', tags: ['Bêta'], more: 'Chiffrement maison : à ne pas utiliser pour des secrets sensibles.' }
 ];
@@ -1016,7 +1024,7 @@ var grid = $('#toolGrid'), searchIn = $('#toolSearch'), chips = $('#catChips'), 
 var activeCat = 'all';
 TOOLS.forEach(function(t){
   var c = CATS[t.cat];
-  var tags = t.tags.map(function(x){ var k = /Premium/.test(x) ? 'premium' : /Bêta/.test(x) ? 'warn' : ''; return '<span class="badge ' + k + '">' + x + '</span>'; }).join('');
+  var tags = t.tags.map(function(x){ var k = /Bêta/.test(x) ? 'warn' : ''; return '<span class="badge ' + k + '">' + x + '</span>'; }).join('');
   var card = el('button', 'tcard2', '<span class="tc-top"><span class="tc-ic">' + ICON(t.icon) + '</span><span class="tc-name">' + t.n + '</span></span><span class="tc-desc">' + t.d + '</span><span class="tc-tags">' + tags + '</span><span class="tc-more"><span style="overflow:hidden;display:block"><p>' + t.more + '</p></span></span>');
   card.type = 'button'; card.style.setProperty('--c', c.c); card.style.setProperty('--oc', c.o);
   card.setAttribute('aria-expanded', 'false'); card.dataset.cat = t.cat; card.dataset.text = (t.n + ' ' + t.d).toLowerCase();
@@ -1165,32 +1173,30 @@ function cdUpdate(){
 }
 cd.addEventListener('input', cdUpdate); cdUpdate();
 
-/* ---------- premium : égaliseur verrouillé ---------- */
-var proUnlocked = false, proNoteDefault = $('#proNote').textContent;
-var proApply = buildEq($('#proEq'), { locked: function(){ return !proUnlocked; } });
-proApply(PRESETS['Flat']);
-var lockIcon = ICON('lock');
-Object.keys(PRESETS).forEach(function(name){
-  var free = FREE.indexOf(name) >= 0;
-  var b = el('button', 'chip', (free ? '' : lockIcon) + name); b.type = 'button'; b.setAttribute('aria-pressed', String(name === 'Flat'));
-  b.addEventListener('click', function(){
-    if (!free && !proUnlocked) {
-      if (b.animate && !reduce) b.animate([{ transform: 'translateX(0)' }, { transform: 'translateX(-5px)' }, { transform: 'translateX(5px)' }, { transform: 'translateX(0)' }], { duration: 250 });
-      $('#proNote').textContent = '« ' + name + ' » est un preset Premium.'; return;
-    }
-    proApply(PRESETS[name]); pressGroup($('#proPresets'), b);
-  });
-  $('#proPresets').appendChild(b);
-});
-$('#proUnlock').addEventListener('click', function(){
-  proUnlocked = !proUnlocked;
-  $('#proWrap').classList.toggle('locked', !proUnlocked);
-  $$('.chip svg', $('#proPresets')).forEach(function(s){ s.style.display = proUnlocked ? 'none' : ''; });
-  $('#proUnlock').textContent = proUnlocked ? 'Reverrouiller (démo)' : 'Débloquer (démo)';
-  $('#proBadge').textContent = proUnlocked ? 'Complet' : 'Version simple';
-  $('#proNote').textContent = proUnlocked ? 'Tout est débloqué : tire les bandes, essaie tous les presets.' : proNoteDefault;
-  if (!proUnlocked) { proApply(PRESETS['Flat']); pressGroup($('#proPresets'), $('#proPresets .chip')); }
-});
+/* ---------- séries ---------- */
+var stDays = $$('#stWeek .day'), stToday = (new Date().getDay() + 6) % 7;
+stDays[stToday].classList.add('today');
+stDays.forEach(function(d, i){ if (i < stToday) d.setAttribute('aria-pressed', 'true'); });
+function stUpdate(){
+  var on = stDays.map(function(d){ return d.getAttribute('aria-pressed') === 'true'; });
+  var n = 0; for (var i = stToday; i >= 0; i--) { if (on[i]) n++; else if (i !== stToday) break; }
+  var total = on.filter(Boolean).length;
+  var links = $$('#stLinks .chip[aria-pressed="true"]').map(function(c){ return c.dataset.k; });
+  var mode = $('#stMode .chip[aria-pressed="true"]').dataset.m;
+  var num = $('#stNum'); num.textContent = n;
+  num.style.animation = 'none'; void num.offsetWidth; num.style.animation = reduce ? '' : 'pop .4s var(--ease-spring)';
+  var name = { minuteur: 'Minuteur', pomodoro: 'Pomodoro', 'tâches': 'Tâches' };
+  var ls = links.map(function(k){ return name[k]; });
+  var how = !ls.length ? 'Aucun outil lié : tu valides la journée toi-même.' :
+    ls.length === 1 ? 'La journée se valide toute seule dès que ' + (ls[0] === 'Tâches' ? 'tes Tâches atteignent' : 'le ' + ls[0] + ' atteint') + ' son seuil.' :
+    mode === 'et' ? 'La journée se valide quand ' + ls.join(', ').replace(/, ([^,]*)$/, ' et $1') + ' atteignent tous leur seuil.' :
+    'La journée se valide dès que ' + ls.join(', ').replace(/, ([^,]*)$/, ' ou $1') + ' atteint son seuil.';
+  $('#stReport').textContent = 'Cette semaine : ' + total + ' jour' + (total > 1 ? 's' : '') + ' sur 7. ' + how;
+}
+stDays.forEach(function(d){ d.addEventListener('click', function(){ touched(); d.setAttribute('aria-pressed', String(d.getAttribute('aria-pressed') !== 'true')); stUpdate(); }); });
+$$('#stLinks .chip').forEach(function(c){ c.addEventListener('click', function(){ c.setAttribute('aria-pressed', String(c.getAttribute('aria-pressed') !== 'true')); stUpdate(); }); });
+$$('#stMode .chip').forEach(function(c){ c.addEventListener('click', function(){ pressGroup($('#stMode'), c); stUpdate(); }); });
+stUpdate();
 
 /* ---------- permissions ---------- */
 var PERMS = [
