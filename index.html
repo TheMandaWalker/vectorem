@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Vectorem — plus de 25 outils, un seul tableau de bord</title>
 <meta name="description" content="Vectorem regroupe plus de 25 outils pour Android — minuteur, rappels, séries d'habitudes, égaliseur, QR, roue de la fortune — dans une seule app modulaire, sans compte. Essaie-les ici.">
-<meta name="theme-color" content="#F5F1E8">
+<meta name="theme-color" content="#101010">
 <meta property="og:title" content="Vectorem — plus de 25 outils, un seul tableau de bord">
 <meta property="og:description" content="Une boîte à outils Android modulaire : tu actives ce que tu utilises, tes données restent sur ton téléphone.">
 <meta property="og:type" content="website">
@@ -78,18 +78,22 @@ section{padding:72px 0}
 .progress{position:fixed;top:0;left:0;height:4px;width:100%;background:var(--brand);transform-origin:0 50%;transform:scaleX(0);z-index:60}
 
 /* ---- header ---- */
-.site-header{position:sticky;top:0;z-index:50;background:var(--bg-page);border-bottom:var(--stroke-heavy);transition:box-shadow var(--dur-base) var(--ease-snap)}
+.site-header{position:sticky;top:0;z-index:50;background:#101010;color:#F5F1E8;border-bottom:4px solid var(--brand);transition:box-shadow var(--dur-base) var(--ease-snap)}
 .site-header .wrap{display:flex;align-items:center;gap:14px;height:68px;transition:height var(--dur-base) var(--ease-snap)}
 .site-header.compact .wrap{height:56px}
 .site-header.compact{box-shadow:0 6px 0 rgba(0,0,0,.12)}
 .brand-link{display:flex;align-items:center;gap:10px;text-decoration:none}
-.brand-mark{width:34px;height:34px;flex:0 0 auto;border:var(--stroke);box-shadow:var(--shadow-1);background:#101010;transition:transform .5s var(--ease-spring)}
+.brand-mark{width:34px;height:34px;flex:0 0 auto;border:3px solid #F5F1E8;background:#101010;transition:transform .5s var(--ease-spring)}
 .brand-link:hover .brand-mark{transform:rotate(90deg) scale(1.08)}
-.wordmark{background:var(--brand);border:var(--stroke);box-shadow:var(--shadow-1);padding:5px 10px 4px;font:900 20px/1 var(--font-display);letter-spacing:-.03em;text-transform:uppercase;color:var(--on-brand);white-space:nowrap;transition:background var(--dur-base)}
+.wordmark{background:var(--brand);border:3px solid #F5F1E8;box-shadow:3px 3px 0 #F5F1E8;padding:5px 10px 4px;font:900 20px/1 var(--font-display);letter-spacing:-.03em;text-transform:uppercase;color:var(--on-brand);white-space:nowrap;transition:background var(--dur-base)}
 .site-nav{display:flex;gap:6px;margin-left:8px}
 .site-nav a{text-decoration:none;font:700 12px/1 var(--font-ui);letter-spacing:.05em;text-transform:uppercase;padding:9px 10px;border:var(--stroke-hair);border-color:transparent;transition:background var(--dur-fast),border-color var(--dur-fast),transform var(--dur-fast) var(--ease-snap)}
-.site-nav a:hover{border-color:var(--border-color);transform:translateY(-1px)}
-.site-nav a.on{background:var(--brand);color:var(--on-brand);border-color:var(--border-color);box-shadow:var(--shadow-1)}
+.site-nav a:hover{border-color:#F5F1E8;transform:translateY(-1px)}
+.site-nav a.on{background:var(--brand);color:var(--on-brand);border-color:#F5F1E8}
+.site-header .icon-btn{margin-left:0;background:#101010;color:#F5F1E8;border-color:#F5F1E8;box-shadow:3px 3px 0 var(--brand)}
+.head-cta{margin-left:auto;white-space:nowrap;border-color:#F5F1E8;box-shadow:3px 3px 0 #F5F1E8}
+.head-cta:hover{box-shadow:5px 5px 0 #F5F1E8}
+@media (max-width:480px){ .site-header .head-cta{display:none} .site-header .icon-btn{margin-left:auto} }
 @media (max-width:900px){ .site-nav{display:none} }
 .icon-btn{margin-left:auto;flex:0 0 auto;display:inline-flex;align-items:center;justify-content:center;width:44px;height:44px;background:var(--bg-block);border:var(--stroke);box-shadow:var(--shadow-1);color:var(--text-strong);transition:transform var(--dur-instant) var(--ease-snap),box-shadow var(--dur-instant) var(--ease-snap)}
 .icon-btn:active{transform:translate(2px,2px);box-shadow:var(--shadow-pressed)}
@@ -187,6 +191,23 @@ section{padding:72px 0}
 .chk.done i{background:var(--cat-screen)}
 .chk.done span{text-decoration:line-through;opacity:.55}
 .chk i svg{width:9px;height:9px;stroke-width:4;opacity:0}
+.scr-today{border:var(--stroke-hair);background:var(--surface);padding:4px 8px 8px}
+.scr-today .chk{width:100%;font-size:10.5px;margin-top:6px}
+.scr-today .chk em{margin-left:auto;font:700 8px/1 var(--font-ui);letter-spacing:.08em;text-transform:uppercase;font-style:normal;color:var(--ink-3)}
+.scr-today .chk em.late{color:var(--danger)}
+.scr-streak{display:flex;gap:9px;align-items:center;border:var(--stroke-hair);background:var(--surface);padding:7px 8px}
+.scr-streak .st-ic{width:30px;height:30px;flex:0 0 auto;display:flex;align-items:center;justify-content:center;background:var(--warning);border:var(--stroke-hair);color:#101010}
+.scr-streak .st-ic svg{width:16px;height:16px;stroke-width:2.5}
+.scr-streak b{display:block;font:800 11px/1.2 var(--font-ui)}
+.scr-streak small{color:var(--ink-3);font-size:9.5px}
+.scr-streak .st-ok{margin-left:auto;width:32px;height:32px;flex:0 0 auto;display:flex;align-items:center;justify-content:center;background:var(--surface);border:var(--stroke-hair);box-shadow:2px 2px 0 var(--shadow-color);color:var(--ink);padding:0;transition:transform .12s,box-shadow .12s,background .2s}
+.scr-streak .st-ok svg{width:16px;height:16px;stroke-width:3}
+.scr-streak .st-ok[aria-pressed="true"]{background:var(--cat-screen);color:#00160F;transform:translate(2px,2px);box-shadow:none}
+.scr-sheet{position:absolute;left:0;right:0;bottom:0;background:var(--surface);border-top:var(--stroke);padding:10px 12px 12px;box-shadow:0 -6px 0 rgba(0,0,0,.12)}
+.scr-sheet h6{margin:0 0 6px;font:800 9px/1 var(--font-ui);letter-spacing:.12em;text-transform:uppercase;color:var(--ink-3)}
+.scr-sheet div{display:flex;align-items:center;gap:8px;padding:6px 0;border-top:var(--stroke-hair);font:700 11px/1 var(--font-ui)}
+.scr-sheet div:first-of-type{border-top:0}
+.scr-sheet svg{width:14px;height:14px;stroke-width:2.25}
 .chk.done i svg{opacity:1;color:#00160F}
 .eq-title{font:900 17px/1 var(--font-display);margin-bottom:12px;display:flex;align-items:center;gap:8px}
 .eq-title svg{width:20px;height:20px;stroke-width:2.25}
@@ -369,15 +390,20 @@ section{padding:72px 0}
 .seg button:first-child{border-left:0}
 .seg button[aria-pressed="true"]{background:var(--brand);color:var(--on-brand)}
 .theme-seg{grid-template-columns:repeat(3,1fr)}
-.density-seg{grid-template-columns:repeat(2,1fr)}
+.density-seg{grid-template-columns:repeat(4,1fr)}
+.density-seg button{font-size:10.5px;letter-spacing:.02em;padding:0 2px}
 .swatches{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
 .swatch{aspect-ratio:1.6;border:var(--stroke-hair);cursor:pointer;position:relative;padding:0;transition:transform .2s var(--ease-spring)}
 .swatch:hover{transform:scale(1.08) rotate(-2deg)}
 .swatch[aria-pressed="true"]::after{content:"";position:absolute;inset:0;border:3px solid #101010;box-shadow:0 0 0 2px #fff inset}
 .swatch-note{margin-top:10px;font-size:12px;color:var(--text-muted)}
-.density-preview{margin-top:14px;display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
-.density-preview span{height:34px;border:var(--stroke-hair);background:var(--bg-block-sunken);transition:height var(--dur-base) var(--ease-snap)}
-.density-preview.compact span{height:20px}
+.density-preview{margin-top:14px;display:grid;grid-template-columns:repeat(3,1fr);grid-auto-rows:34px;gap:8px;height:124px;align-content:start}
+.density-preview span{border:var(--stroke-hair);background:var(--bg-block-sunken)}
+.density-preview.compact{grid-template-columns:repeat(4,1fr);grid-auto-rows:22px}
+.density-preview.list{grid-template-columns:1fr;grid-auto-rows:14px;gap:6px}
+.density-preview.mosaic{grid-auto-rows:22px}
+.density-preview.mosaic span:first-child{grid-column:span 2;grid-row:span 2;background:var(--brand)}
+.density-preview.mosaic span:nth-child(4){grid-row:span 2}
 .builder{margin-top:34px;display:grid;grid-template-columns:1fr 320px;gap:28px;align-items:start}
 @media (max-width:860px){ .builder{grid-template-columns:1fr} }
 .sec-list{display:flex;flex-direction:column;gap:8px}
@@ -419,7 +445,7 @@ footer .wrap{display:flex;flex-direction:column;gap:24px}
 .bottom-nav a svg{width:20px;height:20px;stroke-width:2.25}
 .bottom-nav a span{font:800 9px/1 var(--font-ui);letter-spacing:.05em;text-transform:uppercase}
 @media (max-width:480px){ .bottom-nav{width:100%} .bottom-nav a{flex:1 1 0;min-width:0;padding:10px 4px} .bottom-nav a span{font-size:8px;letter-spacing:.02em} }
-.foot-meta{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;color:var(--text-muted);font-size:12.5px;border-top:var(--stroke-hair);padding-top:20px}
+.foot-meta{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;color:var(--text-muted);font:800 11px/1.5 var(--font-ui);letter-spacing:.12em;text-transform:uppercase;border-top:var(--stroke-hair);padding-top:20px}
 .foot-meta a{text-underline-offset:3px}
 
 @media (prefers-reduced-motion: reduce){
@@ -449,6 +475,7 @@ footer .wrap{display:flex;flex-direction:column;gap:24px}
       <a href="#confidentialite">Confidentialité</a>
       <a href="#personnalisation">Personnaliser</a>
     </nav>
+    <a class="btn btn-primary btn-sm head-cta" href="https://play.google.com/store/apps/details?id=com.vectorem.app" target="_blank" rel="noopener">Google Play</a>
     <button class="icon-btn" id="themeToggle" type="button" aria-label="Changer de thème"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.985 12.486a9 9 0 1 1-9.473-9.472c.405-.022.617.46.402.803a6 6 0 0 0 8.268 8.268c.344-.215.825-.004.803.401" /></svg></button>
   </div>
 </header>
@@ -477,8 +504,8 @@ footer .wrap{display:flex;flex-direction:column;gap:24px}
       </h1>
       <p class="lede reveal" style="--d:160ms">Minuteur, rappels, séries d'habitudes, égaliseur, QR, roue de la fortune… Plus de 25 outils, chacun est un module : tu l'actives, tu le désactives. Le tableau de bord n'affiche que ce que tu utilises vraiment.</p>
       <div class="ctas reveal" style="--d:240ms">
-        <a class="btn btn-primary" href="#essayer">Essayer maintenant <svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14" /> <path d="m12 5 7 7-7 7" /></svg></a>
-        <a class="btn btn-ghost" href="#outils">Voir tous les outils</a>
+        <a class="btn btn-primary" href="https://play.google.com/store/apps/details?id=com.vectorem.app" target="_blank" rel="noopener">Google Play <svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14" /> <path d="m12 5 7 7-7 7" /></svg></a>
+        <a class="btn btn-ghost" href="#essayer">Essayer les démos</a>
       </div>
       <div class="stat-row reveal" style="--d:320ms">
         <div class="stat"><span class="num" data-count="26">0</span><span class="cap">Outils</span></div>
@@ -502,25 +529,36 @@ footer .wrap{display:flex;flex-direction:column;gap:24px}
               <span><b style="background:var(--cat-system)"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><rect width="5" height="5" x="3" y="3" rx="1" /> <rect width="5" height="5" x="16" y="3" rx="1" /> <rect width="5" height="5" x="3" y="16" rx="1" /> <path d="M21 16h-3a2 2 0 0 0-2 2v3" /> <path d="M21 21v.01" /> <path d="M12 7v3a2 2 0 0 1-2 2H7" /> <path d="M3 12h.01" /> <path d="M12 3h.01" /> <path d="M12 16v.01" /> <path d="M16 12h1" /> <path d="M21 12v.01" /> <path d="M12 21v-1" /></svg></b>QR</span>
               <span><b style="background:var(--cat-time);color:var(--on-time)"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M16 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V8Z" /> <path d="M15 3v4a2 2 0 0 0 2 2h4" /></svg></b>Notes</span>
             </div>
-            <div class="scr-label">Prochain événement</div>
-            <div class="scr-event"><div class="ev-num"><span id="phDays">12</span><small>JOURS</small></div><div><b>Anniversaire de Léa</b><small id="phEvDate">3 oct. 2026</small></div></div>
-            <div class="scr-label">Statistiques</div>
-            <div class="scr-stats"><div><b>14</b><small>ouvertures</small></div><div><b>5/26</b><small>outils actifs</small></div><div><b>Minuteur</b><small>le + utilisé</small></div></div>
+            <div class="scr-label">Aujourd'hui</div>
+            <div class="scr-today">
+              <button class="chk" type="button"><i><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5" /></svg></i><span>Réserver le train</span><em class="late">En retard</em></button>
+              <button class="chk done" type="button"><i><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5" /></svg></i><span>Envoyer la facture</span><em>9:00</em></button>
+              <button class="chk" type="button"><i><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5" /></svg></i><span>Appeler Léa</span><em>18:30</em></button>
+            </div>
+            <div class="scr-label">Séries du jour</div>
+            <div class="scr-streak"><span class="st-ic"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z" /></svg></span><div><b>Lecture · 20 min</b><small id="phStreak">12 jours de suite</small></div><button class="st-ok" id="phStreakOk" type="button" aria-pressed="false" aria-label="Valider la journée"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5" /></svg></button></div>
+            <div class="scr-label">7 derniers jours</div>
+            <div class="scr-stats"><div><b>135</b><small>min focus</small></div><div><b>9</b><small>pomodoros</small></div><div><b>14</b><small>tâches</small></div></div>
           </div>
           <!-- Mes outils -->
           <div class="scr" data-screen="tools">
-            <div class="scr-label" style="margin-top:0">Rappels &amp; temps</div>
+            <div class="scr-label" style="margin-top:0">En cours</div>
             <div class="tcards">
               <div class="tcard act"><h5><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 6v6l4 2" /> <circle cx="12" cy="12" r="10" /></svg>Chrono</h5><div class="big" id="phTimer">04:59</div><small>En cours</small></div>
-              <div class="tcard"><h5><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M10.268 21a2 2 0 0 0 3.464 0" /> <path d="M3.262 15.326A1 1 0 0 0 4 17h16a1 1 0 0 0 .74-1.673C19.41 13.956 18 12.499 18 8A6 6 0 0 0 6 8c0 4.499-1.411 5.956-2.738 7.326" /></svg>Rappels</h5><div class="big">2</div><small>aujourd'hui</small></div>
-              <div class="tcard" style="grid-column:1/-1"><h5><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M13 5h8" /> <path d="M13 12h8" /> <path d="M13 19h8" /> <path d="m3 17 2 2 4-4" /> <path d="m3 7 2 2 4-4" /></svg>Tâches</h5>
-                <button class="chk" type="button"><i><svg class="i" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg></i><span>Réserver le train</span></button>
-                <button class="chk done" type="button"><i><svg class="i" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg></i><span>Envoyer la facture</span></button>
-                <button class="chk" type="button"><i><svg class="i" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg></i><span>Appeler Léa</span></button>
-              </div>
+              <div class="tcard act"><h5><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 22h14" /> <path d="M5 2h14" /> <path d="M17 22v-4.172a2 2 0 0 0-.586-1.414L12 12l-4.414 4.414A2 2 0 0 0 7 17.828V22" /> <path d="M7 2v4.172a2 2 0 0 0 .586 1.414L12 12l4.414-4.414A2 2 0 0 0 17 6.172V2" /></svg>Pomodoro</h5><div class="big">2/4</div><small>Concentration</small></div>
             </div>
-            <div class="scr-label">Système &amp; données</div>
-            <div class="tcards"><div class="tcard"><h5><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><rect width="16" height="20" x="4" y="2" rx="2" /> <line x1="8" x2="16" y1="6" y2="6" /> <line x1="16" x2="16" y1="14" y2="18" /> <path d="M16 10h.01" /> <path d="M12 10h.01" /> <path d="M8 10h.01" /> <path d="M12 14h.01" /> <path d="M8 14h.01" /> <path d="M12 18h.01" /> <path d="M8 18h.01" /></svg>Calculatrice</h5><small>Prête</small></div><div class="tcard"><h5><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M16 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V8Z" /> <path d="M15 3v4a2 2 0 0 0 2 2h4" /></svg>Notes</h5><small>12 notes</small></div></div>
+            <div class="scr-label">Épinglés</div>
+            <div class="tcards">
+              <div class="tcard"><h5><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M16 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V8Z" /> <path d="M15 3v4a2 2 0 0 0 2 2h4" /></svg>Notes</h5><div class="big">12</div><small>notes</small></div>
+              <div class="tcard"><h5><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z" /></svg>Séries</h5><div class="big">12</div><small>jours de suite</small></div>
+            </div>
+            <div class="scr-sheet">
+              <h6>Appui long · Calculatrice</h6>
+              <div><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14" /> <path d="m12 5 7 7-7 7" /></svg>Ouvrir</div>
+              <div><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M12.83 2.18a2 2 0 0 0-1.66 0L2.6 6.08a1 1 0 0 0 0 1.83l8.58 3.91a2 2 0 0 0 1.66 0l8.58-3.9a1 1 0 0 0 0-1.83z" /> <path d="M2 12a1 1 0 0 0 .58.91l8.6 3.91a2 2 0 0 0 1.65 0l8.58-3.9A1 1 0 0 0 22 12" /> <path d="M2 17a1 1 0 0 0 .58.91l8.6 3.91a2 2 0 0 0 1.65 0l8.58-3.9A1 1 0 0 0 22 17" /></svg>Épingler en haut</div>
+              <div><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8" /> <path d="M3 10a2 2 0 0 1 .709-1.528l7-6a2 2 0 0 1 2.582 0l7 6A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" /></svg>Ajouter aux accès rapides</div>
+              <div><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><rect width="14" height="20" x="5" y="2" rx="2" ry="2" /> <path d="M12 18h.01" /></svg>Poser en widget</div>
+            </div>
           </div>
           <!-- Égaliseur -->
           <div class="scr" data-screen="eq">
@@ -633,7 +671,7 @@ footer .wrap{display:flex;flex-direction:column;gap:24px}
       <span class="count" id="toolCount">26 / 26</span>
     </div>
     <div class="tool-grid2" id="toolGrid"></div>
-    <p class="tiny reveal" style="margin-top:18px">Quelques fonctions avancées se débloquent avec une courte vidéo, seulement si tu la lances. Rien n'est affiché sans ton accord.</p>
+    <p class="tiny reveal" style="margin-top:18px">Quelques fonctions avancées se débloquent avec une courte vidéo, seulement si tu choisis de la lancer.</p>
   </div>
 </section>
 
@@ -641,7 +679,7 @@ footer .wrap{display:flex;flex-direction:column;gap:24px}
 <section id="series" style="padding-top:24px">
   <div class="wrap">
     <div class="section-head reveal">
-      <span class="kicker">Nouveau dans la 1.1</span>
+      <span class="kicker">Séries</span>
       <h2>Tenir une habitude, sans y penser</h2>
       <p>Séries suit tes objectifs du quotidien : sport, lecture, instrument. Lie un objectif au minuteur, au Pomodoro ou à tes tâches, et la journée se valide toute seule.</p>
     </div>
@@ -669,7 +707,7 @@ footer .wrap{display:flex;flex-direction:column;gap:24px}
         </div>
       </div>
       <ul class="feat-list">
-        <li class="reveal"><span class="ic"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><rect width="7" height="7" x="3" y="3" rx="1" /> <rect width="7" height="7" x="14" y="3" rx="1" /> <rect width="7" height="7" x="14" y="14" rx="1" /> <rect width="7" height="7" x="3" y="14" rx="1" /></svg></span><div><b>Widgets d'écran d'accueil</b><span class="d">Lancement rapide, un outil en direct, Tâches &amp; Rappels, et Séries avec validation du jour en un geste.</span></div></li>
+        <li class="reveal"><span class="ic"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><rect width="7" height="7" x="3" y="3" rx="1" /> <rect width="7" height="7" x="14" y="3" rx="1" /> <rect width="7" height="7" x="14" y="14" rx="1" /> <rect width="7" height="7" x="3" y="14" rx="1" /></svg></span><div><b>Widgets d'écran d'accueil</b><span class="d">Séries, pour valider la journée en un geste. Aujourd'hui, avec tes tâches à cocher. Un outil en direct et le lancement rapide.</span></div></li>
         <li class="reveal" style="--d:60ms"><span class="ic"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><rect width="18" height="11" x="3" y="11" rx="2" ry="2" /> <path d="M7 11V7a5 5 0 0 1 10 0v4" /></svg></span><div><b>Verrouillage de l'app</b><span class="d">Empreinte, visage ou code de ton téléphone, à chaque retour dans l'app. Désactivé par défaut.</span></div></li>
         <li class="reveal" style="--d:120ms"><span class="ic"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 15V3" /> <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" /> <path d="m7 10 5 5 5-5" /></svg></span><div><b>Sauvegarde dans un fichier</b><span class="d">Exporte tes données dans un fichier, garde-le où tu veux, réimporte-le sur un autre téléphone. Vectorem n'a pas de serveur.</span></div></li>
         <li class="reveal" style="--d:180ms"><span class="ic"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="m5 8 6 6" /> <path d="m4 14 6-6 2-3" /> <path d="M2 5h12" /> <path d="M7 2h1" /> <path d="m22 22-5-10-5 10" /> <path d="M14 18h6" /></svg></span><div><b>Français ou anglais</b><span class="d">La langue de l'app se choisit dans les Réglages, indépendamment de celle du téléphone.</span></div></li>
@@ -698,7 +736,7 @@ footer .wrap{display:flex;flex-direction:column;gap:24px}
         <li class="reveal"><span class="n"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z" /> <path d="M14 2v4a2 2 0 0 0 2 2h4" /> <path d="M10 9H8" /> <path d="M16 13H8" /> <path d="M16 17H8" /></svg></span><div><h4>Ce que l'outil fait</h4><p>Chaque demande explique l'usage concret — « le son est mesuré en direct », pas « autorise pour profiter de toutes les fonctionnalités ».</p></div></li>
         <li class="reveal" style="--d:70ms"><span class="n"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M4.929 4.929 19.07 19.071" /> <circle cx="12" cy="12" r="10" /></svg></span><div><h4>Ce qu'il ne fait pas</h4><p>Pas de capture silencieuse. Ce qui n'est pas nécessaire à l'outil n'est jamais demandé.</p></div></li>
         <li class="reveal" style="--d:140ms"><span class="n"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 14 4 9l5-5" /> <path d="M4 9h10.5a5.5 5.5 0 0 1 5.5 5.5a5.5 5.5 0 0 1-5.5 5.5H11" /></svg></span><div><h4>Ce qui se passe si tu refuses</h4><p>Seul l'outil concerné reste inactif : le reste de l'app continue de fonctionner.</p></div></li>
-        <li class="reveal" style="--d:210ms"><span class="n"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><rect width="14" height="20" x="5" y="2" rx="2" ry="2" /> <path d="M12 18h.01" /></svg></span><div><h4>Tes données restent sur ton téléphone</h4><p>Pas de compte, pas de mesure d'audience. Deux fonctions contactent un service extérieur, uniquement quand tu les lances toi-même : le Test de vitesse (Cloudflare) et la vidéo facultative qui débloque une fonction avancée (Google AdMob). <a href="https://themandawalker.github.io/vectorem-privacy/">Lire la politique de confidentialité</a>.</p></div></li>
+        <li class="reveal" style="--d:210ms"><span class="n"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><rect width="14" height="20" x="5" y="2" rx="2" ry="2" /> <path d="M12 18h.01" /></svg></span><div><h4>Tes données restent sur ton téléphone</h4><p>Pas de compte, pas de serveur Vectorem : tes notes, tâches et séries ne quittent pas le téléphone. <a href="https://themandawalker.github.io/vectorem-privacy/">Tout est détaillé dans la politique de confidentialité</a>.</p></div></li>
       </ul>
     </div>
   </div>
@@ -710,7 +748,7 @@ footer .wrap{display:flex;flex-direction:column;gap:24px}
     <div class="section-head reveal">
       <span class="kicker">À ta façon</span>
       <h2>Personnalise ton tableau de bord</h2>
-      <p>Thème, couleur de marque et densité se règlent depuis les Réglages. Ici, tout réagit en direct.</p>
+      <p>Thème, couleur de marque et disposition se règlent dans l'app. Ici, tout réagit en direct.</p>
     </div>
     <div class="personalize-grid">
       <div class="setting-card reveal">
@@ -734,12 +772,15 @@ footer .wrap{display:flex;flex-direction:column;gap:24px}
         <p class="swatch-note">Change les boutons, le logotype et les accents de cette page, comme dans l'app.</p>
       </div>
       <div class="setting-card reveal" style="--d:140ms">
-        <h4>Densité du tableau de bord</h4>
-        <div class="seg density-seg" id="densitySeg" role="group" aria-label="Densité">
-          <button type="button" data-v="comfortable" aria-pressed="true">Confortable</button>
+        <h4>Disposition de Mes outils</h4>
+        <div class="seg density-seg" id="densitySeg" role="group" aria-label="Disposition">
+          <button type="button" data-v="grid" aria-pressed="true">Grille</button>
           <button type="button" data-v="compact" aria-pressed="false">Compact</button>
+          <button type="button" data-v="list" aria-pressed="false">Liste</button>
+          <button type="button" data-v="mosaic" aria-pressed="false">Mosaïque</button>
         </div>
         <div class="density-preview" id="densityPreview" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span><span></span></div>
+        <p class="swatch-note">Tri par catégorie, par usage ou de A à Z. Appui long sur un outil pour l'épingler ou le poser en widget.</p>
       </div>
     </div>
 
@@ -763,8 +804,8 @@ footer .wrap{display:flex;flex-direction:column;gap:24px}
   <div class="wrap">
     <h2 class="reveal">Un tableau de bord. Plus de vingt-cinq outils. Aucun de trop.</h2>
     <div class="ctas reveal" style="--d:100ms">
-      <a class="btn btn-primary" href="#essayer">Rejouer la démo <svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14" /> <path d="m12 5 7 7-7 7" /></svg></a>
-      <a class="btn btn-ghost" href="https://themandawalker.github.io/vectorem-privacy/">Confidentialité</a>
+      <a class="btn btn-primary" href="https://play.google.com/store/apps/details?id=com.vectorem.app" target="_blank" rel="noopener">Google Play <svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14" /> <path d="m12 5 7 7-7 7" /></svg></a>
+      <a class="btn btn-ghost" href="#essayer">Rejouer la démo</a>
     </div>
   </div>
 </section>
@@ -780,8 +821,8 @@ footer .wrap{display:flex;flex-direction:column;gap:24px}
       <a href="#personnalisation"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M9.671 4.136a2.34 2.34 0 0 1 4.659 0 2.34 2.34 0 0 0 3.319 1.915 2.34 2.34 0 0 1 2.33 4.033 2.34 2.34 0 0 0 0 3.831 2.34 2.34 0 0 1-2.33 4.033 2.34 2.34 0 0 0-3.319 1.915 2.34 2.34 0 0 1-4.659 0 2.34 2.34 0 0 0-3.32-1.915 2.34 2.34 0 0 1-2.33-4.033 2.34 2.34 0 0 0 0-3.831A2.34 2.34 0 0 1 6.35 6.051a2.34 2.34 0 0 0 3.319-1.915" /> <circle cx="12" cy="12" r="3" /></svg><span>Réglages</span></a>
     </nav>
     <div class="foot-meta">
-      <span>© 2026 Vectorem</span>
-      <span><a href="https://themandawalker.github.io/vectorem-privacy/">Politique de confidentialité</a> · <a href="mailto:themandawalker.pro@gmail.com">Contact</a></span>
+      <span>© 2026 Vectorem · Android · bêta</span>
+      <span><a href="https://themandawalker.github.io/vectorem-privacy/">Politique de confidentialité</a> · <a href="mailto:themandawalker.pro@gmail.com">Contact</a> · <a href="https://play.google.com/store/apps/details?id=com.vectorem.app" target="_blank" rel="noopener">Google Play</a></span>
     </div>
   </div>
 </footer>
@@ -810,7 +851,7 @@ function applyTheme(){
   root.setAttribute('data-theme', dark ? 'dark' : 'light');
   themeToggle.innerHTML = dark ? ICON('sun') : ICON('moon');
   themeToggle.setAttribute('aria-label', dark ? 'Passer au thème clair' : 'Passer au thème sombre');
-  var meta = $('meta[name="theme-color"]'); if (meta) meta.setAttribute('content', dark ? '#121110' : '#F5F1E8');
+  var meta = $('meta[name="theme-color"]'); if (meta) meta.setAttribute('content', '#101010');
   $$('button', themeSeg).forEach(function(b){ b.setAttribute('aria-pressed', String(b.dataset.v === mode)); });
 }
 function setMode(m){ mode = m; try { localStorage.setItem('vectorem-theme', m); } catch (e) {} applyTheme(); }
@@ -831,7 +872,7 @@ var densitySeg = $('#densitySeg'), densityPreview = $('#densityPreview');
 $$('button', densitySeg).forEach(function(b){
   b.addEventListener('click', function(){
     pressGroup(densitySeg, b);
-    densityPreview.classList.toggle('compact', b.dataset.v === 'compact');
+    densityPreview.className = 'density-preview ' + b.dataset.v;
   });
 });
 
@@ -902,8 +943,6 @@ $('#phDate').textContent = dayNames[now.getDay()] + ' ' + now.getDate() + ' ' + 
 $('#phHello').textContent = greeting;
 $('#miniHello').textContent = greeting;
 $('#phTime').textContent = pad(now.getHours()) + ':' + pad(now.getMinutes());
-var evDate = new Date(now.getTime() + 12 * 864e5);
-$('#phEvDate').textContent = evDate.getDate() + ' ' + months[evDate.getMonth()].slice(0, 4) + '. ' + evDate.getFullYear();
 
 var phNav = $('#phNav'), screens = $$('.scr', $('#phScreen'));
 var order = ['home', 'tools', 'eq', 'dice'], cur = 0, userTouched = false;
@@ -917,6 +956,8 @@ $$('button', phNav).forEach(function(b){ b.addEventListener('click', function(){
 if (!reduce) setInterval(function(){ if (!userTouched && !document.hidden) go(order[(cur + 1) % order.length]); }, 4200);
 phone.addEventListener('pointerdown', touched);
 $$('.chk', $('#phScreen')).forEach(function(c){ c.addEventListener('click', function(){ c.classList.toggle('done'); }); });
+var stOk = $('#phStreakOk');
+stOk.addEventListener('click', function(){ var on = stOk.getAttribute('aria-pressed') !== 'true'; stOk.setAttribute('aria-pressed', String(on)); $('#phStreak').textContent = (on ? 13 : 12) + ' jours de suite'; });
 var phSec = 299;
 setInterval(function(){ phSec = phSec <= 0 ? 299 : phSec - 1; $('#phTimer').textContent = pad(Math.floor(phSec / 60)) + ':' + pad(phSec % 60); }, 1000);
 
@@ -983,7 +1024,7 @@ phDice.forEach(function(d){ d.style.cursor = 'pointer'; d.addEventListener('clic
 /* ---------- outils : données ---------- */
 var TOOLS = [
   { n: 'Égaliseur', cat: 'audio', icon: 'sliders-horizontal', d: '5 bandes réglables, presets, tes propres réglages et un Sound Boost.', tags: [], more: 'Agit sur le son global du téléphone, via l\'effet système. Aucune permission de micro.' },
-  { n: 'Dictaphone', cat: 'audio', icon: 'mic', d: 'Enregistre, renomme et réécoute des mémos vocaux. Rien n\'est envoyé ailleurs.', tags: ['Micro'], more: 'Les fichiers restent dans l\'espace privé de l\'app. Le micro n\'est demandé qu\'à l\'activation.' },
+  { n: 'Dictaphone', cat: 'audio', icon: 'mic', d: 'Enregistre, renomme et réécoute des mémos vocaux.', tags: ['Micro'], more: 'Les enregistrements restent sur ton téléphone.' },
   { n: 'Métronome', cat: 'audio', icon: 'triangle', d: 'Repère visuel et sonore, tempo réglable ou tapé au doigt, subdivisions en croches.', tags: [], more: 'Aucune permission.' },
   { n: 'Son spatial', cat: 'audio', icon: 'layers', d: 'Largeur stéréo, balance, réverbération et basses.', tags: [], more: 'Se perçoit surtout au casque.' },
   { n: 'Sonomètre', cat: 'audio', icon: 'volume-2', d: 'Mesure le niveau sonore ambiant en direct, calibrable pour affiner la précision.', tags: ['Micro'], more: 'Mesuré uniquement pendant que l\'écran est ouvert, rien n\'est enregistré.' },
@@ -991,23 +1032,23 @@ var TOOLS = [
   { n: 'Pomodoro', cat: 'time', icon: 'hourglass', d: 'Cycles de concentration et de pause, durées personnalisables.', tags: ['Notifications'], more: 'Une notification à chaque changement de phase.' },
   { n: 'Rappels', cat: 'time', icon: 'bell', d: 'À une heure précise ou personnalisée, avec répétition quotidienne possible.', tags: ['Notifications'], more: 'Reprogrammés automatiquement après un redémarrage du téléphone.' },
   { n: 'Tâches', cat: 'time', icon: 'list-checks', d: 'Importance et échéance optionnelle, triées automatiquement par urgence. Sans compte.', tags: ['Notifications'], more: 'Une notification à l\'échéance, seulement pour les tâches datées.' },
-  { n: 'Séries', cat: 'time', icon: 'flame', d: 'Tiens une habitude chaque jour. Un objectif peut se valider tout seul via le minuteur, le Pomodoro ou tes tâches.', tags: ['Nouveau'], more: 'Un rapport de la semaine écrit en clair, et un widget pour valider le jour sans ouvrir l\'app.' },
+  { n: 'Séries', cat: 'time', icon: 'flame', d: 'Tiens une habitude chaque jour. Un objectif peut se valider tout seul via le minuteur, le Pomodoro ou tes tâches.', tags: [], more: 'Un rapport de la semaine écrit en clair, et un widget pour valider le jour sans ouvrir l\'app.' },
   { n: 'Événements', cat: 'time', icon: 'calendar', d: 'Un « J-N » toujours à jour vers une date à venir, avec répétition annuelle possible.', tags: ['Notifications'], more: 'Parfait pour les anniversaires : la date se recalcule chaque année.' },
   { n: 'Boîte à outils', cat: 'screen', icon: 'search', d: 'Niveau à bulle, lampe, loupe, boussole, luxmètre, baromètre et détecteur de métaux.', tags: ['Caméra'], more: 'La caméra ne sert qu\'à la loupe : rien n\'est photographié.' },
   { n: 'Sismographe', cat: 'screen', icon: 'waves', d: 'Détecte vibrations et petits chocs via l\'accéléromètre, tracé en direct et journal des secousses.', tags: ['Aucune permission'], more: 'Utilise les capteurs de mouvement, sans aucune permission.' },
-  { n: 'Tableau blanc', cat: 'screen', icon: 'pen-tool', d: 'Un calepin de dessin libre : dessine, annote et exporte, sans compte ni cloud.', tags: [], more: 'Exporte une image avec un petit logo discret dans le coin.' },
+  { n: 'Tableau blanc', cat: 'screen', icon: 'pen-tool', d: 'Un calepin de dessin libre : dessine, annote et exporte, sans compte ni cloud.', tags: [], more: 'Exporte ton dessin en image.' },
   { n: 'Calculatrice', cat: 'system', icon: 'calculator', d: 'Mémoire (M+ / M−), pourcentage et historique de session.', tags: [], more: 'Fonctionne sans réseau.' },
   { n: 'Boîte à outils texte', cat: 'system', icon: 'code-xml', d: 'Base64, empreintes MD5/SHA, formatage JSON et conversion d\'unités.', tags: [], more: 'Tout se calcule sur l\'appareil.' },
   { n: 'QR & texte', cat: 'system', icon: 'qr-code', d: 'Scanne un code, génère le tien, ou extrais le texte d\'une photo.', tags: ['Caméra'], more: 'Aucune photo prise ni envoyée : l\'image est lue en direct.' },
-  { n: 'Presse-papiers', cat: 'system', icon: 'clipboard-list', d: 'Historique de ce que tu copies, avec épinglage et recherche.', tags: ['Bêta'], more: 'Capture uniquement quand l\'écran est ouvert (Android bloque le reste).' },
+  { n: 'Presse-papiers', cat: 'system', icon: 'clipboard-list', d: 'Historique de ce que tu copies, avec épinglage et recherche.', tags: ['Bêta'], more: 'Garde ce que tu copies pendant que l\'app est ouverte.' },
   { n: 'Notes rapides', cat: 'system', icon: 'sticky-note', d: 'Capture une idée en quelques secondes : texte brut, tout reste sur le téléphone.', tags: [], more: 'Ajoutable aussi depuis l\'accueil.' },
   { n: 'Palette', cat: 'system', icon: 'palette', d: 'Extrais les couleurs dominantes d\'une photo, puis exporte-les en image.', tags: [], more: 'Nombre de couleurs, format HEX/RGB et mise en page réglables.' },
   { n: 'Tirage au sort', cat: 'system', icon: 'dices', d: 'Dés jusqu\'au d100, pile ou face, nombres, listes, roue de la fortune et équipes.', tags: [], more: 'Historique des tirages inclus.' },
   { n: 'Morse', cat: 'system', icon: 'radio', d: 'Traduit du texte en morse, en son ou en flash, et décode les flashs ou bips détectés.', tags: ['Caméra ou micro'], more: 'Les permissions ne sont demandées que pour la détection.' },
   { n: 'Infos appareil', cat: 'system', icon: 'cpu', d: 'RAM, stockage, batterie, écran, processeur, réseau — les infos techniques de ton téléphone.', tags: [], more: 'Lecture seule.' },
   { n: 'Scanneur réseau', cat: 'system', icon: 'network', d: 'IP locale, passerelle, appareils Wi-Fi et Bluetooth à proximité, ports ouverts.', tags: ['Internet', 'Bluetooth'], more: 'Sonde uniquement ton réseau local.' },
-  { n: 'Test de vitesse', cat: 'system', icon: 'gauge', d: 'Débit descendant, montant et latence, avec résultats archivés localement.', tags: ['Internet'], more: 'Contacte Cloudflare uniquement quand tu lances un test.' },
-  { n: 'Vectorbit 39', cat: 'system', icon: 'key-round', d: 'Chiffre un message avec une seed basée sur l\'heure et un secret partagé.', tags: ['Bêta'], more: 'Chiffrement maison : à ne pas utiliser pour des secrets sensibles.' }
+  { n: 'Test de vitesse', cat: 'system', icon: 'gauge', d: 'Débit descendant, montant et latence, avec résultats archivés localement.', tags: ['Internet'], more: 'Tes résultats restent consultables dans l\'historique.' },
+  { n: 'Vectorbit 39', cat: 'system', icon: 'key-round', d: 'Code un message avec une clé basée sur l\'heure et un secret partagé, à décoder par un ami.', tags: ['Bêta'], more: 'Un code pour s\'amuser, pas pour protéger des données sensibles.' }
 ];
 var CATS = {
   audio: { n: 'Audio', c: 'var(--cat-audio)', o: 'var(--on-audio)' },
@@ -1024,7 +1065,7 @@ var grid = $('#toolGrid'), searchIn = $('#toolSearch'), chips = $('#catChips'), 
 var activeCat = 'all';
 TOOLS.forEach(function(t){
   var c = CATS[t.cat];
-  var tags = t.tags.map(function(x){ var k = /Bêta/.test(x) ? 'warn' : ''; return '<span class="badge ' + k + '">' + x + '</span>'; }).join('');
+  var tags = t.tags.map(function(x){ var k = ''; return '<span class="badge ' + k + '">' + x + '</span>'; }).join('');
   var card = el('button', 'tcard2', '<span class="tc-top"><span class="tc-ic">' + ICON(t.icon) + '</span><span class="tc-name">' + t.n + '</span></span><span class="tc-desc">' + t.d + '</span><span class="tc-tags">' + tags + '</span><span class="tc-more"><span style="overflow:hidden;display:block"><p>' + t.more + '</p></span></span>');
   card.type = 'button'; card.style.setProperty('--c', c.c); card.style.setProperty('--oc', c.o);
   card.setAttribute('aria-expanded', 'false'); card.dataset.cat = t.cat; card.dataset.text = (t.n + ' ' + t.d).toLowerCase();
@@ -1202,7 +1243,7 @@ stUpdate();
 var PERMS = [
   { k: 'Micro', h: 'Micro', p: 'Le sonomètre mesure le niveau sonore ambiant via le micro de l\'appareil.', ok: 'Mesuré uniquement pendant que l\'écran est ouvert', no: 'Rien n\'est enregistré ni envoyé ailleurs, aucun fichier créé' },
   { k: 'Caméra', h: 'Caméra', p: 'Le lecteur de code QR lit l\'image en direct pour détecter un code.', ok: 'Image analysée en direct, jamais enregistrée', no: 'Aucune photo prise, aucun envoi réseau' },
-  { k: 'Notifications', h: 'Notifications', p: 'Une notification te prévient à l\'heure d\'un rappel, d\'une échéance ou d\'un minuteur.', ok: 'Une notification par rappel, à l\'heure prévue', no: 'Aucune notification en dehors de tes propres rappels' }
+  { k: 'Notifications', h: 'Notifications', p: 'Une notification te prévient à l\'heure d\'un rappel, d\'une échéance ou à la fin d\'un minuteur.', ok: 'Seulement pour ce que tu as programmé', no: 'Aucune notification promotionnelle' }
 ];
 var permTabs = $('#permTabs'), permBody = $('#permBody');
 function drawPerm(i){
@@ -1224,13 +1265,15 @@ drawPerm(0);
 
 /* ---------- constructeur d'accueil ---------- */
 var SECS = [
-  { id: 'today', n: 'Aujourd\'hui', c: 'var(--cat-time)', o: '#fff', icon: 'calendar', t: '3 éléments', on: true },
+  { id: 'live', n: 'En cours', c: 'var(--cat-time)', o: '#fff', icon: 'clock', t: '04:59', on: true },
+  { id: 'today', n: 'Aujourd\'hui', c: 'var(--cat-time)', o: '#fff', icon: 'list-checks', t: '3 à faire', on: true },
+  { id: 'streaks', n: 'Séries du jour', c: 'var(--warning)', o: '#101010', icon: 'flame', t: '12 j', on: true },
+  { id: 'notes', n: 'Notes épinglées', c: 'var(--cat-system)', o: '#fff', icon: 'sticky-note', t: '2', on: false },
   { id: 'event', n: 'Prochain événement', c: 'var(--cat-time)', o: '#fff', icon: 'calendar', t: 'J-12', on: true },
-  { id: 'tasks', n: 'Tâches à cocher', c: 'var(--cat-time)', o: '#fff', icon: 'list-checks', t: '3', on: false },
-  { id: 'note', n: 'Note rapide', c: 'var(--cat-system)', o: '#fff', icon: 'sticky-note', t: '…', on: false },
+  { id: 'quick', n: 'Accès rapides', c: 'var(--cat-system)', o: '#fff', icon: 'layout-grid', t: '4', on: true },
   { id: 'timer', n: 'Minuteur rapide', c: 'var(--cat-time)', o: '#fff', icon: 'timer', t: '5 · 10 · 25', on: false },
-  { id: 'device', n: 'Batterie & stockage', c: 'var(--cat-system)', o: '#fff', icon: 'cpu', t: '82 %', on: false },
-  { id: 'stats', n: 'Statistiques', c: 'var(--brand)', o: 'var(--on-brand)', icon: 'gauge', t: '14', on: true }
+  { id: 'device', n: 'Appareil', c: 'var(--cat-system)', o: '#fff', icon: 'cpu', t: '82 %', on: false },
+  { id: 'stats', n: 'Statistiques', c: 'var(--brand)', o: 'var(--on-brand)', icon: 'gauge', t: '7 j', on: true }
 ];
 var secList = $('#secList'), miniBlocks = $('#miniBlocks');
 function firstRects(){ var m = {}; $$('.blk', miniBlocks).forEach(function(b){ m[b.dataset.id] = b.getBoundingClientRect().top; }); return m; }
