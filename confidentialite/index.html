@@ -1,0 +1,245 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Vectorem — Politique de confidentialité / Privacy Policy</title>
+<link rel="canonical" href="https://vectorem.app/confidentialite/">
+<meta name="description" content="Politique de confidentialité de l'application Android Vectorem. Privacy policy of the Vectorem Android app.">
+<style>
+  @font-face{font-family:'Archivo Black';font-weight:400;font-display:swap;src:url(/fonts/HTxqL289NzCGg4MzN6KJ7eW6CYyF_g.woff2) format('woff2')}
+  @font-face{font-family:'Archivo';font-weight:100 900;font-display:swap;src:url(/fonts/k3kPo8UDI-1M0wlSV9XAw6lQkqWY8Q82sLydOxI.woff2) format('woff2')}
+  @font-face{font-family:'IBM Plex Mono';font-weight:700;font-display:swap;src:url(/fonts/-F6qfjptAgt5VM-kVkqdyU8n3pQPwlBFgg.woff2) format('woff2')}
+  /* Identité de l'app : jaune vif, encre, crème ; cadres épais et ombres dures. */
+  :root { --brand:#FFD426; --on-brand:#101010; --bg:#F5F1E8; --surface:#FFFFFF; --surface2:#EAE4D6; --ink:#101010; --muted:#5E5A51; --frame:#101010; --link:#101010; }
+  @media (prefers-color-scheme: dark) {
+    :root { --bg:#121110; --surface:#1E1C19; --surface2:#272420; --ink:#EDE7D9; --muted:#A29D90; --frame:#EDE7D9; --link:#FFD426; }
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { margin:0; background:var(--bg); color:var(--ink); font:500 16px/1.65 'Archivo', system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
+  .topbar { position: sticky; top: 0; z-index: 5; background: var(--on-brand); border-bottom: 3px solid var(--brand); }
+  .topbar-inner { max-width: 48rem; margin: 0 auto; padding: .7rem 1rem; display: flex; align-items: center; gap: .75rem; }
+  .home { display: flex; align-items: center; gap: .6rem; margin-right: auto; text-decoration: none; }
+  .mark { width: 2rem; height: 2rem; flex: 0 0 auto; background: #101010; border: 3px solid #F5F1E8; }
+  .brand { font: 1rem/1 'Archivo Black', sans-serif; letter-spacing: -.02em; text-transform: uppercase; color: #101010; background: var(--brand); border: 3px solid #F5F1E8; box-shadow: 3px 3px 0 #F5F1E8; padding: .3rem .55rem .25rem; }
+  .lang { display: flex; gap: .4rem; }
+  .lang a { font: 800 .72rem 'Archivo', sans-serif; letter-spacing: .12em; text-transform: uppercase; text-decoration: none; color: var(--on-brand); background: var(--brand); border: 2px solid var(--brand); padding: .3rem .6rem; border-radius: 4px; }
+  .lang a:hover { background: transparent; color: var(--brand); }
+  main { max-width: 48rem; margin: 0 auto; padding: 1.5rem 1rem 4rem; }
+  article { margin-bottom: 3rem; scroll-margin-top: 4.5rem; }
+  .hero { background: var(--brand); color: var(--on-brand); border: 3px solid var(--frame); border-radius: 10px; box-shadow: 6px 6px 0 var(--frame); padding: 1.5rem 1.25rem; margin: 1rem 0 2rem; }
+  .kicker { margin: 0 0 .4rem; font: 800 .72rem 'Archivo', sans-serif; letter-spacing: .14em; text-transform: uppercase; }
+  h1 { font: 2rem/1.1 'Archivo Black', sans-serif; margin: 0 0 .5rem; text-wrap: balance; }
+  .hero .meta { margin: 0; font: 700 .85rem 'IBM Plex Mono', monospace; }
+  .card { background: var(--surface); border: 3px solid var(--frame); border-radius: 10px; box-shadow: 4px 4px 0 var(--frame); padding: 1.1rem 1.2rem .4rem; margin: 0 0 1.4rem; }
+  h2 { display: inline-block; margin: 0 0 .7rem; font: 800 .8rem 'Archivo', sans-serif; letter-spacing: .12em; text-transform: uppercase; background: var(--on-brand); color: var(--brand); padding: .3rem .6rem; border-radius: 4px; }
+  @media (prefers-color-scheme: dark) { h2 { background: var(--brand); color: var(--on-brand); } }
+  p, li { max-width: 68ch; }
+  ul { padding-left: 1.2rem; }
+  li { margin: .25rem 0; }
+  li::marker { color: var(--muted); }
+  strong { font-weight: 800; }
+  a { color: var(--link); font-weight: 700; text-decoration-thickness: 2px; text-underline-offset: 3px; }
+  .tablewrap { overflow-x: auto; margin: 0 0 1rem; border: 2px solid var(--frame); border-radius: 6px; }
+  table { border-collapse: collapse; width: 100%; font-size: .93rem; }
+  th, td { text-align: left; vertical-align: top; padding: .6rem .75rem; border-bottom: 2px solid var(--surface2); }
+  tr:last-child td { border-bottom: 0; }
+  th { background: var(--surface2); font: 800 .72rem 'Archivo', sans-serif; letter-spacing: .1em; text-transform: uppercase; }
+  td:first-child { white-space: nowrap; font-weight: 800; }
+  code { font: 700 .85em 'IBM Plex Mono', monospace; background: var(--surface2); padding: .05rem .3rem; border-radius: 3px; }
+  footer { border-top: 3px solid var(--frame); padding: 1.25rem 1rem 2.5rem; text-align: center; font: 800 .72rem 'Archivo', sans-serif; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); }
+  @media (max-width: 34rem) {
+    .tablewrap { border: 0; overflow: visible; }
+    table, tbody, tr, td { display: block; width: 100%; }
+    thead, tr:has(th) { display: none; }
+    tr { border: 2px solid var(--frame); border-radius: 6px; margin: 0 0 .8rem; padding: .3rem 0; }
+    td { border: 0; padding: .3rem .75rem; white-space: normal !important; }
+    td::before { content: attr(data-label); display: block; font: 800 .66rem 'Archivo', sans-serif; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); }
+    td:first-child::before { display: none; }
+    td:first-child { font-size: 1.05rem; }
+  }
+  @media (max-width: 30rem) { h1 { font-size: 1.6rem; } .hero { padding: 1.2rem 1rem; } .card { padding: 1rem 1rem .3rem; } }
+</style>
+</head>
+<body>
+<div class="topbar"><div class="topbar-inner">
+  <a class="home" href="/" aria-label="Vectorem, site">
+    <svg class="mark" viewBox="0 0 108 108" aria-hidden="true">
+      <path d="M58 30L86 58L58 86L30 58Z" fill="none" stroke="#F5F1E8" stroke-width="3.5"/>
+      <path fill-rule="evenodd" fill="#FFD426" d="M54 26L82 54L54 82L26 54ZM54 42L66 54L54 66L42 54Z"/>
+      <path d="M54 26L82 54L54 82L26 54ZM54 42L66 54L54 66L42 54Z" fill="none" stroke="#F5F1E8" stroke-width="4.5"/>
+    </svg>
+    <span class="brand">Vectorem</span>
+  </a>
+  <nav class="lang" aria-label="Langue / Language"><a href="#fr">FR</a><a href="#en">EN</a></nav>
+</div></div>
+<main>
+<article id="fr" lang="fr">
+<header class="hero">
+  <p class="kicker">Vectorem · Android</p>
+  <h1>Politique de confidentialité</h1>
+  <p class="meta">Dernière mise à jour : 26 septembre 2026</p>
+</header>
+<section class="card">
+<h2>Résumé</h2>
+<p>Vectorem n'a pas de compte et ne collecte lui-même aucune donnée personnelle. Tout ce que l'application produit (tâches, rappels, événements, enregistrements audio, historique du presse-papiers, notes, calculs…) reste stocké <strong>uniquement sur ton appareil</strong>, dans l'espace privé de l'application.</p>
+<p>Deux fonctions contactent un service extérieur, et seulement quand tu les lances toi-même : le <strong>Test de vitesse</strong> (Cloudflare) et les <strong>pubs facultatives</strong> (Google AdMob), que tu peux regarder pour débloquer un outil ou une fonction. Aucune pub ne s'affiche sans ton action.</p>
+</section>
+<section class="card">
+<h2>Données stockées localement</h2>
+<p>Selon les outils que tu actives, Vectorem enregistre localement (jamais transmis) :</p>
+<ul>
+  <li>Tâches, rappels et événements que tu crées (titre, échéance, notes).</li>
+  <li>Enregistrements audio du Dictaphone (stockés dans l'espace privé de l'app).</li>
+  <li>Historique du presse-papiers (uniquement ce que tu copies pendant que l'écran Presse-papiers est ouvert — Android bloque la lecture en arrière-plan depuis Android 10).</li>
+  <li>Notes rapides, historiques (palettes, codes QR, code Morse, tirages, secousses, tests de vitesse), réglages de chaque outil, disposition de l'accueil et liste des fonctions que tu as débloquées.</li>
+</ul>
+<p>Rien de tout cela ne quitte l'appareil. Désinstaller Vectorem supprime définitivement toutes ces données. Les sauvegardes et exports que tu déclenches toi-même (fichier de sauvegarde, image de palette, de tableau ou de code QR) sont écrits là où tu les envoies ; l'app ne les transmet nulle part.</p>
+</section>
+<section class="card">
+<h2>Publicités facultatives (Google AdMob)</h2>
+<ul>
+  <li>Vectorem n'affiche <strong>aucune publicité forcée</strong>. Une pub vidéo n'est chargée que lorsque tu appuies sur « Regarder une pub » pour débloquer un outil ou une fonction.</li>
+  <li>À ce moment, le SDK Google Mobile Ads (Google LLC) collecte et partage avec Google, à des fins de publicité, d'analyse et de prévention de la fraude : ton <strong>adresse IP</strong>, tes <strong>interactions avec la pub</strong> (par exemple la vidéo regardée), des <strong>informations de diagnostic</strong> et des <strong>identifiants d'appareil</strong> (identifiant publicitaire Android, identifiant de l'ensemble d'apps). Ces données sont chiffrées pendant leur transfert (TLS). Voir la <a href="https://policies.google.com/privacy">politique de confidentialité de Google</a>.</li>
+  <li>Vectorem ne reçoit ni ne stocke ces données : l'app sait seulement que la pub a été regardée jusqu'au bout, et enregistre le déblocage sur ton appareil.</li>
+  <li>Dans l'Espace économique européen (et au Royaume-Uni), un formulaire de consentement s'affiche avant la première pub. Tu peux modifier tes choix à tout moment dans Réglages → Publicités → « Choix de confidentialité des pubs ». Si tu refuses, aucune pub n'est affichée et la fonction reste verrouillée.</li>
+  <li>Tu peux réinitialiser ou supprimer l'identifiant publicitaire dans les réglages Android (section Annonces / Confidentialité).</li>
+</ul>
+</section>
+<section class="card">
+<h2>Autres connexions réseau</h2>
+<ul>
+  <li><strong>Test de vitesse</strong> : quand tu lances un test, Vectorem télécharge et envoie des données de test vers <code>speed.cloudflare.com</code> (Cloudflare) pour mesurer ta connexion. Cloudflare reçoit, comme n'importe quel site web, ton adresse IP et les informations techniques d'une requête. Aucune donnée personnelle n'est ajoutée par Vectorem. Le résultat n'est enregistré que sur ton appareil. Aucun test ne se lance sans action de ta part.</li>
+  <li><strong>Scanner réseau</strong> : sonde les appareils de ton réseau local (Wi-Fi). Les résultats restent sur l'appareil.</li>
+  <li>Aucune autre connexion : pas de statistiques d'usage, pas de rapport d'erreurs.</li>
+</ul>
+</section>
+<section class="card">
+<h2>Permissions utilisées</h2>
+<p>Les permissions sensibles (caméra, microphone, notifications) ne sont demandées qu'au moment où tu actives l'outil correspondant, jamais au démarrage de l'app.</p>
+<div class="tablewrap">
+<table>
+  <thead><tr><th>Permission</th><th>Outil</th><th>Usage</th></tr></thead>
+  <tbody>
+    <tr><td data-label="Permission">Caméra</td><td data-label="Outil">Code QR, Boîte à outils (loupe), Morse (détection par flash)</td><td data-label="Usage">Lire un QR code, grossir l'image en direct, ou détecter des flashs lumineux. Rien n'est photographié ni enregistré.</td></tr>
+    <tr><td data-label="Permission">Microphone</td><td data-label="Outil">Dictaphone, Sonomètre, Morse (détection par le son)</td><td data-label="Usage">Enregistrer un mémo audio (Dictaphone), mesurer le niveau sonore ambiant (Sonomètre) ou détecter des bips (Morse). Seul le Dictaphone enregistre.</td></tr>
+    <tr><td data-label="Permission">Notifications</td><td data-label="Outil">Rappels, Tâches, Événements, Minuteur, Pomodoro</td><td data-label="Usage">Afficher la notification d'un rappel, d'une échéance de tâche, d'un événement, d'un minuteur ou d'une phase Pomodoro.</td></tr>
+    <tr><td data-label="Permission">Démarrage terminé</td><td data-label="Outil">Rappels, Tâches, Événements, Minuteur, Pomodoro</td><td data-label="Usage">Reprogrammer tes alertes après un redémarrage du téléphone — sans ça, elles seraient perdues.</td></tr>
+    <tr><td data-label="Permission">Internet</td><td data-label="Outil">Test de vitesse, Scanner réseau, pubs facultatives</td><td data-label="Usage">Mesurer ta connexion, sonder ton réseau local et charger une pub que tu as choisi de regarder (voir « Publicités facultatives »).</td></tr>
+    <tr><td data-label="Permission">Identifiant publicitaire</td><td data-label="Outil">Pubs facultatives</td><td data-label="Usage">Permet à Google AdMob d'utiliser l'identifiant publicitaire de l'appareil quand tu regardes une pub. Réinitialisable dans les réglages Android.</td></tr>
+    <tr><td data-label="Permission">État du réseau</td><td data-label="Outil">Infos appareil, Scanner réseau, pubs facultatives</td><td data-label="Usage">Afficher si tu es connecté en Wi-Fi ou en données mobiles — lecture seule.</td></tr>
+    <tr><td data-label="Permission">Réglages audio</td><td data-label="Outil">Égaliseur, Son spatial</td><td data-label="Usage">Attacher un effet de traitement au son en cours de lecture. Ne capte jamais de son, contrairement au Microphone.</td></tr>
+    <tr><td data-label="Permission">Biométrie / empreinte</td><td data-label="Outil">Verrouillage de l'app (Réglages)</td><td data-label="Usage">Verrouiller l'app avec l'empreinte, le visage ou le code de ton téléphone. Vectorem ne voit ni ne stocke aucune donnée biométrique : tout est géré par Android.</td></tr>
+  </tbody>
+</table>
+</div>
+<p>Le sélecteur de photo de l'outil Palette (choisir une image pour en extraire les couleurs) n'apparaît pas dans ce tableau : Android le fournit sans qu'aucune permission ne soit demandée à l'app.</p>
+</section>
+<section class="card">
+<h2>Partage avec des tiers</h2>
+<p>Vectorem ne vend aucune donnée. Les seules communications avec des tiers sont celles décrites ci-dessus et déclenchées par toi : Google (pubs facultatives) et Cloudflare (Test de vitesse).</p>
+</section>
+<section class="card">
+<h2>Suppression des données</h2>
+<ul>
+  <li>Désinstaller l'application supprime toutes ses données locales.</li>
+  <li>Depuis les réglages Android de l'app (Paramètres système → Applications → Vectorem → Stockage), tu peux aussi vider les données sans désinstaller.</li>
+  <li>Pour les données traitées par Google lors d'une pub, utilise les contrôles de ton compte Google et les réglages Android de l'identifiant publicitaire.</li>
+</ul>
+</section>
+<section class="card">
+<h2>Enfants</h2>
+<p>Vectorem ne s'adresse pas aux enfants de moins de 13 ans et ne collecte sciemment aucune donnée à leur sujet.</p>
+</section>
+<section class="card">
+<h2>Contact</h2>
+<p>Pour toute question sur cette politique de confidentialité : <a href="mailto:support@vectorem.app">support@vectorem.app</a></p>
+</section>
+</article>
+<article id="en" lang="en">
+<header class="hero">
+  <p class="kicker">Vectorem · Android</p>
+  <h1>Privacy Policy</h1>
+  <p class="meta">Last updated: September 26, 2026</p>
+</header>
+<section class="card">
+<h2>Summary</h2>
+<p>Vectorem has no accounts and does not itself collect any personal data. Everything the app produces (tasks, reminders, events, audio recordings, clipboard history, notes, calculations…) is stored <strong>only on your device</strong>, in the app's private storage.</p>
+<p>Two features contact an outside service, and only when you start them yourself: the <strong>Speed Test</strong> (Cloudflare) and the <strong>optional ads</strong> (Google AdMob) that you can watch to unlock a tool or feature. No ad is shown without your action.</p>
+</section>
+<section class="card">
+<h2>Data stored locally</h2>
+<p>Depending on the tools you enable, Vectorem stores locally (never transmitted):</p>
+<ul>
+  <li>Tasks, reminders and events you create (title, due date, notes).</li>
+  <li>Voice recorder audio files (kept in the app's private storage).</li>
+  <li>Clipboard history (only what you copy while the Clipboard screen is open — Android blocks background clipboard access since Android 10).</li>
+  <li>Quick notes, histories (palettes, QR codes, Morse code, random draws, shakes, speed tests), each tool's settings, your home layout and the list of features you unlocked.</li>
+</ul>
+<p>None of this leaves your device. Uninstalling Vectorem permanently deletes all of it. Backups and exports you trigger yourself (backup file, palette, whiteboard or QR image) are written wherever you send them; the app does not transmit them anywhere.</p>
+</section>
+<section class="card">
+<h2>Optional ads (Google AdMob)</h2>
+<ul>
+  <li>Vectorem shows <strong>no forced advertising</strong>. A video ad is loaded only when you tap “Watch an ad” to unlock a tool or feature.</li>
+  <li>At that moment, the Google Mobile Ads SDK (Google LLC) collects and shares with Google, for advertising, analytics and fraud prevention: your <strong>IP address</strong>, your <strong>interactions with the ad</strong> (for example the video watched), <strong>diagnostic information</strong> and <strong>device identifiers</strong> (Android advertising ID, app set ID). This data is encrypted in transit (TLS). See <a href="https://policies.google.com/privacy">Google's Privacy Policy</a>.</li>
+  <li>Vectorem does not receive or store this data: the app only learns that the ad was watched to the end, and records the unlock on your device.</li>
+  <li>In the European Economic Area (and the United Kingdom), a consent form is shown before the first ad. You can change your choices at any time in Settings → Ads → “Ad privacy choices”. If you decline, no ad is shown and the feature stays locked.</li>
+  <li>You can reset or delete the advertising ID in Android settings (Ads / Privacy section).</li>
+</ul>
+</section>
+<section class="card">
+<h2>Other network connections</h2>
+<ul>
+  <li><strong>Speed Test</strong>: when you start a test, Vectorem downloads and uploads test data to <code>speed.cloudflare.com</code> (Cloudflare) to measure your connection. Like any website, Cloudflare receives your IP address and the technical details of a request. Vectorem adds no personal data. The result is stored only on your device. No test runs without your action.</li>
+  <li><strong>Network Scanner</strong>: probes devices on your local (Wi-Fi) network. Results stay on the device.</li>
+  <li>No other connections: no usage statistics, no crash reporting.</li>
+</ul>
+</section>
+<section class="card">
+<h2>Permissions used</h2>
+<p>Sensitive permissions (camera, microphone, notifications) are requested only when you enable the corresponding tool, never at app launch.</p>
+<div class="tablewrap">
+<table>
+  <thead><tr><th>Permission</th><th>Tool</th><th>Purpose</th></tr></thead>
+  <tbody>
+    <tr><td data-label="Permission">Camera</td><td data-label="Tool">QR Code, Toolbox (magnifier), Morse (flash detection)</td><td data-label="Purpose">Scan a QR code, magnify the live image, or detect light flashes. Nothing is photographed or recorded.</td></tr>
+    <tr><td data-label="Permission">Microphone</td><td data-label="Tool">Voice Recorder, Sound Meter, Morse (sound detection)</td><td data-label="Purpose">Record an audio memo (Voice Recorder), measure ambient sound level (Sound Meter) or detect beeps (Morse). Only the Voice Recorder records.</td></tr>
+    <tr><td data-label="Permission">Notifications</td><td data-label="Tool">Reminders, Tasks, Events, Timer, Pomodoro</td><td data-label="Purpose">Show the notification for a reminder, a task deadline, an event, a timer or a Pomodoro phase.</td></tr>
+    <tr><td data-label="Permission">Run at startup</td><td data-label="Tool">Reminders, Tasks, Events, Timer, Pomodoro</td><td data-label="Purpose">Reschedule your alerts after the phone restarts — otherwise they would be lost.</td></tr>
+    <tr><td data-label="Permission">Internet</td><td data-label="Tool">Speed Test, Network Scanner, optional ads</td><td data-label="Purpose">Measure your connection, probe your local network and load an ad you chose to watch (see “Optional ads”).</td></tr>
+    <tr><td data-label="Permission">Advertising ID</td><td data-label="Tool">Optional ads</td><td data-label="Purpose">Lets Google AdMob use the device advertising ID when you watch an ad. Resettable in Android settings.</td></tr>
+    <tr><td data-label="Permission">Network state</td><td data-label="Tool">Device Info, Network Scanner, optional ads</td><td data-label="Purpose">Show whether you are on Wi-Fi or mobile data — read-only.</td></tr>
+    <tr><td data-label="Permission">Audio settings</td><td data-label="Tool">Equalizer, Spatial Audio</td><td data-label="Purpose">Attach a processing effect to the audio being played. It never captures sound, unlike the Microphone.</td></tr>
+    <tr><td data-label="Permission">Biometrics / fingerprint</td><td data-label="Tool">App lock (Settings)</td><td data-label="Purpose">Lock the app with your phone's fingerprint, face or passcode. Vectorem never sees or stores biometric data: Android handles it all.</td></tr>
+  </tbody>
+</table>
+</div>
+<p>The Palette tool's photo picker (choosing an image to extract its colors) is not in this table: Android provides it without the app needing any permission.</p>
+</section>
+<section class="card">
+<h2>Sharing with third parties</h2>
+<p>Vectorem sells no data. The only communications with third parties are the ones described above and triggered by you: Google (optional ads) and Cloudflare (Speed Test).</p>
+</section>
+<section class="card">
+<h2>Data deletion</h2>
+<ul>
+  <li>Uninstalling the app deletes all of its local data.</li>
+  <li>From Android settings (System settings → Apps → Vectorem → Storage) you can also clear the data without uninstalling.</li>
+  <li>For data processed by Google when you watch an ad, use your Google account controls and the Android advertising ID settings.</li>
+</ul>
+</section>
+<section class="card">
+<h2>Children</h2>
+<p>Vectorem is not directed at children under 13 and does not knowingly collect any data about them.</p>
+</section>
+<section class="card">
+<h2>Contact</h2>
+<p>For any question about this privacy policy: <a href="mailto:support@vectorem.app">support@vectorem.app</a></p>
+</section>
+</article>
+</main>
+<footer>Vectorem · Android</footer>
+</body>
+</html>
