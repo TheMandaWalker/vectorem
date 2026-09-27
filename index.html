@@ -276,25 +276,6 @@ section{padding:72px 0}
 .chip svg{width:12px;height:12px;stroke-width:3}
 .tiny{font-size:12px;color:var(--text-muted)}
 .big-num{font:900 60px/1 var(--font-display)}
-/* dés du terrain de jeu */
-.dice-stage{display:flex;flex-wrap:wrap;gap:12px;justify-content:center}
-.dice-stage .die{width:70px;height:70px;font-size:28px}
-.dice-stage .pips{inset:10px}
-.dice-stage .pips i{width:11px;height:11px}
-/* pièce */
-.coin-scene{perspective:700px;height:130px;display:flex;align-items:center;justify-content:center}
-.coin{width:112px;height:112px;position:relative;transform-style:preserve-3d;transition:transform 1.3s cubic-bezier(.2,.7,.2,1)}
-.coin div{position:absolute;inset:0;border:var(--stroke-heavy);border-radius:50%;background:var(--brand);color:#101010;display:grid;place-items:center;font:900 22px/1 var(--font-display);backface-visibility:hidden;-webkit-backface-visibility:hidden;box-shadow:var(--shadow-2)}
-.coin div::after{content:"";position:absolute;inset:10px;border:var(--stroke-hair);border-radius:50%}
-.coin .back{transform:rotateX(180deg)}
-.tally{display:flex;gap:10px}
-.tally div{flex:1;border:var(--stroke-hair);text-align:center;padding:8px;background:var(--bg-block-sunken)}
-.tally b{display:block;font:900 26px/1 var(--font-display)}
-.tally small{font:800 10px/1 var(--font-ui);letter-spacing:.1em;color:var(--text-muted)}
-/* roue */
-.wheel-box{position:relative;width:min(100%,260px);aspect-ratio:1;margin-top:10px}
-.wheel-box canvas{width:100%;height:100%;display:block}
-.wheel-pointer{position:absolute;top:-10px;left:50%;width:0;height:0;transform:translateX(-50%);border-left:12px solid transparent;border-right:12px solid transparent;border-top:24px solid var(--brand);z-index:2;filter:drop-shadow(0 2px 0 var(--border-color))}
 .names-input{width:100%;height:44px;padding:0 12px;border:var(--stroke);background:var(--bg-block-sunken);color:var(--text-strong);font:600 14px var(--font-ui)}
 /* minuteur */
 .ring{position:relative;width:150px;height:150px}
@@ -616,34 +597,6 @@ footer .wrap{display:flex;flex-direction:column;gap:24px}
     <div class="play-grid">
 
       <div class="play-card reveal">
-        <div class="play-head h-system"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><rect width="12" height="12" x="2" y="10" rx="2" ry="2" /> <path d="m17.92 14 3.5-3.5a2.24 2.24 0 0 0 0-3l-5-4.92a2.24 2.24 0 0 0-3 0L10 6" /> <path d="M6 18h.01" /> <path d="M10 14h.01" /> <path d="M15 6h.01" /> <path d="M18 9h.01" /></svg><h3>Dés</h3><span class="badge">d4 → d100</span></div>
-        <div class="play-body">
-          <div class="stage" id="diceStage"><div class="dice-stage" id="diceRow"></div></div>
-          <div class="row" id="diceFaces"></div>
-          <div class="row" id="diceCount"></div>
-          <div class="row" style="align-items:center;justify-content:space-between"><span class="tiny" id="diceSum">Touche « Lancer »</span><button class="btn btn-primary btn-sm" id="diceGo" type="button">Lancer</button></div>
-        </div>
-      </div>
-
-      <div class="play-card reveal" style="--d:80ms">
-        <div class="play-head h-system"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><circle cx="8" cy="8" r="6" /> <path d="M18.09 10.37A6 6 0 1 1 10.34 18" /> <path d="M7 6h1v4" /> <path d="m16.71 13.88.7.71-2.82 2.82" /></svg><h3>Pile ou face</h3><span class="badge">Compteurs</span></div>
-        <div class="play-body">
-          <div class="stage"><div class="coin-scene"><div class="coin" id="coin"><div class="front">PILE</div><div class="back">FACE</div></div></div></div>
-          <div class="tally"><div><b id="tPile">0</b><small>PILE</small></div><div><b id="tFace">0</b><small>FACE</small></div></div>
-          <button class="btn btn-primary btn-sm" id="coinGo" type="button">Lancer la pièce</button>
-        </div>
-      </div>
-
-      <div class="play-card reveal" style="--d:160ms">
-        <div class="play-head h-system"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12c.552 0 1.005-.449.95-.998a10 10 0 0 0-8.953-8.951c-.55-.055-.998.398-.998.95v8a1 1 0 0 0 1 1z" /> <path d="M21.21 15.89A10 10 0 1 1 8 2.83" /></svg><h3>Roue de la fortune</h3><span class="badge">Ta liste</span></div>
-        <div class="play-body" style="align-items:center">
-          <div class="wheel-box"><div class="wheel-pointer"></div><canvas id="wheel" width="520" height="520"></canvas></div>
-          <input class="names-input" id="wheelNames" value="Alice, Bob, Chloé, David, Emma, Farid" aria-label="Noms de la roue, séparés par des virgules">
-          <div class="row" style="width:100%;align-items:center;justify-content:space-between"><b id="wheelWinner" style="font:900 20px var(--font-display)">—</b><button class="btn btn-primary btn-sm" id="wheelGo" type="button">Tourner</button></div>
-        </div>
-      </div>
-
-      <div class="play-card reveal">
         <div class="play-head h-time"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><line x1="10" x2="14" y1="2" y2="2" /> <line x1="12" x2="15" y1="14" y2="11" /> <circle cx="12" cy="14" r="8" /></svg><h3>Minuteur</h3><span class="badge">En direct</span></div>
         <div class="play-body" style="align-items:center">
           <div class="stage" id="timerStage" style="width:100%"><div class="ring"><svg viewBox="0 0 100 100"><circle class="bg" cx="50" cy="50" r="42"/><circle class="fg" id="ringFg" cx="50" cy="50" r="42" stroke-dasharray="263.9" stroke-dashoffset="0"/></svg><div class="t" id="ringT">00:10</div></div></div>
@@ -682,13 +635,16 @@ footer .wrap{display:flex;flex-direction:column;gap:24px}
       <h2>26 outils, 4 catégories</h2>
       <p>Filtre, cherche, touche une carte pour en savoir plus. Chaque outil se retrouve dans la Bibliothèque de l'app, en grille ou en liste.</p>
     </div>
-    <div class="toolbar reveal">
+    <button class="btn btn-primary reveal" id="libToggle" style="margin-top:24px" type="button" aria-expanded="false" aria-controls="libBody">Voir les 26 outils</button>
+    <div id="libBody" hidden>
+    <div class="toolbar" style="margin-top:24px">
       <div class="search"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="m21 21-4.34-4.34" /> <circle cx="11" cy="11" r="8" /></svg><input id="toolSearch" type="search" placeholder="Chercher un outil (ex. minuteur, QR, roue…)" aria-label="Chercher un outil"></div>
       <div class="row" id="catChips"></div>
       <span class="count" id="toolCount">26 / 26</span>
     </div>
     <div class="tool-grid2" id="toolGrid"></div>
-    <p class="tiny reveal" style="margin-top:18px">Quelques fonctions avancées se débloquent avec une courte vidéo, seulement si tu choisis de la lancer.</p>
+    <p class="tiny" style="margin-top:18px">Quelques fonctions avancées se débloquent avec une courte vidéo, seulement si tu choisis de la lancer.</p>
+    </div>
   </div>
 </section>
 
@@ -1074,7 +1030,10 @@ var CATS = {
   system: { n: 'Système & données', c: 'var(--cat-system)', o: 'var(--on-system)' }
 };
 var mhtml = '';
-for (var rep = 0; rep < 2; rep++) TOOLS.forEach(function(t){ mhtml += '<span style="--c:' + CATS[t.cat].c + '">' + t.n + '</span>'; });
+// Mêmes mots que le film de présentation.
+var WORDS = ['26 outils', 'Une app', 'Sans compte', 'Tes outils', 'Tes règles', 'Ton téléphone', 'Tes séries', 'Ton rythme', 'Tu actives ce que tu utilises', 'Bêta'];
+var WCOL = ['var(--brand)', CATS.time.c, CATS.audio.c, CATS.screen.c, CATS.system.c];
+for (var rep = 0; rep < 3; rep++) WORDS.forEach(function(w, i){ mhtml += '<span style="--c:' + WCOL[i % WCOL.length] + '">' + w + '</span>'; });
 $('#marquee').innerHTML = mhtml;
 
 /* ---------- bibliothèque filtrable ---------- */
@@ -1108,82 +1067,16 @@ function filter(){
   if (!shown) grid.appendChild(el('div', 'empty', 'Aucun outil ne correspond à cette recherche.'));
 }
 searchIn.addEventListener('input', filter);
-
-/* ---------- terrain de jeu : dés ---------- */
-var dFaces = 6, dCount = 2, diceRow = $('#diceRow');
-[4, 6, 8, 10, 12, 20, 100].forEach(function(f){
-  var b = el('button', 'chip', 'd' + f); b.type = 'button'; b.setAttribute('aria-pressed', String(f === dFaces));
-  b.addEventListener('click', function(){ dFaces = f; pressGroup($('#diceFaces'), b); drawDice(); });
-  $('#diceFaces').appendChild(b);
-});
-[1, 2, 3, 4, 5, 6].forEach(function(n){
-  var b = el('button', 'chip', n + (n > 1 ? ' dés' : ' dé')); b.type = 'button'; b.setAttribute('aria-pressed', String(n === dCount));
-  b.addEventListener('click', function(){ dCount = n; pressGroup($('#diceCount'), b); drawDice(); });
-  $('#diceCount').appendChild(b);
-});
-function drawDice(){
-  diceRow.innerHTML = '';
-  for (var i = 0; i < dCount; i++) { var d = el('div', 'die'); dieFace(d, dFaces === 6 ? rnd(1, 6) : '?', dFaces); diceRow.appendChild(d); }
-  $('#diceSum').textContent = 'Touche « Lancer »'; $('#diceStage').classList.remove('hot');
-}
-drawDice();
-$('#diceGo').addEventListener('click', function(){
-  rollInto($$('.die', diceRow), dFaces, function(v){
-    var s = v.reduce(function(a, b){ return a + b; }, 0);
-    var extra = dCount > 1 ? ' · meilleur ' + Math.max.apply(null, v) : (dFaces === 20 && v[0] === 20 ? ' · réussite critique !' : '');
-    $('#diceSum').innerHTML = '<b style="font-size:15px;color:var(--text-strong)">Total ' + s + '</b>' + extra;
-    $('#diceStage').classList.add('hot');
-  });
+var libBtn = $('#libToggle'), libBody = $('#libBody');
+libBtn.addEventListener('click', function(){
+  var open = libBody.hidden;
+  libBody.hidden = !open;
+  libBtn.setAttribute('aria-expanded', String(open));
+  libBtn.textContent = open ? 'Masquer les outils' : 'Voir les 26 outils';
+  if (open) filter();
 });
 
-/* pièce */
-var coin = $('#coin'), coinRot = 0, tPile = 0, tFace = 0, flipping = false;
-$('#coinGo').addEventListener('click', function(){
-  if (flipping) return; flipping = true;
-  var pile = Math.random() < 0.5;
-  coinRot += 1440 + ((pile ? 0 : 180) - (coinRot % 360) + 360) % 360;
-  coin.style.transform = 'rotateX(' + coinRot + 'deg)';
-  setTimeout(function(){ if (pile) tPile++; else tFace++; $('#tPile').textContent = tPile; $('#tFace').textContent = tFace; flipping = false; }, reduce ? 50 : 1350);
-});
-
-/* roue */
-var wheel = $('#wheel'), wctx = wheel.getContext('2d'), wAngle = 0, spinningW = false;
-var WCOL = ['#FFD426', '#FF4A1C', '#7A5AF8', '#00C48C', '#1B7CFF', '#FF3D8B', '#00D1C4', '#C6FF3D'];
-function wNames(){ var n = $('#wheelNames').value.split(',').map(function(s){ return s.trim(); }).filter(Boolean); return n.length >= 2 ? n.slice(0, 16) : ['Oui', 'Non']; }
-function isLight(hex){ var r = parseInt(hex.substr(1, 2), 16), g = parseInt(hex.substr(3, 2), 16), b = parseInt(hex.substr(5, 2), 16); return (0.2126 * r + 0.7152 * g + 0.0722 * b) > 130; }
-function drawWheel(){
-  var names = wNames(), n = names.length, S = wheel.width, R = S / 2 - 10, sw = Math.PI * 2 / n;
-  var ink = getComputedStyle(root).getPropertyValue('--border-color').trim() || '#101010';
-  wctx.clearRect(0, 0, S, S); wctx.save(); wctx.translate(S / 2, S / 2); wctx.rotate(wAngle);
-  names.forEach(function(name, i){
-    var col = WCOL[i % WCOL.length];
-    wctx.beginPath(); wctx.moveTo(0, 0); wctx.arc(0, 0, R, i * sw, (i + 1) * sw); wctx.closePath();
-    wctx.fillStyle = col; wctx.fill(); wctx.lineWidth = 6; wctx.strokeStyle = ink; wctx.stroke();
-    wctx.save(); wctx.rotate(i * sw + sw / 2); wctx.fillStyle = isLight(col) ? '#101010' : '#fff';
-    wctx.font = '900 ' + Math.max(22, Math.min(40, 400 / n)) + 'px Archivo, sans-serif'; wctx.textAlign = 'right'; wctx.textBaseline = 'middle';
-    var txt = name.length > 11 ? name.slice(0, 10) + '…' : name; wctx.fillText(txt, R - 26, 0); wctx.restore();
-  });
-  wctx.beginPath(); wctx.arc(0, 0, 26, 0, 7); wctx.fillStyle = '#FFD426'; wctx.fill(); wctx.lineWidth = 6; wctx.strokeStyle = ink; wctx.stroke();
-  wctx.restore();
-}
-drawWheel();
-if (document.fonts && document.fonts.ready) document.fonts.ready.then(drawWheel);
-$('#wheelNames').addEventListener('input', function(){ if (!spinningW) drawWheel(); });
-$('#wheelGo').addEventListener('click', function(){
-  if (spinningW) return; spinningW = true; $('#wheelWinner').textContent = '…';
-  var names = wNames(), n = names.length, sw = Math.PI * 2 / n, idx = rnd(0, n - 1);
-  var jitter = (Math.random() - .5) * sw * .6, TAU = Math.PI * 2;
-  var target = ((-Math.PI / 2 - (idx + .5) * sw - jitter) % TAU + TAU) % TAU;
-  var curA = ((wAngle % TAU) + TAU) % TAU;
-  var delta = ((target - curA) + TAU) % TAU, start = wAngle, total = TAU * 5 + delta, t0 = performance.now(), dur = reduce ? 1 : 4200;
-  (function frame(t){
-    var p = Math.min(1, (t - t0) / dur), e = 1 - Math.pow(1 - p, 4);
-    wAngle = start + total * e; drawWheel();
-    if (p < 1) requestAnimationFrame(frame); else { spinningW = false; $('#wheelWinner').textContent = names[idx]; }
-  })(t0);
-});
-new MutationObserver(function(){ if (!spinningW) drawWheel(); }).observe(root, { attributes: true, attributeFilter: ['data-theme'] });
-
+/* ---------- terrain de jeu ---------- */
 /* minuteur */
 var tDur = 10, tLeft = 10, tRun = null, CIRC = 263.9;
 [[10, '10 s'], [30, '30 s'], [60, '1 min']].forEach(function(p){
