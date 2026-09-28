@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Vectorem — le film</title>
+<meta name="description" content="Vectorem en un film à faire défiler : 26 outils dans une seule app Android, en bêta.">
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#101010">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 108 108'%3E%3Crect width='108' height='108' fill='%23101010'/%3E%3Cpath d='M58 30L86 58L58 86L30 58Z' fill='none' stroke='%23F5F1E8' stroke-width='3.5'/%3E%3Cpath fill-rule='evenodd' fill='%23FFD426' d='M54 26L82 54L54 82L26 54ZM54 42L66 54L54 66L42 54Z'/%3E%3Cpath d='M54 26L82 54L54 82L26 54ZM54 42L66 54L54 66L42 54Z' fill='none' stroke='%23F5F1E8' stroke-width='4.5'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="../fonts.css">
+<style>
+:root{
+  --y:#FFD426;--k:#101010;--p:#F5F1E8;--w:#fff;
+  --time:#7A5AF8;--audio:#FF4A1C;--screen:#00C48C;--system:#1B7CFF;--warn:#FF9500;--danger:#FF2D2D;
+  --d:'Archivo Black',Impact,sans-serif;--u:'Archivo',system-ui,sans-serif;--m:'IBM Plex Mono',ui-monospace,monospace;
+  --pad:clamp(16px,4vw,64px);
+}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--k);color:var(--k);font-family:var(--u)}
+body{overflow-x:hidden}
+a{color:inherit}
+button{font:inherit;color:inherit}
+
+/* ---------- Barre du haut ---------- */
+.top{position:fixed;left:0;right:0;top:0;z-index:50;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:14px var(--pad);pointer-events:none}
+.top>*{pointer-events:auto}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none}
+.logo b{font-family:var(--d);font-weight:400;font-size:18px;letter-spacing:-.02em;text-transform:uppercase;background:var(--y);color:var(--k);border:3px solid var(--p);box-shadow:4px 4px 0 var(--p);padding:4px 10px 2px}
+.top .right{display:flex;gap:10px;align-items:center}
+.bb{font-family:var(--u);font-weight:800;font-size:12px;letter-spacing:.08em;text-transform:uppercase;text-decoration:none;background:var(--y);color:var(--k);border:3px solid var(--k);box-shadow:4px 4px 0 var(--k);padding:8px 12px 7px;cursor:pointer;transition:transform 80ms,box-shadow 80ms;display:inline-flex;align-items:center;gap:8px;white-space:nowrap}
+.bb:active{transform:translate(4px,4px);box-shadow:0 0 0 var(--k)}
+.bb.ghost{background:var(--w)}
+.bb.dark{background:var(--k);color:var(--p);border-color:var(--p);box-shadow:4px 4px 0 var(--p)}
+.eq{display:inline-flex;align-items:flex-end;gap:2px;height:11px}
+.eq i{width:3px;height:30%;background:currentColor}
+.on .eq i{animation:eq .46s ease-in-out infinite alternate}
+.on .eq i:nth-child(2){animation-delay:-.15s}.on .eq i:nth-child(3){animation-delay:-.3s}
+@keyframes eq{from{height:20%}to{height:100%}}
+@media (max-width:640px){.hide-s{display:none}}
+
+/* ---------- Scène ---------- */
+#track{position:relative;background:var(--k)}
+#stage{position:sticky;top:0;height:100vh;height:100svh;overflow:hidden;isolation:isolate}
+#cam{position:absolute;inset:0;will-change:transform}
+.sc{position:absolute;inset:0;overflow:hidden;display:none}
+.fill{position:absolute;inset:0}
+.yellow{background:var(--y)}
+.ink{background:var(--k);color:var(--p)}
+.dots{background-image:radial-gradient(rgba(16,16,16,.14) 2px,transparent 2.5px);background-size:30px 30px}
+.ink.dots{background-image:radial-gradient(rgba(245,241,232,.12) 2px,transparent 2.5px)}
+.bar{position:absolute;left:0;right:0;height:50%;background:#000;z-index:30;transform:scaleY(0);will-change:transform}
+.bar.t{top:0;transform-origin:top}.bar.b{bottom:0;transform-origin:bottom}
+#flash{position:absolute;inset:0;z-index:29;background:var(--y);opacity:0;pointer-events:none;mix-blend-mode:screen}
+.hud{position:absolute;left:var(--pad);right:var(--pad);bottom:14px;z-index:31;display:flex;justify-content:space-between;gap:10px;pointer-events:none;font-family:var(--m);font-weight:700;font-size:11px;letter-spacing:.14em;text-transform:uppercase}
+.hud span{background:var(--k);color:var(--p);border:2px solid var(--p);padding:5px 8px 4px}
+.hud b{color:var(--y);font-weight:700}
+
+/* ---------- Typo ---------- */
+.h{font-family:var(--d);font-weight:400;text-transform:uppercase;letter-spacing:-.035em;line-height:.92;margin:0}
+.chip{display:inline-block;font-family:var(--m);font-weight:700;font-size:clamp(10px,1vw,13px);letter-spacing:.14em;text-transform:uppercase;background:var(--y);color:var(--k);border:3px solid var(--k);padding:5px 9px 4px}
+.ink .chip{border-color:var(--p)}
+.wm{display:inline-block;font-family:var(--d);text-transform:uppercase;letter-spacing:-.03em;line-height:1;background:var(--y);color:var(--k);border:.09em solid var(--p);box-shadow:.14em .14em 0 var(--p);padding:.16em .34em .1em}
+.center{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:0 var(--pad)}
+.split{position:absolute;inset:0;display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:4vw;padding:12vh var(--pad) 9vh}
+@media (max-aspect-ratio:1/1){.split{grid-template-columns:1fr;align-content:center;gap:2.4vh;padding:11vh 18px 8vh}}
+.lead{font-size:clamp(15px,1.4vw,20px);line-height:1.5;font-weight:600;max-width:520px;margin:2vh 0 0}
+@media (max-aspect-ratio:1/1){.lead{font-size:14px;margin-top:1.2vh}}
+
+/* ---------- Téléphone ---------- */
+.phone{position:relative;justify-self:center;height:min(76vh,760px);aspect-ratio:9/19;background:var(--p);border:7px solid var(--k);border-radius:38px;box-shadow:14px 14px 0 var(--k);overflow:hidden;will-change:transform}
+.ink .phone{border-color:var(--p);box-shadow:14px 14px 0 var(--y)}
+@media (max-aspect-ratio:1/1){.phone{height:52vh}}
+.sb{display:flex;justify-content:space-between;align-items:center;padding:10px 18px 6px;font-family:var(--m);font-weight:700;font-size:11px}
+.sb i{width:60px;height:16px;background:var(--k);border-radius:10px;display:block}
+.appbar{display:flex;align-items:center;justify-content:space-between;margin:4px 12px 8px;padding:8px 10px;border:3px solid var(--k);background:var(--y);font-family:var(--d);font-size:15px;text-transform:uppercase;letter-spacing:-.02em}
+.appbar small{font-family:var(--m);font-size:9px;letter-spacing:.12em}
+.scr{position:absolute;left:0;right:0;top:78px;bottom:0;padding:0 12px 12px;display:flex;flex-direction:column;gap:10px}
+.card{background:var(--w);border:3px solid var(--k);box-shadow:4px 4px 0 var(--k);padding:10px 12px}
+.lbl{font-family:var(--m);font-weight:700;font-size:10px;letter-spacing:.12em;text-transform:uppercase}
+.num{font-family:var(--d);font-variant-numeric:tabular-nums;line-height:1}
+.row{display:flex;align-items:center;justify-content:space-between;gap:8px}
+.btns{display:flex;gap:8px}
+.btns span{flex:1;text-align:center;font-weight:800;font-size:11px;letter-spacing:.06em;text-transform:uppercase;border:3px solid var(--k);box-shadow:3px 3px 0 var(--k);padding:7px 4px 6px;background:var(--y)}
+.btns span+span{background:var(--w)}
+.phone,.card,.wg{color:var(--k)}
+.tool{position:absolute;inset:0;display:none;flex-direction:column;gap:10px}
+.tool.cur{display:flex}
+
+/* ---------- Tour des 26 outils ---------- */
+.tour-text .idx{font-family:var(--m);font-weight:700;letter-spacing:.16em;font-size:13px;margin-top:3vh}
+.tour-text .name{margin-top:1vh;white-space:nowrap}
+@media (max-aspect-ratio:1/1){.tour-text .idx{margin-top:1vh}}
+.catcard{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;opacity:0;z-index:5}
+.catcard .h{font-size:min(15vw,26vh);color:var(--p)}
+
+/* ---------- Grilles ---------- */
+.grid26{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+.tg{display:flex;align-items:center;justify-content:space-between;gap:8px;background:var(--w);border:3px solid var(--k);box-shadow:4px 4px 0 var(--k);padding:6px 8px;font-weight:800;font-size:clamp(10px,.95vw,14px);min-width:0}
+.tg span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.sw{position:relative;width:34px;height:18px;border:3px solid var(--k);background:var(--w);flex:none;transition:background .12s}
+.sw::after{content:"";position:absolute;top:1px;left:1px;width:10px;height:10px;background:var(--k);transition:transform .12s}
+.sw.o{background:var(--screen)}.sw.o::after{transform:translateX(16px)}
+@media (max-aspect-ratio:1/1){.grid26{grid-template-columns:repeat(2,minmax(0,1fr));gap:5px}.tg{padding:4px 6px;font-size:10px;box-shadow:3px 3px 0 var(--k)}}
+
+.heat{display:grid;grid-template-columns:repeat(15,1fr);gap:4px;max-width:520px}
+.heat i{aspect-ratio:1;border:2px solid var(--k);background:var(--w)}
+.w-home{position:relative;justify-self:center;width:min(40vw,420px);aspect-ratio:9/16;border:7px solid var(--k);border-radius:34px;box-shadow:14px 14px 0 var(--k);overflow:hidden;background:linear-gradient(160deg,#2B2D42,#5a3d7a 60%,#1B1B2F)}
+@media (max-aspect-ratio:1/1){.w-home{width:auto;height:50vh}}
+.wg{position:absolute;background:var(--p);border:3px solid var(--k);box-shadow:5px 5px 0 var(--k);padding:10px;will-change:transform,opacity}
+
+.pick{display:flex;flex-wrap:wrap;gap:8px;margin-top:2vh}
+.pick button{cursor:pointer}
+.seg{display:inline-flex;border:3px solid var(--k);box-shadow:4px 4px 0 var(--k);background:var(--w)}
+.seg button{border:0;border-right:3px solid var(--k);background:none;padding:7px 10px 6px;font-weight:800;font-size:11px;letter-spacing:.06em;text-transform:uppercase;cursor:pointer}
+.seg button:last-child{border-right:0}
+.seg button.a{background:var(--k);color:var(--y)}
+.swatch{width:34px;height:34px;border:3px solid var(--k);box-shadow:3px 3px 0 var(--k);cursor:pointer}
+.swatch.a{outline:3px solid var(--k);outline-offset:3px}
+
+.mosaic{position:absolute;inset:0;display:grid;grid-template-columns:repeat(7,1fr);grid-auto-rows:1fr;gap:10px;padding:10px;will-change:transform}
+.mosaic .mt{position:relative;background:var(--p);border:3px solid var(--k);overflow:hidden}
+.mosaic .mt .tool{display:flex;transform-origin:0 0}
+.mosaic .mt b{position:absolute;left:0;right:0;bottom:0;z-index:2;background:var(--k);color:var(--y);font-family:var(--m);font-size:10px;letter-spacing:.1em;padding:3px 6px;text-transform:uppercase}
+@media (max-aspect-ratio:1/1){.mosaic{grid-template-columns:repeat(4,1fr)}.mosaic .mt:nth-child(n+25){display:none}}
+
+.links{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;margin-top:4vh}
+.links .bb{font-size:13px;padding:12px 16px 10px}
+</style>
+</head>
+<body>
+<header class="top">
+  <a class="logo" href="../" aria-label="Vectorem, retour au site">
+    <svg width="34" height="34" viewBox="0 0 108 108" aria-hidden="true"><path d="M58 30L86 58L58 86L30 58Z" fill="none" stroke="#F5F1E8" stroke-width="3.5"/><path fill-rule="evenodd" fill="#FFD426" d="M54 26L82 54L54 82L26 54ZM54 42L66 54L54 66L42 54Z"/><path d="M54 26L82 54L54 82L26 54ZM54 42L66 54L54 66L42 54Z" fill="none" stroke="#F5F1E8" stroke-width="4.5"/></svg>
+    <b class="hide-s">Vectorem</b>
+  </a>
+  <div class="right">
+    <button type="button" id="auto" class="bb" title="Test : le film se joue seul sur « whatdoyousee » (NCS)"><span class="eq"><i></i><i></i><i></i></span><span id="autoLbl">Mode auto</span></button>
+    <a class="bb dark hide-s" href="https://play.google.com/store/apps/details?id=com.vectorem.app" target="_blank" rel="noopener">Google Play (bêta)</a>
+  </div>
+</header>
+<main>
+  <section id="track" aria-label="Vectorem, le film">
+    <div id="stage">
+      <div id="cam"></div>
+      <div id="flash"></div>
+      <div class="bar t" id="barT"></div>
+      <div class="bar b" id="barB"></div>
+      <div class="hud"><span>CH <b id="ch">01</b> · <span id="chName" style="border:0;padding:0;background:none">Démarrage</span></span><span>TC <b id="tc">00:00:00</b></span></div>
+    </div>
+  </section>
+</main>
+<audio id="music" src="whatdoyousee.mp3" preload="none"></audio>
+<script src="film.js"></script>
+</body>
+</html>
