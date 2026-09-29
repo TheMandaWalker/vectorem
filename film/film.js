@@ -420,6 +420,18 @@
     }),
   ];
 
+  /** Flou de bougé horizontal (filtre SVG directionnel partagé par id). */
+  function motionBlur(el, id, amount) {
+    const f = document.getElementById(id);
+    if (!f) return;
+    if (amount > 0.4) {
+      f.setAttribute("stdDeviation", `${amount.toFixed(1)} 0`);
+      el.style.filter = `url(#${id.replace("-s", "")})`;
+    } else el.style.filter = "none";
+  }
+  /** Mise au point : net quand k = 1. */
+  const focus = (el, k, max = 10) => (el.style.filter = k >= 0.99 ? "none" : `blur(${((1 - k) * max).toFixed(2)}px)`);
+
   /** Construit l'écran d'un outil dans `host` et renvoie son objet de mise à jour. */
   function mountTool(i, host) {
     const def = BUILD[i]();
@@ -459,7 +471,9 @@
       const dm = s.$(".dm");
       dm.style.opacity = String(range(b, 3.8, 4.4));
       s.$(".o").setAttribute("stroke-dashoffset", (240 * (1 - ease(range(b, 4, 7.5)))).toFixed(1));
-      dm.style.transform = `rotate(${lerp(-90, 0, ease(range(b, 4, 8))).toFixed(1)}deg)`;
+      dm.style.transform = `rotate(${lerp(-90, 0, ease(range(b, 4, 8))).toFixed(1)}deg) scale(${lerp(1.5, 1, ease(range(b, 4, 8))).toFixed(3)})`;
+      focus(dm, ease(range(b, 4, 7)), 14);
+      focus(s.$(".ty"), ease(range(b, 7.6, 9)), 8);
       const word = "VECTOREM";
       s.$(".ty").textContent = word.slice(0, Math.floor(range(b, 7.6, 9.6) * word.length));
       s.$(".sub").style.opacity = String(range(b, 9.8, 10.4));
@@ -491,13 +505,19 @@
         wd.style.padding = inv ? "0.1em 0.25em 0.02em" : "0";
         wd.style.border = inv ? "0.05em solid #F5F1E8" : "0";
       }
-      const k = ease(range(b, 12 + i * 2, 12.5 + i * 2));
-      wd.style.transform = `scale(${lerp(1.35, 1, k).toFixed(3)}) rotate(${(i % 2 ? -2 : 1.5) * k}deg)`;
+      const k = ease(range(b, 12 + i * 2, 12.45 + i * 2));
+      const dir = i % 2 ? -1 : 1;
+      wd.style.transform = `translateX(${((1 - k) * 60 * dir).toFixed(2)}vw) scale(${lerp(1.2, 1, k).toFixed(3)}) rotate(${(i % 2 ? -2 : 1.5) * k}deg)`;
+      motionBlur(wd, "mbw-s", (1 - k) * 60);
       blocks.forEach((el, j) => {
         const t = b * 0.5 + j * 1.7;
         el.style.left = `${(8 + 84 * hash(j * 3 + i)).toFixed(1)}%`;
         el.style.top = `${(10 + 70 * hash(j * 5 + i + 1)).toFixed(1)}%`;
-        el.style.transform = `translate(-50%,-50%) rotate(${(Math.sin(t) * 20).toFixed(1)}deg) scale(${(0.5 + 0.5 * ease(range(b, 12 + i * 2, 12.4 + i * 2))).toFixed(2)})`;
+        // Deux blocs au premier plan (flous, plus gros), deux au fond (nets).
+        const fg = j < 2;
+        el.style.transform = `translate(-50%,-50%) rotate(${(Math.sin(t) * 20).toFixed(1)}deg) scale(${((fg ? 1.6 : 0.6) * (0.5 + 0.5 * ease(range(b, 12 + i * 2, 12.4 + i * 2)))).toFixed(2)})`;
+        el.style.filter = fg ? "blur(7px)" : "none";
+        el.style.zIndex = fg ? "3" : "0";
       });
     };
   }
@@ -515,6 +535,9 @@
   const CAT_START = { time: 28, audio: 52, screen: 72, system: 84 };
   {
     const s = scene(28, 108, "dots", `<div class="split"><div class="tour-text"><span class="chip ct">Temps</span><div class="idx"></div><h2 class="h name"></h2><p class="lead tg2"></p></div>${phoneHtml("Minuteur", "")}</div><div class="catcard"><h2 class="h"></h2></div>`);
+    s.$(".split").style.perspective = "1400px";
+    s.el.insertAdjacentHTML("afterbegin", `<div class="gh h"></div>`);
+    const ghost = s.$(".gh");
     const scr = s.$(".scr");
     const tools = TOOLS.map((_, i) => mountTool(i, scr));
     const phone = s.$(".phone");
@@ -543,85 +566,91 @@
         s.$(".catcard").style.background = bg;
         s.$(".catcard .h").textContent = catName;
         s.$(".catcard .h").style.color = fg;
+        ghost.textContent = catName;
       }
       const lt = b - T.start;
       tools[T.i].up(lt, b);
-      const e = ease(range(lt, 0, 0.5));
-      phone.style.transform = `translateY(${((1 - e) * 30).toFixed(1)}px) rotate(${((k % 2 ? 1.5 : -1.5) * e).toFixed(2)}deg) scale(${lerp(1.06, 1, e).toFixed(3)})`;
+      // Caméra : panoramique filé à chaque outil, puis travelling lent en 3D.
+      const e = ease(range(lt, 0, 0.42));
+      const side = k % 2 ? 1 : -1;
+      const q = range(lt, 0, T.dur);
+      const whip = (1 - e) * 70 * side;
+      phone.style.transform = `translateX(${whip.toFixed(2)}vw) rotateY(${(side * lerp(-26, -8, q)).toFixed(2)}deg) rotateX(${lerp(8, 3, q).toFixed(2)}deg) scale(${lerp(0.94, 1.05, q).toFixed(4)})`;
+      motionBlur(phone, "mbp-s", (1 - e) * 45);
+      // Mise au point : le nom d'abord, puis la phrase.
       const nm = s.$(".name");
       nm.style.transform = `translateX(${((1 - e) * -50).toFixed(1)}px)`;
       nm.style.opacity = String(e);
+      focus(nm, ease(range(lt, 0.1, 0.7)), 12);
+      focus(s.$(".tg2"), ease(range(lt, 0.45, 1.1)), 8);
+      ghost.style.transform = `translate(${(-((b - 28) * 1.6) % 60).toFixed(2)}vw, -50%)`;
       const cs = CAT_START[cat];
       s.$(".catcard").style.opacity = b >= cs && b < cs + 1.4 ? String(1 - range(b, cs + 1, cs + 1.4)) : "0";
-      s.$(".catcard .h").style.transform = `scale(${lerp(1.4, 1, ease(range(b, cs, cs + 0.5))).toFixed(3)})`;
+      const ck = ease(range(b, cs, cs + 0.6));
+      s.$(".catcard .h").style.transform = `scale(${lerp(1.5, 1, ck).toFixed(3)})`;
+      focus(s.$(".catcard .h"), ck, 22);
     };
   }
 
-  /* ---- 108-124 : l'accueil à la carte (interactif) ---- */
+  /* ---- 108-124 : l'accueil à la carte ---- */
   {
     const SECS = [
       ["En cours", `<div class="card"><div class="row"><span class="lbl">En cours · Minuteur</span><b class="num hc" style="font-size:20px">12:40</b></div><div style="height:10px;border:3px solid #101010;margin-top:6px"><i class="hp" style="display:block;height:100%;background:#7A5AF8;width:40%"></i></div></div>`],
-      ["Aujourd'hui", `<div class="card"><div class="lbl" style="margin-bottom:4px">Aujourd'hui · 3</div>${["Courses", "Envoyer le devis", "Sport · 30 min"].map((t) => `<button type="button" class="ck row" style="width:100%;border:0;background:none;padding:5px 0;font-weight:700;font-size:13px;cursor:pointer;justify-content:flex-start;gap:8px"><i style="width:14px;height:14px;border:3px solid #101010;display:inline-block"></i><span>${t}</span></button>`).join("")}</div>`],
-      ["Séries du jour", `<div class="card row"><span style="font-weight:800;font-size:13px;display:flex;gap:6px;align-items:center">${flameSvg(18)} Lire · 12 j</span><button type="button" class="ck2 bb" style="padding:4px 8px;font-size:11px;box-shadow:3px 3px 0 #101010">✓</button></div>`],
+      ["Aujourd'hui", `<div class="card"><div class="lbl" style="margin-bottom:4px">Aujourd'hui · 3</div>${["Courses", "Envoyer le devis", "Sport · 30 min"].map((t) => `<div class="ck row" style="padding:5px 0;font-weight:700;font-size:13px;justify-content:flex-start;gap:8px"><i style="width:14px;height:14px;border:3px solid #101010;display:inline-block"></i><span>${t}</span></div>`).join("")}</div>`],
+      ["Séries du jour", `<div class="card row"><span style="font-weight:800;font-size:13px;display:flex;gap:6px;align-items:center">${flameSvg(18)} Lire · <b class="sj">12</b> j</span><span class="ck2 bb" style="padding:4px 8px;font-size:11px;box-shadow:3px 3px 0 #101010">✓</span></div>`],
       ["Notes épinglées", `<div class="card" style="background:#FFD426;font-weight:700;font-size:13px">📌 Code du portail · 4812</div>`],
       ["Statistiques", `<div class="card"><div class="lbl">7 derniers jours</div><div style="display:flex;align-items:flex-end;gap:5px;height:48px;margin-top:6px">${[40, 70, 55, 90, 30, 80, 65].map((h) => `<i style="flex:1;height:${h}%;background:#1B7CFF;border:2px solid #101010"></i>`).join("")}</div></div>`],
     ];
-    const s = scene(108, 124, "yellow dots", `<div class="split"><div><span class="chip" style="background:#fff">Accueil</span><h2 class="h" style="font-size:clamp(40px,6vw,110px);margin-top:2vh">Ton accueil,<br>à la carte.</h2><p class="lead">Montre ce qui compte, masque le reste. Essaie :</p><div class="pick">${SECS.map(([n], i) => `<button type="button" class="bb pk" data-i="${i}">${n}</button>`).join("")}</div></div>${phoneHtml("Bonjour", "Accueil")}</div>`);
+    const s = scene(108, 124, "yellow dots", `<div class="split"><div class="txt"><span class="chip" style="background:#fff">Accueil</span><h2 class="h" style="font-size:clamp(40px,6vw,110px);margin-top:2vh">Ton accueil,<br>à la carte.</h2><p class="lead">Montre ce qui compte, masque le reste, dans l'ordre que tu veux.</p><div class="pick">${SECS.map(([n]) => `<span class="bb pk">${n}</span>`).join("")}</div></div>${phoneHtml("Bonjour", "Accueil")}</div>`);
     const scr = s.$(".scr");
     scr.innerHTML = SECS.map(([, h], i) => `<div class="sec" data-i="${i}">${h}</div>`).join("");
     const secs = s.$$(".sec");
     const pks = s.$$(".pk");
-    const shown = [true, true, true, true, true];
-    let touched = false;
-    pks.forEach((p) =>
-      p.addEventListener("click", () => {
-        touched = true;
-        const i = +p.dataset.i;
-        shown[i] = !shown[i];
-      })
-    );
-    s.$$(".ck").forEach((c) => c.addEventListener("click", () => c.classList.toggle("done")));
-    s.$(".ck2").addEventListener("click", (e) => {
-      const t = e.currentTarget;
-      t.style.background = t.style.background ? "" : "#00C48C";
-    });
+    const phone = s.$(".phone");
+    // Démo scriptée : les sections arrivent, deux se masquent, une revient.
+    const hidden = (i, b) => (i === 3 && b >= 117.5 && b < 121.5) || (i === 4 && b >= 118.5);
     s.frame = (b) => {
       secs.forEach((el, i) => {
-        const rev = touched || b >= 109 + i * 1.6;
-        const vis = rev && shown[i];
+        const vis = b >= 109 + i * 1.3 && !hidden(i, b);
         el.style.display = vis ? "block" : "none";
-        if (!touched) {
-          const k = ease(range(b, 109 + i * 1.6, 109.6 + i * 1.6));
-          el.style.transform = `translateY(${((1 - k) * 30).toFixed(1)}px)`;
-          el.style.opacity = String(k);
-        } else {
-          el.style.transform = "";
-          el.style.opacity = "1";
-        }
-        pks[i].classList.toggle("ghost", !(rev && shown[i]));
+        const k = ease(range(b, 109 + i * 1.3, 109.6 + i * 1.3));
+        el.style.transform = `translateY(${((1 - k) * 30).toFixed(1)}px)`;
+        el.style.opacity = String(k);
+        pks[i].classList.toggle("ghost", !vis);
+        pks[i].style.transform = hidden(i, b) || !vis ? "translate(4px,4px)" : "";
+        pks[i].style.boxShadow = hidden(i, b) || !vis ? "0 0 0 #101010" : "";
       });
-      s.$$(".ck").forEach((c) => {
-        const d = c.classList.contains("done");
+      s.$$(".ck").forEach((c, i) => {
+        const d = b >= 113 + i * 0.9;
         c.querySelector("i").style.background = d ? "#00C48C" : "#fff";
         c.querySelector("span").style.textDecoration = d ? "line-through" : "none";
       });
+      const v = b >= 115.5;
+      s.$(".ck2").style.background = v ? "#00C48C" : "";
+      s.$(".sj").textContent = v ? 13 : 12;
       const hc = s.$(".hc");
       if (hc) hc.textContent = mmss(Math.max(0, 760 - (b - 108) * 9));
+      // Caméra : léger plan incliné qui se redresse, texte net puis téléphone net.
+      const q = range(b, 108, 124);
+      phone.style.transform = `perspective(1400px) rotateY(${lerp(-18, 6, q).toFixed(2)}deg) rotateZ(${lerp(-3, 1, q).toFixed(2)}deg) scale(${lerp(1.08, 0.98, q).toFixed(4)})`;
+      focus(s.$(".txt"), ease(range(b, 108, 109.4)), 12);
+      focus(phone, ease(range(b, 108.8, 110.2)), 10);
     };
   }
 
   /* ---- 124-140 : séries ---- */
   {
-    const s = scene(124, 140, "ink dots", `<div class="split"><div><span class="chip">Séries</span><h2 class="h" style="font-size:clamp(40px,6.4vw,120px);margin-top:2vh;color:#F5F1E8">Une habitude.<br><span style="color:#FFD426">Chaque jour.</span></h2><p class="lead" style="color:rgba(245,241,232,.8)">Elle se valide seule avec le minuteur, le Pomodoro ou les tâches. Jour de grâce, un gel par mois, des rappels sans culpabiliser.</p></div><div class="card" style="justify-self:center;width:min(100%,560px);padding:18px"><div class="row"><span class="lbl">Méditer 10 min · lié au Minuteur</span><span class="lbl">Record <b class="rc">41</b></span></div><div class="row" style="justify-content:flex-start;gap:12px;margin:12px 0">${flameSvg(64)}<span class="num sn" style="font-size:clamp(56px,7vw,96px)">12</span><b>jours</b><button type="button" class="bb vd" style="margin-left:auto">✓ Fait</button></div><div class="heat"></div></div></div>`);
+    const s = scene(124, 140, "ink dots", `<div class="split"><div><span class="chip">Séries</span><h2 class="h" style="font-size:clamp(40px,6.4vw,120px);margin-top:2vh;color:#F5F1E8">Une habitude.<br><span style="color:#FFD426">Chaque jour.</span></h2><p class="lead" style="color:rgba(245,241,232,.8)">Elle se valide seule avec le minuteur, le Pomodoro ou les tâches. Jour de grâce, un gel par mois, des rappels sans culpabiliser.</p></div><div class="card" style="justify-self:center;width:min(100%,560px);padding:18px"><div class="row"><span class="lbl">Méditer 10 min · lié au Minuteur</span><span class="lbl">Record <b class="rc">41</b></span></div><div class="row" style="justify-content:flex-start;gap:12px;margin:12px 0">${flameSvg(64)}<span class="num sn" style="font-size:clamp(56px,7vw,96px)">12</span><b>jours</b><span class="bb vd" style="margin-left:auto">✓ Fait</span></div><div class="heat"></div></div></div>`);
     const heat = s.$(".heat");
     heat.innerHTML = "<i></i>".repeat(105);
     const cells = [...heat.children];
-    let bonus = 0;
-    s.$(".vd").addEventListener("click", (e) => {
-      bonus = bonus ? 0 : 1;
-      e.currentTarget.style.background = bonus ? "#00C48C" : "";
-    });
+    const card = s.$(".split > .card");
     s.frame = (b, p) => {
+      const bonus = b >= 136 ? 1 : 0;
+      s.$(".vd").style.background = bonus ? "#00C48C" : "";
+      // Plan en contre-plongée qui descend, flou de profondeur à l'entrée.
+      card.style.transform = `perspective(1200px) rotateX(${lerp(22, 4, ease(p)).toFixed(2)}deg) translateY(${lerp(8, 0, ease(p)).toFixed(2)}vh) scale(${lerp(0.9, 1.02, p).toFixed(4)})`;
+      focus(card, ease(range(b, 124.4, 126)), 16);
       const n = Math.floor(ease(p) * 105);
       cells.forEach((c, i) => {
         const on = i < n && hash(i * 2.3) > 0.12;
@@ -632,35 +661,35 @@
     };
   }
 
-  /* ---- 140-156 : widgets sur l'écran d'accueil (interactifs) ---- */
+  /* ---- 140-156 : widgets sur l'écran d'accueil ---- */
   {
-    const s = scene(140, 156, "yellow dots", `<div class="split"><div><span class="chip" style="background:#fff">Widgets</span><h2 class="h" style="font-size:clamp(40px,6vw,110px);margin-top:2vh">Sans ouvrir<br>l'app.</h2><p class="lead">Coche une tâche, valide une série, suis un minuteur depuis l'écran d'accueil. Essaie de cocher.</p></div><div class="w-home">
-      <div class="wg w1" style="left:6%;top:5%;width:88%;background:#FFD426"><div class="row"><span class="lbl">Séries</span><span class="lbl">Record 30</span></div><div class="row" style="justify-content:flex-start;gap:8px;margin-top:6px">${flameSvg(40)}<span class="num ws" style="font-size:40px">12</span><b>jours</b><button type="button" class="bb wv" style="margin-left:auto;padding:6px 10px">✓</button></div></div>
-      <div class="wg w2" style="left:6%;top:31%;width:88%"><div class="lbl" style="margin-bottom:4px">Aujourd'hui</div>${["Courses", "Envoyer le devis", "Arroser les plantes"].map((t) => `<button type="button" class="wt row" style="width:100%;border:0;background:none;padding:5px 0;font-weight:700;font-size:13px;cursor:pointer;justify-content:flex-start;gap:8px"><i style="width:14px;height:14px;border:3px solid #101010;display:inline-block"></i><span>${t}</span></button>`).join("")}</div>
+    const s = scene(140, 156, "yellow dots", `<div class="split"><div><span class="chip" style="background:#fff">Widgets</span><h2 class="h" style="font-size:clamp(40px,6vw,110px);margin-top:2vh">Sans ouvrir<br>l'app.</h2><p class="lead">Coche une tâche, valide une série, suis un minuteur depuis l'écran d'accueil.</p></div><div class="w-home">
+      <div class="wg w1" style="left:6%;top:5%;width:88%;background:#FFD426"><div class="row"><span class="lbl">Séries</span><span class="lbl">Record 30</span></div><div class="row" style="justify-content:flex-start;gap:8px;margin-top:6px">${flameSvg(40)}<span class="num ws" style="font-size:40px">12</span><b>jours</b><span class="bb wv" style="margin-left:auto;padding:6px 10px">✓</span></div></div>
+      <div class="wg w2" style="left:6%;top:31%;width:88%"><div class="lbl" style="margin-bottom:4px">Aujourd'hui</div>${["Courses", "Envoyer le devis", "Arroser les plantes"].map((t) => `<div class="wt row" style="padding:5px 0;font-weight:700;font-size:13px;justify-content:flex-start;gap:8px"><i style="width:14px;height:14px;border:3px solid #101010;display:inline-block"></i><span>${t}</span></div>`).join("")}</div>
       <div class="wg w3" style="left:6%;top:62%;width:41%;height:28%;background:#7A5AF8;color:#fff"><div class="lbl">Minuteur</div><div class="num wtm" style="font-size:30px;margin-top:10px">08:12</div></div>
       <div class="wg w4" style="left:53%;top:62%;width:41%;height:28%;display:grid;grid-template-columns:1fr 1fr;gap:6px">${["#7A5AF8", "#FF4A1C", "#00C48C", "#1B7CFF"].map((c) => `<i style="background:${c};border:3px solid #101010"></i>`).join("")}</div>
     </div></div>`);
     const wgs = s.$$(".wg");
-    let v = false;
-    s.$(".wv").addEventListener("click", (e) => {
-      v = !v;
-      e.currentTarget.style.background = v ? "#00C48C" : "";
-    });
-    s.$$(".wt").forEach((w) =>
-      w.addEventListener("click", () => {
-        w.classList.toggle("done");
-        const d = w.classList.contains("done");
+    const home = s.$(".w-home");
+    s.frame = (b) => {
+      const v = b >= 150;
+      s.$(".wv").style.background = v ? "#00C48C" : "";
+      s.$$(".wt").forEach((w, i) => {
+        const d = b >= 147 + i * 1.1;
         w.querySelector("i").style.background = d ? "#00C48C" : "";
         w.querySelector("span").style.textDecoration = d ? "line-through" : "";
-      })
-    );
-    s.frame = (b) => {
+      });
+      // Caméra : on s'approche de l'écran d'accueil, puis on recule.
+      const q = range(b, 140, 156);
+      const z = Math.sin(q * Math.PI);
+      home.style.transform = `perspective(1400px) rotateY(${lerp(16, -10, q).toFixed(2)}deg) scale(${(1 + z * 0.08).toFixed(4)})`;
+      focus(home, ease(range(b, 140.3, 141.6)), 14);
       wgs.forEach((w, i) => {
         const k = ease(range(b, 141 + i * 1.3, 141.8 + i * 1.3));
         w.style.opacity = String(k);
         w.style.transform = `translateY(${((1 - k) * 40).toFixed(1)}px) scale(${lerp(0.9, 1, k).toFixed(3)})`;
       });
-      s.$(".ws").textContent = 12 + (v ? 1 : 0);
+      s.$(".ws").textContent = v ? 13 : 12;
       s.$(".wtm").textContent = mmss(Math.max(0, 492 - (b - 140) * 9));
     };
   }
@@ -677,7 +706,13 @@
         const k = ease(range(b, 156.6 + i * 2.4, 157.4 + i * 2.4));
         l.style.opacity = String(k);
         l.style.transform = `translateX(${((1 - k) * -40).toFixed(1)}px)`;
+        // La ligne en cours est nette, les autres passent au second plan.
+        const next = range(b, 156.6 + (i + 1) * 2.4, 157.4 + (i + 1) * 2.4);
+        l.style.filter = k < 0.99 ? `blur(${((1 - k) * 12).toFixed(1)}px)` : i < 2 && next > 0 ? `blur(${(next * 2.5).toFixed(1)}px)` : "none";
+        l.style.opacity = String(k * (1 - 0.45 * (i < 2 ? next : 0)));
       });
+      const ph = s.$(".phone");
+      ph.style.transform = `perspective(1200px) rotateY(${lerp(-24, -6, range(b, 156, 172)).toFixed(2)}deg) scale(${lerp(1.12, 0.96, range(b, 156, 172)).toFixed(4)})`;
       bs.forEach((el, i) => {
         const x = 50 + 30 * Math.sin(b * 0.9 + i * 2.1);
         const y = 15 + i * 17 + 4 * Math.cos(b * 1.3 + i);
@@ -732,6 +767,9 @@
       const n = ease(range(b, 202, 202.8));
       s.$(".n").style.opacity = String(n);
       s.$(".n").style.transform = `scale(${lerp(1.4, 1, n).toFixed(3)})`;
+      focus(s.$(".n"), n, 18);
+      const ch = (1 - n) * 14 + 1.5;
+      s.$(".n").style.textShadow = `${ch.toFixed(1)}px 0 rgba(255,45,45,.7), ${(-ch).toFixed(1)}px 0 rgba(27,124,255,.7)`;
       const l = ease(range(b, 203, 203.8));
       s.$(".ln").style.opacity = String(l);
       s.$(".ln").style.transform = `rotate(-2deg) translateY(${((1 - l) * 40).toFixed(1)}px)`;
@@ -789,7 +827,7 @@
 
   /* ---- 226-239 : la mosaïque des 26 outils en direct ---- */
   {
-    const s = scene(226, 239, "ink", `<div class="mosaic"></div><div class="center ti" style="opacity:0;pointer-events:none"><span class="wm" style="font-size:clamp(40px,8vw,140px)">26 outils.</span><span class="h" style="font-size:clamp(28px,5vw,90px);color:#FFD426;margin-top:3vh;background:#101010;padding:.1em .3em">Une app.</span></div>`);
+    const s = scene(226, 239, "ink", `<div class="mosaic"></div><div class="tilt t"></div><div class="tilt b"></div><div class="center ti" style="opacity:0;pointer-events:none"><span class="wm" style="font-size:clamp(40px,8vw,140px)">26 outils.</span><span class="h" style="font-size:clamp(28px,5vw,90px);color:#FFD426;margin-top:3vh;background:#101010;padding:.1em .3em">Une app.</span></div>`);
     const mo = s.$(".mosaic");
     const inst = [];
     TOOLS.forEach(([n], i) => {
@@ -813,7 +851,8 @@
       }
       inst.forEach((x, i) => x.tool.up(1.2 + ((b - 226 + i * 0.37) % 4), b));
       const z = ease(range(b, 226, 231));
-      mo.style.transform = `scale(${lerp(2.6, 1, z).toFixed(3)}) rotate(${lerp(-3, 0, z).toFixed(2)}deg)`;
+      const pan = range(b, 226, 239);
+      mo.style.transform = `perspective(1600px) rotateX(${lerp(28, 12, pan).toFixed(2)}deg) translateY(${lerp(-6, 4, pan).toFixed(2)}vh) scale(${lerp(2.6, 1.08, z).toFixed(3)}) rotate(${lerp(-3, 0, z).toFixed(2)}deg)`;
       mo.style.opacity = String(1 - 0.55 * range(b, 231.5, 232.5));
       const k = ease(range(b, 232, 233));
       const ti = s.$(".ti");
@@ -828,6 +867,10 @@
     s.frame = (b) => {
       const d = ease(range(b, 239, 240));
       s.$(".lg").style.transform = `scale(${lerp(0.2, 1, d).toFixed(3)}) rotate(${lerp(-180, 0, d).toFixed(1)}deg)`;
+      // Plan-grue : la caméra descend lentement sur la fin.
+      s.$(".center").style.transform = `translateY(${lerp(9, 0, ease(range(b, 239, 246))).toFixed(2)}vh)`;
+      focus(s.$(".w"), ease(range(b, 240.5, 241.8)), 14);
+      focus(s.$(".l1"), ease(range(b, 242, 243)), 10);
       const w = ease(range(b, 240.5, 241.3));
       s.$(".w").style.opacity = String(w);
       s.$(".w").style.transform = `translateY(${((1 - w) * 50).toFixed(1)}px) rotate(${lerp(-5, 0, w).toFixed(2)}deg)`;
@@ -841,6 +884,9 @@
   /* ------------------------------------------------------------------
    * Letterbox, flashs, caméra, HUD
    * ------------------------------------------------------------------ */
+  // Letterbox : ouverture en fente, format 2.39 sur les cartons de catégorie,
+  // fondu au noir avant Vectorem, cadre serré sur « Tes données », fente
+  // avant le second drop, respiration, et fermeture lente à la fin.
   const BARS = [
     [0, 0.5],
     [1, 0.5],
@@ -848,19 +894,42 @@
     [8, 0.3],
     [11.6, 0.12],
     [12, 0, "x"],
+    [27.4, 0],
+    [28, 0.13],
+    [29.2, 0.13],
+    [30, 0],
+    [51.4, 0],
+    [52, 0.13],
+    [53.2, 0.13],
+    [54, 0],
+    [71.4, 0],
+    [72, 0.13],
+    [73.2, 0.13],
+    [74, 0],
+    [83.4, 0],
+    [84, 0.13],
+    [85.2, 0.13],
+    [86, 0],
     [106.8, 0],
     [107.8, 0.5],
     [108, 0.5],
     [108, 0, "x"],
-    [171, 0],
+    [155, 0],
+    [156.5, 0.16],
+    [170.5, 0.16],
     [172.6, 0.44],
     [176, 0.44],
     [176, 0, "x"],
-    [207.4, 0],
+    [201.6, 0],
+    [202, 0.12],
+    [207.4, 0.12],
     [208.4, 0.43],
     [211.6, 0.43],
     [212.4, 0],
-    [END, 0],
+    [238, 0],
+    [239, 0.1],
+    [252, 0.1],
+    [END, 0.06],
   ];
   function barAt(b) {
     for (let i = 1; i < BARS.length; i++) {
@@ -874,6 +943,7 @@
     return BARS[BARS.length - 1][1];
   }
   const CUTS = [12, 14, 16, 18, 20, 22, 24, 26, ...TOUR.map((t) => t.start), 108, 124, 140, 156, 176, 202, 212, 226, 239];
+  const FOCUS_IN = [124, 140, 156, 202, 212, 226, 239];
   const POWER = [
     [12, 108],
     [176, 208],
@@ -908,6 +978,7 @@
   const chName = document.getElementById("chName");
   const tcEl = document.getElementById("tc");
   const music = document.getElementById("music");
+  const grain = document.getElementById("grain");
   const autoBtn = document.getElementById("auto");
   const autoLbl = document.getElementById("autoLbl");
   let auto = false;
@@ -959,11 +1030,21 @@
       if (on && s.frame) s.frame(b, clamp((b - s.b0) / (s.b1 - s.b0)), kick);
     }
 
-    const bar = clamp(barAt(b) + (power ? kick * 0.012 : 0), 0, 0.5);
+    // En portrait, les bandes « cinéma » sont plus fines (sauf fente et noir complet).
+    const raw = barAt(b);
+    const bar = clamp((raw >= 0.4 || innerWidth > innerHeight ? raw : raw * 0.55) + (power ? kick * 0.012 : 0), 0, 0.5);
     barT.style.transform = barB.style.transform = `scaleY(${(bar / 0.5).toFixed(4)})`;
 
     const sh = power ? kick * 3 : 0;
-    cam.style.transform = `translate(${((hash(Math.floor(b * 8)) - 0.5) * sh).toFixed(2)}px,${((hash(Math.floor(b * 8) + 50) - 0.5) * sh).toFixed(2)}px) scale(${(1 + (power ? kick * 0.012 : 0)).toFixed(4)})`;
+    // Zoom flou sur les deux drops, mise au point à chaque nouveau chapitre.
+    let zb = 0;
+    for (const d of [12, 176]) if (b >= d && b < d + 0.9) zb = Math.max(zb, 1 - ease((b - d) / 0.9));
+    let fb = 0;
+    if (!reduced) for (const c of FOCUS_IN) if (b >= c && b < c + 0.8) fb = Math.max(fb, (1 - ease((b - c) / 0.8)) * 12);
+    const blur = reduced ? 0 : zb * 18 + fb;
+    cam.style.filter = blur > 0.2 ? `blur(${blur.toFixed(2)}px)` : "none";
+    cam.style.transform = `translate(${((hash(Math.floor(b * 8)) - 0.5) * sh).toFixed(2)}px,${((hash(Math.floor(b * 8) + 50) - 0.5) * sh).toFixed(2)}px) scale(${(1 + (power ? kick * 0.012 : 0) + zb * 0.35).toFixed(4)})`;
+    grain.style.transform = `translate(${(hash(Math.floor(b * 24)) * 60).toFixed(0)}px,${(hash(Math.floor(b * 24) + 9) * 60).toFixed(0)}px)`;
 
     let fl = 0;
     if (!reduced) {
