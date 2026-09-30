@@ -418,6 +418,34 @@ section{padding:72px 0}
 .cta-final .btn-ghost{background:transparent;color:#101010;border-color:#101010;box-shadow:none}
 .cta-final .fl{opacity:.35;border-color:#101010}
 
+/* ---- Windows (bientôt) ---- */
+#windows{background:var(--bg-block-sunken);border-top:var(--stroke-heavy);border-bottom:var(--stroke-heavy)}
+.soon{background:var(--brand);color:#101010;border-color:#101010}
+.win-head{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:20px}
+.win-head .btn[disabled]{opacity:1;background:var(--bg-block);color:var(--text-muted);box-shadow:none;border-style:dashed}
+.win-frame{margin-top:28px;border:var(--stroke-heavy);box-shadow:var(--shadow-3);background:#101010}
+.win-bar{display:flex;align-items:center;gap:10px;padding:0 0 0 12px;height:38px;background:#101010;color:#F5F1E8;border-bottom:3px solid #FFD426;font:800 11px/1 var(--font-ui);letter-spacing:.12em;text-transform:uppercase}
+.win-bar svg{width:18px;height:18px}
+.win-bar .win-ctl{margin-left:auto;display:flex;height:100%}
+.win-bar .win-ctl i{width:44px;display:grid;place-items:center;font-style:normal;font-size:13px;color:#928C7E}
+.win-shot{position:relative;aspect-ratio:16/10;overflow:hidden;background:#F5F1E8}
+.win-shot img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .45s var(--ease-snap)}
+.win-shot img.on{opacity:1}
+.win-tabs{margin-top:18px;display:flex;flex-wrap:wrap;gap:8px}
+.win-cap{margin-top:12px;color:var(--text-body);font-size:15px;min-height:1.5em}
+.win-grid{margin-top:40px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,250px),1fr));gap:18px}
+.win-card{border:var(--stroke);box-shadow:var(--shadow-2);background:var(--bg-block);padding:18px}
+.win-card h3{font:900 15px/1.2 var(--font-ui);letter-spacing:.04em;text-transform:uppercase;margin-bottom:8px;display:flex;align-items:center;gap:8px}
+.win-card h3 svg{width:20px;height:20px;stroke-width:2.25;flex:none}
+.win-card p{color:var(--text-body);font-size:14.5px}
+.win-card .keys{margin-top:10px;display:flex;flex-wrap:wrap;gap:6px}
+.win-card kbd{font:700 12px/1 var(--font-mono);padding:2px 5px;border:var(--stroke-hair);background:var(--bg-block-sunken);white-space:nowrap}
+.win-pc{margin-top:40px}
+.win-pc h3{font:900 13px/1 var(--font-ui);letter-spacing:.12em;text-transform:uppercase;margin-bottom:14px}
+.win-pc ul{list-style:none;display:flex;flex-wrap:wrap;gap:8px;padding:0}
+.win-pc li{padding:8px 12px;border:var(--stroke-hair);background:var(--bg-block);font:800 12px/1 var(--font-ui);letter-spacing:.04em;text-transform:uppercase}
+.win-pc li b{color:var(--cat-system);margin-right:6px}
+
 /* ---- footer ---- */
 footer{padding:40px 0 56px}
 footer .wrap{display:flex;flex-direction:column;gap:24px}
@@ -453,6 +481,7 @@ footer .wrap{display:flex;flex-direction:column;gap:24px}
     </a>
     <nav class="site-nav" id="siteNav" aria-label="Sections">
       <a href="#film">Film</a>
+      <a href="#windows">Windows</a>
       <a href="#essayer">Essayer</a>
       <a href="#outils">Outils</a>
       <a href="#series">Séries</a>
@@ -482,6 +511,7 @@ footer .wrap{display:flex;flex-direction:column;gap:24px}
         <span class="badge">Sans compte</span>
         <span class="badge">Données locales</span>
         <span class="badge">Bêta</span>
+        <a class="badge soon" href="#windows" style="text-decoration:none">Windows · bientôt</a>
       </div>
       <h1 class="reveal" style="--d:80ms">Une seule app pour
         <span class="rot" aria-live="polite"><span class="rot-inner"><span class="rot-word" id="rotWord">mixer le son</span></span></span>
@@ -582,6 +612,76 @@ footer .wrap{display:flex;flex-direction:column;gap:24px}
     </div>
     <div class="film-frame reveal">
       <video id="filmVideo" src="videos/vectorem-reel-fr.mp4" poster="videos/vectorem-reel-fr.jpg" muted loop playsinline preload="metadata" controls aria-label="Film de présentation de Vectorem, sans son"></video>
+    </div>
+  </div>
+</section>
+
+<!-- ================= WINDOWS ================= -->
+<section id="windows">
+  <div class="wrap">
+    <div class="win-head">
+      <div class="section-head reveal">
+        <span class="kicker soon">Coming soon</span>
+        <h2>Vectorem arrive sur Windows</h2>
+        <p>La même idée sur ton PC : tu actives ce que tu utilises, sans compte, et tes données restent sur l'ordinateur. Tes outils du téléphone, plus des outils pensés pour le bureau.</p>
+      </div>
+      <button class="btn reveal" type="button" disabled aria-disabled="true">Windows · bientôt</button>
+    </div>
+
+    <div class="reveal">
+      <div class="win-frame">
+        <div class="win-bar" aria-hidden="true">
+          <svg viewBox="0 0 108 108"><path fill-rule="evenodd" fill="#FFD426" d="M54 26L82 54L54 82L26 54ZM54 42L66 54L54 66L42 54Z"/></svg>
+          Vectorem
+          <span class="win-ctl"><i>—</i><i>▢</i><i>✕</i></span>
+        </div>
+        <div class="win-shot" id="winShot">
+          <img class="on" src="img/windows/accueil.webp" alt="Vectorem pour Windows : l'accueil avec les tâches du jour, les séries et le prochain événement" width="1600" height="1000" decoding="async">
+          <img src="img/windows/renommer.webp" alt="Renommer en lot : douze photos renommées d'un coup, avec l'aperçu avant validation" width="1600" height="1000" loading="lazy" decoding="async">
+          <img src="img/windows/espace-disque.webp" alt="Espace disque : carte des dossiers qui prennent le plus de place" width="1600" height="1000" loading="lazy" decoding="async">
+          <img src="img/windows/horloges.webp" alt="Horloges du monde : plusieurs villes et le créneau commun pour une réunion" width="1600" height="1000" loading="lazy" decoding="async">
+          <img src="img/windows/mots-de-passe.webp" alt="Mots de passe : générateur avec longueur et types de caractères" width="1600" height="1000" loading="lazy" decoding="async">
+          <img src="img/windows/bibliotheque.webp" alt="La Bibliothèque en thème sombre : chaque outil s'active ou non" width="1600" height="1000" loading="lazy" decoding="async">
+        </div>
+      </div>
+      <div class="win-tabs" id="winTabs" role="group" aria-label="Captures d'écran">
+        <button class="chip" type="button" aria-pressed="true" data-i="0" data-cap="Un accueil en tuiles : tâches du jour, séries, prochain événement, note rapide.">Accueil</button>
+        <button class="chip" type="button" aria-pressed="false" data-i="1" data-cap="Renommer des dizaines de fichiers d'un coup, avec l'aperçu avant de valider et une annulation.">Renommer en lot</button>
+        <button class="chip" type="button" aria-pressed="false" data-i="2" data-cap="Voir ce qui remplit le disque, dossier par dossier. Lecture seule : rien n'est supprimé.">Espace disque</button>
+        <button class="chip" type="button" aria-pressed="false" data-i="3" data-cap="L'heure de plusieurs villes, et le créneau où tout le monde est disponible.">Horloges du monde</button>
+        <button class="chip" type="button" aria-pressed="false" data-i="4" data-cap="Mots de passe et phrases de passe générés sur le PC. Rien n'est enregistré.">Mots de passe</button>
+        <button class="chip" type="button" aria-pressed="false" data-i="5" data-cap="La Bibliothèque, ici en thème sombre : les outils propres au PC portent un badge.">Bibliothèque</button>
+      </div>
+      <p class="win-cap" id="winCap" aria-live="polite">Un accueil en tuiles : tâches du jour, séries, prochain événement, note rapide.</p>
+    </div>
+
+    <div class="win-grid">
+      <div class="win-card reveal">
+        <h3><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><rect width="18" height="18" x="3" y="3" rx="2" /><path d="M3 9h18" /><path d="M9 3v6" /></svg>Des onglets</h3>
+        <p>Plusieurs outils ouverts côte à côte, comme dans un navigateur. <kbd>Ctrl + K</kbd> pour tout retrouver.</p>
+      </div>
+      <div class="win-card reveal" style="--d:60ms">
+        <h3><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><rect width="20" height="16" x="2" y="4" rx="2" /><path d="M6 8h.01" /><path d="M10 8h.01" /><path d="M14 8h.01" /><path d="M18 8h.01" /><path d="M7 16h10" /></svg>Raccourcis partout</h3>
+        <p>Pipette, règle ou note rapide depuis n'importe quelle app. Touches réglables.</p>
+        <p class="keys"><kbd>Ctrl+Alt+P</kbd> <kbd>Ctrl+Alt+N</kbd> <kbd>Ctrl+Alt+R</kbd></p>
+      </div>
+      <div class="win-card reveal" style="--d:120ms">
+        <h3><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 6v6l4 2" /><circle cx="12" cy="12" r="10" /></svg>Dans la barre des tâches</h3>
+        <p>La progression du minuteur et du Pomodoro s'affiche sur l'icône. Fermer la fenêtre ne coupe pas un décompte.</p>
+      </div>
+      <div class="win-card reveal" style="--d:180ms">
+        <h3><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20h.01" /><path d="M2 8.82a15 15 0 0 1 20 0" /><path d="M5 12.859a10 10 0 0 1 14 0" /><path d="M8.5 16.429a5 5 0 0 1 7 0" /></svg>Avec ton téléphone</h3>
+        <p>Échange tes notes, tâches et séries entre le téléphone et le PC en scannant un QR. Par ton Wi-Fi, chiffré, sans compte.</p>
+      </div>
+    </div>
+
+    <div class="win-pc reveal">
+      <h3>12 outils pensés pour le PC</h3>
+      <ul>
+        <li><b>◆</b>Outils PDF</li><li><b>◆</b>Pipette</li><li><b>◆</b>Règle à l'écran</li><li><b>◆</b>Renommer en lot</li>
+        <li><b>◆</b>Images en lot</li><li><b>◆</b>Métadonnées</li><li><b>◆</b>Espace disque</li><li><b>◆</b>Moniteur</li>
+        <li><b>◆</b>Anti-veille</li><li><b>◆</b>Horloges du monde</li><li><b>◆</b>Empreinte de fichier</li><li><b>◆</b>Mots de passe</li>
+      </ul>
     </div>
   </div>
 </section>
@@ -794,7 +894,7 @@ footer .wrap{display:flex;flex-direction:column;gap:24px}
       <a href="#personnalisation"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M9.671 4.136a2.34 2.34 0 0 1 4.659 0 2.34 2.34 0 0 0 3.319 1.915 2.34 2.34 0 0 1 2.33 4.033 2.34 2.34 0 0 0 0 3.831 2.34 2.34 0 0 1-2.33 4.033 2.34 2.34 0 0 0-3.319 1.915 2.34 2.34 0 0 1-4.659 0 2.34 2.34 0 0 0-3.32-1.915 2.34 2.34 0 0 1-2.33-4.033 2.34 2.34 0 0 0 0-3.831A2.34 2.34 0 0 1 6.35 6.051a2.34 2.34 0 0 0 3.319-1.915" /> <circle cx="12" cy="12" r="3" /></svg><span>Réglages</span></a>
     </nav>
     <div class="foot-meta">
-      <span>© 2026 Vectorem · Android · bêta</span>
+      <span>© 2026 Vectorem · Android · bêta · Windows bientôt</span>
       <span><a href="/confidentialite/">Politique de confidentialité</a> · <a href="mailto:support@vectorem.app">Contact</a> · <a href="https://play.google.com/store/apps/details?id=com.vectorem.app" target="_blank" rel="noopener">Google Play</a></span>
     </div>
   </div>
@@ -848,6 +948,31 @@ $$('button', densitySeg).forEach(function(b){
     densityPreview.className = 'density-preview ' + b.dataset.v;
   });
 });
+
+/* ---------- Windows : captures ---------- */
+(function(){
+  var tabs = $('#winTabs'), shot = $('#winShot'), cap = $('#winCap');
+  if (!tabs || !shot) return;
+  var imgs = $$('img', shot), btns = $$('button', tabs), cur = 0, timer = null;
+  function show(i){
+    cur = i;
+    imgs.forEach(function(im, k){ im.classList.toggle('on', k === i); });
+    btns.forEach(function(b, k){ b.setAttribute('aria-pressed', k === i ? 'true' : 'false'); });
+    cap.textContent = btns[i].dataset.cap;
+  }
+  btns.forEach(function(b){
+    b.addEventListener('click', function(){ show(+b.dataset.i); if (timer) { clearInterval(timer); timer = null; } });
+  });
+  if (!reduce && 'IntersectionObserver' in window) {
+    new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (e.isIntersecting && !timer && !shot.dataset.stopped) timer = setInterval(function(){ show((cur + 1) % imgs.length); }, 4500);
+        if (!e.isIntersecting && timer) { clearInterval(timer); timer = null; }
+      });
+    }, { threshold: .4 }).observe(shot);
+    btns.forEach(function(b){ b.addEventListener('click', function(){ shot.dataset.stopped = '1'; }); });
+  }
+})();
 
 /* ---------- en-tête, progression, scrollspy ---------- */
 var header = $('#siteHeader'), progress = $('#progress');
