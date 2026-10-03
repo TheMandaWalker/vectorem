@@ -121,8 +121,8 @@ R('Dans la barre des tâches</h3>', 'In the taskbar</h3>')
 R("<p>La progression du minuteur et du Pomodoro s'affiche sur l'icône. Fermer la fenêtre ne coupe pas un décompte.</p>", "<p>Timer and Pomodoro progress shows on the icon. Closing the window doesn't stop a countdown.</p>")
 R('Avec ton téléphone</h3>', 'With your phone</h3>')
 R('<p>Échange tes notes, tâches et séries entre le téléphone et le PC en scannant un QR. Par ton Wi-Fi, chiffré, sans compte.</p>', '<p>Swap your notes, tasks and streaks between phone and PC by scanning a QR code. Over your Wi-Fi, encrypted, no account.</p>')
-R('<h3>15 outils pensés pour le PC</h3>', '<h3>15 tools built for the PC</h3>')
-for fr, en in [('Outils PDF','PDF tools'),('Pipette','Colour picker'),("Règle à l'écran",'Screen ruler'),('Renommer en lot','Batch rename'),('Images en lot','Batch images'),('Métadonnées','Metadata'),('Espace disque','Disk usage'),('Moniteur','Monitor'),('Anti-veille','Keep awake'),('Horloges du monde','World clocks'),('Empreinte de fichier','File hash'),('Mots de passe','Passwords'),('Capture annotée','Annotated capture'),('Lanceur','Launcher'),('Convertisseur','Unit converter')]:
+R('<h3>19 outils pensés pour le PC</h3>', '<h3>19 tools built for the PC</h3>')
+for fr, en in [('Outils PDF','PDF tools'),('Pipette','Colour picker'),("Règle à l'écran",'Screen ruler'),('Renommer en lot','Batch rename'),('Images en lot','Batch images'),('Métadonnées','Metadata'),('Espace disque','Disk usage'),('Moniteur','Monitor'),('Anti-veille','Keep awake'),('Horloges du monde','World clocks'),('Empreinte de fichier','File hash'),('Mots de passe','Passwords'),('Capture annotée','Annotated capture'),('Lanceur','Launcher'),('Convertisseur','Unit converter'),('Lecteur vidéo','Video player'),('Éditeur PDF','PDF editor'),('Terminal','Terminal'),('Mode concentration','Focus mode')]:
     R('<li><b>◆</b>'+fr+'</li>', '<li><b>◆</b>'+en+'</li>')
 
 # ---- essayer ----

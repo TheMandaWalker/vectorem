@@ -1,7 +1,7 @@
 {
   "windows": {
-    "version": "0.1.0",
+    "version": "0.3.0",
     "url": "https://vectorem.app/#windows",
-    "notes": "Aperçu de Vectorem pour Windows."
+    "notes": "Lecteur vidéo, éditeur PDF, terminal, widgets de bureau et mode performance."
   }
 }
