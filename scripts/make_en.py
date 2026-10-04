@@ -98,7 +98,6 @@ R('aria-label="Film de présentation de Vectorem, sans son"', 'aria-label="Vecto
 R('<h2>Vectorem arrive sur Windows</h2>', '<h2>Vectorem is coming to Windows</h2>')
 R("<p>La même idée sur ton PC : tu actives ce que tu utilises, sans compte, et tes données restent sur l'ordinateur. Tes outils du téléphone, plus des outils pensés pour le bureau.</p>",
   "<p>The same idea on your PC: turn on what you use, no account, and your data stays on the computer. Your phone tools, plus tools built for the desktop.</p>")
-R('aria-disabled="true">Windows · bientôt</button>', 'aria-disabled="true">Windows · soon</button>')
 R('alt="Vectorem pour Windows : l\'accueil avec les tâches du jour, les séries et le prochain événement"', 'alt="Vectorem for Windows: the home screen with today\'s tasks, streaks and the next event"')
 R('alt="Renommer en lot : douze photos renommées d\'un coup, avec l\'aperçu avant validation"', 'alt="Batch rename: twelve photos renamed at once, with a preview before confirming"')
 R('alt="Espace disque : carte des dossiers qui prennent le plus de place"', 'alt="Disk usage: map of the folders taking the most space"')
@@ -121,6 +120,7 @@ R('Dans la barre des tâches</h3>', 'In the taskbar</h3>')
 R("<p>La progression du minuteur et du Pomodoro s'affiche sur l'icône. Fermer la fenêtre ne coupe pas un décompte.</p>", "<p>Timer and Pomodoro progress shows on the icon. Closing the window doesn't stop a countdown.</p>")
 R('Avec ton téléphone</h3>', 'With your phone</h3>')
 R('<p>Échange tes notes, tâches et séries entre le téléphone et le PC en scannant un QR. Par ton Wi-Fi, chiffré, sans compte.</p>', '<p>Swap your notes, tasks and streaks between phone and PC by scanning a QR code. Over your Wi-Fi, encrypted, no account.</p>')
+R('<a class="btn btn-primary reveal" href="/windows/">Tout sur la version Windows</a>', '<a class="btn btn-primary reveal" href="/en/windows/">All about the Windows version</a>')
 R('<h3>19 outils pensés pour le PC</h3>', '<h3>19 tools built for the PC</h3>')
 for fr, en in [('Outils PDF','PDF tools'),('Pipette','Colour picker'),("Règle à l'écran",'Screen ruler'),('Renommer en lot','Batch rename'),('Images en lot','Batch images'),('Métadonnées','Metadata'),('Espace disque','Disk usage'),('Moniteur','Monitor'),('Anti-veille','Keep awake'),('Horloges du monde','World clocks'),('Empreinte de fichier','File hash'),('Mots de passe','Passwords'),('Capture annotée','Annotated capture'),('Lanceur','Launcher'),('Convertisseur','Unit converter'),('Lecteur vidéo','Video player'),('Éditeur PDF','PDF editor'),('Terminal','Terminal'),('Mode concentration','Focus mode')]:
     R('<li><b>◆</b>'+fr+'</li>', '<li><b>◆</b>'+en+'</li>')
