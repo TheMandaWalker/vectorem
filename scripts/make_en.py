@@ -18,10 +18,10 @@ def R(a, b, count=None):
 
 # ---- head ----
 R('<html lang="fr" data-theme="light">', '<html lang="en" data-theme="light">')
-R('<title>Vectorem — plus de 25 outils, un seul tableau de bord</title>', '<title>Vectorem — 25+ tools, one dashboard</title>')
+R('<title>Vectorem — tous tes outils, au même endroit</title>', '<title>Vectorem — all your tools, in one place</title>')
 R('<meta name="description" content="Vectorem regroupe plus de 25 outils pour Android — minuteur, rappels, séries d\'habitudes, égaliseur, QR, roue de la fortune — dans une seule app modulaire, sans compte. Essaie-les ici.">',
   '<meta name="description" content="Vectorem brings 25+ tools for Android together — timer, reminders, habit streaks, equalizer, QR, wheel of fortune — in one modular app, no account. Try them here.">')
-R('<meta property="og:title" content="Vectorem — plus de 25 outils, un seul tableau de bord">', '<meta property="og:title" content="Vectorem — 25+ tools, one dashboard">')
+R('<meta property="og:title" content="Vectorem — tous tes outils, au même endroit">', '<meta property="og:title" content="Vectorem — all your tools, in one place">')
 R('<meta property="og:description" content="Une boîte à outils Android modulaire : tu actives ce que tu utilises, tes données restent sur ton téléphone.">',
   '<meta property="og:description" content="A modular Android toolbox: turn on what you use, your data stays on your phone.">')
 R('<link rel="stylesheet" href="fonts.css">', '<link rel="stylesheet" href="../fonts.css">\n<link rel="canonical" href="https://vectorem.app/en/">')
@@ -36,7 +36,6 @@ R('<a href="#essayer">Essayer</a>', '<a href="#essayer">Try</a>')
 R('<a href="#outils">Outils</a>', '<a href="#outils">Tools</a>')
 R('<a href="#series">Séries</a>', '<a href="#series">Streaks</a>')
 R('<a href="#confidentialite">Confidentialité</a>', '<a href="#confidentialite">Privacy</a>')
-R('<a href="#personnalisation">Personnaliser</a>', '<a href="#personnalisation">Customize</a>')
 R('aria-label="Changer de thème"', 'aria-label="Change theme"')
 
 # ---- hero ----
@@ -49,9 +48,20 @@ R('id="rotWord">mixer le son</span>', 'id="rotWord">shape your sound</span>')
 R("Minuteur, rappels, séries d'habitudes, égaliseur, QR, roue de la fortune… Plus de 25 outils, chacun est un module : tu l'actives, tu le désactives. Le tableau de bord n'affiche que ce que tu utilises vraiment.",
   "Timer, reminders, habit streaks, equalizer, QR, wheel of fortune… 25+ tools, each one a module: turn it on, turn it off. The dashboard only shows what you actually use.")
 R('<a class="btn btn-ghost" href="#essayer">Essayer les démos</a>', '<a class="btn btn-ghost" href="#essayer">Try the demos</a>')
-R('<span class="cap">Outils</span>', '<span class="cap">Tools</span>')
-R('<span class="cap">Catégories</span>', '<span class="cap">Categories</span>')
-R('<span class="cap">Compte requis</span>', '<span class="cap">Account needed</span>')
+R('<a href="/android/">Android</a>\n      <a href="/windows/">Windows</a>', '<a href="/en/android/">Android</a>\n      <a href="/en/windows/">Windows</a>')
+R('<a class="badge live" href="/android/"', '<a class="badge live" href="/en/android/"')
+R('<a class="badge soon" href="/windows/"', '<a class="badge soon" href="/en/windows/"')
+# ---- chiffres ----
+R('aria-label="Vectorem en chiffres"', 'aria-label="Vectorem in numbers"')
+R('<span class="kicker">Vectorem en chiffres</span>', '<span class="kicker">Vectorem in numbers</span>')
+R('<span class="cap">Outils Android</span><small>Dans une seule app</small>', '<span class="cap">Android tools</span><small>In one app</small>')
+R('<span class="cap">Outils en plus sur PC</span><small>Windows, en aperçu</small>', '<span class="cap">Extra tools on PC</span><small>Windows, in preview</small>')
+R('<span class="cap">Donnée récoltée par Vectorem</span><small>Tout reste sur tes appareils</small>', '<span class="cap">Data collected by Vectorem</span><small>Everything stays on your devices</small>')
+R('<span class="cap">Compte à créer</span><small>Ni e-mail, ni mot de passe</small>', '<span class="cap">Account to create</span><small>No e-mail, no password</small>')
+R('<span class="cap">Pub imposée</span><small>Les vidéos sont facultatives</small>', '<span class="cap">Forced ads</span><small>Videos are optional</small>')
+R('<span class="cap">Catégories</span><small>Temps, audio, écran, système</small>', '<span class="cap">Categories</span><small>Time, audio, screen, system</small>')
+R('Les pubs facultatives (Google AdMob) et le Test de vitesse (Cloudflare) passent par ces services, seulement quand tu les lances. Détails dans la <a href="/confidentialite/#en">politique de confidentialité</a>.',
+  'Optional ads (Google AdMob) and the Speed test (Cloudflare) go through those services, only when you start them. Details in the <a href="/confidentialite/#en">privacy policy</a>.')
 # phone
 R('<div class="scr-date" id="phDate">Samedi 19 septembre</div>', '<div class="scr-date" id="phDate">Saturday, September 19</div>')
 R('<div class="scr-hello" id="phHello">Bonjour</div>', '<div class="scr-hello" id="phHello">Good morning</div>')
@@ -210,8 +220,8 @@ R("<p>Monte, descends, masque : essaie le constructeur d'accueil.</p>", "<p>Move
 R('id="miniHello">Bonjour</div>', 'id="miniHello">Good morning</div>')
 
 # ---- cta / footer ----
-R('<h2 class="reveal">Un tableau de bord. Plus de vingt-cinq outils. Aucun de trop.</h2>', '<h2 class="reveal">One dashboard. More than twenty-five tools. None too many.</h2>')
-R('<a class="btn btn-ghost" href="#essayer">Rejouer la démo</a>', '<a class="btn btn-ghost" href="#essayer">Replay the demo</a>')
+R('<h2 class="reveal">Tous tes outils. Au même endroit.<br><span style="font-size:.6em">Et ce n\'est que la bêta.</span></h2>', '<h2 class="reveal">All your tools. In one place.<br><span style="font-size:.6em">And it\'s only the beta.</span></h2>')
+R('<a class="btn btn-ghost" href="/android/">Tout sur la version Android</a>', '<a class="btn btn-ghost" href="/en/android/">All about the Android version</a>')
 R('<span>Accueil</span></a>', '<span>Home</span></a>')
 R('<span>Outils</span></a>', '<span>Tools</span></a>')
 R('<span>Réglages</span></a>', '<span>Settings</span></a>')

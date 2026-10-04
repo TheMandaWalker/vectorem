@@ -3,11 +3,11 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Vectorem for Windows — all your small tools, one app</title>
+<title>Vectorem for Windows — all your tools, in one place</title>
 <meta name="description" content="Vectorem on your PC: PDFs, screenshots, batch rename, video player, timer, notes, tasks and more, in one window. No account, data on your PC. Preview.">
 <meta name="theme-color" content="#101010">
 <meta property="og:title" content="Vectorem for Windows">
-<meta property="og:description" content="All your small tools. One app. Now on your PC.">
+<meta property="og:description" content="All your tools. In one place. Now on your PC.">
 <meta property="og:type" content="website">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 108 108'%3E%3Crect width='108' height='108' fill='%23101010'/%3E%3Cpath d='M58 30L86 58L58 86L30 58Z' fill='none' stroke='%23F5F1E8' stroke-width='3.5'/%3E%3Cpath fill-rule='evenodd' fill='%23FFD426' d='M54 26L82 54L54 82L26 54ZM54 42L66 54L54 66L42 54Z'/%3E%3Cpath d='M54 26L82 54L54 82L26 54ZM54 42L66 54L54 66L42 54Z' fill='none' stroke='%23F5F1E8' stroke-width='4.5'/%3E%3C/svg%3E">
 <link rel="stylesheet" href="../../fonts.css">
@@ -249,6 +249,16 @@ section{padding:72px 0}
 .marquee{border-top:var(--stroke-heavy);border-bottom:var(--stroke-heavy);background:var(--bg-block-sunken);overflow:hidden;margin-top:40px}
 .marquee-track{display:flex;width:max-content;animation:scroll 46s linear infinite}
 .marquee:hover .marquee-track{animation-play-state:paused}
+.figures{background:#101010;color:#F5F1E8;border-bottom:4px solid var(--brand);padding:44px 0 36px}
+.figures .kicker{color:var(--brand)}
+.fig-grid{margin-top:20px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,150px),1fr));gap:2px;background:rgba(245,241,232,.35);border:3px solid #F5F1E8}
+.fig{padding:18px 16px 16px;background:#101010;min-width:0}
+.fig .num{display:block;font:900 clamp(40px,5vw,56px)/1 var(--font-display);color:var(--brand);letter-spacing:-.02em}
+.fig .num.zero{color:#F5F1E8}
+.fig .cap{display:block;margin-top:8px;font:800 12px/1.25 var(--font-ui);letter-spacing:.08em;text-transform:uppercase}
+.fig small{display:block;margin-top:4px;font-size:12px;line-height:1.35;color:#B8B2A4}
+.fig-note{margin-top:14px;font-size:12.5px;color:#B8B2A4}
+.fig-note a{color:#F5F1E8}
 .marquee span{display:inline-flex;align-items:center;gap:14px;padding:16px 22px;font:900 22px/1 var(--font-display);text-transform:uppercase;letter-spacing:-.01em;white-space:nowrap}
 .marquee span::after{content:"";width:12px;height:12px;background:var(--c,var(--brand));border:var(--stroke-hair);transform:rotate(45deg)}
 @keyframes scroll{to{transform:translateX(-50%)}}
@@ -543,7 +553,7 @@ kbd{font:700 12px/1 var(--font-mono);padding:2px 5px;border:var(--stroke-hair);b
   <div class="wrap">
     <div>
       <div class="eyebrow-row"><span class="badge warn">Preview</span><span class="badge">Windows 10 · 11</span></div>
-      <h1>All your small tools.<br><em>One app.</em></h1>
+      <h1>All your tools.<br><em>In one place.</em></h1>
       <p class="lead">Vectorem comes to your PC: PDFs, screenshots, batch files, video player, timer, notes, tasks… in one window. Turn on what you use, no account, and your data stays on your computer.</p>
       <div class="dl-box" id="telecharger">
         <a class="btn btn-primary soon" id="dlBtn" href="#telecharger" aria-disabled="true">Coming soon</a>
@@ -687,10 +697,10 @@ kbd{font:700 12px/1 var(--font-mono);padding:2px 5px;border:var(--stroke-hair);b
 
 <section class="cta-final">
   <div class="wrap">
-    <h2 class="reveal">All your small tools. One app.<br><span style="font-size:.6em">And it's only the beta.</span></h2>
+    <h2 class="reveal">All your tools. In one place.<br><span style="font-size:.6em">And it's only the beta.</span></h2>
     <div class="ctas reveal" style="--d:100ms">
       <a class="btn btn-primary" href="#telecharger">Download for Windows</a>
-      <a class="btn btn-ghost" href="https://play.google.com/store/apps/details?id=com.vectorem.app" target="_blank" rel="noopener">On Android</a>
+      <a class="btn btn-ghost" href="/en/android/">On Android</a>
     </div>
   </div>
 </section>

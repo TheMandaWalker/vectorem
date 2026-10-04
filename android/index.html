@@ -3,16 +3,16 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Vectorem pour Windows — tous tes outils, au même endroit</title>
-<meta name="description" content="Vectorem sur ton PC : PDF, captures, renommage en lot, lecteur vidéo, minuteur, notes, tâches et plus, dans une seule fenêtre. Sans compte, données sur ton PC. Aperçu.">
+<title>Vectorem pour Android — tous tes outils, au même endroit</title>
+<meta name="description" content="Vectorem pour Android : 26 outils du quotidien dans une seule app. Minuteur, tâches, rappels, séries, notes, QR, égaliseur… Tu actives ce qui te sert, sans compte, tes données restent sur ton téléphone. Bêta.">
 <meta name="theme-color" content="#101010">
-<meta property="og:title" content="Vectorem pour Windows">
-<meta property="og:description" content="Tous tes outils. Au même endroit. Maintenant sur ton PC.">
+<meta property="og:title" content="Vectorem pour Android">
+<meta property="og:description" content="Tous tes outils. Au même endroit.">
 <meta property="og:type" content="website">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 108 108'%3E%3Crect width='108' height='108' fill='%23101010'/%3E%3Cpath d='M58 30L86 58L58 86L30 58Z' fill='none' stroke='%23F5F1E8' stroke-width='3.5'/%3E%3Cpath fill-rule='evenodd' fill='%23FFD426' d='M54 26L82 54L54 82L26 54ZM54 42L66 54L54 66L42 54Z'/%3E%3Cpath d='M54 26L82 54L54 82L26 54ZM54 42L66 54L54 66L42 54Z' fill='none' stroke='%23F5F1E8' stroke-width='4.5'/%3E%3C/svg%3E">
 <link rel="stylesheet" href="../fonts.css">
-<link rel="alternate" hreflang="fr" href="https://vectorem.app/windows/">
-<link rel="alternate" hreflang="en" href="https://vectorem.app/en/windows/">
+<link rel="alternate" hreflang="fr" href="https://vectorem.app/android/">
+<link rel="alternate" hreflang="en" href="https://vectorem.app/en/android/">
 <script>
 (function(){
   try {
@@ -521,6 +521,18 @@ footer .wrap{display:flex;flex-direction:column;gap:24px}
 .faq details[open] summary::after{content:"–"}
 .faq details p{padding:0 16px 16px;color:var(--text-body);font-size:14.5px}
 kbd{font:700 12px/1 var(--font-mono);padding:2px 5px;border:var(--stroke-hair);background:var(--bg-block-sunken);white-space:nowrap}
+
+/* ============ PAGE ANDROID ============ */
+.a-frame{border:var(--stroke-heavy);box-shadow:var(--shadow-3);background:var(--bg-block);overflow:hidden}
+.a-frame .win-shot{aspect-ratio:16/9}
+.cat-head{margin-top:36px;display:flex;align-items:center;gap:10px;font:900 13px/1 var(--font-ui);letter-spacing:.12em;text-transform:uppercase}
+.cat-head i{width:14px;height:14px;border:var(--stroke-hair);transform:rotate(45deg)}
+.cat-head small{font:700 12px/1 var(--font-mono);letter-spacing:0;color:var(--text-muted);text-transform:none}
+.cat-head + .tools-grid{margin-top:14px}
+.tool .tags{margin-top:8px;display:flex;flex-wrap:wrap;gap:6px}
+.tool .tags span{font:800 10px/1 var(--font-ui);letter-spacing:.08em;text-transform:uppercase;padding:4px 6px;border:var(--stroke-hair);background:var(--bg-block-sunken)}
+.pc-band{margin-top:28px;display:flex;flex-wrap:wrap;gap:16px;align-items:center;justify-content:space-between;border:var(--stroke-heavy);box-shadow:var(--shadow-2);background:var(--bg-block);padding:20px}
+.pc-band p{max-width:60ch;color:var(--text-body)}
 </style>
 </head>
 <body>
@@ -537,12 +549,12 @@ kbd{font:700 12px/1 var(--font-mono);padding:2px 5px;border:var(--stroke-hair);b
     <nav class="site-nav" aria-label="Sections">
       <a href="#apercu">Aperçu</a>
       <a href="#outils">Outils</a>
-      <a href="#telephone">Téléphone</a>
-      <a href="#installer">Installer</a>
+      <a href="#vie-privee">Vie privée</a>
       <a href="#faq">FAQ</a>
+      <a href="/windows/">Windows</a>
     </nav>
-    <a class="btn btn-primary btn-sm head-cta" href="#telecharger">Télécharger</a>
-    <a class="icon-btn lang-btn" href="/en/windows/" hreflang="en" lang="en" aria-label="English version">EN</a>
+    <a class="btn btn-primary btn-sm head-cta" href="https://play.google.com/store/apps/details?id=com.vectorem.app" target="_blank" rel="noopener">Google Play</a>
+    <a class="icon-btn lang-btn" href="/en/android/" hreflang="en" lang="en" aria-label="English version">EN</a>
     <button class="icon-btn" id="themeToggle" type="button" aria-label="Changer de thème"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.985 12.486a9 9 0 1 1-9.473-9.472c.405-.022.617.46.402.803a6 6 0 0 0 8.268 8.268c.344-.215.825-.004.803.401" /></svg></button>
   </div>
 </header>
@@ -552,41 +564,35 @@ kbd{font:700 12px/1 var(--font-mono);padding:2px 5px;border:var(--stroke-hair);b
 <section class="w-hero">
   <div class="wrap">
     <div>
-      <div class="eyebrow-row"><span class="badge warn">Aperçu</span><span class="badge">Windows 10 · 11</span></div>
+      <div class="eyebrow-row"><span class="badge live"><span class="dot"></span> Bêta</span><span class="badge">Android 8.0 ou plus</span><span class="badge">Sans compte</span></div>
       <h1>Tous tes outils.<br><em>Au même endroit.</em></h1>
-      <p class="lead">Vectorem arrive sur ton PC : PDF, captures d'écran, fichiers en lot, lecteur vidéo, minuteur, notes, tâches… dans une seule fenêtre. Tu actives ce qui te sert, sans compte, et tes données restent sur ton ordinateur.</p>
+      <p class="lead">Minuteur, tâches, rappels, séries d'habitudes, notes, QR, égaliseur… 26 outils dans une seule app. Tu actives ceux qui te servent, les autres restent dans la Bibliothèque. Sans compte, et tes données restent sur ton téléphone.</p>
       <div class="dl-box" id="telecharger">
-        <a class="btn btn-primary soon" id="dlBtn" href="#telecharger" aria-disabled="true">Bientôt disponible</a>
-        <div class="dl-meta" id="dlMeta"><span class="badge">Windows 10 ou 11, 64 bits</span></div>
-        <p class="dl-note" id="dlNote">L'aperçu est en test. Le téléchargement s'ouvrira ici.</p>
-        <p class="dl-sha" id="dlSha" hidden></p>
+        <a class="btn btn-primary" href="https://play.google.com/store/apps/details?id=com.vectorem.app" target="_blank" rel="noopener">Voir sur Google Play</a>
+        <div class="dl-meta"><span class="badge">Android 8.0 ou plus</span><span class="badge">Français · English</span></div>
+        <p class="dl-note">Vectorem est en bêta : il évolue chaque semaine, et ton avis compte.</p>
       </div>
     </div>
     <div class="reveal" id="apercu">
-      <div class="win-frame">
-        <div class="win-bar" aria-hidden="true">
-          <svg viewBox="0 0 108 108"><path fill-rule="evenodd" fill="#FFD426" d="M54 26L82 54L54 82L26 54ZM54 42L66 54L54 66L42 54Z"/></svg>
-          Vectorem
-          <span class="win-ctl"><i>—</i><i>▢</i><i>✕</i></span>
-        </div>
+      <div class="a-frame">
         <div class="win-shot" id="winShot">
-          <img class="on" src="../img/windows/accueil.webp" alt="Un accueil en tuiles : tâches du jour, séries, prochain événement, note rapide." width="1600" height="1000" decoding="async">
-          <img src="../img/windows/renommer.webp" alt="Renommer des dizaines de fichiers d&#x27;un coup, avec l&#x27;aperçu avant de valider." width="1600" height="1000" loading="lazy" decoding="async">
-          <img src="../img/windows/espace-disque.webp" alt="Voir ce qui remplit le disque, dossier par dossier." width="1600" height="1000" loading="lazy" decoding="async">
-          <img src="../img/windows/horloges.webp" alt="L&#x27;heure de plusieurs villes, et le créneau où tout le monde est disponible." width="1600" height="1000" loading="lazy" decoding="async">
-          <img src="../img/windows/mots-de-passe.webp" alt="Mots et phrases de passe générés sur le PC. Rien n&#x27;est enregistré." width="1600" height="1000" loading="lazy" decoding="async">
-          <img src="../img/windows/bibliotheque.webp" alt="La Bibliothèque, ici en thème sombre : chaque outil s&#x27;active ou non." width="1600" height="1000" loading="lazy" decoding="async">
+          <img class="on" src="../img/android/fr/accueil.webp" alt="Ta journée d&#x27;un coup d&#x27;œil : tâches du jour, séries, statistiques, prochain événement." width="1600" height="900" decoding="async">
+          <img src="../img/android/fr/series.webp" alt="Séries : une habitude par jour. Elle peut se valider toute seule avec le minuteur, le Pomodoro ou tes tâches." width="1600" height="900" loading="lazy" decoding="async">
+          <img src="../img/android/fr/minuteur.webp" alt="Minuteur et Pomodoro sonnent même app fermée, avec la progression dans la notification." width="1600" height="900" loading="lazy" decoding="async">
+          <img src="../img/android/fr/widgets.webp" alt="Des widgets pour cocher une tâche ou valider une série sans ouvrir l&#x27;app." width="1600" height="900" loading="lazy" decoding="async">
+          <img src="../img/android/fr/personnalisation.webp" alt="Couleur de marque, thème clair ou sombre, grille, liste ou mosaïque." width="1600" height="900" loading="lazy" decoding="async">
+          <img src="../img/android/fr/bibliotheque.webp" alt="La Bibliothèque : tu actives ce que tu utilises, le reste ne s&#x27;affiche pas." width="1600" height="900" loading="lazy" decoding="async">
         </div>
       </div>
       <div class="win-tabs" id="winTabs" role="group" aria-label="Captures d'écran">
-        <button class="chip" type="button" aria-pressed="true" data-i="0" data-cap="Un accueil en tuiles : tâches du jour, séries, prochain événement, note rapide.">Accueil</button>
-        <button class="chip" type="button" aria-pressed="false" data-i="1" data-cap="Renommer des dizaines de fichiers d&#x27;un coup, avec l&#x27;aperçu avant de valider.">Renommer en lot</button>
-        <button class="chip" type="button" aria-pressed="false" data-i="2" data-cap="Voir ce qui remplit le disque, dossier par dossier.">Espace disque</button>
-        <button class="chip" type="button" aria-pressed="false" data-i="3" data-cap="L&#x27;heure de plusieurs villes, et le créneau où tout le monde est disponible.">Horloges</button>
-        <button class="chip" type="button" aria-pressed="false" data-i="4" data-cap="Mots et phrases de passe générés sur le PC. Rien n&#x27;est enregistré.">Mots de passe</button>
-        <button class="chip" type="button" aria-pressed="false" data-i="5" data-cap="La Bibliothèque, ici en thème sombre : chaque outil s&#x27;active ou non.">Bibliothèque</button>
+        <button class="chip" type="button" aria-pressed="true" data-i="0" data-cap="Ta journée d&#x27;un coup d&#x27;œil : tâches du jour, séries, statistiques, prochain événement.">Accueil</button>
+        <button class="chip" type="button" aria-pressed="false" data-i="1" data-cap="Séries : une habitude par jour. Elle peut se valider toute seule avec le minuteur, le Pomodoro ou tes tâches.">Séries</button>
+        <button class="chip" type="button" aria-pressed="false" data-i="2" data-cap="Minuteur et Pomodoro sonnent même app fermée, avec la progression dans la notification.">Minuteur</button>
+        <button class="chip" type="button" aria-pressed="false" data-i="3" data-cap="Des widgets pour cocher une tâche ou valider une série sans ouvrir l&#x27;app.">Widgets</button>
+        <button class="chip" type="button" aria-pressed="false" data-i="4" data-cap="Couleur de marque, thème clair ou sombre, grille, liste ou mosaïque.">Personnaliser</button>
+        <button class="chip" type="button" aria-pressed="false" data-i="5" data-cap="La Bibliothèque : tu actives ce que tu utilises, le reste ne s&#x27;affiche pas.">Bibliothèque</button>
       </div>
-      <p class="win-cap" id="winCap" aria-live="polite">Un accueil en tuiles : tâches du jour, séries, prochain événement, note rapide.</p>
+      <p class="win-cap" id="winCap" aria-live="polite">Ta journée d&#x27;un coup d&#x27;œil : tâches du jour, séries, statistiques, prochain événement.</p>
     </div>
   </div>
 </section>
@@ -594,16 +600,15 @@ kbd{font:700 12px/1 var(--font-mono);padding:2px 5px;border:var(--stroke-hair);b
 <section class="w-sec-alt">
   <div class="wrap">
     <div class="section-head reveal">
-      <span class="kicker">Pensé pour le bureau</span>
-      <h2>Au clavier, en onglets, toujours là</h2>
+      <span class="kicker">Le principe</span>
+      <h2>Tu actives ce que tu utilises</h2>
+      <p>Chaque outil est un module. Ton tableau de bord n'affiche que les tiens.</p>
     </div>
     <div class="win-grid">
-      <div class="win-card reveal"><h3>Des onglets</h3><p>Plusieurs outils ouverts côte à côte, comme dans un navigateur. <kbd>Ctrl + K</kbd> pour tout retrouver.</p></div>
-      <div class="win-card reveal" style="--d:60ms"><h3>Raccourcis partout</h3><p>Pipette, capture, note rapide depuis n'importe quelle app. Touches réglables.</p><p class="keys"><kbd>Ctrl+Alt+P</kbd> <kbd>Ctrl+Alt+S</kbd> <kbd>Ctrl+Alt+N</kbd></p></div>
-      <div class="win-card reveal" style="--d:120ms"><h3>Dans la barre des tâches</h3><p>La progression du minuteur et du Pomodoro s'affiche sur l'icône. Fermer la fenêtre ne coupe pas un décompte.</p></div>
-      <div class="win-card reveal" style="--d:180ms"><h3>Widgets de bureau</h3><p>Horloge, post-it, calendrier, tâches du jour, compte à rebours, posés sur le bureau.</p></div>
-      <div class="win-card reveal" style="--d:240ms"><h3>Mode concentration</h3><p>25, 50 ou 90 minutes : les notifications attendent la fin, et l'anti-veille peut garder le PC éveillé.</p></div>
-      <div class="win-card reveal" style="--d:300ms"><h3>À ton goût</h3><p>Thème clair ou sombre, couleur d'accent, barre latérale, taille du texte, contraste renforcé.</p></div>
+      <div class="win-card reveal"><h3>Trois écrans pour démarrer</h3><p>Au premier lancement, tu dis ce que tu fais souvent. Vectorem active les bons outils et prépare ton accueil.</p></div>
+      <div class="win-card reveal" style="--d:60ms"><h3>Un accueil à toi</h3><p>Tâches du jour, séries, notes épinglées, prochain événement, statistiques de la semaine. Tu masques et tu réordonnes.</p></div>
+      <div class="win-card reveal" style="--d:120ms"><h3>Guidé, sans insister</h3><p>Une bulle à la première visite de chaque écran, et un « ? » dans chaque outil pour revoir comment il marche.</p></div>
+      <div class="win-card reveal" style="--d:180ms"><h3>Sur ton écran d'accueil</h3><p>Widgets Séries, Aujourd'hui, Outil en direct et Lancement rapide. Tu coches sans ouvrir l'app.</p></div>
     </div>
   </div>
 </section>
@@ -611,69 +616,76 @@ kbd{font:700 12px/1 var(--font-mono);padding:2px 5px;border:var(--stroke-hair);b
 <section id="outils">
   <div class="wrap">
     <div class="section-head reveal">
-      <span class="kicker">19 outils pensés pour le PC</span>
-      <h2>Ce que le PC fait de mieux</h2>
-      <p>En plus des outils du téléphone, Vectorem pour Windows ajoute ceux qui n'ont de sens que sur un ordinateur.</p>
+      <span class="kicker">26 outils, 4 thèmes</span>
+      <h2>Ce qu'il y a dedans</h2>
+      <p>Les étiquettes indiquent la permission demandée, et seulement quand tu ouvres l'outil.</p>
     </div>
+    <h3 class="cat-head reveal"><i style="background:var(--cat-time)"></i>Temps &amp; rappels <small>6</small></h3>
     <div class="tools-grid">
-      <div class="tool reveal" style="--d:0ms"><span class="sq system" aria-hidden="true">PDF</span><div><h3>Éditeur PDF</h3><p>Annoter, signer, remplir un formulaire, caviarder, remplacer un texte, réordonner les pages. L&#x27;original n&#x27;est jamais écrasé.</p></div></div>
-      <div class="tool reveal" style="--d:50ms"><span class="sq system" aria-hidden="true">PDF</span><div><h3>Outils PDF</h3><p>Fusionner, extraire des pages, images vers PDF, alléger un fichier trop lourd.</p></div></div>
-      <div class="tool reveal" style="--d:100ms"><span class="sq screen" aria-hidden="true">▶</span><div><h3>Lecteur vidéo</h3><p>Reprise où tu t&#x27;étais arrêté, repères, chapitres, vitesse, sous-titres, captures et GIF.</p></div></div>
-      <div class="tool reveal" style="--d:150ms"><span class="sq screen" aria-hidden="true">◎</span><div><h3>Capture annotée</h3><p>Une zone de l&#x27;écran, puis flèches, cadres, texte, numéros et flou avant d&#x27;enregistrer.</p></div></div>
-      <div class="tool reveal" style="--d:0ms"><span class="sq screen" aria-hidden="true">◆</span><div><h3>Pipette</h3><p>La couleur de n&#x27;importe quel pixel de l&#x27;écran, en HEX, RGB ou HSL.</p></div></div>
-      <div class="tool reveal" style="--d:50ms"><span class="sq screen" aria-hidden="true">↔</span><div><h3>Règle à l&#x27;écran</h3><p>Mesurer un élément à l&#x27;écran, en pixels.</p></div></div>
-      <div class="tool reveal" style="--d:100ms"><span class="sq screen" aria-hidden="true">▦</span><div><h3>Rangement des fenêtres</h3><p>Moitiés, quarts et tiers au clavier, sur un ou plusieurs écrans.</p></div></div>
-      <div class="tool reveal" style="--d:150ms"><span class="sq system" aria-hidden="true">Aa</span><div><h3>Renommer en lot</h3><p>Des dizaines de fichiers d&#x27;un coup, avec l&#x27;aperçu avant de valider et une annulation.</p></div></div>
-      <div class="tool reveal" style="--d:0ms"><span class="sq system" aria-hidden="true">▣</span><div><h3>Images en lot</h3><p>Redimensionner et convertir en JPG, PNG ou WebP, plusieurs images à la fois.</p></div></div>
-      <div class="tool reveal" style="--d:50ms"><span class="sq system" aria-hidden="true">ℹ</span><div><h3>Métadonnées</h3><p>Lire et retirer les infos cachées des photos (lieu, appareil) avant de les partager.</p></div></div>
-      <div class="tool reveal" style="--d:100ms"><span class="sq system" aria-hidden="true">◔</span><div><h3>Espace disque</h3><p>Ce qui remplit le disque, dossier par dossier. Lecture seule.</p></div></div>
-      <div class="tool reveal" style="--d:150ms"><span class="sq system" aria-hidden="true">▤</span><div><h3>Moniteur</h3><p>Processeur, mémoire, disque et réseau dans une petite fenêtre toujours au-dessus.</p></div></div>
-      <div class="tool reveal" style="--d:0ms"><span class="sq time" aria-hidden="true">☕</span><div><h3>Anti-veille</h3><p>Empêche le PC de se mettre en veille pendant un téléchargement ou une présentation.</p></div></div>
-      <div class="tool reveal" style="--d:50ms"><span class="sq time" aria-hidden="true">◷</span><div><h3>Horloges du monde</h3><p>L&#x27;heure de plusieurs villes, et le créneau commun pour une réunion.</p></div></div>
-      <div class="tool reveal" style="--d:100ms"><span class="sq system" aria-hidden="true">#</span><div><h3>Empreinte de fichier</h3><p>SHA-256, SHA-1, MD5 : vérifier qu&#x27;un fichier téléchargé est intact.</p></div></div>
-      <div class="tool reveal" style="--d:150ms"><span class="sq system" aria-hidden="true">✱</span><div><h3>Mots de passe</h3><p>Mots et phrases de passe générés sur le PC. Rien n&#x27;est enregistré.</p></div></div>
-      <div class="tool reveal" style="--d:0ms"><span class="sq system" aria-hidden="true">↗</span><div><h3>Lanceur</h3><p>Tes dossiers, fichiers et programmes favoris, à un clic ou à Ctrl + K.</p></div></div>
-      <div class="tool reveal" style="--d:50ms"><span class="sq system" aria-hidden="true">≈</span><div><h3>Convertisseur</h3><p>Longueurs, masses, températures, octets… onze familles d&#x27;unités.</p></div></div>
-      <div class="tool reveal" style="--d:100ms"><span class="sq system" aria-hidden="true">&gt;_</span><div><h3>Terminal</h3><p>Calculs, graphes, conversions, dates, et des commandes pour piloter l&#x27;app.</p></div></div>
+      <div class="tool reveal" style="--d:0ms"><span class="sq time" aria-hidden="true">CM</span><div><h3>Chrono &amp; minuteur</h3><p>Chronomètre avec tours horodatés, minuteur personnalisable et compte à rebours simple. Sonne même si l&#x27;app est fermée.</p><div class="tags"><span>Notifications</span></div></div></div>
+      <div class="tool reveal" style="--d:50ms"><span class="sq time" aria-hidden="true">PO</span><div><h3>Pomodoro</h3><p>Cycles de concentration et de pause, durées personnalisables. Une notification à chaque changement de phase.</p><div class="tags"><span>Notifications</span></div></div></div>
+      <div class="tool reveal" style="--d:100ms"><span class="sq time" aria-hidden="true">RA</span><div><h3>Rappels</h3><p>À une heure précise ou personnalisée, avec répétition quotidienne possible. Reprogrammés automatiquement après un redémarrage du téléphone.</p><div class="tags"><span>Notifications</span></div></div></div>
+      <div class="tool reveal" style="--d:150ms"><span class="sq time" aria-hidden="true">TÂ</span><div><h3>Tâches</h3><p>Importance et échéance optionnelle, triées automatiquement par urgence. Sans compte. Une notification à l&#x27;échéance, seulement pour les tâches datées.</p><div class="tags"><span>Notifications</span></div></div></div>
+      <div class="tool reveal" style="--d:0ms"><span class="sq time" aria-hidden="true">SÉ</span><div><h3>Séries</h3><p>Tiens une habitude chaque jour. Un objectif peut se valider tout seul via le minuteur, le Pomodoro ou tes tâches. Un rapport de la semaine écrit en clair, et un widget pour valider le jour sans ouvrir l&#x27;app.</p></div></div>
+      <div class="tool reveal" style="--d:50ms"><span class="sq time" aria-hidden="true">ÉV</span><div><h3>Événements</h3><p>Un « J-N » toujours à jour vers une date à venir, avec répétition annuelle possible. Parfait pour les anniversaires : la date se recalcule chaque année.</p><div class="tags"><span>Notifications</span></div></div></div>
     </div>
-    <h3 class="reveal" style="margin-top:40px;font:900 13px/1 var(--font-ui);letter-spacing:.12em;text-transform:uppercase">Et ceux que tu connais déjà sur Android</h3>
-    <div class="also reveal"><span>Chrono &amp; minuteur</span><span>Pomodoro</span><span>Tâches</span><span>Rappels</span><span>Événements</span><span>Séries</span><span>Notes rapides</span><span>Presse-papiers</span><span>Calculatrice</span><span>QR &amp; texte</span><span>Dictaphone</span><span>Tableau blanc</span><span>Palette</span><span>Morse</span><span>Tirage au sort</span><span>Infos appareil</span><span>Scanneur réseau</span><span>Métronome</span><span>Sonomètre</span><span>Boîte à outils texte</span></div>
+    <h3 class="cat-head reveal"><i style="background:var(--cat-system)"></i>Système &amp; données <small>12</small></h3>
+    <div class="tools-grid">
+      <div class="tool reveal" style="--d:0ms"><span class="sq system" aria-hidden="true">CA</span><div><h3>Calculatrice</h3><p>Mémoire (M+ / M−), pourcentage et historique de session. Fonctionne sans réseau.</p></div></div>
+      <div class="tool reveal" style="--d:50ms"><span class="sq system" aria-hidden="true">BO</span><div><h3>Boîte à outils texte</h3><p>Base64, empreintes MD5/SHA, formatage JSON et conversion d&#x27;unités. Tout se calcule sur l&#x27;appareil.</p></div></div>
+      <div class="tool reveal" style="--d:100ms"><span class="sq system" aria-hidden="true">QR</span><div><h3>QR &amp; texte</h3><p>Scanne un code, génère le tien, ou extrais le texte d&#x27;une photo. Aucune photo prise ni envoyée : l&#x27;image est lue en direct.</p><div class="tags"><span>Caméra</span></div></div></div>
+      <div class="tool reveal" style="--d:150ms"><span class="sq system" aria-hidden="true">PR</span><div><h3>Presse-papiers</h3><p>Historique de ce que tu copies, avec épinglage et recherche. Garde ce que tu copies pendant que l&#x27;app est ouverte.</p><div class="tags"><span>Bêta</span></div></div></div>
+      <div class="tool reveal" style="--d:0ms"><span class="sq system" aria-hidden="true">NR</span><div><h3>Notes rapides</h3><p>Capture une idée en quelques secondes : texte brut, tout reste sur le téléphone. Ajoutable aussi depuis l&#x27;accueil.</p></div></div>
+      <div class="tool reveal" style="--d:50ms"><span class="sq system" aria-hidden="true">PA</span><div><h3>Palette</h3><p>Extrais les couleurs dominantes d&#x27;une photo, puis exporte-les en image. Nombre de couleurs, format HEX/RGB et mise en page réglables.</p></div></div>
+      <div class="tool reveal" style="--d:100ms"><span class="sq system" aria-hidden="true">TS</span><div><h3>Tirage au sort</h3><p>Dés jusqu&#x27;au d100, pile ou face, nombres, listes, roue de la fortune et équipes. Historique des tirages inclus.</p></div></div>
+      <div class="tool reveal" style="--d:150ms"><span class="sq system" aria-hidden="true">MO</span><div><h3>Morse</h3><p>Traduit du texte en morse, en son ou en flash, et décode les flashs ou bips détectés. Les permissions ne sont demandées que pour la détection.</p><div class="tags"><span>Caméra ou micro</span></div></div></div>
+      <div class="tool reveal" style="--d:0ms"><span class="sq system" aria-hidden="true">IA</span><div><h3>Infos appareil</h3><p>RAM, stockage, batterie, écran, processeur, réseau — les infos techniques de ton téléphone. Lecture seule.</p></div></div>
+      <div class="tool reveal" style="--d:50ms"><span class="sq system" aria-hidden="true">SR</span><div><h3>Scanneur réseau</h3><p>IP locale, passerelle, appareils Wi-Fi et Bluetooth à proximité, ports ouverts. Sonde uniquement ton réseau local.</p><div class="tags"><span>Internet</span><span>Bluetooth</span></div></div></div>
+      <div class="tool reveal" style="--d:100ms"><span class="sq system" aria-hidden="true">TV</span><div><h3>Test de vitesse</h3><p>Débit descendant, montant et latence, avec résultats archivés localement. Tes résultats restent consultables dans l&#x27;historique.</p><div class="tags"><span>Internet</span></div></div></div>
+      <div class="tool reveal" style="--d:150ms"><span class="sq system" aria-hidden="true">39</span><div><h3>Vectorbit 39</h3><p>Code un message avec une clé basée sur l&#x27;heure et un secret partagé, à décoder par un ami. Un code pour s&#x27;amuser, pas pour protéger des données sensibles.</p><div class="tags"><span>Bêta</span></div></div></div>
+    </div>
+    <h3 class="cat-head reveal"><i style="background:var(--cat-audio)"></i>Audio <small>5</small></h3>
+    <div class="tools-grid">
+      <div class="tool reveal" style="--d:0ms"><span class="sq audio" aria-hidden="true">ÉG</span><div><h3>Égaliseur</h3><p>5 bandes réglables, presets, tes propres réglages et un Sound Boost. Agit sur le son global du téléphone, via l&#x27;effet système. Aucune permission de micro.</p></div></div>
+      <div class="tool reveal" style="--d:50ms"><span class="sq audio" aria-hidden="true">DI</span><div><h3>Dictaphone</h3><p>Enregistre, renomme et réécoute des mémos vocaux. Les enregistrements restent sur ton téléphone.</p><div class="tags"><span>Micro</span></div></div></div>
+      <div class="tool reveal" style="--d:100ms"><span class="sq audio" aria-hidden="true">MÉ</span><div><h3>Métronome</h3><p>Repère visuel et sonore, tempo réglable ou tapé au doigt, subdivisions en croches. Aucune permission.</p></div></div>
+      <div class="tool reveal" style="--d:150ms"><span class="sq audio" aria-hidden="true">SS</span><div><h3>Son spatial</h3><p>Largeur stéréo, balance, réverbération et basses. Se perçoit surtout au casque.</p></div></div>
+      <div class="tool reveal" style="--d:0ms"><span class="sq audio" aria-hidden="true">SO</span><div><h3>Sonomètre</h3><p>Mesure le niveau sonore ambiant en direct, calibrable pour affiner la précision. Mesuré uniquement pendant que l&#x27;écran est ouvert, rien n&#x27;est enregistré.</p><div class="tags"><span>Micro</span></div></div></div>
+    </div>
+    <h3 class="cat-head reveal"><i style="background:var(--cat-screen)"></i>Écran &amp; capteurs <small>3</small></h3>
+    <div class="tools-grid">
+      <div class="tool reveal" style="--d:0ms"><span class="sq screen" aria-hidden="true">BO</span><div><h3>Boîte à outils</h3><p>Niveau à bulle, lampe, loupe, boussole, luxmètre, baromètre et détecteur de métaux. La caméra ne sert qu&#x27;à la loupe : rien n&#x27;est photographié.</p><div class="tags"><span>Caméra</span></div></div></div>
+      <div class="tool reveal" style="--d:50ms"><span class="sq screen" aria-hidden="true">SI</span><div><h3>Sismographe</h3><p>Détecte vibrations et petits chocs via l&#x27;accéléromètre, tracé en direct et journal des secousses. Utilise les capteurs de mouvement, sans aucune permission.</p><div class="tags"><span>Aucune permission</span></div></div></div>
+      <div class="tool reveal" style="--d:100ms"><span class="sq screen" aria-hidden="true">TB</span><div><h3>Tableau blanc</h3><p>Un calepin de dessin libre : dessine, annote et exporte, sans compte ni cloud. Exporte ton dessin en image.</p></div></div>
+    </div>
   </div>
 </section>
 
-<section id="telephone" class="w-sec-alt">
+<section id="vie-privee" class="w-sec-alt">
   <div class="wrap">
     <div class="section-head reveal">
-      <span class="kicker">Avec ton téléphone</span>
-      <h2>Ton téléphone et ton PC se parlent</h2>
-      <p>Tu associes les deux une fois, en scannant un QR. Ensuite tout passe par ton Wi-Fi, chiffré, sans compte et sans passer par Internet.</p>
+      <span class="kicker">Vie privée</span>
+      <h2>Tes données restent chez toi</h2>
     </div>
     <div class="phone-grid">
-      <div class="win-card reveal"><h3>Tes données des deux côtés</h3><p>Notes, tâches, séries, événements et rappels synchronisés, modifications et suppressions comprises.</p></div>
-      <div class="win-card reveal" style="--d:60ms"><h3>Photos et fichiers</h3><p>Du téléphone vers le PC : « Partager › Envoyer au PC ». Du PC vers le téléphone : clic droit › Envoyer vers › Vectorem.</p></div>
-      <div class="win-card reveal" style="--d:120ms"><h3>Télécommande</h3><p>Lecture, volume, diapo suivante, verrouillage du PC, depuis l'onglet PC du téléphone.</p></div>
-      <div class="win-card reveal" style="--d:180ms"><h3>Le PC dans ta poche</h3><p>Lancer un Pomodoro, l'anti-veille ou une appli du Lanceur sur le PC, depuis le téléphone.</p></div>
+      <div class="win-card reveal"><h3>Sans compte</h3><p>Rien à créer : ni e-mail, ni mot de passe.</p></div>
+      <div class="win-card reveal" style="--d:60ms"><h3>Sur ton téléphone</h3><p>Notes, tâches, séries et enregistrements sont stockés sur l'appareil. Tu peux les exporter dans un fichier de sauvegarde.</p></div>
+      <div class="win-card reveal" style="--d:120ms"><h3>Permission par outil</h3><p>Micro, caméra ou notifications sont demandés par l'outil qui en a besoin. Un refus ne bloque que cet outil.</p></div>
+      <div class="win-card reveal" style="--d:180ms"><h3>Pas de pub imposée</h3><p>Des vidéos facultatives débloquent certains outils. Tu choisis de les regarder ou non.</p></div>
     </div>
+    <p class="dl-note reveal" style="margin-top:18px">Deux fonctions passent par un service extérieur, seulement quand tu les lances : le Test de vitesse (Cloudflare) et les vidéos facultatives (Google AdMob). <a href="/confidentialite/">Politique de confidentialité</a></p>
   </div>
 </section>
 
-<section id="installer">
+<section id="pc">
   <div class="wrap">
-    <div class="section-head reveal">
-      <span class="kicker">Installer</span>
-      <h2>Trois étapes, une minute</h2>
-    </div>
-    <div class="steps">
-      <div class="step reveal"><div><h3>Télécharge l'installateur</h3><p>Le bouton en haut de la page. Un seul fichier .exe.</p></div></div>
-      <div class="step reveal"><div><h3>Lance-le</h3><p>Installation pour ton compte seulement, sans droits d'administrateur. Un raccourci arrive dans le menu Démarrer et sur le bureau.</p></div></div>
-      <div class="step reveal"><div><h3>Choisis tes outils</h3><p>Trois écrans au premier lancement : ce que tu fais souvent, et Vectorem active les bons outils.</p></div></div>
-    </div>
-    <div class="warn-box reveal"><b>Avertissement de Windows :</b> l'aperçu n'est pas encore signé, Windows peut donc afficher « Windows a protégé votre ordinateur ». Clique sur « Informations complémentaires », puis « Exécuter quand même ». Tu peux vérifier le fichier avec son empreinte SHA-256, affichée sous le bouton.</div>
-    <div class="req reveal">
-      <div><b>Système</b>Windows 10 ou 11, 64 bits</div>
-      <div><b>Installateur</b>Un fichier .exe d'environ 155 Mo</div>
-      <div><b>Mises à jour</b>Réglages › À propos</div>
-      <div><b>Désinstaller</b>Paramètres Windows › Applications</div>
+    <div class="pc-band reveal">
+      <div>
+        <span class="kicker">Avec ton PC</span>
+        <h2 style="font-size:clamp(22px,3vw,30px);margin-top:6px">Ton téléphone et ton PC se parlent</h2>
+        <p style="margin-top:8px">Associe Vectorem pour Windows en scannant un QR : notes, tâches et séries synchronisées, photos envoyées au PC, télécommande. Par ton Wi-Fi, chiffré, sans compte.</p>
+      </div>
+      <a class="btn btn-primary" href="/windows/">Vectorem pour Windows</a>
     </div>
   </div>
 </section>
@@ -685,12 +697,12 @@ kbd{font:700 12px/1 var(--font-mono);padding:2px 5px;border:var(--stroke-hair);b
       <h2>Bon à savoir</h2>
     </div>
     <div class="faq">
-      <details class="reveal"><summary>Faut-il un compte ?</summary><p>Non. Rien à créer, rien à connecter.</p></details>
-      <details class="reveal"><summary>Où sont mes données ?</summary><p>Sur ton PC, dans ton dossier utilisateur (%APPDATA%&#92;Vectorem). Elles ne partent pas sur un serveur. L'app vérifie au plus une fois par jour s'il existe une nouvelle version ; tu peux couper cette vérification dans les Réglages.</p></details>
-      <details class="reveal"><summary>Faut-il l'app Android ?</summary><p>Non, Vectorem pour Windows marche seul. Avec le téléphone associé, tu gagnes la synchronisation, l'envoi de fichiers et la télécommande.</p></details>
-      <details class="reveal"><summary>Pourquoi Windows affiche un avertissement ?</summary><p>Parce que l'installateur de l'aperçu n'est pas encore signé par un certificat. C'est prévu avant la version publique.</p></details>
-      <details class="reveal"><summary>Et sur Mac ou Linux ?</summary><p>Pas pour l'instant. Windows d'abord.</p></details>
-      <details class="reveal"><summary>Comment désinstaller ?</summary><p>Paramètres Windows › Applications › Vectorem. Tes données restent dans %APPDATA%&#92;Vectorem tant que tu ne supprimes pas ce dossier.</p></details>
+      <details class="reveal"><summary>Faut-il un compte ?</summary><p>Non. Tu installes, tu choisis tes outils, c'est tout.</p></details>
+      <details class="reveal"><summary>Quelle version d'Android ?</summary><p>Android 8.0 ou plus récent.</p></details>
+      <details class="reveal"><summary>Et si je change de téléphone ?</summary><p>Réglages › Données & sécurité : exporte une sauvegarde dans un fichier, puis importe-la sur le nouveau téléphone.</p></details>
+      <details class="reveal"><summary>Il y a des pubs ?</summary><p>Aucune pub n'est imposée. Des vidéos facultatives débloquent certains outils, seulement si tu choisis de les regarder.</p></details>
+      <details class="reveal"><summary>Pourquoi « bêta » ?</summary><p>Vectorem change vite et des testeurs l'utilisent chaque jour. Il peut rester des bugs : écris à support@vectorem.app, chaque message est lu.</p></details>
+      <details class="reveal"><summary>Faut-il la version PC ?</summary><p>Non, l'app Android marche seule. Le PC ajoute la synchronisation, l'envoi de fichiers et la télécommande.</p></details>
     </div>
   </div>
 </section>
@@ -699,8 +711,8 @@ kbd{font:700 12px/1 var(--font-mono);padding:2px 5px;border:var(--stroke-hair);b
   <div class="wrap">
     <h2 class="reveal">Tous tes outils. Au même endroit.<br><span style="font-size:.6em">Et ce n'est que la bêta.</span></h2>
     <div class="ctas reveal" style="--d:100ms">
-      <a class="btn btn-primary" href="#telecharger">Télécharger pour Windows</a>
-      <a class="btn btn-ghost" href="/android/">Sur Android</a>
+      <a class="btn btn-primary" href="https://play.google.com/store/apps/details?id=com.vectorem.app" target="_blank" rel="noopener">Google Play</a>
+      <a class="btn btn-ghost" href="/#essayer">Essayer les démos</a>
     </div>
   </div>
 </section>
@@ -710,8 +722,8 @@ kbd{font:700 12px/1 var(--font-mono);padding:2px 5px;border:var(--stroke-hair);b
 <footer>
   <div class="wrap">
     <div class="foot-meta">
-      <span>© 2026 Vectorem · Windows · aperçu</span>
-      <span><a href="/">Accueil</a> · <a href="/confidentialite/">Politique de confidentialité</a> · <a href="mailto:support@vectorem.app">Contact</a> · <a href="/en/windows/">English</a></span>
+      <span>© 2026 Vectorem · Android · bêta</span>
+      <span><a href="/">Accueil</a> · <a href="/windows/">Windows</a> · <a href="/confidentialite/">Politique de confidentialité</a> · <a href="mailto:support@vectorem.app">Contact</a> · <a href="/en/android/">English</a></span>
     </div>
   </div>
 </footer>
@@ -720,19 +732,15 @@ kbd{font:700 12px/1 var(--font-mono);padding:2px 5px;border:var(--stroke-hair);b
 (function(){
   var $ = function(s){ return document.querySelector(s); };
   var root = document.documentElement;
-  // Thème : même mémoire que la page d'accueil.
   $('#themeToggle').addEventListener('click', function(){
     var dark = root.getAttribute('data-theme') !== 'dark';
     root.setAttribute('data-theme', dark ? 'dark' : 'light');
     try { localStorage.setItem('vectorem-theme', dark ? 'dark' : 'light'); } catch (e) {}
   });
-  // En-tête compact au défilement.
   var head = $('#siteHeader');
   addEventListener('scroll', function(){ head.classList.toggle('compact', scrollY > 40); }, {passive:true});
-  // Apparition au défilement.
   var io = 'IntersectionObserver' in window ? new IntersectionObserver(function(es){ es.forEach(function(x){ if (x.isIntersecting) { x.target.classList.add('in'); io.unobserve(x.target); } }); }, {rootMargin:'0px 0px -8% 0px'}) : null;
   document.querySelectorAll('.reveal').forEach(function(el){ io ? io.observe(el) : el.classList.add('in'); });
-  // Captures.
   var imgs = document.querySelectorAll('#winShot img'), tabs = document.querySelectorAll('#winTabs .chip'), cap = $('#winCap');
   tabs.forEach(function(b){ b.addEventListener('click', function(){
     var i = +b.dataset.i;
@@ -740,20 +748,6 @@ kbd{font:700 12px/1 var(--font-mono);padding:2px 5px;border:var(--stroke-hair);b
     tabs.forEach(function(t){ t.setAttribute('aria-pressed', t === b ? 'true' : 'false'); });
     cap.textContent = b.dataset.cap;
   }); });
-  // Téléchargement : actif seulement si version.json donne un lien (sinon « Bientôt »).
-  fetch('../version.json', {cache:'no-store'}).then(function(r){ return r.json(); }).then(function(v){
-    var w = v && v.windows; if (!w || !w.download) return;
-    var btn = $('#dlBtn');
-    btn.classList.remove('soon'); btn.removeAttribute('aria-disabled');
-    btn.href = w.download;
-    btn.textContent = 'Télécharger pour Windows';
-    var meta = $('#dlMeta');
-    var add = function(t){ var s = document.createElement('span'); s.className = 'badge'; s.textContent = t; meta.appendChild(s); };
-    add('v' + w.version);
-    if (w.size) add(Math.round(w.size / 1048576) + ' Mo');
-    $('#dlNote').textContent = w.notes || '';
-    if (w.sha256) { var sh = $('#dlSha'); sh.hidden = false; sh.textContent = 'SHA-256 : ' + w.sha256; }
-  }).catch(function(){});
 })();
 </script>
 </body>

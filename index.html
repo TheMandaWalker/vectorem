@@ -3,10 +3,10 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Vectorem — plus de 25 outils, un seul tableau de bord</title>
+<title>Vectorem — tous tes outils, au même endroit</title>
 <meta name="description" content="Vectorem regroupe plus de 25 outils pour Android — minuteur, rappels, séries d'habitudes, égaliseur, QR, roue de la fortune — dans une seule app modulaire, sans compte. Essaie-les ici.">
 <meta name="theme-color" content="#101010">
-<meta property="og:title" content="Vectorem — plus de 25 outils, un seul tableau de bord">
+<meta property="og:title" content="Vectorem — tous tes outils, au même endroit">
 <meta property="og:description" content="Une boîte à outils Android modulaire : tu actives ce que tu utilises, tes données restent sur ton téléphone.">
 <meta property="og:type" content="website">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 108 108'%3E%3Crect width='108' height='108' fill='%23101010'/%3E%3Cpath d='M58 30L86 58L58 86L30 58Z' fill='none' stroke='%23F5F1E8' stroke-width='3.5'/%3E%3Cpath fill-rule='evenodd' fill='%23FFD426' d='M54 26L82 54L54 82L26 54ZM54 42L66 54L54 66L42 54Z'/%3E%3Cpath d='M54 26L82 54L54 82L26 54ZM54 42L66 54L54 66L42 54Z' fill='none' stroke='%23F5F1E8' stroke-width='4.5'/%3E%3C/svg%3E">
@@ -249,6 +249,16 @@ section{padding:72px 0}
 .marquee{border-top:var(--stroke-heavy);border-bottom:var(--stroke-heavy);background:var(--bg-block-sunken);overflow:hidden;margin-top:40px}
 .marquee-track{display:flex;width:max-content;animation:scroll 46s linear infinite}
 .marquee:hover .marquee-track{animation-play-state:paused}
+.figures{background:#101010;color:#F5F1E8;border-bottom:4px solid var(--brand);padding:44px 0 36px}
+.figures .kicker{color:#101010;background:var(--brand);border-color:#F5F1E8}
+.fig-grid{margin-top:20px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,150px),1fr));gap:2px;background:rgba(245,241,232,.35);border:3px solid #F5F1E8}
+.fig{padding:18px 16px 16px;background:#101010;min-width:0}
+.fig .num{display:block;font:900 clamp(40px,5vw,56px)/1 var(--font-display);color:var(--brand);letter-spacing:-.02em}
+.fig .num.zero{color:#F5F1E8}
+.fig .cap{display:block;margin-top:8px;font:800 12px/1.25 var(--font-ui);letter-spacing:.08em;text-transform:uppercase}
+.fig small{display:block;margin-top:4px;font-size:12px;line-height:1.35;color:#B8B2A4}
+.fig-note{margin-top:14px;font-size:12.5px;color:#B8B2A4}
+.fig-note a{color:#F5F1E8}
 .marquee span{display:inline-flex;align-items:center;gap:14px;padding:16px 22px;font:900 22px/1 var(--font-display);text-transform:uppercase;letter-spacing:-.01em;white-space:nowrap}
 .marquee span::after{content:"";width:12px;height:12px;background:var(--c,var(--brand));border:var(--stroke-hair);transform:rotate(45deg)}
 @keyframes scroll{to{transform:translateX(-50%)}}
@@ -484,13 +494,13 @@ footer .wrap{display:flex;flex-direction:column;gap:24px}
       <span class="wordmark">Vectorem</span>
     </a>
     <nav class="site-nav" id="siteNav" aria-label="Sections">
+      <a href="/android/">Android</a>
+      <a href="/windows/">Windows</a>
       <a href="#film">Film</a>
-      <a href="#windows">Windows</a>
       <a href="#essayer">Essayer</a>
       <a href="#outils">Outils</a>
       <a href="#series">Séries</a>
       <a href="#confidentialite">Confidentialité</a>
-      <a href="#personnalisation">Personnaliser</a>
     </nav>
     <a class="btn btn-primary btn-sm head-cta" href="https://play.google.com/store/apps/details?id=com.vectorem.app" target="_blank" rel="noopener">Google Play</a>
     <a class="icon-btn lang-btn" href="/en/" hreflang="en" lang="en" aria-label="English version">EN</a>
@@ -512,11 +522,11 @@ footer .wrap{display:flex;flex-direction:column;gap:24px}
   <div class="wrap">
     <div>
       <div class="eyebrow-row reveal">
-        <span class="badge live"><span class="dot"></span> Android</span>
+        <a class="badge live" href="/android/" style="text-decoration:none"><span class="dot"></span> Android</a>
         <span class="badge">Sans compte</span>
         <span class="badge">Données locales</span>
         <span class="badge">Bêta</span>
-        <a class="badge soon" href="#windows" style="text-decoration:none">Windows · bientôt</a>
+        <a class="badge soon" href="/windows/" style="text-decoration:none">Windows · bientôt</a>
       </div>
       <h1 class="reveal" style="--d:80ms">Une seule app pour
         <span class="rot" aria-live="polite"><span class="rot-inner"><span class="rot-word" id="rotWord">mixer le son</span></span></span>
@@ -525,11 +535,6 @@ footer .wrap{display:flex;flex-direction:column;gap:24px}
       <div class="ctas reveal" style="--d:240ms">
         <a class="btn btn-primary" href="https://play.google.com/store/apps/details?id=com.vectorem.app" target="_blank" rel="noopener">Google Play <svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14" /> <path d="m12 5 7 7-7 7" /></svg></a>
         <a class="btn btn-ghost" href="#essayer">Essayer les démos</a>
-      </div>
-      <div class="stat-row reveal" style="--d:320ms">
-        <div class="stat"><span class="num" data-count="26">0</span><span class="cap">Outils</span></div>
-        <div class="stat"><span class="num" data-count="4">0</span><span class="cap">Catégories</span></div>
-        <div class="stat"><span class="num" data-count="0">0</span><span class="cap">Compte requis</span></div>
       </div>
     </div>
 
@@ -606,6 +611,22 @@ footer .wrap{display:flex;flex-direction:column;gap:24px}
 </section>
 
 <div class="marquee" aria-hidden="true"><div class="marquee-track" id="marquee"></div></div>
+
+<!-- ================= CHIFFRES ================= -->
+<section class="figures" id="chiffres" aria-label="Vectorem en chiffres">
+  <div class="wrap">
+    <span class="kicker">Vectorem en chiffres</span>
+    <div class="fig-grid reveal">
+      <div class="fig"><span class="num" data-count="26">0</span><span class="cap">Outils Android</span><small>Dans une seule app</small></div>
+      <div class="fig"><span class="num" data-count="19">0</span><span class="cap">Outils en plus sur PC</span><small>Windows, en aperçu</small></div>
+      <div class="fig"><span class="num zero" data-count="0">0</span><span class="cap">Donnée récoltée par Vectorem</span><small>Tout reste sur tes appareils</small></div>
+      <div class="fig"><span class="num zero" data-count="0">0</span><span class="cap">Compte à créer</span><small>Ni e-mail, ni mot de passe</small></div>
+      <div class="fig"><span class="num zero" data-count="0">0</span><span class="cap">Pub imposée</span><small>Les vidéos sont facultatives</small></div>
+      <div class="fig"><span class="num" data-count="4">0</span><span class="cap">Catégories</span><small>Temps, audio, écran, système</small></div>
+    </div>
+    <p class="fig-note">Les pubs facultatives (Google AdMob) et le Test de vitesse (Cloudflare) passent par ces services, seulement quand tu les lances. Détails dans la <a href="/confidentialite/">politique de confidentialité</a>.</p>
+  </div>
+</section>
 
 <!-- ================= FILM ================= -->
 <section id="film" style="padding-bottom:24px">
@@ -882,10 +903,10 @@ footer .wrap{display:flex;flex-direction:column;gap:24px}
     <span class="fl o" style="--s:80px;left:88%;top:8%"></span>
   </div>
   <div class="wrap">
-    <h2 class="reveal">Un tableau de bord. Plus de vingt-cinq outils. Aucun de trop.</h2>
+    <h2 class="reveal">Tous tes outils. Au même endroit.<br><span style="font-size:.6em">Et ce n'est que la bêta.</span></h2>
     <div class="ctas reveal" style="--d:100ms">
       <a class="btn btn-primary" href="https://play.google.com/store/apps/details?id=com.vectorem.app" target="_blank" rel="noopener">Google Play <svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14" /> <path d="m12 5 7 7-7 7" /></svg></a>
-      <a class="btn btn-ghost" href="#essayer">Rejouer la démo</a>
+      <a class="btn btn-ghost" href="/android/">Tout sur la version Android</a>
     </div>
   </div>
 </section>
@@ -984,7 +1005,8 @@ $$('button', densitySeg).forEach(function(b){
 /* ---------- en-tête, progression, scrollspy ---------- */
 var header = $('#siteHeader'), progress = $('#progress');
 var navLinks = $$('#siteNav a');
-var spyTargets = navLinks.map(function(a){ return $(a.getAttribute('href')); });
+// Seuls les liens d'ancre (#…) suivent le défilement ; /android/ et /windows/ sont d'autres pages.
+var spyTargets = navLinks.map(function(a){ var h = a.getAttribute('href'); return h.charAt(0) === '#' ? $(h) : null; });
 function onScroll(){
   var y = window.scrollY, h = document.documentElement.scrollHeight - innerHeight;
   progress.style.transform = 'scaleX(' + (h > 0 ? y / h : 0) + ')';

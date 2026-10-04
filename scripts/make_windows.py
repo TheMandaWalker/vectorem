@@ -143,11 +143,11 @@ def build(lang):
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>{T("Vectorem pour Windows — tous tes petits outils, une seule app", "Vectorem for Windows — all your small tools, one app")}</title>
+<title>{T("Vectorem pour Windows — tous tes outils, au même endroit", "Vectorem for Windows — all your tools, in one place")}</title>
 <meta name="description" content="{e(T("Vectorem sur ton PC : PDF, captures, renommage en lot, lecteur vidéo, minuteur, notes, tâches et plus, dans une seule fenêtre. Sans compte, données sur ton PC. Aperçu.", "Vectorem on your PC: PDFs, screenshots, batch rename, video player, timer, notes, tasks and more, in one window. No account, data on your PC. Preview."))}">
 <meta name="theme-color" content="#101010">
 <meta property="og:title" content="{e(T("Vectorem pour Windows", "Vectorem for Windows"))}">
-<meta property="og:description" content="{e(T("Tous tes petits outils. Une seule app. Maintenant sur ton PC.", "All your small tools. One app. Now on your PC."))}">
+<meta property="og:description" content="{e(T("Tous tes outils. Au même endroit. Maintenant sur ton PC.", "All your tools. In one place. Now on your PC."))}">
 <meta property="og:type" content="website">
 <link rel="icon" href="{FAVICON}">
 <link rel="stylesheet" href="{up}fonts.css">
@@ -190,7 +190,7 @@ def build(lang):
   <div class="wrap">
     <div>
       <div class="eyebrow-row"><span class="badge warn">{T("Aperçu", "Preview")}</span><span class="badge">Windows 10 · 11</span></div>
-      <h1>{T("Tous tes petits outils.", "All your small tools.")}<br><em>{T("Une seule app.", "One app.")}</em></h1>
+      <h1>{T("Tous tes outils.", "All your tools.")}<br><em>{T("Au même endroit.", "In one place.")}</em></h1>
       <p class="lead">{T("Vectorem arrive sur ton PC : PDF, captures d'écran, fichiers en lot, lecteur vidéo, minuteur, notes, tâches… dans une seule fenêtre. Tu actives ce qui te sert, sans compte, et tes données restent sur ton ordinateur.", "Vectorem comes to your PC: PDFs, screenshots, batch files, video player, timer, notes, tasks… in one window. Turn on what you use, no account, and your data stays on your computer.")}</p>
       <div class="dl-box" id="telecharger">
         <a class="btn btn-primary soon" id="dlBtn" href="#telecharger" aria-disabled="true">{T("Bientôt disponible", "Coming soon")}</a>
@@ -306,10 +306,10 @@ def build(lang):
 
 <section class="cta-final">
   <div class="wrap">
-    <h2 class="reveal">{T("Tous tes petits outils. Une seule app.", "All your small tools. One app.")}<br><span style="font-size:.6em">{T("Et ce n'est que la bêta.", "And it's only the beta.")}</span></h2>
+    <h2 class="reveal">{T("Tous tes outils. Au même endroit.", "All your tools. In one place.")}<br><span style="font-size:.6em">{T("Et ce n'est que la bêta.", "And it's only the beta.")}</span></h2>
     <div class="ctas reveal" style="--d:100ms">
       <a class="btn btn-primary" href="#telecharger">{T("Télécharger pour Windows", "Download for Windows")}</a>
-      <a class="btn btn-ghost" href="https://play.google.com/store/apps/details?id=com.vectorem.app" target="_blank" rel="noopener">{T("Sur Android", "On Android")}</a>
+      <a class="btn btn-ghost" href="{"/android/" if fr else "/en/android/"}">{T("Sur Android", "On Android")}</a>
     </div>
   </div>
 </section>
@@ -370,7 +370,8 @@ def build(lang):
 """
 
 
-for lang, path in (("fr", "windows/index.html"), ("en", "en/windows/index.html")):
+if __name__ == "__main__":
+  for lang, path in (("fr", "windows/index.html"), ("en", "en/windows/index.html")):
     out = os.path.join(ROOT, path)
     os.makedirs(os.path.dirname(out), exist_ok=True)
     open(out, "w", encoding="utf-8").write(build(lang))
