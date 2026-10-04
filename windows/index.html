@@ -250,7 +250,7 @@ section{padding:72px 0}
 .marquee-track{display:flex;width:max-content;animation:scroll 46s linear infinite}
 .marquee:hover .marquee-track{animation-play-state:paused}
 .figures{background:#101010;color:#F5F1E8;border-bottom:4px solid var(--brand);padding:44px 0 36px}
-.figures .kicker{color:var(--brand)}
+.figures .kicker{color:#101010;background:var(--brand);border-color:#F5F1E8}
 .fig-grid{margin-top:20px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,150px),1fr));gap:2px;background:rgba(245,241,232,.35);border:3px solid #F5F1E8}
 .fig{padding:18px 16px 16px;background:#101010;min-width:0}
 .fig .num{display:block;font:900 clamp(40px,5vw,56px)/1 var(--font-display);color:var(--brand);letter-spacing:-.02em}
@@ -473,6 +473,28 @@ footer .wrap{display:flex;flex-direction:column;gap:24px}
 .foot-meta{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;color:var(--text-muted);font:800 11px/1.5 var(--font-ui);letter-spacing:.12em;text-transform:uppercase;border-top:var(--stroke-hair);padding-top:20px}
 .foot-meta a{text-underline-offset:3px}
 
+/* ============ ANIMATIONS AU DÉFILEMENT (motion.js, partagé avec /android et /windows) ============ */
+.section-head.reveal .kicker{clip-path:inset(-4px 100% -4px -4px);transition:clip-path .6s var(--ease-snap) calc(var(--d,0ms) + 120ms)}
+.section-head.reveal.in .kicker{clip-path:inset(-4px -4px -4px -4px)}
+.section-head h2::after{content:"";display:block;width:72px;height:8px;margin-top:12px;background:var(--brand);border:2px solid var(--border-color);transform:scaleX(0);transform-origin:0 50%;transition:transform .8s var(--ease-spring) calc(var(--d,0ms) + 260ms)}
+.section-head.in h2::after{transform:none}
+.motion-on .win-grid > .reveal:not(.in),.motion-on .phone-grid > .reveal:not(.in),.motion-on .tools-grid > .reveal:not(.in){transform:translateY(38px) rotate(-2deg) scale(.95)}
+.motion-on .win-grid > .reveal:nth-child(even):not(.in),.motion-on .phone-grid > .reveal:nth-child(even):not(.in),.motion-on .tools-grid > .reveal:nth-child(even):not(.in){transform:translateY(38px) rotate(2deg) scale(.95)}
+.motion-on .tool.reveal .sq{transition:transform .7s var(--ease-spring) calc(var(--d,0ms) + 220ms)}
+.motion-on .tool.reveal:not(.in) .sq{transform:rotate(-135deg) scale(.3)}
+.motion-on .fig-grid.reveal{transform:none}
+.motion-on .fig-grid .fig{transition:opacity .5s var(--ease-snap) var(--fd,0ms),transform .7s var(--ease-spring) var(--fd,0ms)}
+.motion-on .fig-grid:not(.in) .fig{opacity:0;transform:translateY(46px)}
+.motion-on .steps > .reveal:not(.in){transform:translateX(-48px)}
+.motion-on .faq > .reveal:not(.in){transform:translateX(48px)}
+.motion-on .words .w{display:inline-block;opacity:0;transform:translateY(.7em) rotate(5deg);transition:opacity .45s var(--ease-snap),transform .7s var(--ease-spring);transition-delay:calc(var(--i) * 60ms + 120ms)}
+.motion-on .words.in .w{opacity:1;transform:none}
+@keyframes stamp{0%{opacity:0;transform:rotate(-14deg) scale(1.7)}60%{opacity:1;transform:rotate(1.5deg) scale(.96)}100%{opacity:1;transform:rotate(-1.2deg)}}
+.motion-on .w-hero .eyebrow-row,.motion-on .w-hero h1,.motion-on .w-hero .lead,.motion-on .w-hero .dl-box{animation:pop .7s var(--ease-snap) both}
+.motion-on .w-hero h1{animation-delay:.08s} .motion-on .w-hero .lead{animation-delay:.5s} .motion-on .w-hero .dl-box{animation-delay:.62s}
+.motion-on .w-hero h1 em{animation:stamp .7s var(--ease-snap) .3s both}
+.marquee{transform-origin:50% 50%;will-change:transform}
+
 @media (prefers-reduced-motion: reduce){
   *,*::before,*::after{animation:none !important;transition:none !important;scroll-behavior:auto !important}
   .reveal{opacity:1;transform:none}
@@ -524,6 +546,7 @@ kbd{font:700 12px/1 var(--font-mono);padding:2px 5px;border:var(--stroke-hair);b
 </style>
 </head>
 <body>
+<div class="progress" id="progress" aria-hidden="true"></div>
 <header class="site-header" id="siteHeader">
   <div class="wrap">
     <a class="brand-link" href="/" aria-label="Vectorem — accueil du site">
@@ -716,6 +739,7 @@ kbd{font:700 12px/1 var(--font-mono);padding:2px 5px;border:var(--stroke-hair);b
   </div>
 </footer>
 
+<script src="/motion.js"></script>
 <script>
 (function(){
   var $ = function(s){ return document.querySelector(s); };

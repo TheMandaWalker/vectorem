@@ -165,6 +165,7 @@ def build(lang):
 <style>{site_css()}{PAGE_CSS}</style>
 </head>
 <body>
+<div class="progress" id="progress" aria-hidden="true"></div>
 <header class="site-header" id="siteHeader">
   <div class="wrap">
     <a class="brand-link" href="{home}" aria-label="{T("Vectorem — accueil du site", "Vectorem — site home")}">
@@ -325,6 +326,7 @@ def build(lang):
   </div>
 </footer>
 
+<script src="/motion.js"></script>
 <script>
 (function(){{
   var $ = function(s){{ return document.querySelector(s); }};
