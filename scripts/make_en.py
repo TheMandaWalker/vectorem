@@ -41,7 +41,7 @@ R('aria-label="Changer de thème"', 'aria-label="Change theme"')
 # ---- hero ----
 R('<span class="badge">Sans compte</span>', '<span class="badge">No account</span>')
 R('<span class="badge">Données locales</span>', '<span class="badge">Local data</span>')
-R('<span class="badge">Bêta</span>', '<span class="badge">Beta</span>')
+R('<span class="badge">Disponible</span>', '<span class="badge">Available</span>')
 R('Windows · bientôt</a>', 'Windows · soon</a>')
 R('<h1 class="reveal" style="--d:80ms">Une seule app pour', '<h1 class="reveal" style="--d:80ms">One app to')
 R('id="rotWord">mixer le son</span>', 'id="rotWord">shape your sound</span>')
@@ -225,7 +225,7 @@ R('<a class="btn btn-ghost" href="/android/">Tout sur la version Android</a>', '
 R('<span>Accueil</span></a>', '<span>Home</span></a>')
 R('<span>Outils</span></a>', '<span>Tools</span></a>')
 R('<span>Réglages</span></a>', '<span>Settings</span></a>')
-R('<span>© 2026 Vectorem · Android · bêta · Windows bientôt</span>', '<span>© 2026 Vectorem · Android · beta · Windows soon</span>')
+R('<span>© 2026 Vectorem · Android · Windows bientôt</span>', '<span>© 2026 Vectorem · Android · Windows soon</span>')
 R('<a href="/confidentialite/#en">Politique de confidentialité</a> · <a href="mailto:support@vectorem.app">Contact</a> · <a href="/en/" hreflang="en" lang="en">English</a>', '<a href="/confidentialite/#en">Privacy policy</a> · <a href="mailto:support@vectorem.app">Contact</a> · <a href="/" hreflang="fr" lang="fr">Français</a>')
 R('href="/en/" hreflang="en" lang="en" aria-label="English version">EN</a>', 'href="/" hreflang="fr" lang="fr" aria-label="Version française">FR</a>')
 R('</svg>Chrono</h5>', '</svg>Stopwatch</h5>')
@@ -282,8 +282,8 @@ TOOLS = [
   "{ n: 'Text toolbox', cat: 'system', icon: 'code-xml', d: 'Base64, MD5/SHA hashes, JSON formatting and unit conversion.', tags: [], more: 'Everything is computed on the device.' }"),
  ("{ n: 'QR & texte', cat: 'system', icon: 'qr-code', d: 'Scanne un code, génère le tien, ou extrais le texte d\\'une photo.', tags: ['Caméra'], more: 'Aucune photo prise ni envoyée : l\\'image est lue en direct.' }",
   "{ n: 'QR & text', cat: 'system', icon: 'qr-code', d: 'Scan a code, make your own, or pull the text out of a photo.', tags: ['Camera'], more: 'No photo taken or sent: the image is read live.' }"),
- ("{ n: 'Presse-papiers', cat: 'system', icon: 'clipboard-list', d: 'Historique de ce que tu copies, avec épinglage et recherche.', tags: ['Bêta'], more: 'Garde ce que tu copies pendant que l\\'app est ouverte.' }",
-  "{ n: 'Clipboard', cat: 'system', icon: 'clipboard-list', d: 'History of what you copy, with pinning and search.', tags: ['Beta'], more: 'Keeps what you copy while the app is open.' }"),
+ ("{ n: 'Presse-papiers', cat: 'system', icon: 'clipboard-list', d: 'Historique de ce que tu copies, avec épinglage et recherche.', tags: ['Expérimental'], more: 'Garde ce que tu copies pendant que l\\'app est ouverte.' }",
+  "{ n: 'Clipboard', cat: 'system', icon: 'clipboard-list', d: 'History of what you copy, with pinning and search.', tags: ['Experimental'], more: 'Keeps what you copy while the app is open.' }"),
  ("{ n: 'Notes rapides', cat: 'system', icon: 'sticky-note', d: 'Capture une idée en quelques secondes : texte brut, tout reste sur le téléphone.', tags: [], more: 'Ajoutable aussi depuis l\\'accueil.' }",
   "{ n: 'Quick notes', cat: 'system', icon: 'sticky-note', d: 'Capture an idea in seconds: plain text, everything stays on the phone.', tags: [], more: 'Can also be added from the home screen.' }"),
  ("{ n: 'Palette', cat: 'system', icon: 'palette', d: 'Extrais les couleurs dominantes d\\'une photo, puis exporte-les en image.', tags: [], more: 'Nombre de couleurs, format HEX/RGB et mise en page réglables.' }",
@@ -298,16 +298,16 @@ TOOLS = [
   "{ n: 'Network scanner', cat: 'system', icon: 'network', d: 'Local IP, gateway, nearby Wi-Fi and Bluetooth devices, open ports.', tags: ['Internet', 'Bluetooth'], more: 'Only probes your local network.' }"),
  ("{ n: 'Test de vitesse', cat: 'system', icon: 'gauge', d: 'Débit descendant, montant et latence, avec résultats archivés localement.', tags: ['Internet'], more: 'Tes résultats restent consultables dans l\\'historique.' }",
   "{ n: 'Speed test', cat: 'system', icon: 'gauge', d: 'Download, upload and latency, with results kept locally.', tags: ['Internet'], more: 'Your results stay available in the history.' }"),
- ("{ n: 'Vectorbit 39', cat: 'system', icon: 'key-round', d: 'Code un message avec une clé basée sur l\\'heure et un secret partagé, à décoder par un ami.', tags: ['Bêta'], more: 'Un code pour s\\'amuser, pas pour protéger des données sensibles.' }",
-  "{ n: 'Vectorbit 39', cat: 'system', icon: 'key-round', d: 'Encode a message with a time-based key and a shared secret, for a friend to decode.', tags: ['Beta'], more: 'A code for fun, not for protecting sensitive data.' }"),
+ ("{ n: 'Vectorbit 39', cat: 'system', icon: 'key-round', d: 'Code un message avec une clé basée sur l\\'heure et un secret partagé, à décoder par un ami.', tags: ['Expérimental'], more: 'Un code pour s\\'amuser, pas pour protéger des données sensibles.' }",
+  "{ n: 'Vectorbit 39', cat: 'system', icon: 'key-round', d: 'Encode a message with a time-based key and a shared secret, for a friend to decode.', tags: ['Experimental'], more: 'A code for fun, not for protecting sensitive data.' }"),
 ]
 for a, b in TOOLS: R(a, b)
 R("audio: { n: 'Audio',", "audio: { n: 'Audio',")
 R("time: { n: 'Rappels & temps',", "time: { n: 'Reminders & time',")
 R("screen: { n: 'Écran & capteurs',", "screen: { n: 'Screen & sensors',")
 R("system: { n: 'Système & données',", "system: { n: 'System & data',")
-R("var WORDS = ['26 outils', 'Une app', 'Sans compte', 'Tes outils', 'Tes règles', 'Ton téléphone', 'Tes séries', 'Ton rythme', 'Tu actives ce que tu utilises', 'Bêta'];",
-  "var WORDS = ['26 tools', 'One app', 'No account', 'Your tools', 'Your rules', 'Your phone', 'Your streaks', 'Your pace', 'Turn on what you use', 'Beta'];")
+R("var WORDS = ['26 outils', 'Une app', 'Sans compte', 'Tes outils', 'Tes règles', 'Ton téléphone', 'Tes séries', 'Ton rythme', 'Tu actives ce que tu utilises', 'Disponible'];",
+  "var WORDS = ['26 tools', 'One app', 'No account', 'Your tools', 'Your rules', 'Your phone', 'Your streaks', 'Your pace', 'Turn on what you use', 'Available'];")
 R("chip('Tout', 'all');", "chip('All', 'all');")
 R("'Aucun outil ne correspond à cette recherche.'", "'No tool matches this search.'")
 R("open ? 'Masquer les outils' : 'Voir les 26 outils'", "open ? 'Hide the tools' : 'See the 26 tools'")

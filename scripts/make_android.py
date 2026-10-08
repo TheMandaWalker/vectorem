@@ -7,7 +7,7 @@ Même charpente que la page Windows (style relu dans index.html, en-tête, pied 
 La liste des 26 outils est relue dans le tableau TOOLS de index.html et de en/index.html :
 lancer make_en.py avant ce script si un outil a changé.
 Ton : phrases courtes ; pas de « gratuit », « sans pub », « aucune connexion », ni « Premium » ;
-garder « bêta ».
+l'accroche « Et ce n'est que la bêta. » est gardée (il y a plus à venir) ; l'app est publique depuis le 08/10/2026.
 """
 import html
 import os
@@ -118,7 +118,7 @@ def build(lang):
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>{T("Vectorem pour Android — tous tes outils, au même endroit", "Vectorem for Android — all your tools, in one place")}</title>
-<meta name="description" content="{e(T("Vectorem pour Android : 26 outils du quotidien dans une seule app. Minuteur, tâches, rappels, séries, notes, QR, égaliseur… Tu actives ce qui te sert, sans compte, tes données restent sur ton téléphone. Bêta.", "Vectorem for Android: 26 everyday tools in one app. Timer, tasks, reminders, streaks, notes, QR, equalizer… Turn on what you use, no account, your data stays on your phone. Beta."))}">
+<meta name="description" content="{e(T("Vectorem pour Android : 26 outils du quotidien dans une seule app. Minuteur, tâches, rappels, séries, notes, QR, égaliseur… Tu actives ce qui te sert, sans compte, tes données restent sur ton téléphone.", "Vectorem for Android: 26 everyday tools in one app. Timer, tasks, reminders, streaks, notes, QR, equalizer… Turn on what you use, no account, your data stays on your phone."))}">
 <meta name="theme-color" content="#101010">
 <meta property="og:title" content="{e(T("Vectorem pour Android", "Vectorem for Android"))}">
 <meta property="og:description" content="{e(T("Tous tes outils. Au même endroit.", "All your tools. In one place."))}">
@@ -164,13 +164,13 @@ def build(lang):
 <section class="w-hero">
   <div class="wrap">
     <div>
-      <div class="eyebrow-row"><span class="badge live"><span class="dot"></span> {T("Bêta", "Beta")}</span><span class="badge">{T("Android 8.0 ou plus", "Android 8.0 or later")}</span><span class="badge">{T("Sans compte", "No account")}</span></div>
+      <div class="eyebrow-row"><span class="badge live"><span class="dot"></span> {T("Disponible", "Available")}</span><span class="badge">{T("Android 8.0 ou plus", "Android 8.0 or later")}</span><span class="badge">{T("Sans compte", "No account")}</span></div>
       <h1>{T("Tous tes outils.", "All your tools.")}<br><em>{T("Au même endroit.", "In one place.")}</em></h1>
       <p class="lead">{T("Minuteur, tâches, rappels, séries d'habitudes, notes, QR, égaliseur… 26 outils dans une seule app. Tu actives ceux qui te servent, les autres restent dans la Bibliothèque. Sans compte, et tes données restent sur ton téléphone.", "Timer, tasks, reminders, habit streaks, notes, QR, equalizer… 26 tools in one app. Turn on the ones you need, the rest stay in the Library. No account, and your data stays on your phone.")}</p>
       <div class="dl-box" id="telecharger">
         <a class="btn btn-primary" href="{PLAY}" target="_blank" rel="noopener">{T("Voir sur Google Play", "See it on Google Play")}</a>
         <div class="dl-meta"><span class="badge">{T("Android 8.0 ou plus", "Android 8.0 or later")}</span><span class="badge">{T("Français · English", "English · Français")}</span></div>
-        <p class="dl-note">{T("Vectorem est en bêta : il évolue chaque semaine, et ton avis compte.", "Vectorem is in beta: it changes every week, and your feedback counts.")}</p>
+        <p class="dl-note">{T("Version 1.3, disponible pour tous. Des mises à jour arrivent régulièrement, et ton avis compte.", "Version 1.3, available to everyone. Updates come regularly, and your feedback counts.")}</p>
       </div>
     </div>
     <div class="reveal" id="apercu">
@@ -254,7 +254,7 @@ def build(lang):
       <details class="reveal"><summary>{T("Quelle version d'Android ?", "Which Android version?")}</summary><p>{T("Android 8.0 ou plus récent.", "Android 8.0 or later.")}</p></details>
       <details class="reveal"><summary>{T("Et si je change de téléphone ?", "What if I change phones?")}</summary><p>{T("Réglages › Données & sécurité : exporte une sauvegarde dans un fichier, puis importe-la sur le nouveau téléphone.", "Settings › Data & security: export a backup to a file, then import it on the new phone.")}</p></details>
       <details class="reveal"><summary>{T("Il y a des pubs ?", "Are there ads?")}</summary><p>{T("Aucune pub n'est imposée. Des vidéos facultatives débloquent certains outils, seulement si tu choisis de les regarder.", "No ad is forced on you. Optional videos unlock some tools, only if you choose to watch them.")}</p></details>
-      <details class="reveal"><summary>{T("Pourquoi « bêta » ?", "Why “beta”?")}</summary><p>{T("Vectorem change vite et des testeurs l'utilisent chaque jour. Il peut rester des bugs : écris à support@vectorem.app, chaque message est lu.", "Vectorem changes fast and testers use it every day. Some bugs may remain: write to support@vectorem.app, every message is read.")}</p></details>
+      <details class="reveal"><summary>{T("« Et ce n'est que la bêta » ?", "“And it's only the beta”?")}</summary><p>{T("Vectorem est disponible pour tous, et ce n'est qu'un début : d'autres outils arrivent. Une idée, un bug ? Écris à support@vectorem.app, chaque message est lu.", "Vectorem is available to everyone, and it's only the start: more tools are coming. An idea, a bug? Write to support@vectorem.app, every message is read.")}</p></details>
       <details class="reveal"><summary>{T("Faut-il la version PC ?", "Do I need the PC version?")}</summary><p>{T("Non, l'app Android marche seule. Le PC ajoute la synchronisation, l'envoi de fichiers et la télécommande.", "No, the Android app works on its own. The PC adds sync, file sending and a remote.")}</p></details>
     </div>
   </div>
@@ -275,7 +275,7 @@ def build(lang):
 <footer>
   <div class="wrap">
     <div class="foot-meta">
-      <span>© 2026 Vectorem · Android · {T("bêta", "beta")}</span>
+      <span>© 2026 Vectorem · Android</span>
       <span><a href="{home}">{T("Accueil", "Home")}</a> · <a href="{windows}">Windows</a> · <a href="{privacy}">{T("Politique de confidentialité", "Privacy policy")}</a> · <a href="mailto:support@vectorem.app">{T("Contact", "Contact")}</a> · <a href="{other}">{T("English", "Français")}</a></span>
     </div>
   </div>

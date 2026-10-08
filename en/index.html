@@ -548,7 +548,7 @@ footer .wrap{display:flex;flex-direction:column;gap:24px}
         <a class="badge live" href="/en/android/" style="text-decoration:none"><span class="dot"></span> Android</a>
         <span class="badge">No account</span>
         <span class="badge">Local data</span>
-        <span class="badge">Beta</span>
+        <span class="badge">Available</span>
         <a class="badge soon" href="/en/windows/" style="text-decoration:none">Windows · soon</a>
       </div>
       <h1 class="reveal" style="--d:80ms">One app to
@@ -945,7 +945,7 @@ footer .wrap{display:flex;flex-direction:column;gap:24px}
       <a href="#personnalisation"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M9.671 4.136a2.34 2.34 0 0 1 4.659 0 2.34 2.34 0 0 0 3.319 1.915 2.34 2.34 0 0 1 2.33 4.033 2.34 2.34 0 0 0 0 3.831 2.34 2.34 0 0 1-2.33 4.033 2.34 2.34 0 0 0-3.319 1.915 2.34 2.34 0 0 1-4.659 0 2.34 2.34 0 0 0-3.32-1.915 2.34 2.34 0 0 1-2.33-4.033 2.34 2.34 0 0 0 0-3.831A2.34 2.34 0 0 1 6.35 6.051a2.34 2.34 0 0 0 3.319-1.915" /> <circle cx="12" cy="12" r="3" /></svg><span>Settings</span></a>
     </nav>
     <div class="foot-meta">
-      <span>© 2026 Vectorem · Android · beta · Windows soon</span>
+      <span>© 2026 Vectorem · Android · Windows soon</span>
       <span><a href="/confidentialite/#en">Privacy policy</a> · <a href="mailto:support@vectorem.app">Contact</a> · <a href="/" hreflang="fr" lang="fr">Français</a> · <a href="https://play.google.com/store/apps/details?id=com.vectorem.app" target="_blank" rel="noopener">Google Play</a></span>
     </div>
   </div>
@@ -1191,7 +1191,7 @@ var TOOLS = [
   { n: 'Calculator', cat: 'system', icon: 'calculator', d: 'Memory (M+ / M−), percent and session history.', tags: [], more: 'Works offline.' },
   { n: 'Text toolbox', cat: 'system', icon: 'code-xml', d: 'Base64, MD5/SHA hashes, JSON formatting and unit conversion.', tags: [], more: 'Everything is computed on the device.' },
   { n: 'QR & text', cat: 'system', icon: 'qr-code', d: 'Scan a code, make your own, or pull the text out of a photo.', tags: ['Camera'], more: 'No photo taken or sent: the image is read live.' },
-  { n: 'Clipboard', cat: 'system', icon: 'clipboard-list', d: 'History of what you copy, with pinning and search.', tags: ['Beta'], more: 'Keeps what you copy while the app is open.' },
+  { n: 'Clipboard', cat: 'system', icon: 'clipboard-list', d: 'History of what you copy, with pinning and search.', tags: ['Experimental'], more: 'Keeps what you copy while the app is open.' },
   { n: 'Quick notes', cat: 'system', icon: 'sticky-note', d: 'Capture an idea in seconds: plain text, everything stays on the phone.', tags: [], more: 'Can also be added from the home screen.' },
   { n: 'Palette', cat: 'system', icon: 'palette', d: 'Pull the main colours out of a photo, then export them as an image.', tags: [], more: 'Number of colours, HEX/RGB format and layout are adjustable.' },
   { n: 'Randomizer', cat: 'system', icon: 'dices', d: 'Dice up to d100, coin flip, numbers, lists, wheel of fortune and teams.', tags: [], more: 'Draw history included.' },
@@ -1199,7 +1199,7 @@ var TOOLS = [
   { n: 'Device info', cat: 'system', icon: 'cpu', d: 'RAM, storage, battery, screen, processor, network — your phone\'s technical details.', tags: [], more: 'Read-only.' },
   { n: 'Network scanner', cat: 'system', icon: 'network', d: 'Local IP, gateway, nearby Wi-Fi and Bluetooth devices, open ports.', tags: ['Internet', 'Bluetooth'], more: 'Only probes your local network.' },
   { n: 'Speed test', cat: 'system', icon: 'gauge', d: 'Download, upload and latency, with results kept locally.', tags: ['Internet'], more: 'Your results stay available in the history.' },
-  { n: 'Vectorbit 39', cat: 'system', icon: 'key-round', d: 'Encode a message with a time-based key and a shared secret, for a friend to decode.', tags: ['Beta'], more: 'A code for fun, not for protecting sensitive data.' }
+  { n: 'Vectorbit 39', cat: 'system', icon: 'key-round', d: 'Encode a message with a time-based key and a shared secret, for a friend to decode.', tags: ['Experimental'], more: 'A code for fun, not for protecting sensitive data.' }
 ];
 var CATS = {
   audio: { n: 'Audio', c: 'var(--cat-audio)', o: 'var(--on-audio)' },
@@ -1209,7 +1209,7 @@ var CATS = {
 };
 var mhtml = '';
 // Mêmes mots que le film de présentation.
-var WORDS = ['26 tools', 'One app', 'No account', 'Your tools', 'Your rules', 'Your phone', 'Your streaks', 'Your pace', 'Turn on what you use', 'Beta'];
+var WORDS = ['26 tools', 'One app', 'No account', 'Your tools', 'Your rules', 'Your phone', 'Your streaks', 'Your pace', 'Turn on what you use', 'Available'];
 var WCOL = ['var(--brand)', CATS.time.c, CATS.audio.c, CATS.screen.c, CATS.system.c];
 for (var rep = 0; rep < 3; rep++) WORDS.forEach(function(w, i){ mhtml += '<span style="--c:' + WCOL[i % WCOL.length] + '">' + w + '</span>'; });
 $('#marquee').innerHTML = mhtml;
