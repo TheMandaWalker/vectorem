@@ -87,6 +87,10 @@ TOOLS = [
     ("system", "↗", ("Lanceur", "Launcher"), ("Tes dossiers, fichiers et programmes favoris, à un clic ou à Ctrl + K.", "Your favourite folders, files and programs, one click or Ctrl + K away.")),
     ("system", "≈", ("Convertisseur", "Unit converter"), ("Longueurs, masses, températures, octets… onze familles d'unités.", "Lengths, masses, temperatures, bytes… eleven unit families.")),
     ("system", ">_", ("Terminal", "Terminal"), ("Calculs, graphes, conversions, dates, et des commandes pour piloter l'app.", "Maths, graphs, conversions, dates, and commands to drive the app.")),
+    ("system", "▧", ("Rangement", "Tidy folders"), ("Tes règles rangent un dossier : par type, par date, par nom. Aperçu avant, annulation après.", "Your rules tidy a folder: by type, date, name. Preview first, undo after.")),
+    ("system", "▥", ("Copie de dossiers", "Folder copy"), ("Une copie vers une clé USB ou un autre disque : seulement ce qui a changé, même toute seule quand le disque est branché.", "A copy to a USB stick or another drive: only what changed, even by itself when the drive is plugged in.")),
+    ("time", "◑", ("Extinction", "Power timer"), ("Éteindre, redémarrer ou mettre en veille dans une heure, ou à 23 h. Annulable depuis le téléphone.", "Shut down, restart or sleep in an hour, or at 11 pm. Cancel it from your phone.")),
+    ("system", "⌘", ("Aide-mémoire", "Cheat sheet"), ("Les raccourcis de Windows, et tes propres fiches de commandes et de mémos.", "Windows shortcuts, and your own sheets of commands and memos.")),
 ]
 
 ALSO = [("Chrono & minuteur", "Stopwatch & timer"), ("Pomodoro", "Pomodoro"), ("Tâches", "Tasks"), ("Rappels", "Reminders"),
@@ -239,7 +243,7 @@ def build(lang):
 <section id="outils">
   <div class="wrap">
     <div class="section-head reveal">
-      <span class="kicker">{T("19 outils pensés pour le PC", "19 tools built for the PC")}</span>
+      <span class="kicker">{T("23 outils pensés pour le PC", "23 tools built for the PC")}</span>
       <h2>{T("Ce que le PC fait de mieux", "What the PC does best")}</h2>
       <p>{T("En plus des outils du téléphone, Vectorem pour Windows ajoute ceux qui n'ont de sens que sur un ordinateur.", "On top of the phone's tools, Vectorem for Windows adds the ones that only make sense on a computer.")}</p>
     </div>
