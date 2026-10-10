@@ -28,6 +28,8 @@ R('<link rel="stylesheet" href="fonts.css">', '<link rel="stylesheet" href="../f
 # relative assets
 s = s.replace('src="img/', 'src="../img/').replace('src="videos/', 'src="../videos/').replace('poster="videos/', 'poster="../videos/')
 s = s.replace('url(fonts/', 'url(../fonts/')
+# Captures de l'app PC en anglais.
+s = s.replace('src="../img/windows/', 'src="../img/windows/en/')
 s = s.replace('href="/confidentialite/"', 'href="/confidentialite/#en"')
 
 # ---- header ----

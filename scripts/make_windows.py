@@ -134,7 +134,7 @@ def build(lang):
     )
     also = "".join(f"<span>{e(T(*a))}</span>" for a in ALSO)
     imgs = "\n".join(
-        f'''          <img{' class="on"' if i == 0 else ''} src="{up}img/windows/{name}.webp" alt="{e(T(*cap))}" width="1600" height="1000" {'decoding="async"' if i == 0 else 'loading="lazy" decoding="async"'}>'''
+        f'''          <img{' class="on"' if i == 0 else ''} src="{up}img/windows/{'' if fr else 'en/'}{name}.webp" alt="{e(T(*cap))}" width="1600" height="1000" {'decoding="async"' if i == 0 else 'loading="lazy" decoding="async"'}>'''
         for i, (name, cap, _) in enumerate(SHOTS)
     )
     tabs = "\n".join(
