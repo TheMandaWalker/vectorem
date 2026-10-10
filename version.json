@@ -1,7 +1,10 @@
 {
   "windows": {
-    "version": "0.3.0",
-    "url": "https://vectorem.app/#windows",
-    "notes": "Lecteur vidéo, éditeur PDF, terminal, widgets de bureau et mode performance."
+    "version": "0.3.4",
+    "url": "https://vectorem.app/windows/",
+    "notes": "Nouvelle ouverture avec du son, sonneries en vrais enregistrements, lecteur vidéo prêt à l'emploi.",
+    "download": "https://github.com/TheMandaWalker/vectorem/releases/download/windows-v0.3.4/Vectorem-0.3.4.exe",
+    "sha256": "71605c800671d57503243ba4d232ba21c52b1c98b801b27c72e87cc0737990a0",
+    "size": 165950464
   }
 }
