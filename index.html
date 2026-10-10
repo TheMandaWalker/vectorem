@@ -436,6 +436,8 @@ section{padding:72px 0}
 #windows{background:var(--bg-block-sunken);border-top:var(--stroke-heavy);border-bottom:var(--stroke-heavy)}
 .soon{background:var(--brand);color:#101010;border-color:#101010}
 .win-head{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:20px}
+.win-dl{display:flex;flex-wrap:wrap;gap:10px;align-items:center;max-width:520px}
+.win-dl-meta{flex-basis:100%;margin-top:4px;font-size:13px;color:var(--text-muted)}
 .win-head .btn[disabled]{opacity:1;background:var(--bg-block);color:var(--text-muted);box-shadow:none;border-style:dashed}
 .win-frame{margin-top:28px;border:var(--stroke-heavy);box-shadow:var(--shadow-3);background:#101010}
 .win-bar{display:flex;align-items:center;gap:10px;padding:0 0 0 12px;height:38px;background:#101010;color:#F5F1E8;border-bottom:3px solid #FFD426;font:800 11px/1 var(--font-ui);letter-spacing:.12em;text-transform:uppercase}
@@ -548,7 +550,7 @@ footer .wrap{display:flex;flex-direction:column;gap:24px}
         <span class="badge">Sans compte</span>
         <span class="badge">Données locales</span>
         <span class="badge">Disponible</span>
-        <a class="badge soon" href="/windows/" style="text-decoration:none">Windows · bientôt</a>
+        <a class="badge live" href="/windows/" style="text-decoration:none"><span class="dot"></span> Windows · aperçu</a>
       </div>
       <h1 class="reveal" style="--d:80ms">Une seule app pour
         <span class="rot" aria-live="polite"><span class="rot-inner"><span class="rot-word" id="rotWord">mixer le son</span></span></span>
@@ -556,6 +558,7 @@ footer .wrap{display:flex;flex-direction:column;gap:24px}
       <p class="lede reveal" style="--d:160ms">Minuteur, rappels, séries d'habitudes, égaliseur, QR, roue de la fortune… Plus de 25 outils, chacun est un module : tu l'actives, tu le désactives. Le tableau de bord n'affiche que ce que tu utilises vraiment.</p>
       <div class="ctas reveal" style="--d:240ms">
         <a class="btn btn-primary" href="https://play.google.com/store/apps/details?id=com.vectorem.app" target="_blank" rel="noopener">Google Play <svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14" /> <path d="m12 5 7 7-7 7" /></svg></a>
+        <a class="btn btn-ghost" href="/windows/">Version Windows</a>
         <a class="btn btn-ghost" href="#essayer">Essayer les démos</a>
       </div>
     </div>
@@ -669,11 +672,15 @@ footer .wrap{display:flex;flex-direction:column;gap:24px}
   <div class="wrap">
     <div class="win-head">
       <div class="section-head reveal">
-        <span class="kicker soon">Coming soon</span>
-        <h2>Vectorem arrive sur Windows</h2>
+        <span class="kicker soon">Aperçu</span>
+        <h2>Vectorem sur Windows</h2>
         <p>La même idée sur ton PC : tu actives ce que tu utilises, sans compte, et tes données restent sur l'ordinateur. Tes outils du téléphone, plus des outils pensés pour le bureau.</p>
       </div>
-      <a class="btn btn-primary reveal" href="/windows/">Tout sur la version Windows</a>
+      <div class="win-dl reveal">
+        <a class="btn btn-primary" id="winDl" href="/windows/">Télécharger pour Windows</a>
+        <a class="btn btn-ghost" href="/windows/">Tout sur la version Windows</a>
+        <p class="win-dl-meta" id="winDlMeta">Windows 10 ou 11, 64 bits. Installateur pas encore signé : Windows peut afficher un avertissement, la page Windows explique quoi faire.</p>
+      </div>
     </div>
 
     <div class="reveal">
@@ -945,7 +952,7 @@ footer .wrap{display:flex;flex-direction:column;gap:24px}
       <a href="#personnalisation"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M9.671 4.136a2.34 2.34 0 0 1 4.659 0 2.34 2.34 0 0 0 3.319 1.915 2.34 2.34 0 0 1 2.33 4.033 2.34 2.34 0 0 0 0 3.831 2.34 2.34 0 0 1-2.33 4.033 2.34 2.34 0 0 0-3.319 1.915 2.34 2.34 0 0 1-4.659 0 2.34 2.34 0 0 0-3.32-1.915 2.34 2.34 0 0 1-2.33-4.033 2.34 2.34 0 0 0 0-3.831A2.34 2.34 0 0 1 6.35 6.051a2.34 2.34 0 0 0 3.319-1.915" /> <circle cx="12" cy="12" r="3" /></svg><span>Réglages</span></a>
     </nav>
     <div class="foot-meta">
-      <span>© 2026 Vectorem · Android · Windows bientôt</span>
+      <span>© 2026 Vectorem · Android · Windows (aperçu)</span>
       <span><a href="/confidentialite/">Politique de confidentialité</a> · <a href="mailto:support@vectorem.app">Contact</a> · <a href="/en/" hreflang="en" lang="en">English</a> · <a href="https://play.google.com/store/apps/details?id=com.vectorem.app" target="_blank" rel="noopener">Google Play</a></span>
     </div>
   </div>
@@ -1000,6 +1007,16 @@ $$('button', densitySeg).forEach(function(b){
     densityPreview.className = 'density-preview ' + b.dataset.v;
   });
 });
+
+/* ---------- Windows : lien de téléchargement lu dans version.json (sinon, la page Windows) ---------- */
+(function(){
+  var a = $('#winDl'); if (!a || !window.fetch) return;
+  fetch('/version.json', {cache:'no-store'}).then(function(r){ return r.json(); }).then(function(v){
+    var w = v && v.windows; if (!w || !w.download) return;
+    a.href = w.download;
+    var m = $('#winDlMeta'); if (m) m.textContent = 'v' + w.version + (w.size ? ' · ' + Math.round(w.size / 1048576) + ' Mo' : '') + ' · ' + m.textContent;
+  }).catch(function(){});
+})();
 
 /* ---------- Windows : captures ---------- */
 (function(){
