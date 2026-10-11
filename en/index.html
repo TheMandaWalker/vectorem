@@ -485,6 +485,54 @@ footer .wrap{display:flex;flex-direction:column;gap:24px}
 .band-sep{display:block;width:100%;height:clamp(30px,4vw,56px)}
 .band-sep + section{border-top:0}
 
+/* ---- téléphone du hero (refonte 1.4) ---- */
+.scr{padding:10px 10px}
+.scr-banner{position:relative;margin:-10px -10px 0;padding:14px 12px 30px;background:radial-gradient(circle at 85% 30%,#2A241A,#0A0A09 70%);border-bottom:2px solid #EDE7D9;overflow:hidden}
+.scr-banner .scr-date{color:#B8B2A4}
+.scr-banner .scr-hello{margin:6px 0 0;padding-right:50px;color:#F5F1E8;font-size:26px}
+.sb-mark{position:absolute;right:10px;top:10px;width:44px;height:44px;filter:drop-shadow(0 0 10px rgba(255,200,61,.55))}
+.sb-band{position:absolute;left:0;bottom:0;width:100%;height:26px}
+.scr .scr-label{margin:11px 0 6px}
+.chk.done i{background:var(--brand);border-color:var(--brand)}
+.chk.done i svg{color:#101010}
+.scr-today{padding:2px 8px 7px}
+.scr-streak .st-ic{background:var(--cat-time);color:#12081F}
+.scr-streak .st-n{margin-left:auto;display:flex;align-items:center;gap:3px;font:800 16px/1 var(--font-display)}
+.scr-streak .st-n i{display:flex;color:var(--cat-audio)}
+.scr-streak .st-n svg{width:14px;height:14px;stroke-width:2.5}
+.scr-streak .st-ok{margin-left:8px}
+.scr-streak .st-ok[aria-pressed="true"]{background:var(--brand);color:#101010}
+.scr-kicker{font:800 9px/1 var(--font-ui);letter-spacing:.14em;text-transform:uppercase;color:var(--ink-3)}
+.scr-title{font:900 26px/1.05 var(--font-display);margin:4px 0 10px}
+.pm-phases{display:flex;gap:5px}
+.pm-phases span{padding:5px 6px;border:2px solid var(--ink);font:800 8px/1 var(--font-ui);letter-spacing:.08em;text-transform:uppercase;transition:background .2s}
+.pm-phases span.on{background:var(--brand);color:#101010;border-color:var(--brand)}
+.pm-ring{position:relative;width:176px;height:176px;margin:16px auto 10px}
+.pm-ring svg{width:100%;height:100%;transform:rotate(-90deg)}
+.pm-ring circle{fill:none;stroke-width:7}
+.pm-ring .bg{stroke:#2E2A24}
+.pm-ring .fg{stroke:var(--cat-time);transition:stroke-dashoffset .9s linear,stroke .3s}
+.pm-t{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px}
+.pm-t b{font:900 38px/1 var(--font-display);letter-spacing:-.02em}
+.pm-t small{font:800 8px/1 var(--font-ui);letter-spacing:.14em;text-transform:uppercase;color:var(--ink-3)}
+.pm-cycles{display:flex;justify-content:center;gap:6px}
+.pm-cycles i{width:26px;height:6px;border:1.5px solid var(--ink-3)}
+.pm-cycles i.done{background:var(--brand);border-color:var(--brand)}
+.pm-cycles i.cur{background:var(--cat-time);border-color:var(--cat-time)}
+.pm-cap{text-align:center;font-size:10.5px;color:var(--ink-3);margin-top:6px}
+.pm-btns{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:14px}
+.pm-btns button,.cc-keys button{min-height:38px;border:2px solid #EDE7D9;box-shadow:2px 2px 0 #EDE7D9;font:900 11px/1 var(--font-ui);letter-spacing:.08em;text-transform:uppercase;transition:transform .08s,box-shadow .08s}
+.pm-btns button:active,.cc-keys button:active{transform:translate(2px,2px);box-shadow:none}
+.pm-go{background:var(--brand);color:#101010}
+.pm-skip{background:var(--surface);color:var(--ink)}
+.cc-screen{border:2px solid var(--ink);background:var(--surface);padding:10px 10px 8px;text-align:right}
+.cc-in{font:800 20px/1.15 var(--font-mono);word-break:break-all;min-height:23px}
+.cc-out{font:700 14px/1.2 var(--font-mono);color:var(--ink-3);margin-top:4px;min-height:17px}
+.cc-keys{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin-top:10px}
+.cc-keys button{min-height:41px;background:var(--surface-2);color:var(--ink);font:800 15px/1 var(--font-mono);letter-spacing:0;box-shadow:2px 2px 0 #000;border-color:#3A3630}
+.cc-keys button.op{background:var(--surface);color:var(--brand)}
+.cc-keys button.eq{background:var(--brand);color:#101010;border-color:#EDE7D9}
+
 /* ---- nouveautés ---- */
 .news{padding:56px 0 64px}
 .news-grid{margin-top:28px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,230px),1fr));gap:18px}
@@ -613,8 +661,20 @@ details.win-pc ul{margin-top:16px}
         <div class="phone-screen" id="phScreen">
           <!-- Accueil -->
           <div class="scr on" data-screen="home">
-            <div class="scr-date" id="phDate">Saturday, September 19</div>
-            <div class="scr-hello" id="phHello">Good morning</div>
+            <div class="scr-banner">
+              <svg class="sb-mark" viewBox="0 0 108 108" aria-hidden="true"><path d="M58 30L86 58L58 86L30 58Z" fill="#101010" stroke="#F5F1E8" stroke-width="5"/><path fill-rule="evenodd" fill="url(#hdGold)" d="M54 26L82 54L54 82L26 54ZM54 42L66 54L54 66L42 54Z"/><path d="M54 26L82 54L54 82L26 54ZM54 42L66 54L54 66L42 54Z" fill="none" stroke="#F5F1E8" stroke-width="6"/></svg>
+              <div class="scr-date" id="phDate">Saturday, September 19</div>
+              <div class="scr-hello" id="phHello">Good morning</div>
+              <svg class="sb-band" viewBox="0 0 300 40" preserveAspectRatio="none" aria-hidden="true"><polygon points="0,22 300,6 300,10 0,26" fill="#9A80FF"/><polygon points="0,30 300,14 300,28 0,44" fill="#FFD426"/><polyline points="0,30 300,14" fill="none" stroke="#F5F1E8" stroke-width="1.5" vector-effect="non-scaling-stroke"/><polygon points="0,48 300,32 300,35 0,51" fill="#FF6136"/></svg>
+            </div>
+            <div class="scr-label">Today</div>
+            <div class="scr-today">
+              <button class="chk done" type="button"><i><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5" /></svg></i><span>Book the train</span><em>9:00</em></button>
+              <button class="chk" type="button"><i><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5" /></svg></i><span>Send the invoice</span><em class="late">Overdue</em></button>
+              <button class="chk" type="button"><i><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5" /></svg></i><span>Call Lea</span><em>18:30</em></button>
+            </div>
+            <div class="scr-label">Today's streaks</div>
+            <div class="scr-streak"><span class="st-ic"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z" /></svg></span><div><b>Reading · 20 min</b><small id="phStreak">12 days in a row</small></div><span class="st-n"><i><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z" /></svg></i><b id="phStreakN">12</b></span><button class="st-ok" id="phStreakOk" type="button" aria-pressed="false" aria-label="Check off the day"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5" /></svg></button></div>
             <div class="scr-label">Quick access</div>
             <div class="scr-quick">
               <span><b style="background:var(--cat-system)"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><rect width="16" height="20" x="4" y="2" rx="2" /> <line x1="8" x2="16" y1="6" y2="6" /> <line x1="16" x2="16" y1="14" y2="18" /> <path d="M16 10h.01" /> <path d="M12 10h.01" /> <path d="M8 10h.01" /> <path d="M12 14h.01" /> <path d="M8 14h.01" /> <path d="M12 18h.01" /> <path d="M8 18h.01" /></svg></b>Calc</span>
@@ -622,14 +682,6 @@ details.win-pc ul{margin-top:16px}
               <span><b style="background:var(--cat-system)"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><rect width="5" height="5" x="3" y="3" rx="1" /> <rect width="5" height="5" x="16" y="3" rx="1" /> <rect width="5" height="5" x="3" y="16" rx="1" /> <path d="M21 16h-3a2 2 0 0 0-2 2v3" /> <path d="M21 21v.01" /> <path d="M12 7v3a2 2 0 0 1-2 2H7" /> <path d="M3 12h.01" /> <path d="M12 3h.01" /> <path d="M12 16v.01" /> <path d="M16 12h1" /> <path d="M21 12v.01" /> <path d="M12 21v-1" /></svg></b>QR</span>
               <span><b style="background:var(--cat-time);color:var(--on-time)"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M16 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V8Z" /> <path d="M15 3v4a2 2 0 0 0 2 2h4" /></svg></b>Notes</span>
             </div>
-            <div class="scr-label">Today</div>
-            <div class="scr-today">
-              <button class="chk" type="button"><i><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5" /></svg></i><span>Book the train</span><em class="late">Overdue</em></button>
-              <button class="chk done" type="button"><i><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5" /></svg></i><span>Send the invoice</span><em>9:00</em></button>
-              <button class="chk" type="button"><i><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5" /></svg></i><span>Call Lea</span><em>18:30</em></button>
-            </div>
-            <div class="scr-label">Today's streaks</div>
-            <div class="scr-streak"><span class="st-ic"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z" /></svg></span><div><b>Reading · 20 min</b><small id="phStreak">12 days in a row</small></div><button class="st-ok" id="phStreakOk" type="button" aria-pressed="false" aria-label="Check off the day"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5" /></svg></button></div>
             <div class="scr-label">Last 7 days</div>
             <div class="scr-stats"><div><b>135</b><small>focus min</small></div><div><b>9</b><small>pomodoros</small></div><div><b>14</b><small>tasks</small></div></div>
           </div>
@@ -653,25 +705,29 @@ details.win-pc ul{margin-top:16px}
               <div><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><rect width="14" height="20" x="5" y="2" rx="2" ry="2" /> <path d="M12 18h.01" /></svg>Place as a widget</div>
             </div>
           </div>
-          <!-- Égaliseur -->
-          <div class="scr" data-screen="eq">
-            <div class="eq-title"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M10 5H3" /> <path d="M12 19H3" /> <path d="M14 3v4" /> <path d="M16 17v4" /> <path d="M21 12h-9" /> <path d="M21 19h-5" /> <path d="M21 5h-7" /> <path d="M8 10v4" /> <path d="M8 12H3" /></svg> Equalizer</div>
-            <div class="eq-bands" id="phBands"></div>
-            <div class="eq-presets" id="phPresets"></div>
+          <!-- Pomodoro -->
+          <div class="scr" data-screen="pomo">
+            <div class="scr-kicker">Tool</div>
+            <div class="scr-title">Pomodoro</div>
+            <div class="pm-phases" id="pmPhases"><span class="on">Focus</span><span>Break</span><span>Long</span></div>
+            <div class="pm-ring"><svg viewBox="0 0 100 100" aria-hidden="true"><circle class="bg" cx="50" cy="50" r="42"/><circle class="fg" id="pmFg" cx="50" cy="50" r="42" stroke-dasharray="263.9" stroke-dashoffset="0"/></svg><div class="pm-t"><b id="pmTime">18:42</b><small id="pmLabel">Focus</small></div></div>
+            <div class="pm-cycles" id="pmCycles"><i class="done"></i><i class="cur"></i><i></i><i></i></div>
+            <div class="pm-cap" id="pmCap">Cycle 2 of 4</div>
+            <div class="pm-btns"><button type="button" class="pm-go" id="pmGo">Start</button><button type="button" class="pm-skip" id="pmSkip">Skip</button></div>
           </div>
-          <!-- Tirage -->
-          <div class="scr" data-screen="dice">
-            <div class="eq-title"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><rect width="12" height="12" x="2" y="10" rx="2" ry="2" /> <path d="m17.92 14 3.5-3.5a2.24 2.24 0 0 0 0-3l-5-4.92a2.24 2.24 0 0 0-3 0L10 6" /> <path d="M6 18h.01" /> <path d="M10 14h.01" /> <path d="M15 6h.01" /> <path d="M18 9h.01" /></svg> Randomizer</div>
-            <div class="dice-row"><div class="die" id="phD1"></div><div class="die" id="phD2"></div></div>
-            <div class="total" id="phTotal">= 7</div>
-            <button class="btn btn-primary btn-sm" id="phRoll" type="button" style="width:100%">Roll</button>
+          <!-- Calculatrice -->
+          <div class="scr" data-screen="calc">
+            <div class="scr-kicker">Tool</div>
+            <div class="scr-title">Calculator</div>
+            <div class="cc-screen"><div class="cc-in" id="ccIn">12.5 × (4 + 6)</div><div class="cc-out" id="ccOut">= 125</div></div>
+            <div class="cc-keys" id="ccKeys"><button type="button" class="ck op" data-k="C">C</button><button type="button" class="ck op" data-k="(">(</button><button type="button" class="ck op" data-k=")">)</button><button type="button" class="ck op" data-k="÷">÷</button><button type="button" class="ck" data-k="7">7</button><button type="button" class="ck" data-k="8">8</button><button type="button" class="ck" data-k="9">9</button><button type="button" class="ck op" data-k="×">×</button><button type="button" class="ck" data-k="4">4</button><button type="button" class="ck" data-k="5">5</button><button type="button" class="ck" data-k="6">6</button><button type="button" class="ck op" data-k="−">−</button><button type="button" class="ck" data-k="1">1</button><button type="button" class="ck" data-k="2">2</button><button type="button" class="ck" data-k="3">3</button><button type="button" class="ck op" data-k="+">+</button><button type="button" class="ck" data-k="0">0</button><button type="button" class="ck" data-k=".">.</button><button type="button" class="ck op" data-k="⌫">⌫</button><button type="button" class="ck eq" data-k="=">=</button></div>
           </div>
         </div>
         <nav class="phone-nav" id="phNav" aria-label="App preview">
           <button type="button" data-go="home" class="on"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8" /> <path d="M3 10a2 2 0 0 1 .709-1.528l7-6a2 2 0 0 1 2.582 0l7 6A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" /></svg>Home</button>
           <button type="button" data-go="tools"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><rect width="7" height="7" x="3" y="3" rx="1" /> <rect width="7" height="7" x="14" y="3" rx="1" /> <rect width="7" height="7" x="14" y="14" rx="1" /> <rect width="7" height="7" x="3" y="14" rx="1" /></svg>My tools</button>
-          <button type="button" data-go="eq"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M10 5H3" /> <path d="M12 19H3" /> <path d="M14 3v4" /> <path d="M16 17v4" /> <path d="M21 12h-9" /> <path d="M21 19h-5" /> <path d="M21 5h-7" /> <path d="M8 10v4" /> <path d="M8 12H3" /></svg>Equalizer</button>
-          <button type="button" data-go="dice"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><rect width="12" height="12" x="2" y="10" rx="2" ry="2" /> <path d="m17.92 14 3.5-3.5a2.24 2.24 0 0 0 0-3l-5-4.92a2.24 2.24 0 0 0-3 0L10 6" /> <path d="M6 18h.01" /> <path d="M10 14h.01" /> <path d="M15 6h.01" /> <path d="M18 9h.01" /></svg>Random</button>
+          <button type="button" data-go="pomo"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 22h14" /> <path d="M5 2h14" /> <path d="M17 22v-4.172a2 2 0 0 0-.586-1.414L12 12l-4.414 4.414A2 2 0 0 0 7 17.828V22" /> <path d="M7 2v4.172a2 2 0 0 0 .586 1.414L12 12l4.414-4.414A2 2 0 0 0 17 6.172V2" /></svg>Pomodoro</button>
+          <button type="button" data-go="calc"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><rect width="16" height="20" x="4" y="2" rx="2" /> <line x1="8" x2="16" y1="6" y2="6" /> <line x1="16" x2="16" y1="14" y2="18" /> <path d="M16 10h.01" /> <path d="M12 10h.01" /> <path d="M8 10h.01" /> <path d="M12 14h.01" /> <path d="M8 14h.01" /> <path d="M12 18h.01" /> <path d="M8 18h.01" /></svg>Calc</button>
         </nav>
       </div>
       <div class="phone-hint" id="phHint"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14" /> <path d="m12 5 7 7-7 7" /></svg> Tap the screen, it's interactive</div>
@@ -750,7 +806,7 @@ details.win-pc ul{margin-top:16px}
   <polygon points="0,16 1440,0 1440,8 0,24" fill="var(--cat-time)"/>
   <polygon points="0,28 1440,12 1440,36 0,52" fill="var(--brand)"/>
   <polyline points="0,28 1440,12" fill="none" stroke="#F5F1E8" stroke-width="2" vector-effect="non-scaling-stroke"/>
-  <polygon points="0,56 1440,40 1440,46 0,62" fill="var(--cat-audio)"/>
+  <polygon points="0,48 1440,32 1440,38 0,54" fill="var(--cat-audio)"/>
 </svg>
 <!-- ================= WINDOWS ================= -->
 <section id="windows">
@@ -995,12 +1051,6 @@ details.win-pc ul{margin-top:16px}
   </div>
 </section>
 
-<svg class="band-sep" viewBox="0 0 1440 56" preserveAspectRatio="none" aria-hidden="true">
-  <polygon points="0,16 1440,0 1440,8 0,24" fill="var(--cat-time)"/>
-  <polygon points="0,28 1440,12 1440,36 0,52" fill="var(--brand)"/>
-  <polyline points="0,28 1440,12" fill="none" stroke="#F5F1E8" stroke-width="2" vector-effect="non-scaling-stroke"/>
-  <polygon points="0,56 1440,40 1440,46 0,62" fill="var(--cat-audio)"/>
-</svg>
 <section class="cta-final">
   <div class="floaters" aria-hidden="true">
     <span class="fl o" style="--s:60px;left:4%;top:20%"></span>
@@ -1225,7 +1275,7 @@ $('#miniHello').textContent = greeting;
 $('#phTime').textContent = pad(now.getHours()) + ':' + pad(now.getMinutes());
 
 var phNav = $('#phNav'), screens = $$('.scr', $('#phScreen'));
-var order = ['home', 'tools', 'eq', 'dice'], cur = 0, userTouched = false;
+var order = ['home', 'tools', 'pomo', 'calc'], cur = 0, userTouched = false;
 function touched(){ userTouched = true; $('#phHint').style.opacity = 0; }
 function go(name){
   screens.forEach(function(s){ s.classList.toggle('on', s.dataset.screen === name); });
@@ -1237,7 +1287,7 @@ if (!reduce) setInterval(function(){ if (!userTouched && !document.hidden) go(or
 phone.addEventListener('pointerdown', touched);
 $$('.chk', $('#phScreen')).forEach(function(c){ c.addEventListener('click', function(){ c.classList.toggle('done'); }); });
 var stOk = $('#phStreakOk');
-stOk.addEventListener('click', function(){ var on = stOk.getAttribute('aria-pressed') !== 'true'; stOk.setAttribute('aria-pressed', String(on)); $('#phStreak').textContent = (on ? 13 : 12) + ' days in a row'; });
+stOk.addEventListener('click', function(){ var on = stOk.getAttribute('aria-pressed') !== 'true'; stOk.setAttribute('aria-pressed', String(on)); $('#phStreak').textContent = (on ? 13 : 12) + ' days in a row'; $('#phStreakN').textContent = on ? 13 : 12; });
 var phSec = 299;
 setInterval(function(){ phSec = phSec <= 0 ? 299 : phSec - 1; $('#phTimer').textContent = pad(Math.floor(phSec / 60)) + ':' + pad(phSec % 60); }, 1000);
 
@@ -1269,37 +1319,64 @@ function buildEq(container, opts){
   });
   return function apply(arr){ arr.forEach(function(v, i){ setters[i](v, false); }); };
 }
-var phApply = buildEq($('#phBands'), { onChange: function(){ touched(); $$('.eq-preset', $('#phPresets')).forEach(function(p){ p.classList.remove('on'); }); } });
-phApply(PRESETS['Podcast']);
-['Electro', 'Classical', 'Podcast'].forEach(function(name){
-  var b = el('button', 'eq-preset' + (name === 'Podcast' ? ' on' : ''), name); b.type = 'button';
-  b.addEventListener('click', function(){ touched(); $$('.eq-preset', $('#phPresets')).forEach(function(p){ p.classList.remove('on'); }); b.classList.add('on'); phApply(PRESETS[name]); });
-  $('#phPresets').appendChild(b);
-});
+/* Pomodoro du téléphone : phases, anneau, cycles, Démarrer / Pause / Passer */
+(function(){
+  var PH = [{ n: 'Focus', d: 1500 }, { n: 'Break', d: 300 }, { n: 'Long', d: 900 }];
+  var phase = 0, cycle = 2, left = 1122, run = null;
+  var fg = $('#pmFg'), go = $('#pmGo');
+  function draw(){
+    $('#pmTime').textContent = pad(Math.floor(left / 60)) + ':' + pad(left % 60);
+    $('#pmLabel').textContent = PH[phase].n;
+    fg.style.strokeDashoffset = 263.9 * (1 - left / PH[phase].d);
+    fg.style.stroke = phase === 0 ? 'var(--cat-time)' : 'var(--cat-screen)';
+    $$('span', $('#pmPhases')).forEach(function(x, i){ x.classList.toggle('on', i === phase); });
+    $$('i', $('#pmCycles')).forEach(function(x, i){ x.className = i < cycle - 1 ? 'done' : i === cycle - 1 ? 'cur' : ''; });
+    $('#pmCap').textContent = 'Cycle ' + cycle + ' of 4';
+    go.textContent = run ? 'Pause' : 'Start';
+  }
+  function next(){
+    if (phase === 0) phase = cycle === 4 ? 2 : 1;
+    else { phase = 0; cycle = cycle === 4 ? 1 : cycle + 1; }
+    left = PH[phase].d; draw();
+  }
+  go.addEventListener('click', function(){
+    touched();
+    if (run) { clearInterval(run); run = null; }
+    else run = setInterval(function(){ if (--left <= 0) next(); draw(); }, 1000);
+    draw();
+  });
+  $('#pmSkip').addEventListener('click', function(){ touched(); next(); });
+  draw();
+})();
 
-/* dés : rendu commun */
-var PIPS = { 1: [4], 2: [0, 8], 3: [0, 4, 8], 4: [0, 2, 6, 8], 5: [0, 2, 4, 6, 8], 6: [0, 2, 3, 5, 6, 8] };
-function dieFace(node, v, faces){
-  node.innerHTML = '';
-  if (faces === 6 && PIPS[v]) {
-    var p = el('div', 'pips');
-    for (var k = 0; k < 9; k++) { var i = el('i'); if (PIPS[v].indexOf(k) < 0) i.style.visibility = 'hidden'; p.appendChild(i); }
-    node.appendChild(p);
-  } else node.textContent = v;
-}
-function rollInto(nodes, faces, done){
-  nodes.forEach(function(n){ n.classList.remove('roll'); void n.offsetWidth; if (!reduce) n.classList.add('roll'); });
-  var t = 0, vals = [];
-  var iv = setInterval(function(){
-    vals = nodes.map(function(n){ var v = rnd(1, faces); dieFace(n, v, faces); return v; });
-    if (++t >= 8) { clearInterval(iv); if (done) done(vals); }
-  }, 65);
-}
-var phDice = [$('#phD1'), $('#phD2')];
-dieFace(phDice[0], 3, 6); dieFace(phDice[1], 4, 6);
-function phRoll(){ rollInto(phDice, 6, function(v){ $('#phTotal').textContent = '= ' + (v[0] + v[1]); }); }
-$('#phRoll').addEventListener('click', function(){ touched(); phRoll(); });
-phDice.forEach(function(d){ d.style.cursor = 'pointer'; d.addEventListener('click', function(){ touched(); phRoll(); }); });
+/* Calculatrice du téléphone : expression entière, résultat en direct */
+(function(){
+  var expr = '12.5 × (4 + 6)', inp = $('#ccIn'), out = $('#ccOut');
+  function evaluate(x){
+    var js = x.replace(/,/g, '.').replace(/×/g, '*').replace(/÷/g, '/').replace(/−/g, '-');
+    if (!/^[0-9+\-*/(). ]*$/.test(js) || !/[0-9]/.test(js)) return null;
+    try { var v = Function('"use strict";return (' + js + ')')(); return isFinite(v) ? v : null; } catch (e) { return null; }
+  }
+  function fmt(v){ return String(+v.toPrecision(12)); }
+  function draw(){
+    inp.textContent = expr || '0';
+    var v = evaluate(expr);
+    out.textContent = v === null || fmt(v) === expr.replace(/ /g, '') ? ' ' : '= ' + fmt(v);
+  }
+  $$('button', $('#ccKeys')).forEach(function(b){
+    b.addEventListener('click', function(){
+      touched();
+      var k = b.dataset.k;
+      if (k === 'C') expr = '';
+      else if (k === '⌫') expr = expr.replace(/ ?.$/, '').replace(/ $/, '');
+      else if (k === '=') { var v = evaluate(expr); if (v !== null) expr = fmt(v); }
+      else if ('+−×÷'.indexOf(k) >= 0) expr += ' ' + k + ' ';
+      else expr += k;
+      draw();
+    });
+  });
+  draw();
+})();
 
 /* ---------- outils : données ---------- */
 var TOOLS = [
@@ -1308,8 +1385,8 @@ var TOOLS = [
   { n: 'Metronome', cat: 'audio', icon: 'triangle', d: 'Visual and audio beat, tempo set or tapped, eighth-note subdivisions.', tags: [], more: 'No permission.' },
   { n: 'Spatial sound', cat: 'audio', icon: 'layers', d: 'Stereo width, balance, reverb and bass.', tags: [], more: 'Best heard with headphones.' },
   { n: 'Sound meter', cat: 'audio', icon: 'volume-2', d: 'Measures ambient sound level live, with calibration for better accuracy.', tags: ['Microphone'], more: 'Measured only while the screen is open, nothing is recorded.' },
-  { n: 'Stopwatch & timer', cat: 'time', icon: 'clock', d: 'Stopwatch with timestamped laps, custom timer and a simple countdown.', tags: ['Notifications'], more: 'Rings even when the app is closed.' },
-  { n: 'Pomodoro', cat: 'time', icon: 'hourglass', d: 'Focus and break cycles, custom durations.', tags: ['Notifications'], more: 'A notification at each phase change.' },
+  { n: 'Stopwatch & timer', cat: 'time', icon: 'clock', d: 'Stopwatch with each lap\'s time, the fastest and the slowest. Timer that shows when it ends.', tags: ['Notifications'], more: 'Rings even when the app is closed.' },
+  { n: 'Pomodoro', cat: 'time', icon: 'hourglass', d: 'Big ring, focus and break phases, today\'s cycles. Custom durations.', tags: ['Notifications'], more: 'A notification at each phase change.' },
   { n: 'Reminders', cat: 'time', icon: 'bell', d: 'At a set or custom time, with optional daily repeat.', tags: ['Notifications'], more: 'Rescheduled automatically after the phone restarts.' },
   { n: 'Tasks', cat: 'time', icon: 'list-checks', d: 'Priority and optional due date, sorted by urgency automatically. No account.', tags: ['Notifications'], more: 'A notification when due, only for dated tasks.' },
   { n: 'Streaks', cat: 'time', icon: 'flame', d: 'Keep a habit every day. A goal can check itself off through the timer, Pomodoro or your tasks.', tags: [], more: 'A plain-language weekly report, and a widget to check off the day without opening the app.' },
@@ -1317,10 +1394,10 @@ var TOOLS = [
   { n: 'Toolbox', cat: 'screen', icon: 'search', d: 'Spirit level, flashlight, magnifier, compass, light meter, barometer and metal detector.', tags: ['Camera'], more: 'The camera is only used by the magnifier: nothing is photographed.' },
   { n: 'Seismograph', cat: 'screen', icon: 'waves', d: 'Detects vibrations and small bumps with the accelerometer, live trace and shake log.', tags: ['No permission'], more: 'Uses motion sensors, with no permission at all.' },
   { n: 'Whiteboard', cat: 'screen', icon: 'pen-tool', d: 'A free drawing pad: draw, annotate and export, no account or cloud.', tags: [], more: 'Export your drawing as an image.' },
-  { n: 'Calculator', cat: 'system', icon: 'calculator', d: 'Memory (M+ / M−), percent and session history.', tags: [], more: 'Works offline.' },
+  { n: 'Calculator', cat: 'system', icon: 'calculator', d: 'Full expressions with precedence and brackets, live result, memory and history.', tags: [], more: 'Works offline.' },
   { n: 'Text toolbox', cat: 'system', icon: 'code-xml', d: 'Base64, MD5/SHA hashes, JSON formatting and unit conversion.', tags: [], more: 'Everything is computed on the device.' },
   { n: 'QR & text', cat: 'system', icon: 'qr-code', d: 'Scan a code, make your own, or pull the text out of a photo.', tags: ['Camera'], more: 'No photo taken or sent: the image is read live.' },
-  { n: 'Clipboard', cat: 'system', icon: 'clipboard-list', d: 'History of what you copy, with pinning and search.', tags: ['Experimental'], more: 'Keeps what you copy while the app is open.' },
+  { n: 'Clipboard', cat: 'system', icon: 'clipboard-list', d: 'History of what you copy. Tap to copy, long press to pin, links and numbers recognized.', tags: ['Experimental'], more: 'Keeps what you copy while the app is open.' },
   { n: 'Quick notes', cat: 'system', icon: 'sticky-note', d: 'Capture an idea in seconds: plain text, everything stays on the phone.', tags: [], more: 'Can also be added from the home screen.' },
   { n: 'Palette', cat: 'system', icon: 'palette', d: 'Pull the main colours out of a photo, then export them as an image.', tags: [], more: 'Number of colours, HEX/RGB format and layout are adjustable.' },
   { n: 'Randomizer', cat: 'system', icon: 'dices', d: 'Dice up to d100, coin flip, numbers, lists, wheel of fortune and teams.', tags: [], more: 'Draw history included.' },

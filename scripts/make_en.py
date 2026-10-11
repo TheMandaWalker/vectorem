@@ -79,18 +79,18 @@ R('Les pubs facultatives (Google AdMob) et le Test de vitesse (Cloudflare) passe
 R('<div class="scr-date" id="phDate">Samedi 19 septembre</div>', '<div class="scr-date" id="phDate">Saturday, September 19</div>')
 R('<div class="scr-hello" id="phHello">Bonjour</div>', '<div class="scr-hello" id="phHello">Good morning</div>')
 R('<div class="scr-label">Accès rapides</div>', '<div class="scr-label">Quick access</div>')
+R('<div class="scr-label">7 derniers jours</div>', '<div class="scr-label">Last 7 days</div>')
+R('<small>min focus</small>', '<small>focus min</small>')
+R('<small>tâches</small></div></div>', '<small>tasks</small></div></div>')
 R('</b>Calcul</span>', '</b>Calc</span>')
 R('</b>Sono</span>', '</b>Sound</span>')
 R('<div class="scr-label">Aujourd\'hui</div>', '<div class="scr-label">Today</div>')
-R('<span>Réserver le train</span><em class="late">En retard</em>', '<span>Book the train</span><em class="late">Overdue</em>')
-R('<span>Envoyer la facture</span><em>9:00</em>', '<span>Send the invoice</span><em>9:00</em>')
+R('<span>Réserver le train</span><em>9:00</em>', '<span>Book the train</span><em>9:00</em>')
+R('<span>Envoyer la facture</span><em class="late">En retard</em>', '<span>Send the invoice</span><em class="late">Overdue</em>')
 R('<span>Appeler Léa</span><em>18:30</em>', '<span>Call Lea</span><em>18:30</em>')
 R('<div class="scr-label">Séries du jour</div>', '<div class="scr-label">Today\'s streaks</div>')
 R('<b>Lecture · 20 min</b><small id="phStreak">12 jours de suite</small>', '<b>Reading · 20 min</b><small id="phStreak">12 days in a row</small>')
 R('aria-label="Valider la journée"', 'aria-label="Check off the day"')
-R('<div class="scr-label">7 derniers jours</div>', '<div class="scr-label">Last 7 days</div>')
-R('<small>min focus</small>', '<small>focus min</small>')
-R('<small>tâches</small>', '<small>tasks</small>')
 R('<div class="scr-label" style="margin-top:0">En cours</div>', '<div class="scr-label" style="margin-top:0">Running</div>')
 R('<small>En cours</small>', '<small>Running</small>')
 R('<small>Concentration</small>', '<small>Focus</small>')
@@ -101,14 +101,23 @@ R('</svg>Ouvrir</div>', '</svg>Open</div>')
 R('</svg>Épingler en haut</div>', '</svg>Pin to top</div>')
 R('</svg>Ajouter aux accès rapides</div>', '</svg>Add to quick access</div>')
 R('</svg>Poser en widget</div>', '</svg>Place as a widget</div>')
-R('</svg> Égaliseur</div>', '</svg> Equalizer</div>')
-R('</svg> Tirage au sort</div>', '</svg> Randomizer</div>')
-R('id="phRoll" type="button" style="width:100%">Lancer</button>', 'id="phRoll" type="button" style="width:100%">Roll</button>')
+R('<div class="scr-kicker">Outil</div>\n            <div class="scr-title">Pomodoro</div>', '<div class="scr-kicker">Tool</div>\n            <div class="scr-title">Pomodoro</div>')
+R('<div class="scr-kicker">Outil</div>\n            <div class="scr-title">Calculatrice</div>', '<div class="scr-kicker">Tool</div>\n            <div class="scr-title">Calculator</div>')
+R('<div class="pm-phases" id="pmPhases"><span class="on">Concentration</span><span>Pause</span><span>Longue</span></div>', '<div class="pm-phases" id="pmPhases"><span class="on">Focus</span><span>Break</span><span>Long</span></div>')
+R('<small id="pmLabel">Concentration</small>', '<small id="pmLabel">Focus</small>')
+R('<div class="pm-cap" id="pmCap">Cycle 2 sur 4</div>', '<div class="pm-cap" id="pmCap">Cycle 2 of 4</div>')
+R('id="pmGo">Démarrer</button><button type="button" class="pm-skip" id="pmSkip">Passer</button>', 'id="pmGo">Start</button><button type="button" class="pm-skip" id="pmSkip">Skip</button>')
+R("var PH = [{ n: 'Concentration', d: 1500 }, { n: 'Pause', d: 300 }, { n: 'Longue', d: 900 }];", "var PH = [{ n: 'Focus', d: 1500 }, { n: 'Break', d: 300 }, { n: 'Long', d: 900 }];")
+R("$('#pmCap').textContent = 'Cycle ' + cycle + ' sur 4';", "$('#pmCap').textContent = 'Cycle ' + cycle + ' of 4';")
+R("go.textContent = run ? 'Pause' : 'Démarrer';", "go.textContent = run ? 'Pause' : 'Start';")
+R('id="ccIn">12,5 × (4 + 6)</div>', 'id="ccIn">12.5 × (4 + 6)</div>')
+R("var expr = '12,5 × (4 + 6)'", "var expr = '12.5 × (4 + 6)'")
+R('data-k=",">,</button>', 'data-k=".">.</button>')
+R("function fmt(v){ return String(+v.toPrecision(12)).replace('.', ','); }", "function fmt(v){ return String(+v.toPrecision(12)); }")
 R('aria-label="Aperçu de l\'application"', 'aria-label="App preview"')
 R('</svg>Accueil</button>', '</svg>Home</button>')
 R('</svg>Mes outils</button>', '</svg>My tools</button>')
-R('</svg>Égaliseur</button>', '</svg>Equalizer</button>')
-R('</svg>Tirage</button>', '</svg>Random</button>')
+R('</svg>Calcul</button>', '</svg>Calc</button>')
 R(" Touche l'écran, c'est interactif</div>", " Tap the screen, it's interactive</div>")
 
 # ---- film ----
@@ -284,10 +293,10 @@ TOOLS = [
   "{ n: 'Spatial sound', cat: 'audio', icon: 'layers', d: 'Stereo width, balance, reverb and bass.', tags: [], more: 'Best heard with headphones.' }"),
  ("{ n: 'Sonomètre', cat: 'audio', icon: 'volume-2', d: 'Mesure le niveau sonore ambiant en direct, calibrable pour affiner la précision.', tags: ['Micro'], more: 'Mesuré uniquement pendant que l\\'écran est ouvert, rien n\\'est enregistré.' }",
   "{ n: 'Sound meter', cat: 'audio', icon: 'volume-2', d: 'Measures ambient sound level live, with calibration for better accuracy.', tags: ['Microphone'], more: 'Measured only while the screen is open, nothing is recorded.' }"),
- ("{ n: 'Chrono & minuteur', cat: 'time', icon: 'clock', d: 'Chronomètre avec tours horodatés, minuteur personnalisable et compte à rebours simple.', tags: ['Notifications'], more: 'Sonne même si l\\'app est fermée.' }",
-  "{ n: 'Stopwatch & timer', cat: 'time', icon: 'clock', d: 'Stopwatch with timestamped laps, custom timer and a simple countdown.', tags: ['Notifications'], more: 'Rings even when the app is closed.' }"),
- ("{ n: 'Pomodoro', cat: 'time', icon: 'hourglass', d: 'Cycles de concentration et de pause, durées personnalisables.', tags: ['Notifications'], more: 'Une notification à chaque changement de phase.' }",
-  "{ n: 'Pomodoro', cat: 'time', icon: 'hourglass', d: 'Focus and break cycles, custom durations.', tags: ['Notifications'], more: 'A notification at each phase change.' }"),
+ ("{ n: 'Chrono & minuteur', cat: 'time', icon: 'clock', d: 'Chronomètre avec la durée de chaque tour, le plus rapide et le plus lent. Minuteur avec l\\'heure de fin affichée.', tags: ['Notifications'], more: 'Sonne même si l\\'app est fermée.' }",
+  "{ n: 'Stopwatch & timer', cat: 'time', icon: 'clock', d: 'Stopwatch with each lap\\'s time, the fastest and the slowest. Timer that shows when it ends.', tags: ['Notifications'], more: 'Rings even when the app is closed.' }"),
+ ("{ n: 'Pomodoro', cat: 'time', icon: 'hourglass', d: 'Grand anneau, phases de concentration et de pause, cycles du jour. Durées personnalisables.', tags: ['Notifications'], more: 'Une notification à chaque changement de phase.' }",
+  "{ n: 'Pomodoro', cat: 'time', icon: 'hourglass', d: 'Big ring, focus and break phases, today\\'s cycles. Custom durations.', tags: ['Notifications'], more: 'A notification at each phase change.' }"),
  ("{ n: 'Rappels', cat: 'time', icon: 'bell', d: 'À une heure précise ou personnalisée, avec répétition quotidienne possible.', tags: ['Notifications'], more: 'Reprogrammés automatiquement après un redémarrage du téléphone.' }",
   "{ n: 'Reminders', cat: 'time', icon: 'bell', d: 'At a set or custom time, with optional daily repeat.', tags: ['Notifications'], more: 'Rescheduled automatically after the phone restarts.' }"),
  ("{ n: 'Tâches', cat: 'time', icon: 'list-checks', d: 'Importance et échéance optionnelle, triées automatiquement par urgence. Sans compte.', tags: ['Notifications'], more: 'Une notification à l\\'échéance, seulement pour les tâches datées.' }",
@@ -302,14 +311,14 @@ TOOLS = [
   "{ n: 'Seismograph', cat: 'screen', icon: 'waves', d: 'Detects vibrations and small bumps with the accelerometer, live trace and shake log.', tags: ['No permission'], more: 'Uses motion sensors, with no permission at all.' }"),
  ("{ n: 'Tableau blanc', cat: 'screen', icon: 'pen-tool', d: 'Un calepin de dessin libre : dessine, annote et exporte, sans compte ni cloud.', tags: [], more: 'Exporte ton dessin en image.' }",
   "{ n: 'Whiteboard', cat: 'screen', icon: 'pen-tool', d: 'A free drawing pad: draw, annotate and export, no account or cloud.', tags: [], more: 'Export your drawing as an image.' }"),
- ("{ n: 'Calculatrice', cat: 'system', icon: 'calculator', d: 'Mémoire (M+ / M−), pourcentage et historique de session.', tags: [], more: 'Fonctionne sans réseau.' }",
-  "{ n: 'Calculator', cat: 'system', icon: 'calculator', d: 'Memory (M+ / M−), percent and session history.', tags: [], more: 'Works offline.' }"),
+ ("{ n: 'Calculatrice', cat: 'system', icon: 'calculator', d: 'Calcul entier avec priorités et parenthèses, résultat en direct, mémoire et historique.', tags: [], more: 'Fonctionne sans réseau.' }",
+  "{ n: 'Calculator', cat: 'system', icon: 'calculator', d: 'Full expressions with precedence and brackets, live result, memory and history.', tags: [], more: 'Works offline.' }"),
  ("{ n: 'Boîte à outils texte', cat: 'system', icon: 'code-xml', d: 'Base64, empreintes MD5/SHA, formatage JSON et conversion d\\'unités.', tags: [], more: 'Tout se calcule sur l\\'appareil.' }",
   "{ n: 'Text toolbox', cat: 'system', icon: 'code-xml', d: 'Base64, MD5/SHA hashes, JSON formatting and unit conversion.', tags: [], more: 'Everything is computed on the device.' }"),
  ("{ n: 'QR & texte', cat: 'system', icon: 'qr-code', d: 'Scanne un code, génère le tien, ou extrais le texte d\\'une photo.', tags: ['Caméra'], more: 'Aucune photo prise ni envoyée : l\\'image est lue en direct.' }",
   "{ n: 'QR & text', cat: 'system', icon: 'qr-code', d: 'Scan a code, make your own, or pull the text out of a photo.', tags: ['Camera'], more: 'No photo taken or sent: the image is read live.' }"),
- ("{ n: 'Presse-papiers', cat: 'system', icon: 'clipboard-list', d: 'Historique de ce que tu copies, avec épinglage et recherche.', tags: ['Expérimental'], more: 'Garde ce que tu copies pendant que l\\'app est ouverte.' }",
-  "{ n: 'Clipboard', cat: 'system', icon: 'clipboard-list', d: 'History of what you copy, with pinning and search.', tags: ['Experimental'], more: 'Keeps what you copy while the app is open.' }"),
+ ("{ n: 'Presse-papiers', cat: 'system', icon: 'clipboard-list', d: 'Historique de ce que tu copies. Appui pour copier, appui long pour épingler, liens et numéros reconnus.', tags: ['Expérimental'], more: 'Garde ce que tu copies pendant que l\\'app est ouverte.' }",
+  "{ n: 'Clipboard', cat: 'system', icon: 'clipboard-list', d: 'History of what you copy. Tap to copy, long press to pin, links and numbers recognized.', tags: ['Experimental'], more: 'Keeps what you copy while the app is open.' }"),
  ("{ n: 'Notes rapides', cat: 'system', icon: 'sticky-note', d: 'Capture une idée en quelques secondes : texte brut, tout reste sur le téléphone.', tags: [], more: 'Ajoutable aussi depuis l\\'accueil.' }",
   "{ n: 'Quick notes', cat: 'system', icon: 'sticky-note', d: 'Capture an idea in seconds: plain text, everything stays on the phone.', tags: [], more: 'Can also be added from the home screen.' }"),
  ("{ n: 'Palette', cat: 'system', icon: 'palette', d: 'Extrais les couleurs dominantes d\\'une photo, puis exporte-les en image.', tags: [], more: 'Nombre de couleurs, format HEX/RGB et mise en page réglables.' }",
