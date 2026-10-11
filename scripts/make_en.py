@@ -19,8 +19,8 @@ def R(a, b, count=None):
 # ---- head ----
 R('<html lang="fr" data-theme="light">', '<html lang="en" data-theme="light">')
 R('<title>Vectorem — tous tes outils, au même endroit</title>', '<title>Vectorem — all your tools, in one place</title>')
-R('<meta name="description" content="Vectorem regroupe plus de 25 outils pour Android — minuteur, rappels, séries d\'habitudes, égaliseur, QR, roue de la fortune — dans une seule app modulaire, sans compte. Essaie-les ici.">',
-  '<meta name="description" content="Vectorem brings 25+ tools for Android together — timer, reminders, habit streaks, equalizer, QR, wheel of fortune — in one modular app, no account. Try them here.">')
+R('<meta name="description" content="Vectorem regroupe 26 outils pour Android — minuteur, rappels, séries d\'habitudes, égaliseur, QR, roue de la fortune — dans une seule app modulaire, sans compte. Essaie-les ici.">',
+  '<meta name="description" content="Vectorem brings 26 tools for Android together — timer, reminders, habit streaks, equalizer, QR, wheel of fortune — in one modular app, no account. Try them here.">')
 R('<meta property="og:title" content="Vectorem — tous tes outils, au même endroit">', '<meta property="og:title" content="Vectorem — all your tools, in one place">')
 R('<meta property="og:description" content="Une boîte à outils Android modulaire : tu actives ce que tu utilises, tes données restent sur ton téléphone.">',
   '<meta property="og:description" content="A modular Android toolbox: turn on what you use, your data stays on your phone.">')
@@ -30,14 +30,15 @@ s = s.replace('src="img/', 'src="../img/').replace('src="videos/', 'src="../vide
 s = s.replace('url(fonts/', 'url(../fonts/')
 # Captures de l'app PC en anglais.
 s = s.replace('src="../img/windows/', 'src="../img/windows/en/')
+s = s.replace('src="../img/play/fr/', 'src="../img/play/en/').replace('vectorem-trailer-fr.', 'vectorem-trailer-en.')
 s = s.replace('href="/confidentialite/"', 'href="/confidentialite/#en"')
 
 # ---- header ----
 R('aria-label="Vectorem — haut de page"', 'aria-label="Vectorem — top of page"')
 R('<a href="#essayer">Essayer</a>', '<a href="#essayer">Try</a>')
 R('<a href="#outils">Outils</a>', '<a href="#outils">Tools</a>')
-R('<a href="#series">Séries</a>', '<a href="#series">Streaks</a>')
-R('<a href="#confidentialite">Confidentialité</a>', '<a href="#confidentialite">Privacy</a>')
+R('<a href="#nouveautes">Nouveautés</a>', '<a href="#nouveautes">What\'s new</a>')
+R('<a href="#images">En images</a>', '<a href="#images">Screens</a>')
 R('aria-label="Changer de thème"', 'aria-label="Change theme"')
 
 # ---- hero ----
@@ -46,10 +47,11 @@ R('<span class="badge">Données locales</span>', '<span class="badge">Local data
 R('<span class="badge">Disponible</span>', '<span class="badge">Available</span>')
 R('Windows · aperçu</a>', 'Windows · preview</a>')
 R('<a class="btn btn-ghost" href="/windows/">Version Windows</a>', '<a class="btn btn-ghost" href="/en/windows/">Windows version</a>')
-R('<h1 class="reveal" style="--d:80ms">Une seule app pour', '<h1 class="reveal" style="--d:80ms">One app to')
+R('<h1 class="reveal" style="--d:80ms">Tous tes outils.<br>Au même <span class="hl">endroit.</span></h1>', '<h1 class="reveal" style="--d:80ms">All your tools.<br>In one <span class="hl">place.</span></h1>')
+R('<p class="rot-line reveal" style="--d:120ms">Une seule app pour <span', '<p class="rot-line reveal" style="--d:120ms">One app to <span')
 R('id="rotWord">mixer le son</span>', 'id="rotWord">shape your sound</span>')
-R("Minuteur, rappels, séries d'habitudes, égaliseur, QR, roue de la fortune… Plus de 25 outils, chacun est un module : tu l'actives, tu le désactives. Le tableau de bord n'affiche que ce que tu utilises vraiment.",
-  "Timer, reminders, habit streaks, equalizer, QR, wheel of fortune… 25+ tools, each one a module: turn it on, turn it off. The dashboard only shows what you actually use.")
+R("Minuteur, rappels, séries d'habitudes, égaliseur, QR, roue de la fortune… 26 outils dans une seule app. Chacun est un module : tu l'actives, tu le désactives. Le tableau de bord n'affiche que ce que tu utilises vraiment.",
+  "Timer, reminders, habit streaks, equalizer, QR, wheel of fortune… 26 tools in one app. Each one is a module: turn it on, turn it off. The dashboard only shows what you actually use.")
 R('<a class="btn btn-ghost" href="#essayer">Essayer les démos</a>', '<a class="btn btn-ghost" href="#essayer">Try the demos</a>')
 R('<a href="/android/">Android</a>\n      <a href="/windows/">Windows</a>', '<a href="/en/android/">Android</a>\n      <a href="/en/windows/">Windows</a>')
 R('<a class="badge live" href="/android/"', '<a class="badge live" href="/en/android/"')
@@ -58,7 +60,15 @@ R('<a class="badge live" href="/windows/"', '<a class="badge live" href="/en/win
 R('aria-label="Vectorem en chiffres"', 'aria-label="Vectorem in numbers"')
 R('<span class="kicker">Vectorem en chiffres</span>', '<span class="kicker">Vectorem in numbers</span>')
 R('<span class="cap">Outils Android</span><small>Dans une seule app</small>', '<span class="cap">Android tools</span><small>In one app</small>')
-R('<span class="cap">Outils en plus sur PC</span><small>Windows, en aperçu</small>', '<span class="cap">Extra tools on PC</span><small>Windows, in preview</small>')
+R('<span class="cap">Outils en plus sur PC</span><small>45 en tout sur Windows, en aperçu</small>', '<span class="cap">Extra tools on PC</span><small>45 in all on Windows, in preview</small>')
+# ---- nouveautés ----
+R('<span class="kicker">Nouveau · version 1.4</span>', '<span class="kicker">New · version 1.4</span>')
+R('<h2>Quatre outils refaits, une nouvelle icône</h2>', '<h2>Four tools redone, a new icon</h2>')
+R("<p>Les outils qu'on ouvre le plus ont été repris de zéro. La nouvelle bande de couleurs passe dans toute l'app.</p>", "<p>The most opened tools were rebuilt from scratch. The new color band runs through the whole app.</p>")
+R("<h3>Pomodoro</h3><p>Grand anneau, phase en cours, cycles du jour et temps restant avant la longue pause.</p>", "<h3>Pomodoro</h3><p>Big ring, current phase, today's cycles and time left until the long break.</p>")
+R("<h3>Calculatrice</h3><p>Tu tapes le calcul entier, avec priorités et parenthèses. Le résultat s'affiche en direct. Mémoire et historique.</p>", "<h3>Calculator</h3><p>Type the whole expression, with precedence and brackets. The result shows live. Memory and history.</p>")
+R("<h3>Chrono &amp; minuteur</h3><p>Le minuteur affiche l'heure de fin. Le chrono donne chaque tour, le plus rapide et le plus lent.</p>", "<h3>Stopwatch &amp; timer</h3><p>The timer shows when it ends. The stopwatch gives each lap, the fastest and the slowest.</p>")
+R("<h3>Presse-papiers</h3><p>Un appui copie, un appui long épingle. Liens, e-mails et numéros s'ouvrent d'un geste.</p>", "<h3>Clipboard</h3><p>Tap to copy, long press to pin. Links, e-mails and numbers open in one tap.</p>")
 R('<span class="cap">Donnée récoltée par Vectorem</span><small>Tout reste sur tes appareils</small>', '<span class="cap">Data collected by Vectorem</span><small>Everything stays on your devices</small>')
 R('<span class="cap">Compte à créer</span><small>Ni e-mail, ni mot de passe</small>', '<span class="cap">Account to create</span><small>No e-mail, no password</small>')
 R('<span class="cap">Pub imposée</span><small>Les vidéos sont facultatives</small>', '<span class="cap">Forced ads</span><small>Videos are optional</small>')
@@ -102,16 +112,27 @@ R('</svg>Tirage</button>', '</svg>Random</button>')
 R(" Touche l'écran, c'est interactif</div>", " Tap the screen, it's interactive</div>")
 
 # ---- film ----
-R('<span class="kicker">Le film</span>', '<span class="kicker">The film</span>')
-R('<h2>26 outils en deux minutes</h2>', '<h2>26 tools in two minutes</h2>')
-R('<p>Chaque outil, un chapitre. Monté en code, au rythme de la musique.</p>', '<p>Each tool, one chapter. Edited in code, to the beat of the music. (French version for now.)</p>')
-R('aria-label="Film de présentation de Vectorem, sans son"', 'aria-label="Vectorem presentation film, muted"')
+R('<span class="kicker">En images</span>', '<span class="kicker">Screens</span>')
+R("<h2>L'app, écran par écran</h2>", "<h2>The app, screen by screen</h2>")
+R('<p>Les captures de la fiche Google Play, en thème sombre. Fais défiler la bande, puis regarde la bande-annonce.</p>', '<p>The Google Play screenshots, in dark theme. Scroll the strip, then watch the trailer.</p>')
+R('aria-label="Captures de l\'app"', 'aria-label="App screenshots"')
+R('aria-label="Captures précédentes"', 'aria-label="Previous screenshots"')
+R('aria-label="Captures suivantes"', 'aria-label="Next screenshots"')
+for fr, en in [("Tous tes outils, au même endroit : 26 outils, sans compte", "All your tools, in one place: 26 tools, no account"),
+               ("L'Accueil : tâches du jour à cocher et séries", "Home: today's tasks to tick and streaks"),
+               ("Séries : 42 jours de suite", "Streaks: 42 days in a row"),
+               ("Minuteur et Pomodoro : grand anneau, phase en cours", "Timer and Pomodoro: big ring, current phase"),
+               ("Widgets d'écran d'accueil", "Home screen widgets"),
+               ("La Bibliothèque : chaque outil s'active ou non", "The Library: each tool can be turned on or off"),
+               ("Téléphone ↔ PC : Vectorem pour Windows, en aperçu", "Phone ↔ PC: Vectorem for Windows, in preview")]:
+    R('alt="%s"' % fr, 'alt="%s"' % en)
+R('aria-label="Bande-annonce de Vectorem, 33 secondes, sans son"', 'aria-label="Vectorem trailer, 33 seconds, muted"')
 
 # ---- windows ----
 R('<span class="kicker soon">Aperçu</span>', '<span class="kicker soon">Preview</span>')
 R('<h2>Vectorem sur Windows</h2>', '<h2>Vectorem on Windows</h2>')
-R("<p>La même idée sur ton PC : tu actives ce que tu utilises, sans compte, et tes données restent sur l'ordinateur. Tes outils du téléphone, plus des outils pensés pour le bureau.</p>",
-  "<p>The same idea on your PC: turn on what you use, no account, and your data stays on the computer. Your phone tools, plus tools built for the desktop.</p>")
+R("<p>La même idée sur ton PC : tu actives ce que tu utilises, sans compte, et tes données restent sur l'ordinateur. 45 outils en tout : 22 du téléphone, 23 pensés pour le bureau.</p>",
+  "<p>The same idea on your PC: turn on what you use, no account, and your data stays on the computer. 45 tools in all: 22 from the phone, 23 built for the desktop.</p>")
 R('alt="Vectorem pour Windows : l\'accueil avec les tâches du jour, les séries et le prochain événement"', 'alt="Vectorem for Windows: the home screen with today\'s tasks, streaks and the next event"')
 R('alt="Renommer en lot : douze photos renommées d\'un coup, avec l\'aperçu avant validation"', 'alt="Batch rename: twelve photos renamed at once, with a preview before confirming"')
 R('alt="Espace disque : carte des dossiers qui prennent le plus de place"', 'alt="Disk usage: map of the folders taking the most space"')
@@ -138,14 +159,18 @@ R('<a class="btn btn-primary" id="winDl" href="/windows/">Télécharger pour Win
 R('<a class="btn btn-ghost" href="/windows/">Tout sur la version Windows</a>', '<a class="btn btn-ghost" href="/en/windows/">All about the Windows version</a>')
 R('Windows 10 ou 11, 64 bits. Installateur pas encore signé : Windows peut afficher un avertissement, la page Windows explique quoi faire.', 'Windows 10 or 11, 64-bit. The installer is not signed yet: Windows may show a warning, the Windows page explains what to do.')
 R("(w.size ? ' · ' + Math.round(w.size / 1048576) + ' Mo' : '') + ' · ' + m.textContent;", "(w.size ? ' · ' + Math.round(w.size / 1048576) + ' MB' : '') + ' · ' + m.textContent;")
-R('<h3>23 outils pensés pour le PC</h3>', '<h3>23 tools built for the PC</h3>')
+R('<summary>Les 23 outils pensés pour le PC</summary>', '<summary>The 23 tools built for the PC</summary>')
 for fr, en in [('Outils PDF','PDF tools'),('Pipette','Colour picker'),("Règle à l'écran",'Screen ruler'),('Renommer en lot','Batch rename'),('Images en lot','Batch images'),('Métadonnées','Metadata'),('Espace disque','Disk usage'),('Moniteur','Monitor'),('Anti-veille','Keep awake'),('Horloges du monde','World clocks'),('Empreinte de fichier','File hash'),('Mots de passe','Passwords'),('Capture annotée','Annotated capture'),('Lanceur','Launcher'),('Convertisseur','Unit converter'),('Lecteur vidéo','Video player'),('Éditeur PDF','PDF editor'),('Terminal','Terminal'),('Rangement des fenêtres','Window layouts'),('Rangement','Tidy folders'),('Copie de dossiers','Folder copy'),('Extinction','Power timer'),('Aide-mémoire','Cheat sheet')]:
     R('<li><b>◆</b>'+fr+'</li>', '<li><b>◆</b>'+en+'</li>')
 
 # ---- essayer ----
 R('<span class="kicker">À toi de jouer</span>', '<span class="kicker">Your turn</span>')
 R('<h2>Essaie-les, pour de vrai</h2>', '<h2>Try them, for real</h2>')
-R("<p>Ces mini-outils fonctionnent ici, dans ton navigateur. Dans l'app, ils sont encore plus complets.</p>", "<p>These mini tools work right here, in your browser. In the app, they do even more.</p>")
+R("<p>Ces démos fonctionnent ici, dans ton navigateur. Dans l'app, elles vont plus loin.</p>", "<p>These demos work right here, in your browser. In the app, they go further.</p>")
+R('aria-label="Démos"', 'aria-label="Demos"')
+R('aria-selected="true">Mini-outils</button>', 'aria-selected="true">Mini tools</button>')
+R('tabindex="-1">Séries</button>', 'tabindex="-1">Streaks</button>')
+R('tabindex="-1">Personnalisation</button>', 'tabindex="-1">Customization</button>')
 R('<h3>Minuteur</h3><span class="badge">En direct</span>', '<h3>Timer</h3><span class="badge">Live</span>')
 R('id="timerGo" type="button">Démarrer</button>', 'id="timerGo" type="button">Start</button>')
 R('id="timerReset" type="button">Remettre à zéro</button>', 'id="timerReset" type="button">Reset</button>')
@@ -165,8 +190,7 @@ R('placeholder="Chercher un outil (ex. minuteur, QR, roue…)" aria-label="Cherc
 R("Quelques fonctions avancées se débloquent avec une courte vidéo, seulement si tu choisis de la lancer.</p>", "A few advanced features unlock with a short video, only if you choose to play it.</p>")
 
 # ---- séries ----
-R('<span class="kicker">Séries</span>', '<span class="kicker">Streaks</span>')
-R('<h2>Tenir une habitude, sans y penser</h2>', '<h2>Keep a habit, without thinking about it</h2>')
+R('<h3>Tenir une habitude, sans y penser</h3>', '<h3>Keep a habit, without thinking about it</h3>')
 R('<p>Séries suit tes objectifs du quotidien : sport, lecture, instrument. Lie un objectif au minuteur, au Pomodoro ou à tes tâches, et la journée se valide toute seule.</p>',
   '<p>Streaks tracks your daily goals: exercise, reading, an instrument. Link a goal to the timer, Pomodoro or your tasks, and the day checks itself off.</p>')
 R('<h3>Séries</h3><span class="badge">Touche un jour</span>', '<h3>Streaks</h3><span class="badge">Tap a day</span>')
@@ -188,8 +212,7 @@ R("<b>Français ou anglais</b><span class=\"d\">La langue de l'app se choisit da
   "<b>English or French</b><span class=\"d\">The app's language is set in Settings, independently of the phone's.</span>")
 
 # ---- confidentialité ----
-R('<span class="kicker">Permissions honnêtes</span>', '<span class="kicker">Honest permissions</span>')
-R("<h2>Chaque demande dit ce qu'elle fait, et ce qu'elle ne fait pas</h2>", "<h2>Every request says what it does, and what it doesn't</h2>")
+R("<h3>Chaque demande dit ce qu'elle fait, et ce qu'elle ne fait pas</h3>", "<h3>Every request says what it does, and what it doesn't</h3>")
 R("<p>Une carte de permission n'apparaît qu'au moment où tu actives l'outil. Essaie les trois exemples ci-dessous.</p>", "<p>A permission card only shows up when you turn the tool on. Try the three examples below.</p>")
 R('aria-label="Exemples de permissions"', 'aria-label="Permission examples"')
 R("<h4>Ce que l'outil fait</h4><p>Chaque demande explique l'usage concret — « le son est mesuré en direct », pas « autorise pour profiter de toutes les fonctionnalités ».</p>",
@@ -202,8 +225,7 @@ R('<h4>Tes données restent sur ton téléphone</h4><p>Pas de compte, pas de ser
   '<h4>Your data stays on your phone</h4><p>No account, no Vectorem server: your notes, tasks and streaks don\'t leave the phone. <a href="/confidentialite/#en">Everything is detailed in the privacy policy</a>.</p>')
 
 # ---- personnalisation ----
-R('<span class="kicker">À ta façon</span>', '<span class="kicker">Your way</span>')
-R('<h2>Personnalise ton tableau de bord</h2>', '<h2>Customize your dashboard</h2>')
+R('<h3>Personnalise ton tableau de bord</h3>', '<h3>Customize your dashboard</h3>')
 R("<p>Thème, couleur de marque et disposition se règlent dans l'app. Ici, tout réagit en direct.</p>", "<p>Theme, brand colour and layout are set in the app. Here, everything reacts live.</p>")
 R('<h4>Apparence</h4>', '<h4>Appearance</h4>')
 R('aria-label="Apparence"', 'aria-label="Appearance"')
@@ -229,9 +251,6 @@ R('id="miniHello">Bonjour</div>', 'id="miniHello">Good morning</div>')
 # ---- cta / footer ----
 R('<h2 class="reveal">Tous tes outils. Au même endroit.<br><span style="font-size:.6em">Et ce n\'est que la bêta.</span></h2>', '<h2 class="reveal">All your tools. In one place.<br><span style="font-size:.6em">And it\'s only the beta.</span></h2>')
 R('<a class="btn btn-ghost" href="/android/">Tout sur la version Android</a>', '<a class="btn btn-ghost" href="/en/android/">All about the Android version</a>')
-R('<span>Accueil</span></a>', '<span>Home</span></a>')
-R('<span>Outils</span></a>', '<span>Tools</span></a>')
-R('<span>Réglages</span></a>', '<span>Settings</span></a>')
 R('<span>© 2026 Vectorem · Android · Windows (aperçu)</span>', '<span>© 2026 Vectorem · Android · Windows (preview)</span>')
 R('<a href="/confidentialite/#en">Politique de confidentialité</a> · <a href="mailto:support@vectorem.app">Contact</a> · <a href="/en/" hreflang="en" lang="en">English</a>', '<a href="/confidentialite/#en">Privacy policy</a> · <a href="mailto:support@vectorem.app">Contact</a> · <a href="/" hreflang="fr" lang="fr">Français</a>')
 R('href="/en/" hreflang="en" lang="en" aria-label="English version">EN</a>', 'href="/" hreflang="fr" lang="fr" aria-label="Version française">FR</a>')

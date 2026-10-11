@@ -4,12 +4,12 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Vectorem — all your tools, in one place</title>
-<meta name="description" content="Vectorem brings 25+ tools for Android together — timer, reminders, habit streaks, equalizer, QR, wheel of fortune — in one modular app, no account. Try them here.">
+<meta name="description" content="Vectorem brings 26 tools for Android together — timer, reminders, habit streaks, equalizer, QR, wheel of fortune — in one modular app, no account. Try them here.">
 <meta name="theme-color" content="#101010">
 <meta property="og:title" content="Vectorem — all your tools, in one place">
 <meta property="og:description" content="A modular Android toolbox: turn on what you use, your data stays on your phone.">
 <meta property="og:type" content="website">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 108 108'%3E%3Crect width='108' height='108' fill='%23101010'/%3E%3Cpath d='M58 30L86 58L58 86L30 58Z' fill='none' stroke='%23F5F1E8' stroke-width='3.5'/%3E%3Cpath fill-rule='evenodd' fill='%23FFD426' d='M54 26L82 54L54 82L26 54ZM54 42L66 54L54 66L42 54Z'/%3E%3Cpath d='M54 26L82 54L54 82L26 54ZM54 42L66 54L54 66L42 54Z' fill='none' stroke='%23F5F1E8' stroke-width='4.5'/%3E%3C/svg%3E">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 108 108'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='.2' y1='.2' x2='.8' y2='.8'%3E%3Cstop offset='0' stop-color='%23FFDB70'/%3E%3Cstop offset='1' stop-color='%23D99A00'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='108' height='108' fill='%23101010'/%3E%3Cpath d='M58 30L86 58L58 86L30 58Z' fill='%23101010' stroke='%23F5F1E8' stroke-width='4.6'/%3E%3Cpath fill-rule='evenodd' fill='url(%23g)' d='M54 26L82 54L54 82L26 54ZM54 42L66 54L54 66L42 54Z'/%3E%3Cpath d='M54 26L82 54L54 82L26 54ZM54 42L66 54L54 66L42 54Z' fill='none' stroke='%23F5F1E8' stroke-width='5.6'/%3E%3C/svg%3E">
 <link rel="stylesheet" href="../fonts.css">
 <link rel="canonical" href="https://vectorem.app/en/">
 <link rel="alternate" hreflang="fr" href="https://vectorem.app/">
@@ -466,15 +466,59 @@ section{padding:72px 0}
 /* ---- footer ---- */
 footer{padding:40px 0 56px}
 footer .wrap{display:flex;flex-direction:column;gap:24px}
-.bottom-nav{display:flex;border:var(--stroke);box-shadow:var(--shadow-2);width:fit-content;max-width:100%;background:var(--bg-block)}
-.bottom-nav a{display:flex;flex-direction:column;align-items:center;gap:4px;padding:10px 20px;border-right:var(--stroke-hair);text-decoration:none;color:var(--text-muted);transition:background .2s,color .2s}
-.bottom-nav a:last-child{border-right:0}
-.bottom-nav a:hover{color:var(--text-strong);background:var(--bg-block-sunken)}
-.bottom-nav a svg{width:20px;height:20px;stroke-width:2.25}
-.bottom-nav a span{font:800 9px/1 var(--font-ui);letter-spacing:.05em;text-transform:uppercase}
-@media (max-width:480px){ .bottom-nav{width:100%} .bottom-nav a{flex:1 1 0;min-width:0;padding:10px 4px} .bottom-nav a span{font-size:8px;letter-spacing:.02em} }
 .foot-meta{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;color:var(--text-muted);font:800 11px/1.5 var(--font-ui);letter-spacing:.12em;text-transform:uppercase;border-top:var(--stroke-hair);padding-top:20px}
 .foot-meta a{text-underline-offset:3px}
+
+/* ============ DA 2026 : logo or, bande, téléphone sombre ============ */
+.brand-mark{background:radial-gradient(circle,rgba(255,200,61,.38),#101010 72%)}
+.hero{overflow:hidden;padding-bottom:0}
+.hero .wrap{z-index:1;padding-bottom:clamp(40px,7vw,96px)}
+.hero h1 .hl{display:inline-block;background:var(--brand);color:var(--on-brand);border:var(--stroke);box-shadow:var(--shadow-2);padding:0 .14em;transform:rotate(-1.2deg);margin-top:6px}
+.rot-line{margin-top:22px;display:flex;flex-wrap:wrap;align-items:center;gap:.35em;font:900 clamp(20px,2.6vw,30px)/1.2 var(--font-display);letter-spacing:-.01em}
+.rot-line .rot{display:inline-block;height:1.32em;margin:0;padding:0 6px 6px 0}
+.rot-line .rot-inner{background:var(--cat-time);color:var(--on-time);transform:rotate(1deg);box-shadow:var(--shadow-1)}
+.hero-band{position:absolute;left:0;bottom:0;width:100%;height:clamp(120px,15vw,220px);z-index:0;display:block}
+.phone-wrap::before{content:"";position:absolute;left:50%;top:44%;width:150%;aspect-ratio:1;transform:translate(-50%,-50%);background:radial-gradient(closest-side,rgba(255,200,61,.5),rgba(255,179,0,.14) 60%,transparent);z-index:-1;pointer-events:none}
+.phone-hint{background:var(--bg-block);border:var(--stroke-hair);padding:6px 10px;color:var(--text-strong)}
+/* l'écran du téléphone suit les captures Play : toujours en thème sombre */
+.phone-screen,.phone-nav{--ink:#EDE7D9;--ink-2:#D4CDBD;--ink-3:#928C7E;--paper:#121110;--paper-2:#0A0A09;--surface:#1E1C19;--surface-2:#272420;--cat-audio:#FF6136;--cat-time:#9A80FF;--cat-screen:#1FE0A8;--cat-system:#4C97FF;--on-audio:#160500;--on-time:#12081F;--on-screen:#00160F;--on-system:#00101F;--shadow-color:#000;--border-color:#EDE7D9;--text-strong:#EDE7D9;--bg-block:#1E1C19}
+.band-sep{display:block;width:100%;height:clamp(30px,4vw,56px)}
+.band-sep + section{border-top:0}
+
+/* ---- nouveautés ---- */
+.news{padding:56px 0 64px}
+.news-grid{margin-top:28px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,230px),1fr));gap:18px}
+.news-card{border:var(--stroke);box-shadow:var(--shadow-2);background:var(--bg-block);padding:18px 16px 16px;position:relative;transition:transform var(--dur-base) var(--ease-snap),box-shadow var(--dur-base) var(--ease-snap),opacity .7s var(--ease-snap)}
+.news-card::before{content:"";position:absolute;left:0;top:0;right:0;height:6px;background:var(--c)}
+.news-card:hover{transform:translate(-3px,-3px);box-shadow:8px 8px 0 var(--shadow-color)}
+.nc-ic{width:42px;height:42px;display:flex;align-items:center;justify-content:center;border:var(--stroke-hair);background:var(--c);color:var(--oc);margin:4px 0 12px}
+.nc-ic svg{width:21px;height:21px;stroke-width:2.25}
+.news-card h3{font:900 16px/1.15 var(--font-ui);letter-spacing:.03em;text-transform:uppercase;margin-bottom:6px}
+.news-card p{font-size:14px;color:var(--text-body)}
+
+/* ---- en images : bande de captures ---- */
+.shots{margin-top:28px;display:flex;overflow-x:auto;scroll-snap-type:x proximity;background:#101010;border-top:var(--stroke-heavy);border-bottom:var(--stroke-heavy);scrollbar-width:thin;scrollbar-color:var(--brand) #101010}
+.shots img{flex:0 0 auto;display:block;height:clamp(420px,62vh,640px);width:auto;aspect-ratio:9/16;scroll-snap-align:start}
+.shots:focus-visible{outline-offset:-6px}
+.shots-nav{display:flex;gap:10px;justify-content:flex-end;margin-top:14px}
+.shots-nav .icon-btn{margin-left:0}
+
+/* ---- démos en onglets ---- */
+.demo-tabs{margin-top:28px;display:flex;flex-wrap:wrap;gap:8px}
+.demo-tabs .chip{height:44px;padding:0 16px;font-size:13px}
+.chip[aria-selected="true"]{background:var(--brand);color:var(--on-brand);box-shadow:var(--shadow-1)}
+.demo-panel > .play-grid{margin-top:24px}
+.panel-head{margin-top:26px}
+.panel-head h3{font-size:clamp(20px,2.6vw,26px)}
+.panel-head p{margin-top:8px;color:var(--text-body);max-width:62ch}
+.demo-panel .duo-grid,.demo-panel .privacy-grid,.demo-panel .personalize-grid{margin-top:22px}
+
+/* ---- Windows : liste repliable ---- */
+details.win-pc summary{cursor:pointer;width:fit-content;list-style:none;font:900 13px/1 var(--font-ui);letter-spacing:.12em;text-transform:uppercase;padding:12px 14px;border:var(--stroke);background:var(--bg-block);box-shadow:var(--shadow-1);display:flex;align-items:center;gap:10px}
+details.win-pc summary::-webkit-details-marker{display:none}
+details.win-pc summary::after{content:"+";font:900 18px/1 var(--font-mono)}
+details.win-pc[open] summary::after{content:"−"}
+details.win-pc ul{margin-top:16px}
 
 /* ============ ANIMATIONS AU DÉFILEMENT (motion.js, partagé avec /android et /windows) ============ */
 .section-head.reveal .kicker{clip-path:inset(-4px 100% -4px -4px);transition:clip-path .6s var(--ease-snap) calc(var(--d,0ms) + 120ms)}
@@ -512,20 +556,20 @@ footer .wrap{display:flex;flex-direction:column;gap:24px}
   <div class="wrap">
     <a class="brand-link" href="#top" aria-label="Vectorem — top of page">
       <svg class="brand-mark" viewBox="0 0 108 108" aria-hidden="true">
-        <path d="M58 30L86 58L58 86L30 58Z" fill="none" stroke="#F5F1E8" stroke-width="3.5"/>
-        <path fill-rule="evenodd" fill="#FFD426" d="M54 26L82 54L54 82L26 54ZM54 42L66 54L54 66L42 54Z"/>
-        <path d="M54 26L82 54L54 82L26 54ZM54 42L66 54L54 66L42 54Z" fill="none" stroke="#F5F1E8" stroke-width="4.5"/>
+        <defs><linearGradient id="hdGold" x1=".2" y1=".2" x2=".8" y2=".8"><stop offset="0" stop-color="#FFDB70"/><stop offset="1" stop-color="#D99A00"/></linearGradient></defs>
+        <path d="M58 30L86 58L58 86L30 58Z" fill="#101010" stroke="#F5F1E8" stroke-width="4.6"/>
+        <path fill-rule="evenodd" fill="url(#hdGold)" d="M54 26L82 54L54 82L26 54ZM54 42L66 54L54 66L42 54Z"/>
+        <path d="M54 26L82 54L54 82L26 54ZM54 42L66 54L54 66L42 54Z" fill="none" stroke="#F5F1E8" stroke-width="5.6"/>
       </svg>
       <span class="wordmark">Vectorem</span>
     </a>
     <nav class="site-nav" id="siteNav" aria-label="Sections">
       <a href="/en/android/">Android</a>
       <a href="/en/windows/">Windows</a>
-      <a href="#film">Film</a>
+      <a href="#nouveautes">What's new</a>
+      <a href="#images">Screens</a>
       <a href="#essayer">Try</a>
       <a href="#outils">Tools</a>
-      <a href="#series">Streaks</a>
-      <a href="#confidentialite">Privacy</a>
     </nav>
     <a class="btn btn-primary btn-sm head-cta" href="https://play.google.com/store/apps/details?id=com.vectorem.app" target="_blank" rel="noopener">Google Play</a>
     <a class="icon-btn lang-btn" href="/" hreflang="fr" lang="fr" aria-label="Version française">FR</a>
@@ -553,10 +597,9 @@ footer .wrap{display:flex;flex-direction:column;gap:24px}
         <span class="badge">Available</span>
         <a class="badge live" href="/en/windows/" style="text-decoration:none"><span class="dot"></span> Windows · preview</a>
       </div>
-      <h1 class="reveal" style="--d:80ms">One app to
-        <span class="rot" aria-live="polite"><span class="rot-inner"><span class="rot-word" id="rotWord">shape your sound</span></span></span>
-      </h1>
-      <p class="lede reveal" style="--d:160ms">Timer, reminders, habit streaks, equalizer, QR, wheel of fortune… 25+ tools, each one a module: turn it on, turn it off. The dashboard only shows what you actually use.</p>
+      <h1 class="reveal" style="--d:80ms">All your tools.<br>In one <span class="hl">place.</span></h1>
+      <p class="rot-line reveal" style="--d:120ms">One app to <span class="rot" aria-live="polite"><span class="rot-inner"><span class="rot-word" id="rotWord">shape your sound</span></span></span></p>
+      <p class="lede reveal" style="--d:160ms">Timer, reminders, habit streaks, equalizer, QR, wheel of fortune… 26 tools in one app. Each one is a module: turn it on, turn it off. The dashboard only shows what you actually use.</p>
       <div class="ctas reveal" style="--d:240ms">
         <a class="btn btn-primary" href="https://play.google.com/store/apps/details?id=com.vectorem.app" target="_blank" rel="noopener">Google Play <svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14" /> <path d="m12 5 7 7-7 7" /></svg></a>
         <a class="btn btn-ghost" href="/en/windows/">Windows version</a>
@@ -634,9 +677,32 @@ footer .wrap{display:flex;flex-direction:column;gap:24px}
       <div class="phone-hint" id="phHint"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14" /> <path d="m12 5 7 7-7 7" /></svg> Tap the screen, it's interactive</div>
     </div>
   </div>
+  <svg class="hero-band" viewBox="0 0 1440 220" preserveAspectRatio="none" aria-hidden="true">
+    <polygon points="0,118 1440,0 1440,16 0,134" fill="var(--cat-time)"/>
+    <polygon points="0,146 1440,28 1440,96 0,214" fill="var(--brand)"/>
+    <polyline points="0,146 1440,28" fill="none" stroke="#F5F1E8" stroke-width="4" vector-effect="non-scaling-stroke"/>
+    <polygon points="0,224 1440,106 1440,120 0,238" fill="var(--cat-audio)"/>
+  </svg>
 </section>
 
 <div class="marquee" aria-hidden="true"><div class="marquee-track" id="marquee"></div></div>
+
+<!-- ================= NOUVEAUTÉS ================= -->
+<section id="nouveautes" class="news">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="kicker">New · version 1.4</span>
+      <h2>Four tools redone, a new icon</h2>
+      <p>The most opened tools were rebuilt from scratch. The new color band runs through the whole app.</p>
+    </div>
+    <div class="news-grid">
+      <article class="news-card reveal" style="--c:var(--cat-time);--oc:var(--on-time)"><span class="nc-ic"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 22h14" /> <path d="M5 2h14" /> <path d="M17 22v-4.172a2 2 0 0 0-.586-1.414L12 12l-4.414 4.414A2 2 0 0 0 7 17.828V22" /> <path d="M7 2v4.172a2 2 0 0 0 .586 1.414L12 12l4.414-4.414A2 2 0 0 0 17 6.172V2" /></svg></span><h3>Pomodoro</h3><p>Big ring, current phase, today's cycles and time left until the long break.</p></article>
+      <article class="news-card reveal" style="--d:60ms;--c:var(--cat-system);--oc:var(--on-system)"><span class="nc-ic"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><rect width="16" height="20" x="4" y="2" rx="2" /> <line x1="8" x2="16" y1="6" y2="6" /> <line x1="16" x2="16" y1="14" y2="18" /> <path d="M16 10h.01" /> <path d="M12 10h.01" /> <path d="M8 10h.01" /> <path d="M12 14h.01" /> <path d="M8 14h.01" /> <path d="M12 18h.01" /> <path d="M8 18h.01" /></svg></span><h3>Calculator</h3><p>Type the whole expression, with precedence and brackets. The result shows live. Memory and history.</p></article>
+      <article class="news-card reveal" style="--d:120ms;--c:var(--cat-time);--oc:var(--on-time)"><span class="nc-ic"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 6v6l4 2" /> <circle cx="12" cy="12" r="10" /></svg></span><h3>Stopwatch &amp; timer</h3><p>The timer shows when it ends. The stopwatch gives each lap, the fastest and the slowest.</p></article>
+      <article class="news-card reveal" style="--d:180ms;--c:var(--cat-system);--oc:var(--on-system)"><span class="nc-ic"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><rect width="8" height="4" x="8" y="2" rx="1" ry="1" /> <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2" /></svg></span><h3>Clipboard</h3><p>Tap to copy, long press to pin. Links, e-mails and numbers open in one tap.</p></article>
+    </div>
+  </div>
+</section>
 
 <!-- ================= CHIFFRES ================= -->
 <section class="figures" id="chiffres" aria-label="Vectorem in numbers">
@@ -644,7 +710,7 @@ footer .wrap{display:flex;flex-direction:column;gap:24px}
     <span class="kicker">Vectorem in numbers</span>
     <div class="fig-grid reveal">
       <div class="fig"><span class="num" data-count="26">0</span><span class="cap">Android tools</span><small>In one app</small></div>
-      <div class="fig"><span class="num" data-count="23">0</span><span class="cap">Extra tools on PC</span><small>Windows, in preview</small></div>
+      <div class="fig"><span class="num" data-count="23">0</span><span class="cap">Extra tools on PC</span><small>45 in all on Windows, in preview</small></div>
       <div class="fig"><span class="num zero" data-count="0">0</span><span class="cap">Data collected by Vectorem</span><small>Everything stays on your devices</small></div>
       <div class="fig"><span class="num zero" data-count="0">0</span><span class="cap">Account to create</span><small>No e-mail, no password</small></div>
       <div class="fig"><span class="num zero" data-count="0">0</span><span class="cap">Forced ads</span><small>Videos are optional</small></div>
@@ -654,20 +720,38 @@ footer .wrap{display:flex;flex-direction:column;gap:24px}
   </div>
 </section>
 
-<!-- ================= FILM ================= -->
-<section id="film" style="padding-bottom:24px">
+<!-- ================= EN IMAGES ================= -->
+<section id="images" style="padding-bottom:24px">
   <div class="wrap">
     <div class="section-head reveal">
-      <span class="kicker">The film</span>
-      <h2>26 tools in two minutes</h2>
-      <p>Each tool, one chapter. Edited in code, to the beat of the music. (French version for now.)</p>
+      <span class="kicker">Screens</span>
+      <h2>The app, screen by screen</h2>
+      <p>The Google Play screenshots, in dark theme. Scroll the strip, then watch the trailer.</p>
     </div>
+  </div>
+  <div class="shots reveal" id="shots" tabindex="0" role="region" aria-label="App screenshots">
+    <img src="../img/play/en/play-01.webp" alt="All your tools, in one place: 26 tools, no account" width="540" height="960" decoding="async">
+    <img src="../img/play/en/play-02.webp" alt="Home: today's tasks to tick and streaks" width="540" height="960" decoding="async">
+    <img src="../img/play/en/play-03.webp" alt="Streaks: 42 days in a row" width="540" height="960" loading="lazy" decoding="async">
+    <img src="../img/play/en/play-04.webp" alt="Timer and Pomodoro: big ring, current phase" width="540" height="960" loading="lazy" decoding="async">
+    <img src="../img/play/en/play-05.webp" alt="Home screen widgets" width="540" height="960" loading="lazy" decoding="async">
+    <img src="../img/play/en/play-06.webp" alt="The Library: each tool can be turned on or off" width="540" height="960" loading="lazy" decoding="async">
+    <img src="../img/play/en/play-07.webp" alt="Phone ↔ PC: Vectorem for Windows, in preview" width="540" height="960" loading="lazy" decoding="async">
+  </div>
+  <div class="wrap">
+    <div class="shots-nav"><button class="icon-btn" type="button" data-d="-1" aria-label="Previous screenshots"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="m15 18-6-6 6-6" /></svg></button><button class="icon-btn" type="button" data-d="1" aria-label="Next screenshots"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="m9 18 6-6-6-6" /></svg></button></div>
     <div class="film-frame reveal">
-      <video id="filmVideo" src="../videos/vectorem-reel-fr.mp4" poster="../videos/vectorem-reel-fr.jpg" muted loop playsinline preload="metadata" controls aria-label="Vectorem presentation film, muted"></video>
+      <video id="filmVideo" src="../videos/vectorem-trailer-en.mp4" poster="../videos/vectorem-trailer-en.jpg" muted loop playsinline preload="metadata" controls aria-label="Vectorem trailer, 33 seconds, muted"></video>
     </div>
   </div>
 </section>
 
+<svg class="band-sep" viewBox="0 0 1440 56" preserveAspectRatio="none" aria-hidden="true">
+  <polygon points="0,16 1440,0 1440,8 0,24" fill="var(--cat-time)"/>
+  <polygon points="0,28 1440,12 1440,36 0,52" fill="var(--brand)"/>
+  <polyline points="0,28 1440,12" fill="none" stroke="#F5F1E8" stroke-width="2" vector-effect="non-scaling-stroke"/>
+  <polygon points="0,56 1440,40 1440,46 0,62" fill="var(--cat-audio)"/>
+</svg>
 <!-- ================= WINDOWS ================= -->
 <section id="windows">
   <div class="wrap">
@@ -675,7 +759,7 @@ footer .wrap{display:flex;flex-direction:column;gap:24px}
       <div class="section-head reveal">
         <span class="kicker soon">Preview</span>
         <h2>Vectorem on Windows</h2>
-        <p>The same idea on your PC: turn on what you use, no account, and your data stays on the computer. Your phone tools, plus tools built for the desktop.</p>
+        <p>The same idea on your PC: turn on what you use, no account, and your data stays on the computer. 45 tools in all: 22 from the phone, 23 built for the desktop.</p>
       </div>
       <div class="win-dl reveal">
         <a class="btn btn-primary" id="winDl" href="/en/windows/">Download for Windows</a>
@@ -731,8 +815,8 @@ footer .wrap{display:flex;flex-direction:column;gap:24px}
       </div>
     </div>
 
-    <div class="win-pc reveal">
-      <h3>23 tools built for the PC</h3>
+    <details class="win-pc reveal">
+      <summary>The 23 tools built for the PC</summary>
       <ul>
         <li><b>◆</b>PDF tools</li><li><b>◆</b>Colour picker</li><li><b>◆</b>Screen ruler</li><li><b>◆</b>Batch rename</li>
         <li><b>◆</b>Batch images</li><li><b>◆</b>Metadata</li><li><b>◆</b>Disk usage</li><li><b>◆</b>Monitor</li>
@@ -741,18 +825,25 @@ footer .wrap{display:flex;flex-direction:column;gap:24px}
         <li><b>◆</b>PDF editor</li><li><b>◆</b>Terminal</li><li><b>◆</b>Window layouts</li>
         <li><b>◆</b>Tidy folders</li><li><b>◆</b>Folder copy</li><li><b>◆</b>Power timer</li><li><b>◆</b>Cheat sheet</li>
       </ul>
-    </div>
+    </details>
   </div>
 </section>
 
-<!-- ================= ESSAYER ================= -->
+<!-- ================= ESSAYER (démos en onglets) ================= -->
 <section id="essayer">
   <div class="wrap">
     <div class="section-head reveal">
       <span class="kicker">Your turn</span>
       <h2>Try them, for real</h2>
-      <p>These mini tools work right here, in your browser. In the app, they do even more.</p>
+      <p>These demos work right here, in your browser. In the app, they go further.</p>
     </div>
+    <div class="demo-tabs reveal" id="demoTabs" role="tablist" aria-label="Demos">
+      <button class="chip" type="button" role="tab" id="tab-demo-mini" aria-controls="demo-mini" aria-selected="true">Mini tools</button>
+      <button class="chip" type="button" role="tab" id="tab-series" aria-controls="series" aria-selected="false" tabindex="-1">Streaks</button>
+      <button class="chip" type="button" role="tab" id="tab-confidentialite" aria-controls="confidentialite" aria-selected="false" tabindex="-1">Permissions</button>
+      <button class="chip" type="button" role="tab" id="tab-personnalisation" aria-controls="personnalisation" aria-selected="false" tabindex="-1">Customization</button>
+    </div>
+    <div class="demo-panel" id="demo-mini" role="tabpanel" aria-labelledby="tab-demo-mini">
     <div class="play-grid">
 
       <div class="play-card reveal">
@@ -783,38 +874,9 @@ footer .wrap{display:flex;flex-direction:column;gap:24px}
       </div>
 
     </div>
-  </div>
-</section>
-
-<!-- ================= OUTILS ================= -->
-<section id="outils" style="padding-top:24px">
-  <div class="wrap">
-    <div class="section-head reveal">
-      <span class="kicker">The library</span>
-      <h2>26 tools, 4 categories</h2>
-      <p>Filter, search, tap a card to learn more. Every tool is in the app's Library, as a grid or a list.</p>
     </div>
-    <button class="btn btn-primary reveal" id="libToggle" style="margin-top:24px" type="button" aria-expanded="false" aria-controls="libBody">See the 26 tools</button>
-    <div id="libBody" hidden>
-    <div class="toolbar" style="margin-top:24px">
-      <div class="search"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="m21 21-4.34-4.34" /> <circle cx="11" cy="11" r="8" /></svg><input id="toolSearch" type="search" placeholder="Search a tool (e.g. timer, QR, wheel…)" aria-label="Search a tool"></div>
-      <div class="row" id="catChips"></div>
-      <span class="count" id="toolCount">26 / 26</span>
-    </div>
-    <div class="tool-grid2" id="toolGrid"></div>
-    <p class="tiny" style="margin-top:18px">A few advanced features unlock with a short video, only if you choose to play it.</p>
-    </div>
-  </div>
-</section>
-
-<!-- ================= SÉRIES & PLUS ================= -->
-<section id="series" style="padding-top:24px">
-  <div class="wrap">
-    <div class="section-head reveal">
-      <span class="kicker">Streaks</span>
-      <h2>Keep a habit, without thinking about it</h2>
-      <p>Streaks tracks your daily goals: exercise, reading, an instrument. Link a goal to the timer, Pomodoro or your tasks, and the day checks itself off.</p>
-    </div>
+    <div class="demo-panel" id="series" role="tabpanel" aria-labelledby="tab-series" hidden>
+      <div class="panel-head"><h3>Keep a habit, without thinking about it</h3><p>Streaks tracks your daily goals: exercise, reading, an instrument. Link a goal to the timer, Pomodoro or your tasks, and the day checks itself off.</p></div>
     <div class="duo-grid">
       <div class="reveal">
         <div class="play-card">
@@ -845,17 +907,9 @@ footer .wrap{display:flex;flex-direction:column;gap:24px}
         <li class="reveal" style="--d:180ms"><span class="ic"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="m5 8 6 6" /> <path d="m4 14 6-6 2-3" /> <path d="M2 5h12" /> <path d="M7 2h1" /> <path d="m22 22-5-10-5 10" /> <path d="M14 18h6" /></svg></span><div><b>English or French</b><span class="d">The app's language is set in Settings, independently of the phone's.</span></div></li>
       </ul>
     </div>
-  </div>
-</section>
-
-<!-- ================= CONFIDENTIALITÉ ================= -->
-<section id="confidentialite" style="padding-top:24px">
-  <div class="wrap">
-    <div class="section-head reveal">
-      <span class="kicker">Honest permissions</span>
-      <h2>Every request says what it does, and what it doesn't</h2>
-      <p>A permission card only shows up when you turn the tool on. Try the three examples below.</p>
     </div>
+    <div class="demo-panel" id="confidentialite" role="tabpanel" aria-labelledby="tab-confidentialite" hidden>
+      <div class="panel-head"><h3>Every request says what it does, and what it doesn't</h3><p>A permission card only shows up when you turn the tool on. Try the three examples below.</p></div>
     <div class="privacy-grid">
       <div class="reveal">
         <div class="perm-tabs" id="permTabs" role="group" aria-label="Permission examples"></div>
@@ -871,17 +925,9 @@ footer .wrap{display:flex;flex-direction:column;gap:24px}
         <li class="reveal" style="--d:210ms"><span class="n"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><rect width="14" height="20" x="5" y="2" rx="2" ry="2" /> <path d="M12 18h.01" /></svg></span><div><h4>Your data stays on your phone</h4><p>No account, no Vectorem server: your notes, tasks and streaks don't leave the phone. <a href="/confidentialite/#en">Everything is detailed in the privacy policy</a>.</p></div></li>
       </ul>
     </div>
-  </div>
-</section>
-
-<!-- ================= PERSONNALISATION ================= -->
-<section id="personnalisation" style="padding-top:24px">
-  <div class="wrap">
-    <div class="section-head reveal">
-      <span class="kicker">Your way</span>
-      <h2>Customize your dashboard</h2>
-      <p>Theme, brand colour and layout are set in the app. Here, everything reacts live.</p>
     </div>
+    <div class="demo-panel" id="personnalisation" role="tabpanel" aria-labelledby="tab-personnalisation" hidden>
+      <div class="panel-head"><h3>Customize your dashboard</h3><p>Theme, brand colour and layout are set in the app. Here, everything reacts live.</p></div>
     <div class="personalize-grid">
       <div class="setting-card reveal">
         <h4>Appearance</h4>
@@ -924,9 +970,37 @@ footer .wrap{display:flex;flex-direction:column;gap:24px}
       <div class="sec-list reveal" id="secList"></div>
       <div class="mini-phone reveal" style="--d:100ms"><div class="mini-screen"><div class="mini-hero" id="miniHello">Good morning</div><div id="miniBlocks" style="display:flex;flex-direction:column;gap:8px"></div></div></div>
     </div>
+    </div>
   </div>
 </section>
 
+<!-- ================= OUTILS ================= -->
+<section id="outils" style="padding-top:24px">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="kicker">The library</span>
+      <h2>26 tools, 4 categories</h2>
+      <p>Filter, search, tap a card to learn more. Every tool is in the app's Library, as a grid or a list.</p>
+    </div>
+    <button class="btn btn-primary reveal" id="libToggle" style="margin-top:24px" type="button" aria-expanded="false" aria-controls="libBody">See the 26 tools</button>
+    <div id="libBody" hidden>
+    <div class="toolbar" style="margin-top:24px">
+      <div class="search"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="m21 21-4.34-4.34" /> <circle cx="11" cy="11" r="8" /></svg><input id="toolSearch" type="search" placeholder="Search a tool (e.g. timer, QR, wheel…)" aria-label="Search a tool"></div>
+      <div class="row" id="catChips"></div>
+      <span class="count" id="toolCount">26 / 26</span>
+    </div>
+    <div class="tool-grid2" id="toolGrid"></div>
+    <p class="tiny" style="margin-top:18px">A few advanced features unlock with a short video, only if you choose to play it.</p>
+    </div>
+  </div>
+</section>
+
+<svg class="band-sep" viewBox="0 0 1440 56" preserveAspectRatio="none" aria-hidden="true">
+  <polygon points="0,16 1440,0 1440,8 0,24" fill="var(--cat-time)"/>
+  <polygon points="0,28 1440,12 1440,36 0,52" fill="var(--brand)"/>
+  <polyline points="0,28 1440,12" fill="none" stroke="#F5F1E8" stroke-width="2" vector-effect="non-scaling-stroke"/>
+  <polygon points="0,56 1440,40 1440,46 0,62" fill="var(--cat-audio)"/>
+</svg>
 <section class="cta-final">
   <div class="floaters" aria-hidden="true">
     <span class="fl o" style="--s:60px;left:4%;top:20%"></span>
@@ -946,12 +1020,6 @@ footer .wrap{display:flex;flex-direction:column;gap:24px}
 
 <footer>
   <div class="wrap">
-    <nav class="bottom-nav" aria-label="Navigation Vectorem">
-      <a href="#top"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8" /> <path d="M3 10a2 2 0 0 1 .709-1.528l7-6a2 2 0 0 1 2.582 0l7 6A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" /></svg><span>Home</span></a>
-      <a href="#outils"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><rect width="7" height="7" x="3" y="3" rx="1" /> <rect width="7" height="7" x="14" y="3" rx="1" /> <rect width="7" height="7" x="14" y="14" rx="1" /> <rect width="7" height="7" x="3" y="14" rx="1" /></svg><span>Tools</span></a>
-      <a href="#confidentialite"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z" /> <path d="m9 12 2 2 4-4" /></svg><span>Permissions</span></a>
-      <a href="#personnalisation"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M9.671 4.136a2.34 2.34 0 0 1 4.659 0 2.34 2.34 0 0 0 3.319 1.915 2.34 2.34 0 0 1 2.33 4.033 2.34 2.34 0 0 0 0 3.831 2.34 2.34 0 0 1-2.33 4.033 2.34 2.34 0 0 0-3.319 1.915 2.34 2.34 0 0 1-4.659 0 2.34 2.34 0 0 0-3.32-1.915 2.34 2.34 0 0 1-2.33-4.033 2.34 2.34 0 0 0 0-3.831A2.34 2.34 0 0 1 6.35 6.051a2.34 2.34 0 0 0 3.319-1.915" /> <circle cx="12" cy="12" r="3" /></svg><span>Settings</span></a>
-    </nav>
     <div class="foot-meta">
       <span>© 2026 Vectorem · Android · Windows (preview)</span>
       <span><a href="/confidentialite/#en">Privacy policy</a> · <a href="mailto:support@vectorem.app">Contact</a> · <a href="/" hreflang="fr" lang="fr">Français</a> · <a href="https://play.google.com/store/apps/details?id=com.vectorem.app" target="_blank" rel="noopener">Google Play</a></span>
@@ -1042,6 +1110,49 @@ $$('button', densitySeg).forEach(function(b){
     }, { threshold: .4 }).observe(shot);
     btns.forEach(function(b){ b.addEventListener('click', function(){ shot.dataset.stopped = '1'; }); });
   }
+})();
+
+/* ---------- captures : boutons de défilement ---------- */
+(function(){
+  var strip = $('#shots'); if (!strip) return;
+  $$('.shots-nav button').forEach(function(b){
+    b.addEventListener('click', function(){
+      var step = strip.querySelector('img').getBoundingClientRect().width;
+      strip.scrollBy({ left: +b.dataset.d * step, behavior: reduce ? 'auto' : 'smooth' });
+    });
+  });
+})();
+
+/* ---------- démos en onglets ---------- */
+(function(){
+  var tabs = $$('#demoTabs [role="tab"]'); if (!tabs.length) return;
+  function open(id, focus){
+    tabs.forEach(function(t){
+      var on = t.getAttribute('aria-controls') === id;
+      t.setAttribute('aria-selected', String(on));
+      t.tabIndex = on ? 0 : -1;
+      document.getElementById(t.getAttribute('aria-controls')).hidden = !on;
+      if (on && focus) t.focus();
+    });
+  }
+  tabs.forEach(function(t, i){
+    t.addEventListener('click', function(){ open(t.getAttribute('aria-controls')); });
+    t.addEventListener('keydown', function(e){
+      var d = e.key === 'ArrowRight' ? 1 : e.key === 'ArrowLeft' ? -1 : 0;
+      if (!d) return;
+      e.preventDefault();
+      open(tabs[(i + d + tabs.length) % tabs.length].getAttribute('aria-controls'), true);
+    });
+  });
+  // Anciens liens (#series, #confidentialite, #personnalisation) : ouvrent le bon onglet.
+  function fromHash(){
+    var id = location.hash.slice(1);
+    if (!id || !tabs.some(function(t){ return t.getAttribute('aria-controls') === id; })) return;
+    open(id);
+    $('#essayer').scrollIntoView();
+  }
+  addEventListener('hashchange', fromHash);
+  fromHash();
 })();
 
 /* ---------- en-tête, progression, scrollspy ---------- */

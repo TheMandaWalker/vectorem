@@ -109,12 +109,13 @@ SHOTS = [
 ]
 
 MARK = """<svg class="brand-mark" viewBox="0 0 108 108" aria-hidden="true">
-        <path d="M58 30L86 58L58 86L30 58Z" fill="none" stroke="#F5F1E8" stroke-width="3.5"/>
-        <path fill-rule="evenodd" fill="#FFD426" d="M54 26L82 54L54 82L26 54ZM54 42L66 54L54 66L42 54Z"/>
-        <path d="M54 26L82 54L54 82L26 54ZM54 42L66 54L54 66L42 54Z" fill="none" stroke="#F5F1E8" stroke-width="4.5"/>
+        <defs><linearGradient id="hdGold" x1=".2" y1=".2" x2=".8" y2=".8"><stop offset="0" stop-color="#FFDB70"/><stop offset="1" stop-color="#D99A00"/></linearGradient></defs>
+        <path d="M58 30L86 58L58 86L30 58Z" fill="#101010" stroke="#F5F1E8" stroke-width="4.6"/>
+        <path fill-rule="evenodd" fill="url(#hdGold)" d="M54 26L82 54L54 82L26 54ZM54 42L66 54L54 66L42 54Z"/>
+        <path d="M54 26L82 54L54 82L26 54ZM54 42L66 54L54 66L42 54Z" fill="none" stroke="#F5F1E8" stroke-width="5.6"/>
       </svg>"""
 
-FAVICON = """data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 108 108'%3E%3Crect width='108' height='108' fill='%23101010'/%3E%3Cpath d='M58 30L86 58L58 86L30 58Z' fill='none' stroke='%23F5F1E8' stroke-width='3.5'/%3E%3Cpath fill-rule='evenodd' fill='%23FFD426' d='M54 26L82 54L54 82L26 54ZM54 42L66 54L54 66L42 54Z'/%3E%3Cpath d='M54 26L82 54L54 82L26 54ZM54 42L66 54L54 66L42 54Z' fill='none' stroke='%23F5F1E8' stroke-width='4.5'/%3E%3C/svg%3E"""
+FAVICON = """data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 108 108'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='.2' y1='.2' x2='.8' y2='.8'%3E%3Cstop offset='0' stop-color='%23FFDB70'/%3E%3Cstop offset='1' stop-color='%23D99A00'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='108' height='108' fill='%23101010'/%3E%3Cpath d='M58 30L86 58L58 86L30 58Z' fill='%23101010' stroke='%23F5F1E8' stroke-width='4.6'/%3E%3Cpath fill-rule='evenodd' fill='url(%23g)' d='M54 26L82 54L54 82L26 54ZM54 42L66 54L54 66L42 54Z'/%3E%3Cpath d='M54 26L82 54L54 82L26 54ZM54 42L66 54L54 66L42 54Z' fill='none' stroke='%23F5F1E8' stroke-width='5.6'/%3E%3C/svg%3E"""
 
 
 def build(lang):
