@@ -45,7 +45,7 @@ R('aria-label="Changer de thème"', 'aria-label="Change theme"')
 R('<span class="badge">Sans compte</span>', '<span class="badge">No account</span>')
 R('<span class="badge">Données locales</span>', '<span class="badge">Local data</span>')
 R('<span class="badge">Disponible</span>', '<span class="badge">Available</span>')
-R('Windows · aperçu</a>', 'Windows · preview</a>')
+R('Windows · 1.0</a>', 'Windows · 1.0</a>')
 R('<a class="btn btn-ghost" href="/windows/">Version Windows</a>', '<a class="btn btn-ghost" href="/en/windows/">Windows version</a>')
 R('<h1 class="reveal" style="--d:80ms">Tous tes outils.<br>Au même <span class="hl">endroit.</span></h1>', '<h1 class="reveal" style="--d:80ms">All your tools.<br>In one <span class="hl">place.</span></h1>')
 R('<p class="rot-line reveal" style="--d:120ms">Une seule app pour <span', '<p class="rot-line reveal" style="--d:120ms">One app to <span')
@@ -60,7 +60,7 @@ R('<a class="badge live" href="/windows/"', '<a class="badge live" href="/en/win
 R('aria-label="Vectorem en chiffres"', 'aria-label="Vectorem in numbers"')
 R('<span class="kicker">Vectorem en chiffres</span>', '<span class="kicker">Vectorem in numbers</span>')
 R('<span class="cap">Outils Android</span><small>Dans une seule app</small>', '<span class="cap">Android tools</span><small>In one app</small>')
-R('<span class="cap">Outils en plus sur PC</span><small>45 en tout sur Windows, en aperçu</small>', '<span class="cap">Extra tools on PC</span><small>45 in all on Windows, in preview</small>')
+R('<span class="cap">Outils en plus sur PC</span><small>45 en tout sur Windows</small>', '<span class="cap">Extra tools on PC</span><small>45 in all on Windows</small>')
 # ---- nouveautés ----
 R('<span class="kicker">Nouveau · version 1.4</span>', '<span class="kicker">New · version 1.4</span>')
 R('<h2>Quatre outils refaits, une nouvelle icône</h2>', '<h2>Four tools redone, a new icon</h2>')
@@ -133,7 +133,7 @@ for fr, en in [("Tous tes outils, au même endroit : 26 outils, sans compte", "A
                ("Minuteur et Pomodoro : grand anneau, phase en cours", "Timer and Pomodoro: big ring, current phase"),
                ("Widgets d'écran d'accueil", "Home screen widgets"),
                ("La Bibliothèque : chaque outil s'active ou non", "The Library: each tool can be turned on or off"),
-               ("Téléphone ↔ PC : Vectorem pour Windows, en aperçu", "Phone ↔ PC: Vectorem for Windows, in preview")]:
+               ("Téléphone ↔ PC : Vectorem pour Windows", "Phone ↔ PC: Vectorem for Windows")]:
     R('alt="%s"' % fr, 'alt="%s"' % en)
 R('aria-label="Bande-annonce de Vectorem, 33 secondes, sans son"', 'aria-label="Vectorem trailer, 33 seconds, muted"')
 
@@ -260,7 +260,7 @@ R('id="miniHello">Bonjour</div>', 'id="miniHello">Good morning</div>')
 # ---- cta / footer ----
 R('<h2 class="reveal">Tous tes outils. Au même endroit.<br><span style="font-size:.6em">Et ce n\'est que la bêta.</span></h2>', '<h2 class="reveal">All your tools. In one place.<br><span style="font-size:.6em">And it\'s only the beta.</span></h2>')
 R('<a class="btn btn-ghost" href="/android/">Tout sur la version Android</a>', '<a class="btn btn-ghost" href="/en/android/">All about the Android version</a>')
-R('<span>© 2026 Vectorem · Android · Windows (aperçu)</span>', '<span>© 2026 Vectorem · Android · Windows (preview)</span>')
+R('<span>© 2026 Vectorem · Android · Windows</span>', '<span>© 2026 Vectorem · Android · Windows</span>')
 R('<a href="/confidentialite/#en">Politique de confidentialité</a> · <a href="mailto:support@vectorem.app">Contact</a> · <a href="/en/" hreflang="en" lang="en">English</a>', '<a href="/confidentialite/#en">Privacy policy</a> · <a href="mailto:support@vectorem.app">Contact</a> · <a href="/" hreflang="fr" lang="fr">Français</a>')
 R('href="/en/" hreflang="en" lang="en" aria-label="English version">EN</a>', 'href="/" hreflang="fr" lang="fr" aria-label="Version française">FR</a>')
 R('</svg>Chrono</h5>', '</svg>Stopwatch</h5>')

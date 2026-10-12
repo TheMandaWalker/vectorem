@@ -7,7 +7,7 @@ Le style vient du <style> de index.html (relu à chaque fois : la page suit le s
 plus quelques règles propres à la page. Les textes sont des couples T("fr", "en").
 Le bouton de téléchargement est piloté par /version.json : s'il contient « download »,
 il devient actif (version, taille, empreinte) ; sinon il affiche « Bientôt ».
-Ton : phrases courtes, pas de « gratuit », « sans pub », « aucune connexion » ; garder « aperçu ».
+Ton : phrases courtes, pas de « gratuit », « sans pub », « aucune connexion » ; version publique 1.0 depuis le 12/10/2026.
 """
 import html
 import os
@@ -195,13 +195,13 @@ def build(lang):
 <section class="w-hero">
   <div class="wrap">
     <div>
-      <div class="eyebrow-row"><span class="badge warn">{T("Aperçu", "Preview")}</span><span class="badge">Windows 10 · 11</span></div>
+      <div class="eyebrow-row"><span class="badge live"><span class="dot"></span> {T("Disponible · 1.0", "Available · 1.0")}</span><span class="badge">Windows 10 · 11</span></div>
       <h1>{T("Tous tes outils.", "All your tools.")}<br><em>{T("Au même endroit.", "In one place.")}</em></h1>
-      <p class="lead">{T("Vectorem arrive sur ton PC : PDF, captures d'écran, fichiers en lot, lecteur vidéo, minuteur, notes, tâches… dans une seule fenêtre. Tu actives ce qui te sert, sans compte, et tes données restent sur ton ordinateur.", "Vectorem comes to your PC: PDFs, screenshots, batch files, video player, timer, notes, tasks… in one window. Turn on what you use, no account, and your data stays on your computer.")}</p>
+      <p class="lead">{T("Vectorem est sur ton PC : PDF, captures d'écran, fichiers en lot, lecteur vidéo, minuteur, notes, tâches… dans une seule fenêtre. Tu actives ce qui te sert, sans compte, et tes données restent sur ton ordinateur.", "Vectorem is on your PC: PDFs, screenshots, batch files, video player, timer, notes, tasks… in one window. Turn on what you use, no account, and your data stays on your computer.")}</p>
       <div class="dl-box" id="telecharger">
         <a class="btn btn-primary soon" id="dlBtn" href="#telecharger" aria-disabled="true">{T("Bientôt disponible", "Coming soon")}</a>
         <div class="dl-meta" id="dlMeta"><span class="badge">{T("Windows 10 ou 11, 64 bits", "Windows 10 or 11, 64-bit")}</span></div>
-        <p class="dl-note" id="dlNote">{T("L'aperçu est en test. Le téléchargement s'ouvrira ici.", "The preview is being tested. The download will open here.")}</p>
+        <p class="dl-note" id="dlNote">{T("Le téléchargement s'ouvre ici.", "The download opens here.")}</p>
         <p class="dl-sha" id="dlSha" hidden></p>
       </div>
     </div>
@@ -283,7 +283,7 @@ def build(lang):
       <div class="step reveal"><div><h3>{T("Lance-le", "Run it")}</h3><p>{T("Installation pour ton compte seulement, sans droits d'administrateur. Un raccourci arrive dans le menu Démarrer et sur le bureau.", "Installs for your account only, no admin rights needed. A shortcut lands in the Start menu and on the desktop.")}</p></div></div>
       <div class="step reveal"><div><h3>{T("Choisis tes outils", "Pick your tools")}</h3><p>{T("Trois écrans au premier lancement : ce que tu fais souvent, et Vectorem active les bons outils.", "Three screens at first launch: what you often do, and Vectorem turns on the right tools.")}</p></div></div>
     </div>
-    <div class="warn-box reveal"><b>{T("Avertissement de Windows :", "Windows warning:")}</b> {T("l'aperçu n'est pas encore signé, Windows peut donc afficher « Windows a protégé votre ordinateur ». Clique sur « Informations complémentaires », puis « Exécuter quand même ». Tu peux vérifier le fichier avec son empreinte SHA-256, affichée sous le bouton.", "the preview isn't signed yet, so Windows may show “Windows protected your PC”. Click “More info”, then “Run anyway”. You can check the file with its SHA-256 hash, shown under the button.")}</div>
+    <div class="warn-box reveal"><b>{T("Avertissement de Windows :", "Windows warning:")}</b> {T("l'installateur n'est pas encore signé, Windows peut donc afficher « Windows a protégé votre ordinateur ». Clique sur « Informations complémentaires », puis « Exécuter quand même ». Tu peux vérifier le fichier avec son empreinte SHA-256, affichée sous le bouton.", "the installer isn't signed yet, so Windows may show “Windows protected your PC”. Click “More info”, then “Run anyway”. You can check the file with its SHA-256 hash, shown under the button.")}</div>
     <div class="req reveal">
       <div><b>{T("Système", "System")}</b>Windows 10 {T("ou", "or")} 11, 64 bits</div>
       <div><b>{T("Installateur", "Installer")}</b>{T("Un fichier .exe d'environ 155 Mo", "One .exe file, about 155 MB")}</div>
@@ -303,7 +303,7 @@ def build(lang):
       <details class="reveal"><summary>{T("Faut-il un compte ?", "Do I need an account?")}</summary><p>{T("Non. Rien à créer, rien à connecter.", "No. Nothing to sign up for, nothing to connect.")}</p></details>
       <details class="reveal"><summary>{T("Où sont mes données ?", "Where is my data?")}</summary><p>{T("Sur ton PC, dans ton dossier utilisateur (%APPDATA%&#92;Vectorem). Elles ne partent pas sur un serveur. L'app vérifie au plus une fois par jour s'il existe une nouvelle version ; tu peux couper cette vérification dans les Réglages.", "On your PC, in your user folder (%APPDATA%&#92;Vectorem). It doesn't go to a server. The app checks at most once a day for a new version; you can turn that check off in Settings.")}</p></details>
       <details class="reveal"><summary>{T("Faut-il l'app Android ?", "Do I need the Android app?")}</summary><p>{T("Non, Vectorem pour Windows marche seul. Avec le téléphone associé, tu gagnes la synchronisation, l'envoi de fichiers et la télécommande.", "No, Vectorem for Windows works on its own. With a paired phone you get sync, file sending and the remote.")}</p></details>
-      <details class="reveal"><summary>{T("Pourquoi Windows affiche un avertissement ?", "Why does Windows show a warning?")}</summary><p>{T("Parce que l'installateur de l'aperçu n'est pas encore signé par un certificat. C'est prévu avant la version publique.", "Because the preview installer isn't signed with a certificate yet. That's planned before the public release.")}</p></details>
+      <details class="reveal"><summary>{T("Pourquoi Windows affiche un avertissement ?", "Why does Windows show a warning?")}</summary><p>{T("Parce que l'installateur n'est pas encore signé par un certificat. C'est prévu.", "Because the installer isn't signed with a certificate yet. That's planned.")}</p></details>
       <details class="reveal"><summary>{T("Et sur Mac ou Linux ?", "What about Mac or Linux?")}</summary><p>{T("Pas pour l'instant. Windows d'abord.", "Not for now. Windows first.")}</p></details>
       <details class="reveal"><summary>{T("Comment désinstaller ?", "How do I uninstall?")}</summary><p>{T("Paramètres Windows › Applications › Vectorem. Tes données restent dans %APPDATA%&#92;Vectorem tant que tu ne supprimes pas ce dossier.", "Windows Settings › Apps › Vectorem. Your data stays in %APPDATA%&#92;Vectorem until you delete that folder.")}</p></details>
     </div>
@@ -325,7 +325,7 @@ def build(lang):
 <footer>
   <div class="wrap">
     <div class="foot-meta">
-      <span>© 2026 Vectorem · Windows · {T("aperçu", "preview")}</span>
+      <span>© 2026 Vectorem · Windows · 1.0</span>
       <span><a href="{home}">{T("Accueil", "Home")}</a> · <a href="{'/confidentialite/' if fr else '/privacy/'}">{T("Politique de confidentialité", "Privacy policy")}</a> · <a href="mailto:support@vectorem.app">{T("Contact", "Contact")}</a> · <a href="{other}">{T("English", "Français")}</a></span>
     </div>
   </div>
