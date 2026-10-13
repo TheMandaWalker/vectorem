@@ -1,10 +1,10 @@
 {
   "windows": {
-    "version": "1.0.0",
+    "version": "1.1.0",
     "url": "https://vectorem.app/windows/",
-    "notes": "Première version publique. Tes appareils se parlent : téléphone, tablette et PC sur ton Wi-Fi.",
-    "download": "https://github.com/TheMandaWalker/vectorem/releases/download/windows-v1.0.0/Vectorem-1.0.0.exe",
-    "sha256": "9a2ed1eb9f72096bb8409f93b6756c5b47e5aa45add2ff13a090ff23344c4383",
-    "size": 166020096
+    "notes": "Premium sur PC (apparence, statistiques 30/90 jours, outils programmés), calculatrice scientifique.",
+    "download": "https://github.com/TheMandaWalker/vectorem/releases/download/windows-v1.1.0/Vectorem-1.1.0.exe",
+    "sha256": "02aea3147800e4b763692f94dc90a1fc11a7247af70f8522eac89e7c0d5a4f93",
+    "size": 166192128
   }
 }
