@@ -45,7 +45,7 @@ SHOTS = [
     ("bibliotheque", ("La Bibliothèque : tu actives ce que tu utilises, le reste ne s'affiche pas.", "The Library: turn on what you use, the rest stays out of sight."), ("Bibliothèque", "Library")),
 ]
 
-PLAY = "https://play.google.com/store/apps/details?id=com.vectorem.app"
+PLAY = "https://play.google.com/store/apps/details?id=com.vectorem.app&amp;referrer=utm_source%3Dvectorem.app%26utm_medium%3Dsite"
 
 
 def read_tools(path):
