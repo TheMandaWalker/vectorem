@@ -10,7 +10,7 @@
 <meta property="og:description" content="Un vrai atelier de dessin dans la poche. Sans compte, sur votre appareil.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://vectorem.app/lineum/">
-<meta property="og:image" content="https://vectorem.app/lineum/img/ecran-dessin.png">
+<meta property="og:image" content="https://vectorem.app/lineum/img/nuit-en-mer.webp">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 108 108'%3E%3Crect width='108' height='108' fill='%23101010'/%3E%3Cpath d='M54 24L84 54L54 84L24 54Z' fill='%23FFD426' stroke='%23F5F1E8' stroke-width='5'/%3E%3C/svg%3E">
 <link rel="stylesheet" href="../fonts.css">
 <link rel="alternate" hreflang="fr" href="https://vectorem.app/lineum/">
@@ -146,6 +146,11 @@
   .device h2{font-size:clamp(28px,3.6vw,40px)}
   .device p{margin-top:16px;color:var(--text-body);max-width:52ch}
 
+  /* tablette : deux captures côte à côte */
+  .tablet-pair{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px}
+  @media (max-width:760px){ .tablet-pair{grid-template-columns:minmax(0,1fr)} }
+  .tablet-pair figure{margin:0}
+
   /* FAQ : même bloc que Vectorem */
   .faq{display:grid;gap:14px;max-width:820px}
   details{border:var(--stroke);box-shadow:var(--shadow-1);background:var(--bg-block)}
@@ -202,7 +207,7 @@
       <p class="note">Lien de la bêta et Google Play : bientôt.</p>
     </div>
     <div class="shot-frame">
-      <img src="img/ecran-dessin.png" alt="Lineum sur ordinateur : un paysage dessiné avec un soleil, un nuage et un cœur, et ses outils autour." width="2160" height="1350">
+      <img src="img/nuit-en-mer.webp" alt="Nuit en mer : un voilier, un phare et une lune, dessinés dans Lineum." width="1600" height="1000">
     </div>
   </div>
   <svg class="band-sep" viewBox="0 0 1440 56" preserveAspectRatio="none" aria-hidden="true">
@@ -232,11 +237,11 @@
         <h3>Pinceaux et stylos</h3>
         <p>Douze pinceaux : rond doux, rond dur, aérographe, crayon, fusain, craie, encre, calligraphie, feutre, aquarelle, bombe, pixel. Pression du stylet, stabilisateur, flux, dureté, grain et forme de la pointe. « Mes stylos » garde un stylo prêt à reprendre en un geste.</p>
       </div>
-      <div class="shot"><img src="img/ecran-dessin.png" alt="Bureau de Lineum : un dessin avec des formes reconnues, la palette et les outils." width="2160" height="1350" loading="lazy"></div>
+      <div class="shot"><img src="img/site-dessin.webp" alt="Le panneau des pinceaux de Lineum, avec un dessin en cours." width="1600" height="1000" loading="lazy"></div>
     </div>
 
     <div class="feature flip">
-      <div class="shot"><img src="img/ecran-calques.png" alt="Panneau Calques de Lineum avec un groupe et un masque de calque." width="2160" height="1350" loading="lazy"></div>
+      <div class="shot"><img src="img/site-calques.webp" alt="Panneau Calques de Lineum : groupes et calques empilés." width="1600" height="1000" loading="lazy"></div>
       <div>
         <h3>Calques, groupes et masques</h3>
         <p>Opacité, modes de fusion, écrêtage, groupes repliables, masques de calque. Un calque de référence qui n'est jamais exporté. Ombre portée, contour et lueur par calque.</p>
@@ -248,11 +253,11 @@
         <h3>Formes à main levée</h3>
         <p>Tracez un cœur, un nuage, un rectangle, une ellipse, un triangle, un losange ou une étoile, puis restez appuyé : la forme remplace le trait et reste modifiable. Facultatif, on peut le couper dans Réglages.</p>
       </div>
-      <div class="shot"><img src="img/ecran-dessin.png" alt="Un dessin avec des formes reconnues et remplacées par des contours nets." width="2160" height="1350" loading="lazy"></div>
+      <div class="shot"><img src="img/site-reglages.webp" alt="Réglages de Lineum : l'option qui reconnaît les formes quand on reste appuyé." width="1600" height="1000" loading="lazy"></div>
     </div>
 
     <div class="feature flip">
-      <div class="shot"><img src="img/ecran-animation.png" alt="Timeline de Lineum avec une vignette par image et la pelure d'oignon." width="2160" height="1350" loading="lazy"></div>
+      <div class="shot"><img src="img/site-animation.webp" alt="Timeline de Lineum avec une vignette par image." width="1600" height="1000" loading="lazy"></div>
       <div>
         <h3>Animation</h3>
         <p>Une timeline avec une vignette par image, la pelure d'oignon pour voir l'image précédente, une durée par image et une lecture en boucle. Export en GIF animé, en ZIP de PNG ou en vidéo WebM.</p>
@@ -264,11 +269,11 @@
         <h3>Retouches</h3>
         <p>Luminosité, contraste, teinte, saturation, niveaux. Flou gaussien et de mouvement, netteté, perspective, transformation, baguette magique et lasso.</p>
       </div>
-      <div class="shot"><img src="img/ecran-actions.png" alt="Panneau Actions de Lineum avec des sections repliables." width="2160" height="1350" loading="lazy"></div>
+      <div class="shot"><img src="img/site-retouche.webp" alt="Fenêtre Retouche de couleur de Lineum, avec ses curseurs." width="1600" height="1000" loading="lazy"></div>
     </div>
 
     <div class="feature flip">
-      <div class="shot"><img src="img/ecran-export.png" alt="Fenêtre d'export de Lineum avec un aperçu et une signature." width="2160" height="1350" loading="lazy"></div>
+      <div class="shot"><img src="img/site-export.webp" alt="Fenêtre d'export de Lineum avec un aperçu et une signature." width="1600" height="1000" loading="lazy"></div>
       <div>
         <h3>Export soigné</h3>
         <p>Aperçu en direct. PNG, JPEG ou WebP, fond au choix (transparent compris), marge, et signature facultative : logo et nom, à la position choisie.</p>
@@ -280,11 +285,11 @@
         <h3>Couleurs, styles et démarrage</h3>
         <p>Des palettes fournies (chibi, manga, aquarelle, néon, pixel) et les vôtres. Des lots de style qui ajoutent stylos et palette, partageables par fichier. Des modèles de départ (papier, quadrillage, cases de BD, ciel, nuit) et des guides de dessin : tiers, nombre d'or, visage, corps en 8 têtes, perspective.</p>
       </div>
-      <div class="shot"><img src="img/ecran-dessin.png" alt="Palette et guides de dessin dans Lineum." width="2160" height="1350" loading="lazy"></div>
+      <div class="shot"><img src="img/site-effets.webp" alt="Effets par calque dans Lineum : ombre portée, contour et lueur." width="1600" height="1000" loading="lazy"></div>
     </div>
 
     <div class="feature flip">
-      <div class="shot"><img src="img/ecran-reglages.png" alt="Réglages de Lineum avec la carte de l'app et la disposition des outils." width="2160" height="1350" loading="lazy"></div>
+      <div class="shot"><img src="img/site-sombre.webp" alt="Lineum en thème sombre, avec le panneau des actions." width="1600" height="1000" loading="lazy"></div>
       <div>
         <h3>À votre main</h3>
         <p>Barre d'outils, panneau, timeline et curseurs rapides, placés à gauche, à droite, en haut ou en bas. Thèmes clair, sombre, noir pur, ou selon l'heure ; couleur d'accent au choix.</p>
@@ -306,11 +311,21 @@
 
 <section style="padding-top:0">
   <div class="wrap device">
-    <div class="phone"><img src="img/ecran-telephone.png" alt="Lineum sur un téléphone Android." width="824" height="1678" loading="lazy"></div>
+    <div class="phone"><img src="img/tel-dessin.webp" alt="Lineum sur téléphone : un dessin en cours, outils sur les bords." width="1080" height="1920" loading="lazy"></div>
     <div>
       <span class="kicker">Mobile</span>
       <h2 style="margin-top:16px">Sur téléphone et sur tablette</h2>
       <p>Lineum fonctionne au stylet ou au doigt. Le doigt sert à zoomer, déplacer, annuler (deux doigts) et rétablir (trois doigts). Android 7.0 et plus. Environ 7 Mo.</p>
+    </div>
+  </div>
+</section>
+
+<section style="padding-top:0">
+  <div class="wrap">
+    <div class="section-head"><span class="kicker">Tablette</span></div>
+    <div class="tablet-pair">
+      <figure class="shot"><img src="img/tab-calques.webp" alt="Lineum sur tablette : panneau Calques à côté du dessin." width="1600" height="1000" loading="lazy"></figure>
+      <figure class="shot"><img src="img/tab-sombre.webp" alt="Lineum sur tablette en thème sombre." width="1600" height="1000" loading="lazy"></figure>
     </div>
   </div>
 </section>
