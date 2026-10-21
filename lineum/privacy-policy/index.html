@@ -1,0 +1,230 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lineum — Politique de confidentialité / Privacy Policy</title>
+<link rel="canonical" href="https://vectorem.app/lineum/privacy-policy/">
+<meta name="description" content="Politique de confidentialité de Lineum, application de dessin pour Android et Windows. Privacy policy of Lineum, a drawing app for Android and Windows.">
+<link rel="icon" href="/lineum/img/logo-lineum.svg" type="image/svg+xml">
+<style>
+  @font-face{font-family:'Archivo Black';font-weight:400;font-display:swap;src:url(/fonts/HTxqL289NzCGg4MzN6KJ7eW6CYyF_g.woff2) format('woff2')}
+  @font-face{font-family:'Archivo';font-weight:100 900;font-display:swap;src:url(/fonts/k3kPo8UDI-1M0wlSV9XAw6lQkqWY8Q82sLydOxI.woff2) format('woff2')}
+  @font-face{font-family:'IBM Plex Mono';font-weight:700;font-display:swap;src:url(/fonts/-F6qfjptAgt5VM-kVkqdyU8n3pQPwlBFgg.woff2) format('woff2')}
+  /* Identité de l'app : jaune vif, encre, crème ; cadres épais et ombres dures. */
+  :root { --brand:#FFD426; --on-brand:#101010; --bg:#F5F1E8; --surface:#FFFFFF; --surface2:#EAE4D6; --ink:#101010; --muted:#5E5A51; --frame:#101010; --link:#101010; }
+  @media (prefers-color-scheme: dark) {
+    :root { --bg:#121110; --surface:#1E1C19; --surface2:#272420; --ink:#EDE7D9; --muted:#A29D90; --frame:#EDE7D9; --link:#FFD426; }
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { margin:0; background:var(--bg); color:var(--ink); font:500 16px/1.65 'Archivo', system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
+  .topbar { position: sticky; top: 0; z-index: 5; background: var(--on-brand); border-bottom: 3px solid var(--brand); }
+  .topbar-inner { max-width: 48rem; margin: 0 auto; padding: .7rem 1rem; display: flex; align-items: center; gap: .75rem; }
+  .home { display: flex; align-items: center; gap: .6rem; margin-right: auto; text-decoration: none; }
+  .mark { width: 2rem; height: 2rem; flex: 0 0 auto; background: #101010; border: 3px solid #F5F1E8; }
+  .brand { font: 1rem/1 'Archivo Black', sans-serif; letter-spacing: -.02em; text-transform: uppercase; color: #101010; background: var(--brand); border: 3px solid #F5F1E8; box-shadow: 3px 3px 0 #F5F1E8; padding: .3rem .55rem .25rem; }
+  .lang { display: flex; gap: .4rem; }
+  .lang a { font: 800 .72rem 'Archivo', sans-serif; letter-spacing: .12em; text-transform: uppercase; text-decoration: none; color: var(--on-brand); background: var(--brand); border: 2px solid var(--brand); padding: .3rem .6rem; border-radius: 4px; }
+  .lang a:hover { background: transparent; color: var(--brand); }
+  main { max-width: 48rem; margin: 0 auto; padding: 1.5rem 1rem 4rem; }
+  article { margin-bottom: 3rem; scroll-margin-top: 4.5rem; }
+  .hero { background: var(--brand); color: var(--on-brand); border: 3px solid var(--frame); border-radius: 10px; box-shadow: 6px 6px 0 var(--frame); padding: 1.5rem 1.25rem; margin: 1rem 0 2rem; }
+  .kicker { margin: 0 0 .4rem; font: 800 .72rem 'Archivo', sans-serif; letter-spacing: .14em; text-transform: uppercase; }
+  h1 { font: 2rem/1.1 'Archivo Black', sans-serif; margin: 0 0 .5rem; text-wrap: balance; }
+  .hero .meta { margin: 0; font: 700 .85rem 'IBM Plex Mono', monospace; }
+  .card { background: var(--surface); border: 3px solid var(--frame); border-radius: 10px; box-shadow: 4px 4px 0 var(--frame); padding: 1.1rem 1.2rem .4rem; margin: 0 0 1.4rem; }
+  h2 { display: inline-block; margin: 0 0 .7rem; font: 800 .8rem 'Archivo', sans-serif; letter-spacing: .12em; text-transform: uppercase; background: var(--on-brand); color: var(--brand); padding: .3rem .6rem; border-radius: 4px; }
+  @media (prefers-color-scheme: dark) { h2 { background: var(--brand); color: var(--on-brand); } }
+  p, li { max-width: 68ch; }
+  ul { padding-left: 1.2rem; }
+  li { margin: .25rem 0; }
+  li::marker { color: var(--muted); }
+  strong { font-weight: 800; }
+  a { color: var(--link); font-weight: 700; text-decoration-thickness: 2px; text-underline-offset: 3px; }
+  .tablewrap { overflow-x: auto; margin: 0 0 1rem; border: 2px solid var(--frame); border-radius: 6px; }
+  table { border-collapse: collapse; width: 100%; font-size: .93rem; }
+  th, td { text-align: left; vertical-align: top; padding: .6rem .75rem; border-bottom: 2px solid var(--surface2); }
+  tr:last-child td { border-bottom: 0; }
+  th { background: var(--surface2); font: 800 .72rem 'Archivo', sans-serif; letter-spacing: .1em; text-transform: uppercase; }
+  td:first-child { white-space: nowrap; font-weight: 800; }
+  code { font: 700 .85em 'IBM Plex Mono', monospace; background: var(--surface2); padding: .05rem .3rem; border-radius: 3px; }
+  footer { border-top: 3px solid var(--frame); padding: 1.25rem 1rem 2.5rem; text-align: center; font: 800 .72rem 'Archivo', sans-serif; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); }
+  @media (max-width: 34rem) {
+    .tablewrap { border: 0; overflow: visible; }
+    table, tbody, tr, td { display: block; width: 100%; }
+    thead, tr:has(th) { display: none; }
+    tr { border: 2px solid var(--frame); border-radius: 6px; margin: 0 0 .8rem; padding: .3rem 0; }
+    td { border: 0; padding: .3rem .75rem; white-space: normal !important; }
+    td::before { content: attr(data-label); display: block; font: 800 .66rem 'Archivo', sans-serif; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); }
+    td:first-child::before { display: none; }
+    td:first-child { font-size: 1.05rem; }
+  }
+  @media (max-width: 30rem) { h1 { font-size: 1.6rem; } .hero { padding: 1.2rem 1rem; } .card { padding: 1rem 1rem .3rem; } }
+  .brand-mark { width: 2rem; height: 2rem; flex: 0 0 auto; }
+  .intro { padding-top: .2rem; }
+  .foot-links { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; margin-top: .6rem; }
+</style>
+</head>
+<body>
+<div class="topbar"><div class="topbar-inner">
+  <a class="home" href="/lineum/" aria-label="Lineum">
+    <img class="brand-mark" src="/lineum/img/logo-lineum.svg" alt="" width="32" height="32">
+    <span class="brand">Lineum</span>
+  </a>
+  <nav class="lang" aria-label="Langue / Language"><a href="#fr">FR</a><a href="#en">EN</a></nav>
+</div></div>
+<main>
+<article id="fr" lang="fr">
+<header class="hero">
+  <p class="kicker">Lineum · Android et Windows</p>
+  <h1>Politique de confidentialité de Lineum</h1>
+  <p class="meta">Dernière mise à jour : 19 octobre 2026</p>
+</header>
+<section class="card intro">
+<p>Lineum est une application de dessin pour Android et Windows, éditée par <strong>TheMandaWalker</strong>. Contact : <strong><a href="mailto:support@vectorem.app">support@vectorem.app</a></strong></p>
+<p>Cette page explique quelles données Lineum utilise, où elles restent, et ce qui change quand l'application affiche des publicités.</p>
+</section>
+<section class="card">
+<h2>En bref</h2>
+<ul>
+  <li>Pas de compte, pas d'inscription.</li>
+  <li>Vos dessins et vos réglages restent sur votre appareil. Nous n'avons pas de serveur et nous ne les recevons pas.</li>
+  <li>Aucune statistique d'usage dans l'application.</li>
+  <li>Les publicités, quand l'application en affiche, sont fournies par <strong>Google AdMob</strong>. Google peut alors collecter certaines données sur votre appareil (voir plus bas). Les versions sans publicité n'envoient rien.</li>
+</ul>
+</section>
+<section class="card">
+<h2>1. Les données qui restent sur votre appareil</h2>
+<p>Lineum enregistre dans le stockage de l'application, sur votre appareil :</p>
+<ul>
+  <li>vos dessins (calques, animations, sons ajoutés à une animation, images de référence) ;</li>
+  <li>vos réglages (apparence, disposition, stylos, palettes, espaces, nom d'artiste si vous en indiquez un).</li>
+</ul>
+<p>Ces données ne quittent pas l'appareil par Lineum. Elles sont effacées si vous supprimez un dessin, si vous videz les données de l'application ou si vous la désinstallez. Pensez à exporter les dessins que vous voulez garder.</p>
+<p><strong>Nom d'artiste.</strong> Si vous indiquez un nom d'artiste dans les réglages, il est écrit comme auteur dans les images PNG et les projets <code>.lineum</code> que vous exportez. Toute personne qui reçoit ces fichiers peut le lire. Laissez le champ vide si vous ne le souhaitez pas.</p>
+</section>
+<section class="card">
+<h2>2. Les fichiers que vous choisissez</h2>
+<ul>
+  <li><strong>Importer</strong> : quand vous ouvrez une image, un projet ou un son, Lineum lit seulement le fichier que vous avez choisi.</li>
+  <li><strong>Exporter et partager</strong> : sur Android, Lineum prépare le fichier dans son dossier temporaire puis ouvre le menu de partage du téléphone. Vous choisissez où il va (Galerie, Fichiers, Drive, une messagerie…). À partir de là, le fichier suit les règles de l'application ou du service choisi.</li>
+  <li><strong>Exporter ou importer les réglages</strong> : crée ou lit un fichier que vous gardez où vous voulez. Il contient vos réglages, stylos, palettes, espaces et votre nom d'artiste, pas vos dessins.</li>
+</ul>
+<p>Lineum ne demande pas l'accès à vos photos, à votre caméra, à votre micro, à vos contacts ni à votre position.</p>
+</section>
+<section class="card">
+<h2>3. Publicités (Google AdMob)</h2>
+<p>Lineum pourra afficher des publicités fournies par Google AdMob. Lineum n'impose pas de publicité pour dessiner : les outils de base restent disponibles sans publicité.</p>
+<p>Quand une publicité est demandée, le SDK Google Mobile Ads, intégré à l'application, peut collecter et envoyer à Google, par exemple :</p>
+<ul>
+  <li>l'identifiant publicitaire de l'appareil ;</li>
+  <li>l'adresse IP et la position approximative qui en découle ;</li>
+  <li>des informations techniques sur l'appareil et l'application (modèle, système, langue, version) ;</li>
+  <li>les interactions avec les publicités (affichage, clic) et des données de diagnostic.</li>
+</ul>
+<p>Google utilise ces données pour diffuser les publicités, les mesurer, lutter contre la fraude et, si vous l'acceptez, les personnaliser. Pour en savoir plus : <a href="https://policies.google.com/technologies/partner-sites">Comment Google utilise les données des sites et applications partenaires</a> et <a href="https://policies.google.com/privacy">Règles de confidentialité de Google</a>.</p>
+<p><strong>Votre choix.</strong> Dans l'Espace économique européen, au Royaume-Uni et en Suisse, Lineum vous demande votre accord avant toute publicité personnalisée. Vous pouvez changer d'avis à tout moment dans l'application. Ailleurs, vous pouvez réinitialiser ou supprimer l'identifiant publicitaire dans les réglages Android (Google › Annonces).</p>
+<p>Nous ne recevons pas ces données de Google sous une forme qui vous identifie. Nous ne vendons aucune donnée.</p>
+</section>
+<section class="card">
+<h2>4. Achat Premium (si proposé)</h2>
+<p>Si un achat unique « Premium » est proposé, le paiement passe par Google Play. Nous ne recevons pas vos coordonnées bancaires. Google nous indique seulement que l'achat a été fait.</p>
+</section>
+<section class="card">
+<h2>5. Version Windows</h2>
+<p>La version Windows fonctionne de la même façon : dessins et réglages restent sur l'ordinateur, aucune connexion, aucune statistique.</p>
+</section>
+<section class="card">
+<h2>6. Enfants</h2>
+<p>Lineum ne demande aucune information personnelle. Si des publicités sont affichées et que l'application s'adresse à des enfants dans sa fiche Google Play, elles le sont avec les réglages prévus par Google pour les enfants (pas de publicité personnalisée).</p>
+</section>
+<section class="card">
+<h2>7. Vos droits</h2>
+<p>Vos dessins et réglages sont sur votre appareil : vous pouvez les consulter, les exporter et les supprimer vous-même à tout moment. Pour les données collectées par Google pour la publicité, adressez-vous à Google (<a href="https://myaccount.google.com">myaccount.google.com</a>) ou utilisez les réglages Android décrits plus haut. Pour toute question : <strong><a href="mailto:support@vectorem.app">support@vectorem.app</a></strong>.</p>
+</section>
+<section class="card">
+<h2>8. Modifications</h2>
+<p>Si cette politique change, la date en haut de la page est mise à jour. Un changement important est signalé dans la fenêtre « Nouveautés » de l'application.</p>
+</section>
+</article>
+<article id="en" lang="en">
+<header class="hero">
+  <p class="kicker">Lineum · Android and Windows</p>
+  <h1>Lineum Privacy Policy</h1>
+  <p class="meta">Last updated: October 19, 2026</p>
+</header>
+<section class="card intro">
+<p>Lineum is a drawing app for Android and Windows, published by <strong>TheMandaWalker</strong>. Contact: <strong><a href="mailto:support@vectorem.app">support@vectorem.app</a></strong></p>
+<p>This page explains which data Lineum uses, where it stays, and what changes when the app shows ads.</p>
+</section>
+<section class="card">
+<h2>In short</h2>
+<ul>
+  <li>No account, no sign-up.</li>
+  <li>Your drawings and settings stay on your device. We have no server and we do not receive them.</li>
+  <li>No usage statistics in the app.</li>
+  <li>Ads, when the app shows them, are provided by <strong>Google AdMob</strong>. Google may then collect some data from your device (see below). Versions without ads send nothing.</li>
+</ul>
+</section>
+<section class="card">
+<h2>1. Data that stays on your device</h2>
+<p>Lineum saves in the app's storage, on your device:</p>
+<ul>
+  <li>your drawings (layers, animations, sounds added to an animation, reference images);</li>
+  <li>your settings (appearance, layout, pens, palettes, spaces, artist name if you enter one).</li>
+</ul>
+<p>Lineum does not send this data off the device. It is deleted when you delete a drawing, clear the app's data or uninstall the app. Export the drawings you want to keep.</p>
+<p><strong>Artist name.</strong> If you enter an artist name in the settings, it is written as the author in the PNG images and <code>.lineum</code> projects you export. Anyone who receives these files can read it. Leave the field empty if you prefer.</p>
+</section>
+<section class="card">
+<h2>2. Files you choose</h2>
+<ul>
+  <li><strong>Import</strong>: when you open an image, a project or a sound, Lineum only reads the file you picked.</li>
+  <li><strong>Export and share</strong>: on Android, Lineum prepares the file in its temporary folder, then opens the phone's share menu. You choose where it goes (Gallery, Files, Drive, a messaging app…). From there, the file follows the rules of the app or service you chose.</li>
+  <li><strong>Export or import settings</strong>: creates or reads a file that you keep wherever you want. It holds your settings, pens, palettes, spaces and artist name, not your drawings.</li>
+</ul>
+<p>Lineum does not ask for access to your photos, camera, microphone, contacts or location.</p>
+</section>
+<section class="card">
+<h2>3. Ads (Google AdMob)</h2>
+<p>Lineum may show ads provided by Google AdMob. Lineum does not force ads on you to draw: the basic tools stay available without ads.</p>
+<p>When an ad is requested, the Google Mobile Ads SDK, built into the app, may collect and send to Google, for example:</p>
+<ul>
+  <li>the device's advertising ID;</li>
+  <li>the IP address and the approximate location derived from it;</li>
+  <li>technical information about the device and the app (model, system, language, version);</li>
+  <li>interactions with ads (views, clicks) and diagnostic data.</li>
+</ul>
+<p>Google uses this data to serve and measure ads, to fight fraud and, if you agree, to personalize ads. Learn more: <a href="https://policies.google.com/technologies/partner-sites">How Google uses information from sites or apps that use its services</a> and the <a href="https://policies.google.com/privacy">Google Privacy Policy</a>.</p>
+<p><strong>Your choice.</strong> In the European Economic Area, the United Kingdom and Switzerland, Lineum asks for your consent before any personalized ads. You can change your mind at any time in the app. Elsewhere, you can reset or delete the advertising ID in Android settings (Google › Ads).</p>
+<p>We do not receive this data from Google in a form that identifies you. We do not sell any data.</p>
+</section>
+<section class="card">
+<h2>4. Premium purchase (if offered)</h2>
+<p>If a one-time "Premium" purchase is offered, payment goes through Google Play. We do not receive your payment details. Google only tells us that the purchase was made.</p>
+</section>
+<section class="card">
+<h2>5. Windows version</h2>
+<p>The Windows version works the same way: drawings and settings stay on the computer, no connection, no statistics.</p>
+</section>
+<section class="card">
+<h2>6. Children</h2>
+<p>Lineum does not ask for any personal information. If ads are shown and the app targets children in its Google Play listing, they are served with the settings Google provides for children (no personalized ads).</p>
+</section>
+<section class="card">
+<h2>7. Your rights</h2>
+<p>Your drawings and settings are on your device: you can view, export and delete them yourself at any time. For data collected by Google for ads, contact Google (<a href="https://myaccount.google.com">myaccount.google.com</a>) or use the Android settings described above. For any question: <strong><a href="mailto:support@vectorem.app">support@vectorem.app</a></strong>.</p>
+</section>
+<section class="card">
+<h2>8. Changes</h2>
+<p>If this policy changes, the date at the top of the page is updated. Important changes are announced in the app's "What's new" window.</p>
+</section>
+</article>
+</main>
+<footer>
+  <div>© 2026 Lineum · une app de Vectorem</div>
+  <div class="foot-links"><a href="/lineum/">Lineum</a><a href="/">Vectorem</a><a href="mailto:support@vectorem.app">support@vectorem.app</a></div>
+</footer>
+</body>
+</html>
