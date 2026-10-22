@@ -1,10 +1,10 @@
 {
   "windows": {
-    "version": "1.1.0",
+    "version": "1.2.2",
     "url": "https://vectorem.app/windows/",
-    "notes": "Premium sur PC (apparence, statistiques 30/90 jours, outils programmés), calculatrice scientifique.",
-    "download": "https://github.com/TheMandaWalker/vectorem/releases/download/windows-v1.1.0/Vectorem-1.1.0.exe",
-    "sha256": "02aea3147800e4b763692f94dc90a1fc11a7247af70f8522eac89e7c0d5a4f93",
-    "size": 166192128
+    "notes": "Tâches reliées (listes, matrice d'Eisenhower, Pomodoro sur une tâche), Pomodoro sur mesure, outil Transcrire, lecteur vidéo enrichi.",
+    "download": "https://github.com/TheMandaWalker/vectorem/releases/download/Vectorem/Vectorem-1.2.2.exe",
+    "sha256": "16a4db4d91fc24f43e6144e1660ec9cef2dc622152aea7fa0033a57d50a0e48a",
+    "size": 183490560
   }
 }
