@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Vectorem pour Windows — tous tes outils, au même endroit</title>
-<meta name="description" content="Vectorem sur ton PC : PDF, captures, renommage en lot, lecteur vidéo, minuteur, notes, tâches et plus, dans une seule fenêtre. Sans compte, données sur ton PC. Aperçu.">
+<meta name="description" content="Vectorem sur ton PC : Vectorem Vision pour tes vidéos et ta musique, PDF, captures, renommage en lot, minuteur, notes, tâches et plus, dans une seule fenêtre. Sans compte, données sur ton PC.">
 <meta name="theme-color" content="#101010">
 <meta property="og:title" content="Vectorem pour Windows">
 <meta property="og:description" content="Tous tes outils. Au même endroit. Maintenant sur ton PC.">
@@ -630,6 +630,27 @@ details.win-pc ul{margin-top:16px}
 .req{margin-top:28px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,200px),1fr));gap:12px}
 .req div{border:var(--stroke-hair);background:var(--bg-block);padding:12px 14px}
 .req b{display:block;font:800 11px/1 var(--font-ui);letter-spacing:.12em;text-transform:uppercase;color:var(--text-muted);margin-bottom:6px}
+.vision{position:relative;overflow:hidden;background:#0b0b0f;color:#F5F1E8;border-top:var(--stroke-heavy);border-bottom:var(--stroke-heavy)}
+.vision::before{content:"";position:absolute;inset:-20% -10% auto auto;width:70%;height:90%;background:radial-gradient(closest-side,rgba(35,213,255,.22),transparent 70%);pointer-events:none}
+.vision::after{content:"";position:absolute;inset:auto auto -25% -10%;width:60%;height:80%;background:radial-gradient(closest-side,rgba(255,61,203,.18),transparent 70%);pointer-events:none}
+.vision .wrap{position:relative}
+.vision .kicker{color:#08101f;background:#7FE3FF;border-color:#F5F1E8}
+.vision h2{color:#F5F1E8}
+.vision h2 .v-name{display:inline-block;background:linear-gradient(135deg,#7FE3FF,#1B7CFF);color:#08101f;border:3px solid #F5F1E8;box-shadow:6px 6px 0 #F5F1E8;padding:0 .22em;transform:rotate(-1deg)}
+.vision .section-head p{color:rgba(245,241,232,.82)}
+.v-logo{width:64px;height:64px;flex:none}
+.v-head{display:flex;gap:18px;align-items:center}
+.v-shots{margin-top:30px;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:22px}
+@media (max-width:820px){ .v-shots{grid-template-columns:minmax(0,1fr)} }
+.v-shots figure{margin:0;border:3px solid #F5F1E8;box-shadow:8px 8px 0 #1B7CFF;background:#000}
+.v-shots figure:nth-child(2){box-shadow:8px 8px 0 #FF3DCB}
+.v-shots img{display:block;width:100%;height:auto}
+.v-shots figcaption{padding:10px 12px;font:700 13px/1.35 var(--font-ui);color:rgba(245,241,232,.85);border-top:3px solid #F5F1E8;background:#111}
+.v-grid{margin-top:30px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,250px),1fr));gap:16px}
+.v-card{border:2px solid rgba(245,241,232,.9);background:rgba(17,17,22,.92);padding:16px}
+.v-card h3{font:900 14px/1.2 var(--font-ui);letter-spacing:.04em;text-transform:uppercase;margin-bottom:6px;color:#7FE3FF}
+.v-card p{font-size:14px;color:rgba(245,241,232,.85)}
+.v-card .tag{display:inline-block;margin-left:6px;padding:2px 6px;font:800 10px/1.2 var(--font-ui);letter-spacing:.08em;background:#FF3DCB;color:#0b0b0f;vertical-align:middle}
 .faq{margin-top:24px;display:grid;gap:10px}
 .faq details{border:var(--stroke);background:var(--bg-block);box-shadow:var(--shadow-1)}
 .faq summary{cursor:pointer;padding:14px 16px;font:900 14.5px/1.3 var(--font-ui);list-style:none;display:flex;justify-content:space-between;gap:12px}
@@ -657,6 +678,7 @@ kbd{font:700 12px/1 var(--font-mono);padding:2px 5px;border:var(--stroke-hair);b
     </a>
     <nav class="site-nav" aria-label="Sections">
       <a href="#apercu">Aperçu</a>
+      <a href="#vision">Vision</a>
       <a href="#outils">Outils</a>
       <a href="#telephone">Téléphone</a>
       <a href="#installer">Installer</a>
@@ -673,9 +695,9 @@ kbd{font:700 12px/1 var(--font-mono);padding:2px 5px;border:var(--stroke-hair);b
 <section class="w-hero">
   <div class="wrap">
     <div>
-      <div class="eyebrow-row"><span class="badge live"><span class="dot"></span> Disponible · 1.1</span><span class="badge">Windows 10 · 11</span></div>
+      <div class="eyebrow-row"><span class="badge live"><span class="dot"></span> Disponible</span><a class="badge" href="#vision">Nouveau : Vectorem Vision</a><span class="badge">Windows 10 · 11</span></div>
       <h1>Tous tes outils.<br><em>Au même endroit.</em></h1>
-      <p class="lead">Vectorem est sur ton PC : PDF, captures d'écran, fichiers en lot, lecteur vidéo, minuteur, notes, tâches… dans une seule fenêtre. Tu actives ce qui te sert, sans compte, et tes données restent sur ton ordinateur.</p>
+      <p class="lead">Vectorem est sur ton PC : PDF, captures d'écran, fichiers en lot, minuteur, notes, tâches, et Vectorem Vision pour tes vidéos et ta musique… dans une seule fenêtre. Tu actives ce qui te sert, sans compte, et tes données restent sur ton ordinateur.</p>
       <div class="dl-box" id="telecharger">
         <a class="btn btn-primary soon" id="dlBtn" href="#telecharger" aria-disabled="true">Bientôt disponible</a>
         <div class="dl-meta" id="dlMeta"><span class="badge">Windows 10 ou 11, 64 bits</span></div>
@@ -712,6 +734,38 @@ kbd{font:700 12px/1 var(--font-mono);padding:2px 5px;border:var(--stroke-hair);b
   </div>
 </section>
 
+<section id="vision" class="vision">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="kicker">Nouveau</span>
+      <div class="v-head"><svg class="v-logo" viewBox="0 0 108 108" aria-hidden="true">
+        <defs><linearGradient id="vBlue" x1=".2" y1=".2" x2=".8" y2=".8"><stop offset="0" stop-color="#7FE3FF"/><stop offset="1" stop-color="#1B7CFF"/></linearGradient></defs>
+        <rect width="108" height="108" rx="24" fill="#101010"/>
+        <path d="M0 88L108 42L108 48L0 94Z" fill="#1B7CFF"/><path d="M0 98L108 52L108 74L0 120Z" fill="#1B7CFF"/>
+        <path d="M58 30L86 58L58 86L30 58Z" fill="#101010" stroke="#F5F1E8" stroke-width="4.6"/>
+        <path fill-rule="evenodd" fill="url(#vBlue)" d="M54 26L82 54L54 82L26 54ZM54 42L66 54L54 66L42 54Z"/>
+        <path d="M54 26L82 54L54 82L26 54ZM54 42L66 54L54 66L42 54Z" fill="none" stroke="#F5F1E8" stroke-width="5.6"/>
+        <path d="M50.5 49.5L59 54L50.5 58.5Z" fill="#7FE3FF"/>
+      </svg><h2><span class="v-name">Vectorem Vision</span></h2></div>
+      <p>Le lecteur de Vectorem, pour tes vidéos et ta musique. Il a sa propre icône, s'ouvre sans passer par l'app, et peut devenir le lecteur par défaut de Windows en deux clics.</p>
+    </div>
+    <div class="v-shots">
+      <figure class="reveal" style="--d:0ms"><img src="../img/windows/vision-video.webp" alt="Une vidéo avec la lumière d&#x27;ambiance et le bouton « Passer l&#x27;intro », réglé une fois pour toute la série." width="1600" height="1000" loading="lazy" decoding="async"><figcaption>Une vidéo avec la lumière d&#x27;ambiance et le bouton « Passer l&#x27;intro », réglé une fois pour toute la série.</figcaption></figure>
+      <figure class="reveal" style="--d:80ms"><img src="../img/windows/vision-musique.webp" alt="La musique : pochette, et un vrai spectre audio qui suit le morceau. Ici le préréglage EDM, choisi d&#x27;après le genre." width="1600" height="1000" loading="lazy" decoding="async"><figcaption>La musique : pochette, et un vrai spectre audio qui suit le morceau. Ici le préréglage EDM, choisi d&#x27;après le genre.</figcaption></figure>
+    </div>
+    <div class="v-grid">
+      <div class="v-card reveal" style="--d:0ms"><h3>Reprendre où tu t&#x27;étais arrêté</h3><p>Les derniers fichiers en vignettes, avec le temps restant. Épisode suivant enchaîné tout seul.</p></div>
+      <div class="v-card reveal" style="--d:50ms"><h3>Passer l&#x27;intro et le générique</h3><p>Réglés une fois par série, puis un bouton, ou le saut automatique.</p></div>
+      <div class="v-card reveal" style="--d:100ms"><h3>Sous-titres générés sur le PC</h3><p>Pour une vidéo sans sous-titres, en 7 langues. Même sur une chanson : la voix est isolée d&#x27;abord (en option).</p></div>
+      <div class="v-card reveal" style="--d:150ms"><h3>Pour regarder le soir</h3><p>Minuteur de sommeil qui baisse le son, son « nuit » qui garde les voix claires, deux sous-titres à la fois.</p></div>
+      <div class="v-card reveal" style="--d:0ms"><h3>Pause café</h3><p>Tu verrouilles le PC ou le casque se débranche : pause. À la reprise, 5 secondes en arrière.</p></div>
+      <div class="v-card reveal" style="--d:50ms"><h3>Fenêtre musique</h3><p>Spectre en direct, préréglages EDM, classique, lo-fi, rock, ambiant, ou tes propres couleurs.</p></div>
+      <div class="v-card reveal" style="--d:100ms"><h3>Mini-lecteur et lumière d&#x27;ambiance</h3><p>La vidéo dans un coin, toujours au-dessus. Ses couleurs débordent autour de l&#x27;image.</p></div>
+      <div class="v-card reveal" style="--d:150ms"><h3>Télécommande</h3><p>Lecture, avance, volume et piste suivante depuis ton téléphone associé.</p></div>
+    </div>
+  </div>
+</section>
+
 <section class="w-sec-alt">
   <div class="wrap">
     <div class="section-head reveal">
@@ -721,9 +775,11 @@ kbd{font:700 12px/1 var(--font-mono);padding:2px 5px;border:var(--stroke-hair);b
     <div class="win-grid">
       <div class="win-card reveal"><h3>Des onglets</h3><p>Plusieurs outils ouverts côte à côte, comme dans un navigateur. <kbd>Ctrl + K</kbd> pour tout retrouver.</p></div>
       <div class="win-card reveal" style="--d:60ms"><h3>Raccourcis partout</h3><p>Pipette, capture, note rapide depuis n'importe quelle app. Touches réglables.</p><p class="keys"><kbd>Ctrl+Alt+P</kbd> <kbd>Ctrl+Alt+S</kbd> <kbd>Ctrl+Alt+N</kbd></p></div>
-      <div class="win-card reveal" style="--d:120ms"><h3>Dans la barre des tâches</h3><p>La progression du minuteur et du Pomodoro s'affiche sur l'icône. Fermer la fenêtre ne coupe pas un décompte.</p></div>
+      <div class="win-card reveal" style="--d:120ms"><h3>Dans la barre des tâches</h3><p>La progression du minuteur et du Pomodoro s'affiche sur l'icône. Clic droit dessus : note rapide, capture, minuteur, derniers fichiers de Vision.</p></div>
+      <div class="win-card reveal" style="--d:150ms"><h3>Clic droit › Vectorem</h3><p>Sur un fichier dans l'Explorateur : le lire, le transcrire, vérifier son empreinte, convertir des images, modifier un PDF, l'envoyer au téléphone.</p></div>
       <div class="win-card reveal" style="--d:180ms"><h3>Widgets de bureau</h3><p>Horloge, post-it, calendrier, tâches du jour, compte à rebours, posés sur le bureau.</p></div>
       <div class="win-card reveal" style="--d:240ms"><h3>Mode concentration</h3><p>25, 50 ou 90 minutes : les notifications attendent la fin, et l'anti-veille peut garder le PC éveillé.</p></div>
+      <div class="win-card reveal" style="--d:270ms"><h3>Comme Windows</h3><p>Les vraies fenêtres « Ouvrir » et « Enregistrer sous » de Windows 11, avec l'Accès rapide et la recherche.</p></div>
       <div class="win-card reveal" style="--d:300ms"><h3>À ton goût</h3><p>Thème clair ou sombre, couleur d'accent, barre latérale, taille du texte, contraste renforcé.</p></div>
     </div>
   </div>
@@ -732,34 +788,35 @@ kbd{font:700 12px/1 var(--font-mono);padding:2px 5px;border:var(--stroke-hair);b
 <section id="outils">
   <div class="wrap">
     <div class="section-head reveal">
-      <span class="kicker">23 outils pensés pour le PC</span>
+      <span class="kicker">24 outils pensés pour le PC</span>
       <h2>Ce que le PC fait de mieux</h2>
       <p>En plus des outils du téléphone, Vectorem pour Windows ajoute ceux qui n'ont de sens que sur un ordinateur.</p>
     </div>
     <div class="tools-grid">
       <div class="tool reveal" style="--d:0ms"><span class="sq system" aria-hidden="true">PDF</span><div><h3>Éditeur PDF</h3><p>Annoter, signer, remplir un formulaire, caviarder, remplacer un texte, réordonner les pages. L&#x27;original n&#x27;est jamais écrasé.</p></div></div>
       <div class="tool reveal" style="--d:50ms"><span class="sq system" aria-hidden="true">PDF</span><div><h3>Outils PDF</h3><p>Fusionner, extraire des pages, images vers PDF, alléger un fichier trop lourd.</p></div></div>
-      <div class="tool reveal" style="--d:100ms"><span class="sq screen" aria-hidden="true">▶</span><div><h3>Lecteur vidéo</h3><p>Reprise où tu t&#x27;étais arrêté, repères, chapitres, vitesse, sous-titres, captures et GIF.</p></div></div>
-      <div class="tool reveal" style="--d:150ms"><span class="sq screen" aria-hidden="true">◎</span><div><h3>Capture annotée</h3><p>Une zone de l&#x27;écran, puis flèches, cadres, texte, numéros et flou avant d&#x27;enregistrer.</p></div></div>
-      <div class="tool reveal" style="--d:0ms"><span class="sq screen" aria-hidden="true">◆</span><div><h3>Pipette</h3><p>La couleur de n&#x27;importe quel pixel de l&#x27;écran, en HEX, RGB ou HSL.</p></div></div>
-      <div class="tool reveal" style="--d:50ms"><span class="sq screen" aria-hidden="true">↔</span><div><h3>Règle à l&#x27;écran</h3><p>Mesurer un élément à l&#x27;écran, en pixels.</p></div></div>
-      <div class="tool reveal" style="--d:100ms"><span class="sq screen" aria-hidden="true">▦</span><div><h3>Rangement des fenêtres</h3><p>Moitiés, quarts et tiers au clavier, sur un ou plusieurs écrans.</p></div></div>
-      <div class="tool reveal" style="--d:150ms"><span class="sq system" aria-hidden="true">Aa</span><div><h3>Renommer en lot</h3><p>Des dizaines de fichiers d&#x27;un coup, avec l&#x27;aperçu avant de valider et une annulation.</p></div></div>
-      <div class="tool reveal" style="--d:0ms"><span class="sq system" aria-hidden="true">▣</span><div><h3>Images en lot</h3><p>Redimensionner et convertir en JPG, PNG ou WebP, plusieurs images à la fois.</p></div></div>
-      <div class="tool reveal" style="--d:50ms"><span class="sq system" aria-hidden="true">ℹ</span><div><h3>Métadonnées</h3><p>Lire et retirer les infos cachées des photos (lieu, appareil) avant de les partager.</p></div></div>
-      <div class="tool reveal" style="--d:100ms"><span class="sq system" aria-hidden="true">◔</span><div><h3>Espace disque</h3><p>Ce qui remplit le disque, dossier par dossier. Lecture seule.</p></div></div>
-      <div class="tool reveal" style="--d:150ms"><span class="sq system" aria-hidden="true">▤</span><div><h3>Moniteur</h3><p>Processeur, mémoire, disque et réseau dans une petite fenêtre toujours au-dessus.</p></div></div>
-      <div class="tool reveal" style="--d:0ms"><span class="sq time" aria-hidden="true">☕</span><div><h3>Anti-veille</h3><p>Empêche le PC de se mettre en veille pendant un téléchargement ou une présentation.</p></div></div>
-      <div class="tool reveal" style="--d:50ms"><span class="sq time" aria-hidden="true">◷</span><div><h3>Horloges du monde</h3><p>L&#x27;heure de plusieurs villes, et le créneau commun pour une réunion.</p></div></div>
-      <div class="tool reveal" style="--d:100ms"><span class="sq system" aria-hidden="true">#</span><div><h3>Empreinte de fichier</h3><p>SHA-256, SHA-1, MD5 : vérifier qu&#x27;un fichier téléchargé est intact.</p></div></div>
-      <div class="tool reveal" style="--d:150ms"><span class="sq system" aria-hidden="true">✱</span><div><h3>Mots de passe</h3><p>Mots et phrases de passe générés sur le PC. Rien n&#x27;est enregistré.</p></div></div>
-      <div class="tool reveal" style="--d:0ms"><span class="sq system" aria-hidden="true">↗</span><div><h3>Lanceur</h3><p>Tes dossiers, fichiers et programmes favoris, à un clic ou à Ctrl + K.</p></div></div>
-      <div class="tool reveal" style="--d:50ms"><span class="sq system" aria-hidden="true">≈</span><div><h3>Convertisseur</h3><p>Longueurs, masses, températures, octets… onze familles d&#x27;unités.</p></div></div>
-      <div class="tool reveal" style="--d:100ms"><span class="sq system" aria-hidden="true">&gt;_</span><div><h3>Terminal</h3><p>Calculs, graphes, conversions, dates, et des commandes pour piloter l&#x27;app.</p></div></div>
-      <div class="tool reveal" style="--d:150ms"><span class="sq system" aria-hidden="true">▧</span><div><h3>Rangement</h3><p>Tes règles rangent un dossier : par type, par date, par nom. Aperçu avant, annulation après.</p></div></div>
-      <div class="tool reveal" style="--d:0ms"><span class="sq system" aria-hidden="true">▥</span><div><h3>Copie de dossiers</h3><p>Une copie vers une clé USB ou un autre disque : seulement ce qui a changé, même toute seule quand le disque est branché.</p></div></div>
-      <div class="tool reveal" style="--d:50ms"><span class="sq time" aria-hidden="true">◑</span><div><h3>Extinction</h3><p>Éteindre, redémarrer ou mettre en veille dans une heure, ou à 23 h. Annulable depuis le téléphone.</p></div></div>
-      <div class="tool reveal" style="--d:100ms"><span class="sq system" aria-hidden="true">⌘</span><div><h3>Aide-mémoire</h3><p>Les raccourcis de Windows, et tes propres fiches de commandes et de mémos.</p></div></div>
+      <div class="tool reveal" style="--d:100ms"><span class="sq screen" aria-hidden="true">▶</span><div><h3>Vectorem Vision</h3><p>Vidéos et musique : reprise où tu t&#x27;étais arrêté, intro passée, minuteur de sommeil, sous-titres générés, spectre audio.</p></div></div>
+      <div class="tool reveal" style="--d:150ms"><span class="sq audio" aria-hidden="true">Tx</span><div><h3>Transcrire</h3><p>Un fichier audio ou vidéo devient du texte ou des sous-titres, sur le PC, en 7 langues.</p></div></div>
+      <div class="tool reveal" style="--d:0ms"><span class="sq screen" aria-hidden="true">◎</span><div><h3>Capture annotée</h3><p>Une zone de l&#x27;écran, puis flèches, cadres, texte, numéros et flou avant d&#x27;enregistrer.</p></div></div>
+      <div class="tool reveal" style="--d:50ms"><span class="sq screen" aria-hidden="true">◆</span><div><h3>Pipette</h3><p>La couleur de n&#x27;importe quel pixel de l&#x27;écran, en HEX, RGB ou HSL.</p></div></div>
+      <div class="tool reveal" style="--d:100ms"><span class="sq screen" aria-hidden="true">↔</span><div><h3>Règle à l&#x27;écran</h3><p>Mesurer un élément à l&#x27;écran, en pixels.</p></div></div>
+      <div class="tool reveal" style="--d:150ms"><span class="sq screen" aria-hidden="true">▦</span><div><h3>Rangement des fenêtres</h3><p>Moitiés, quarts et tiers au clavier, sur un ou plusieurs écrans.</p></div></div>
+      <div class="tool reveal" style="--d:0ms"><span class="sq system" aria-hidden="true">Aa</span><div><h3>Renommer en lot</h3><p>Des dizaines de fichiers d&#x27;un coup, avec l&#x27;aperçu avant de valider et une annulation.</p></div></div>
+      <div class="tool reveal" style="--d:50ms"><span class="sq system" aria-hidden="true">▣</span><div><h3>Images en lot</h3><p>Redimensionner et convertir en JPG, PNG ou WebP, plusieurs images à la fois.</p></div></div>
+      <div class="tool reveal" style="--d:100ms"><span class="sq system" aria-hidden="true">ℹ</span><div><h3>Métadonnées</h3><p>Lire et retirer les infos cachées des photos (lieu, appareil) avant de les partager.</p></div></div>
+      <div class="tool reveal" style="--d:150ms"><span class="sq system" aria-hidden="true">◔</span><div><h3>Espace disque</h3><p>Ce qui remplit le disque, dossier par dossier. Lecture seule.</p></div></div>
+      <div class="tool reveal" style="--d:0ms"><span class="sq system" aria-hidden="true">▤</span><div><h3>Moniteur</h3><p>Processeur, mémoire, disque et réseau dans une petite fenêtre toujours au-dessus.</p></div></div>
+      <div class="tool reveal" style="--d:50ms"><span class="sq time" aria-hidden="true">☕</span><div><h3>Anti-veille</h3><p>Empêche le PC de se mettre en veille pendant un téléchargement ou une présentation.</p></div></div>
+      <div class="tool reveal" style="--d:100ms"><span class="sq time" aria-hidden="true">◷</span><div><h3>Horloges du monde</h3><p>L&#x27;heure de plusieurs villes, et le créneau commun pour une réunion.</p></div></div>
+      <div class="tool reveal" style="--d:150ms"><span class="sq system" aria-hidden="true">#</span><div><h3>Empreinte de fichier</h3><p>SHA-256, SHA-1, MD5 : vérifier qu&#x27;un fichier téléchargé est intact.</p></div></div>
+      <div class="tool reveal" style="--d:0ms"><span class="sq system" aria-hidden="true">✱</span><div><h3>Mots de passe</h3><p>Mots et phrases de passe générés sur le PC. Rien n&#x27;est enregistré.</p></div></div>
+      <div class="tool reveal" style="--d:50ms"><span class="sq system" aria-hidden="true">↗</span><div><h3>Lanceur</h3><p>Tes dossiers, fichiers et programmes favoris, à un clic ou à Ctrl + K.</p></div></div>
+      <div class="tool reveal" style="--d:100ms"><span class="sq system" aria-hidden="true">≈</span><div><h3>Convertisseur</h3><p>Longueurs, masses, températures, octets… onze familles d&#x27;unités.</p></div></div>
+      <div class="tool reveal" style="--d:150ms"><span class="sq system" aria-hidden="true">&gt;_</span><div><h3>Terminal</h3><p>Calculs, graphes, conversions, dates, et des commandes pour piloter l&#x27;app.</p></div></div>
+      <div class="tool reveal" style="--d:0ms"><span class="sq system" aria-hidden="true">▧</span><div><h3>Rangement</h3><p>Tes règles rangent un dossier : par type, par date, par nom. Aperçu avant, annulation après.</p></div></div>
+      <div class="tool reveal" style="--d:50ms"><span class="sq system" aria-hidden="true">▥</span><div><h3>Copie de dossiers</h3><p>Une copie vers une clé USB ou un autre disque : seulement ce qui a changé, même toute seule quand le disque est branché.</p></div></div>
+      <div class="tool reveal" style="--d:100ms"><span class="sq time" aria-hidden="true">◑</span><div><h3>Extinction</h3><p>Éteindre, redémarrer ou mettre en veille dans une heure, ou à 23 h. Annulable depuis le téléphone.</p></div></div>
+      <div class="tool reveal" style="--d:150ms"><span class="sq system" aria-hidden="true">⌘</span><div><h3>Aide-mémoire</h3><p>Les raccourcis de Windows, et tes propres fiches de commandes et de mémos.</p></div></div>
     </div>
     <h3 class="reveal" style="margin-top:40px;font:900 13px/1 var(--font-ui);letter-spacing:.12em;text-transform:uppercase">Et ceux que tu connais déjà sur Android</h3>
     <div class="also reveal"><span>Chrono &amp; minuteur</span><span>Pomodoro</span><span>Tâches</span><span>Rappels</span><span>Événements</span><span>Séries</span><span>Notes rapides</span><span>Presse-papiers</span><span>Calculatrice</span><span>QR &amp; texte</span><span>Dictaphone</span><span>Tableau blanc</span><span>Palette</span><span>Morse</span><span>Tirage au sort</span><span>Infos appareil</span><span>Scanneur réseau</span><span>Métronome</span><span>Sonomètre</span><span>Boîte à outils texte</span></div>
@@ -776,7 +833,7 @@ kbd{font:700 12px/1 var(--font-mono);padding:2px 5px;border:var(--stroke-hair);b
     <div class="phone-grid">
       <div class="win-card reveal"><h3>Tes données des deux côtés</h3><p>Notes, tâches, séries, événements et rappels synchronisés, modifications et suppressions comprises.</p></div>
       <div class="win-card reveal" style="--d:60ms"><h3>Photos et fichiers</h3><p>Du téléphone vers le PC : « Partager › Envoyer au PC ». Du PC vers le téléphone : clic droit › Envoyer vers › Vectorem.</p></div>
-      <div class="win-card reveal" style="--d:120ms"><h3>Télécommande</h3><p>Lecture, volume, diapo suivante, verrouillage du PC, depuis l'onglet PC du téléphone.</p></div>
+      <div class="win-card reveal" style="--d:120ms"><h3>Télécommande</h3><p>Vectorem Vision, volume, diapo suivante, verrouillage du PC, depuis l'onglet PC du téléphone.</p></div>
       <div class="win-card reveal" style="--d:180ms"><h3>Le PC dans ta poche</h3><p>Lancer un Pomodoro, l'anti-veille ou une appli du Lanceur sur le PC, depuis le téléphone.</p></div>
     </div>
   </div>
@@ -813,6 +870,8 @@ kbd{font:700 12px/1 var(--font-mono);padding:2px 5px;border:var(--stroke-hair);b
       <details class="reveal"><summary>Faut-il un compte ?</summary><p>Non. Rien à créer, rien à connecter.</p></details>
       <details class="reveal"><summary>Où sont mes données ?</summary><p>Sur ton PC, dans ton dossier utilisateur (%APPDATA%&#92;Vectorem). Elles ne partent pas sur un serveur. L'app vérifie au plus une fois par jour s'il existe une nouvelle version ; tu peux couper cette vérification dans les Réglages.</p></details>
       <details class="reveal"><summary>Faut-il l'app Android ?</summary><p>Non, Vectorem pour Windows marche seul. Avec le téléphone associé, tu gagnes la synchronisation, l'envoi de fichiers et la télécommande.</p></details>
+      <details class="reveal"><summary>Vectorem Vision peut-il lire mes vidéos par défaut ?</summary><p>Oui, vidéos et musique. Windows ne laisse pas une app se choisir seule : Réglages › Démarrage et fenêtre › « Choisir » ouvre la bonne page, et sous Windows 11 un bouton « Définir par défaut » règle tout d'un coup.</p></details>
+      <details class="reveal"><summary>La transcription envoie-t-elle mes fichiers ?</summary><p>Non, elle tourne sur ton PC. Seule l'option « isoler la voix » télécharge une fois son modèle (166 Mo), et seulement si tu l'actives.</p></details>
       <details class="reveal"><summary>Pourquoi Windows affiche un avertissement ?</summary><p>Parce que l'installateur n'est pas encore signé par un certificat. C'est prévu.</p></details>
       <details class="reveal"><summary>Et sur Mac ou Linux ?</summary><p>Pas pour l'instant. Windows d'abord.</p></details>
       <details class="reveal"><summary>Comment désinstaller ?</summary><p>Paramètres Windows › Applications › Vectorem. Tes données restent dans %APPDATA%&#92;Vectorem tant que tu ne supprimes pas ce dossier.</p></details>
@@ -835,7 +894,7 @@ kbd{font:700 12px/1 var(--font-mono);padding:2px 5px;border:var(--stroke-hair);b
 <footer>
   <div class="wrap">
     <div class="foot-meta">
-      <span>© 2026 Vectorem · Windows · 1.0</span>
+      <span>© 2026 Vectorem · Windows</span>
       <span><a href="/">Accueil</a> · <a href="/confidentialite/">Politique de confidentialité</a> · <a href="mailto:support@vectorem.app">Contact</a> · <a href="/en/windows/">English</a></span>
     </div>
   </div>

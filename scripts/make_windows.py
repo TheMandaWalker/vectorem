@@ -57,6 +57,27 @@ PAGE_CSS = """
 .req{margin-top:28px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,200px),1fr));gap:12px}
 .req div{border:var(--stroke-hair);background:var(--bg-block);padding:12px 14px}
 .req b{display:block;font:800 11px/1 var(--font-ui);letter-spacing:.12em;text-transform:uppercase;color:var(--text-muted);margin-bottom:6px}
+.vision{position:relative;overflow:hidden;background:#0b0b0f;color:#F5F1E8;border-top:var(--stroke-heavy);border-bottom:var(--stroke-heavy)}
+.vision::before{content:"";position:absolute;inset:-20% -10% auto auto;width:70%;height:90%;background:radial-gradient(closest-side,rgba(35,213,255,.22),transparent 70%);pointer-events:none}
+.vision::after{content:"";position:absolute;inset:auto auto -25% -10%;width:60%;height:80%;background:radial-gradient(closest-side,rgba(255,61,203,.18),transparent 70%);pointer-events:none}
+.vision .wrap{position:relative}
+.vision .kicker{color:#08101f;background:#7FE3FF;border-color:#F5F1E8}
+.vision h2{color:#F5F1E8}
+.vision h2 .v-name{display:inline-block;background:linear-gradient(135deg,#7FE3FF,#1B7CFF);color:#08101f;border:3px solid #F5F1E8;box-shadow:6px 6px 0 #F5F1E8;padding:0 .22em;transform:rotate(-1deg)}
+.vision .section-head p{color:rgba(245,241,232,.82)}
+.v-logo{width:64px;height:64px;flex:none}
+.v-head{display:flex;gap:18px;align-items:center}
+.v-shots{margin-top:30px;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:22px}
+@media (max-width:820px){ .v-shots{grid-template-columns:minmax(0,1fr)} }
+.v-shots figure{margin:0;border:3px solid #F5F1E8;box-shadow:8px 8px 0 #1B7CFF;background:#000}
+.v-shots figure:nth-child(2){box-shadow:8px 8px 0 #FF3DCB}
+.v-shots img{display:block;width:100%;height:auto}
+.v-shots figcaption{padding:10px 12px;font:700 13px/1.35 var(--font-ui);color:rgba(245,241,232,.85);border-top:3px solid #F5F1E8;background:#111}
+.v-grid{margin-top:30px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,250px),1fr));gap:16px}
+.v-card{border:2px solid rgba(245,241,232,.9);background:rgba(17,17,22,.92);padding:16px}
+.v-card h3{font:900 14px/1.2 var(--font-ui);letter-spacing:.04em;text-transform:uppercase;margin-bottom:6px;color:#7FE3FF}
+.v-card p{font-size:14px;color:rgba(245,241,232,.85)}
+.v-card .tag{display:inline-block;margin-left:6px;padding:2px 6px;font:800 10px/1.2 var(--font-ui);letter-spacing:.08em;background:#FF3DCB;color:#0b0b0f;vertical-align:middle}
 .faq{margin-top:24px;display:grid;gap:10px}
 .faq details{border:var(--stroke);background:var(--bg-block);box-shadow:var(--shadow-1)}
 .faq summary{cursor:pointer;padding:14px 16px;font:900 14.5px/1.3 var(--font-ui);list-style:none;display:flex;justify-content:space-between;gap:12px}
@@ -70,7 +91,8 @@ TOOLS = [
     # (catégorie, initiales, (titre fr, en), (texte fr, en))
     ("system", "PDF", ("Éditeur PDF", "PDF editor"), ("Annoter, signer, remplir un formulaire, caviarder, remplacer un texte, réordonner les pages. L'original n'est jamais écrasé.", "Annotate, sign, fill forms, redact, replace text, reorder pages. The original is never overwritten.")),
     ("system", "PDF", ("Outils PDF", "PDF tools"), ("Fusionner, extraire des pages, images vers PDF, alléger un fichier trop lourd.", "Merge, extract pages, images to PDF, shrink a heavy file.")),
-    ("screen", "▶", ("Lecteur vidéo", "Video player"), ("Reprise où tu t'étais arrêté, repères, chapitres, vitesse, sous-titres, captures et GIF.", "Resume where you stopped, bookmarks, chapters, speed, subtitles, snapshots and GIFs.")),
+    ("screen", "▶", ("Vectorem Vision", "Vectorem Vision"), ("Vidéos et musique : reprise où tu t'étais arrêté, intro passée, minuteur de sommeil, sous-titres générés, spectre audio.", "Videos and music: resume where you stopped, skip the intro, sleep timer, generated subtitles, audio spectrum.")),
+    ("audio", "Tx", ("Transcrire", "Transcribe"), ("Un fichier audio ou vidéo devient du texte ou des sous-titres, sur le PC, en 7 langues.", "An audio or video file becomes text or subtitles, on the PC, in 7 languages.")),
     ("screen", "◎", ("Capture annotée", "Annotated capture"), ("Une zone de l'écran, puis flèches, cadres, texte, numéros et flou avant d'enregistrer.", "Grab an area, then arrows, frames, text, numbers and blur before saving.")),
     ("screen", "◆", ("Pipette", "Colour picker"), ("La couleur de n'importe quel pixel de l'écran, en HEX, RGB ou HSL.", "The colour of any pixel on screen, in HEX, RGB or HSL.")),
     ("screen", "↔", ("Règle à l'écran", "Screen ruler"), ("Mesurer un élément à l'écran, en pixels.", "Measure anything on screen, in pixels.")),
@@ -108,6 +130,33 @@ SHOTS = [
     ("bibliotheque", ("La Bibliothèque, ici en thème sombre : chaque outil s'active ou non.", "The Library, here in dark theme: every tool can be turned on or off."), ("Bibliothèque", "Library")),
 ]
 
+
+VISION_SHOTS = [
+    ("vision-video", ("Une vidéo avec la lumière d'ambiance et le bouton « Passer l'intro », réglé une fois pour toute la série.", "A video with ambient light and the “Skip intro” button, set once for the whole series.")),
+    ("vision-musique", ("La musique : pochette, et un vrai spectre audio qui suit le morceau. Ici le préréglage EDM, choisi d'après le genre.", "Music: the cover, and a real audio spectrum that follows the track. Here the EDM preset, picked from the genre.")),
+]
+
+VISION_CARDS = [
+    (("Reprendre où tu t'étais arrêté", "Pick up where you left off"), ("Les derniers fichiers en vignettes, avec le temps restant. Épisode suivant enchaîné tout seul.", "Your latest files as thumbnails, with the time left. The next episode plays on its own."), None),
+    (("Passer l'intro et le générique", "Skip intro and credits"), ("Réglés une fois par série, puis un bouton, ou le saut automatique.", "Set once per series, then a button, or skip automatically."), None),
+    (("Sous-titres générés sur le PC", "Subtitles made on the PC"), ("Pour une vidéo sans sous-titres, en 7 langues. Même sur une chanson : la voix est isolée d'abord (en option).", "For a video without subtitles, in 7 languages. Even on a song: the voice is isolated first (optional)."), None),
+    (("Pour regarder le soir", "For watching at night"), ("Minuteur de sommeil qui baisse le son, son « nuit » qui garde les voix claires, deux sous-titres à la fois.", "Sleep timer that fades the sound, a “night” sound that keeps voices clear, two subtitles at once."), None),
+    (("Pause café", "Coffee break"), ("Tu verrouilles le PC ou le casque se débranche : pause. À la reprise, 5 secondes en arrière.", "You lock the PC or unplug the headphones: pause. When you're back, 5 seconds rewind."), None),
+    (("Fenêtre musique", "Music window"), ("Spectre en direct, préréglages EDM, classique, lo-fi, rock, ambiant, ou tes propres couleurs.", "Live spectrum, EDM, classical, lo-fi, rock, ambient presets, or your own colours."), None),
+    (("Mini-lecteur et lumière d'ambiance", "Mini player and ambient light"), ("La vidéo dans un coin, toujours au-dessus. Ses couleurs débordent autour de l'image.", "The video in a corner, always on top. Its colours spill around the picture."), None),
+    (("Télécommande", "Remote"), ("Lecture, avance, volume et piste suivante depuis ton téléphone associé.", "Play, seek, volume and next track from your paired phone."), None),
+]
+
+VISION_LOGO = """<svg class="v-logo" viewBox="0 0 108 108" aria-hidden="true">
+        <defs><linearGradient id="vBlue" x1=".2" y1=".2" x2=".8" y2=".8"><stop offset="0" stop-color="#7FE3FF"/><stop offset="1" stop-color="#1B7CFF"/></linearGradient></defs>
+        <rect width="108" height="108" rx="24" fill="#101010"/>
+        <path d="M0 88L108 42L108 48L0 94Z" fill="#1B7CFF"/><path d="M0 98L108 52L108 74L0 120Z" fill="#1B7CFF"/>
+        <path d="M58 30L86 58L58 86L30 58Z" fill="#101010" stroke="#F5F1E8" stroke-width="4.6"/>
+        <path fill-rule="evenodd" fill="url(#vBlue)" d="M54 26L82 54L54 82L26 54ZM54 42L66 54L54 66L42 54Z"/>
+        <path d="M54 26L82 54L54 82L26 54ZM54 42L66 54L54 66L42 54Z" fill="none" stroke="#F5F1E8" stroke-width="5.6"/>
+        <path d="M50.5 49.5L59 54L50.5 58.5Z" fill="#7FE3FF"/>
+      </svg>"""
+
 MARK = """<svg class="brand-mark" viewBox="0 0 108 108" aria-hidden="true">
         <defs><linearGradient id="hdGold" x1=".2" y1=".2" x2=".8" y2=".8"><stop offset="0" stop-color="#FFDB70"/><stop offset="1" stop-color="#D99A00"/></linearGradient></defs>
         <path d="M58 30L86 58L58 86L30 58Z" fill="#101010" stroke="#F5F1E8" stroke-width="4.6"/>
@@ -134,6 +183,14 @@ def build(lang):
         for i, (cat, ini, title, text) in enumerate(TOOLS)
     )
     also = "".join(f"<span>{e(T(*a))}</span>" for a in ALSO)
+    vshots = "\n".join(
+        f'''      <figure class="reveal" style="--d:{i * 80}ms"><img src="{up}img/windows/{'' if fr else 'en/'}{name}.webp" alt="{e(T(*cap))}" width="1600" height="1000" loading="lazy" decoding="async"><figcaption>{e(T(*cap))}</figcaption></figure>'''
+        for i, (name, cap) in enumerate(VISION_SHOTS)
+    )
+    vcards = "\n".join(
+        f'''      <div class="v-card reveal" style="--d:{(i % 4) * 50}ms"><h3>{e(T(*title))}</h3><p>{e(T(*text))}</p></div>'''
+        for i, (title, text, _) in enumerate(VISION_CARDS)
+    )
     imgs = "\n".join(
         f'''          <img{' class="on"' if i == 0 else ''} src="{up}img/windows/{'' if fr else 'en/'}{name}.webp" alt="{e(T(*cap))}" width="1600" height="1000" {'decoding="async"' if i == 0 else 'loading="lazy" decoding="async"'}>'''
         for i, (name, cap, _) in enumerate(SHOTS)
@@ -149,7 +206,7 @@ def build(lang):
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>{T("Vectorem pour Windows — tous tes outils, au même endroit", "Vectorem for Windows — all your tools, in one place")}</title>
-<meta name="description" content="{e(T("Vectorem sur ton PC : PDF, captures, renommage en lot, lecteur vidéo, minuteur, notes, tâches et plus, dans une seule fenêtre. Sans compte, données sur ton PC. Aperçu.", "Vectorem on your PC: PDFs, screenshots, batch rename, video player, timer, notes, tasks and more, in one window. No account, data on your PC. Preview."))}">
+<meta name="description" content="{e(T("Vectorem sur ton PC : Vectorem Vision pour tes vidéos et ta musique, PDF, captures, renommage en lot, minuteur, notes, tâches et plus, dans une seule fenêtre. Sans compte, données sur ton PC.", "Vectorem on your PC: Vectorem Vision for your videos and music, PDFs, screenshots, batch rename, timer, notes, tasks and more, in one window. No account, data on your PC."))}">
 <meta name="theme-color" content="#101010">
 <meta property="og:title" content="{e(T("Vectorem pour Windows", "Vectorem for Windows"))}">
 <meta property="og:description" content="{e(T("Tous tes outils. Au même endroit. Maintenant sur ton PC.", "All your tools. In one place. Now on your PC."))}">
@@ -179,6 +236,7 @@ def build(lang):
     </a>
     <nav class="site-nav" aria-label="Sections">
       <a href="#apercu">{T("Aperçu", "Preview")}</a>
+      <a href="#vision">Vision</a>
       <a href="#outils">{T("Outils", "Tools")}</a>
       <a href="#telephone">{T("Téléphone", "Phone")}</a>
       <a href="#installer">{T("Installer", "Install")}</a>
@@ -195,9 +253,9 @@ def build(lang):
 <section class="w-hero">
   <div class="wrap">
     <div>
-      <div class="eyebrow-row"><span class="badge live"><span class="dot"></span> {T("Disponible · 1.1", "Available · 1.1")}</span><span class="badge">Windows 10 · 11</span></div>
+      <div class="eyebrow-row"><span class="badge live"><span class="dot"></span> {T("Disponible", "Available")}</span><a class="badge" href="#vision">{T("Nouveau : Vectorem Vision", "New: Vectorem Vision")}</a><span class="badge">Windows 10 · 11</span></div>
       <h1>{T("Tous tes outils.", "All your tools.")}<br><em>{T("Au même endroit.", "In one place.")}</em></h1>
-      <p class="lead">{T("Vectorem est sur ton PC : PDF, captures d'écran, fichiers en lot, lecteur vidéo, minuteur, notes, tâches… dans une seule fenêtre. Tu actives ce qui te sert, sans compte, et tes données restent sur ton ordinateur.", "Vectorem is on your PC: PDFs, screenshots, batch files, video player, timer, notes, tasks… in one window. Turn on what you use, no account, and your data stays on your computer.")}</p>
+      <p class="lead">{T("Vectorem est sur ton PC : PDF, captures d'écran, fichiers en lot, minuteur, notes, tâches, et Vectorem Vision pour tes vidéos et ta musique… dans une seule fenêtre. Tu actives ce qui te sert, sans compte, et tes données restent sur ton ordinateur.", "Vectorem is on your PC: PDFs, screenshots, batch files, timer, notes, tasks, and Vectorem Vision for your videos and music… in one window. Turn on what you use, no account, and your data stays on your computer.")}</p>
       <div class="dl-box" id="telecharger">
         <a class="btn btn-primary soon" id="dlBtn" href="#telecharger" aria-disabled="true">{T("Bientôt disponible", "Coming soon")}</a>
         <div class="dl-meta" id="dlMeta"><span class="badge">{T("Windows 10 ou 11, 64 bits", "Windows 10 or 11, 64-bit")}</span></div>
@@ -224,6 +282,22 @@ def build(lang):
   </div>
 </section>
 
+<section id="vision" class="vision">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="kicker">{T("Nouveau", "New")}</span>
+      <div class="v-head">{VISION_LOGO}<h2><span class="v-name">Vectorem Vision</span></h2></div>
+      <p>{T("Le lecteur de Vectorem, pour tes vidéos et ta musique. Il a sa propre icône, s'ouvre sans passer par l'app, et peut devenir le lecteur par défaut de Windows en deux clics.", "Vectorem's player, for your videos and music. It has its own icon, opens without going through the app, and can become Windows' default player in two clicks.")}</p>
+    </div>
+    <div class="v-shots">
+{vshots}
+    </div>
+    <div class="v-grid">
+{vcards}
+    </div>
+  </div>
+</section>
+
 <section class="w-sec-alt">
   <div class="wrap">
     <div class="section-head reveal">
@@ -233,9 +307,11 @@ def build(lang):
     <div class="win-grid">
       <div class="win-card reveal"><h3>{T("Des onglets", "Tabs")}</h3><p>{T("Plusieurs outils ouverts côte à côte, comme dans un navigateur.", "Several tools open side by side, like in a browser.")} <kbd>Ctrl + K</kbd> {T("pour tout retrouver.", "to find anything.")}</p></div>
       <div class="win-card reveal" style="--d:60ms"><h3>{T("Raccourcis partout", "Shortcuts everywhere")}</h3><p>{T("Pipette, capture, note rapide depuis n'importe quelle app. Touches réglables.", "Colour picker, capture, quick note from any app. Keys can be changed.")}</p><p class="keys"><kbd>Ctrl+Alt+P</kbd> <kbd>Ctrl+Alt+S</kbd> <kbd>Ctrl+Alt+N</kbd></p></div>
-      <div class="win-card reveal" style="--d:120ms"><h3>{T("Dans la barre des tâches", "In the taskbar")}</h3><p>{T("La progression du minuteur et du Pomodoro s'affiche sur l'icône. Fermer la fenêtre ne coupe pas un décompte.", "Timer and Pomodoro progress shows on the icon. Closing the window doesn't stop a countdown.")}</p></div>
+      <div class="win-card reveal" style="--d:120ms"><h3>{T("Dans la barre des tâches", "In the taskbar")}</h3><p>{T("La progression du minuteur et du Pomodoro s'affiche sur l'icône. Clic droit dessus : note rapide, capture, minuteur, derniers fichiers de Vision.", "Timer and Pomodoro progress shows on the icon. Right-click it: quick note, capture, timer, Vision's latest files.")}</p></div>
+      <div class="win-card reveal" style="--d:150ms"><h3>{T("Clic droit › Vectorem", "Right-click › Vectorem")}</h3><p>{T("Sur un fichier dans l'Explorateur : le lire, le transcrire, vérifier son empreinte, convertir des images, modifier un PDF, l'envoyer au téléphone.", "On a file in File Explorer: play it, transcribe it, check its hash, convert images, edit a PDF, send it to your phone.")}</p></div>
       <div class="win-card reveal" style="--d:180ms"><h3>{T("Widgets de bureau", "Desktop widgets")}</h3><p>{T("Horloge, post-it, calendrier, tâches du jour, compte à rebours, posés sur le bureau.", "Clock, sticky note, calendar, today's tasks, countdown, right on the desktop.")}</p></div>
       <div class="win-card reveal" style="--d:240ms"><h3>{T("Mode concentration", "Focus mode")}</h3><p>{T("25, 50 ou 90 minutes : les notifications attendent la fin, et l'anti-veille peut garder le PC éveillé.", "25, 50 or 90 minutes: notifications wait until the end, and keep-awake can keep the PC on.")}</p></div>
+      <div class="win-card reveal" style="--d:270ms"><h3>{T("Comme Windows", "Like Windows")}</h3><p>{T("Les vraies fenêtres « Ouvrir » et « Enregistrer sous » de Windows 11, avec l'Accès rapide et la recherche.", "The real Windows 11 “Open” and “Save as” windows, with Quick access and search.")}</p></div>
       <div class="win-card reveal" style="--d:300ms"><h3>{T("À ton goût", "Your way")}</h3><p>{T("Thème clair ou sombre, couleur d'accent, barre latérale, taille du texte, contraste renforcé.", "Light or dark theme, accent colour, sidebar, text size, high contrast.")}</p></div>
     </div>
   </div>
@@ -244,7 +320,7 @@ def build(lang):
 <section id="outils">
   <div class="wrap">
     <div class="section-head reveal">
-      <span class="kicker">{T("23 outils pensés pour le PC", "23 tools built for the PC")}</span>
+      <span class="kicker">{T("24 outils pensés pour le PC", "24 tools built for the PC")}</span>
       <h2>{T("Ce que le PC fait de mieux", "What the PC does best")}</h2>
       <p>{T("En plus des outils du téléphone, Vectorem pour Windows ajoute ceux qui n'ont de sens que sur un ordinateur.", "On top of the phone's tools, Vectorem for Windows adds the ones that only make sense on a computer.")}</p>
     </div>
@@ -266,7 +342,7 @@ def build(lang):
     <div class="phone-grid">
       <div class="win-card reveal"><h3>{T("Tes données des deux côtés", "Your data on both")}</h3><p>{T("Notes, tâches, séries, événements et rappels synchronisés, modifications et suppressions comprises.", "Notes, tasks, streaks, events and reminders synced, edits and deletions included.")}</p></div>
       <div class="win-card reveal" style="--d:60ms"><h3>{T("Photos et fichiers", "Photos and files")}</h3><p>{T("Du téléphone vers le PC : « Partager › Envoyer au PC ». Du PC vers le téléphone : clic droit › Envoyer vers › Vectorem.", "Phone to PC: “Share › Send to PC”. PC to phone: right-click › Send to › Vectorem.")}</p></div>
-      <div class="win-card reveal" style="--d:120ms"><h3>{T("Télécommande", "Remote")}</h3><p>{T("Lecture, volume, diapo suivante, verrouillage du PC, depuis l'onglet PC du téléphone.", "Play, volume, next slide, lock the PC, from the phone's PC tab.")}</p></div>
+      <div class="win-card reveal" style="--d:120ms"><h3>{T("Télécommande", "Remote")}</h3><p>{T("Vectorem Vision, volume, diapo suivante, verrouillage du PC, depuis l'onglet PC du téléphone.", "Vectorem Vision, volume, next slide, lock the PC, from the phone's PC tab.")}</p></div>
       <div class="win-card reveal" style="--d:180ms"><h3>{T("Le PC dans ta poche", "Your PC in your pocket")}</h3><p>{T("Lancer un Pomodoro, l'anti-veille ou une appli du Lanceur sur le PC, depuis le téléphone.", "Start a Pomodoro, keep-awake or a Launcher app on the PC, from your phone.")}</p></div>
     </div>
   </div>
@@ -303,6 +379,8 @@ def build(lang):
       <details class="reveal"><summary>{T("Faut-il un compte ?", "Do I need an account?")}</summary><p>{T("Non. Rien à créer, rien à connecter.", "No. Nothing to sign up for, nothing to connect.")}</p></details>
       <details class="reveal"><summary>{T("Où sont mes données ?", "Where is my data?")}</summary><p>{T("Sur ton PC, dans ton dossier utilisateur (%APPDATA%&#92;Vectorem). Elles ne partent pas sur un serveur. L'app vérifie au plus une fois par jour s'il existe une nouvelle version ; tu peux couper cette vérification dans les Réglages.", "On your PC, in your user folder (%APPDATA%&#92;Vectorem). It doesn't go to a server. The app checks at most once a day for a new version; you can turn that check off in Settings.")}</p></details>
       <details class="reveal"><summary>{T("Faut-il l'app Android ?", "Do I need the Android app?")}</summary><p>{T("Non, Vectorem pour Windows marche seul. Avec le téléphone associé, tu gagnes la synchronisation, l'envoi de fichiers et la télécommande.", "No, Vectorem for Windows works on its own. With a paired phone you get sync, file sending and the remote.")}</p></details>
+      <details class="reveal"><summary>{T("Vectorem Vision peut-il lire mes vidéos par défaut ?", "Can Vectorem Vision play my videos by default?")}</summary><p>{T("Oui, vidéos et musique. Windows ne laisse pas une app se choisir seule : Réglages › Démarrage et fenêtre › « Choisir » ouvre la bonne page, et sous Windows 11 un bouton « Définir par défaut » règle tout d'un coup.", "Yes, videos and music. Windows doesn't let an app pick itself: Settings › Startup and window › “Choose” opens the right page, and on Windows 11 a “Set default” button does it all at once.")}</p></details>
+      <details class="reveal"><summary>{T("La transcription envoie-t-elle mes fichiers ?", "Does transcription send my files anywhere?")}</summary><p>{T("Non, elle tourne sur ton PC. Seule l'option « isoler la voix » télécharge une fois son modèle (166 Mo), et seulement si tu l'actives.", "No, it runs on your PC. Only the “isolate the voice” option downloads its model once (166 MB), and only if you turn it on.")}</p></details>
       <details class="reveal"><summary>{T("Pourquoi Windows affiche un avertissement ?", "Why does Windows show a warning?")}</summary><p>{T("Parce que l'installateur n'est pas encore signé par un certificat. C'est prévu.", "Because the installer isn't signed with a certificate yet. That's planned.")}</p></details>
       <details class="reveal"><summary>{T("Et sur Mac ou Linux ?", "What about Mac or Linux?")}</summary><p>{T("Pas pour l'instant. Windows d'abord.", "Not for now. Windows first.")}</p></details>
       <details class="reveal"><summary>{T("Comment désinstaller ?", "How do I uninstall?")}</summary><p>{T("Paramètres Windows › Applications › Vectorem. Tes données restent dans %APPDATA%&#92;Vectorem tant que tu ne supprimes pas ce dossier.", "Windows Settings › Apps › Vectorem. Your data stays in %APPDATA%&#92;Vectorem until you delete that folder.")}</p></details>
@@ -325,7 +403,7 @@ def build(lang):
 <footer>
   <div class="wrap">
     <div class="foot-meta">
-      <span>© 2026 Vectorem · Windows · 1.0</span>
+      <span>© 2026 Vectorem · Windows</span>
       <span><a href="{home}">{T("Accueil", "Home")}</a> · <a href="{'/confidentialite/' if fr else '/privacy/'}">{T("Politique de confidentialité", "Privacy policy")}</a> · <a href="mailto:support@vectorem.app">{T("Contact", "Contact")}</a> · <a href="{other}">{T("English", "Français")}</a></span>
     </div>
   </div>

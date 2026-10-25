@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Vectorem for Windows — all your tools, in one place</title>
-<meta name="description" content="Vectorem on your PC: PDFs, screenshots, batch rename, video player, timer, notes, tasks and more, in one window. No account, data on your PC. Preview.">
+<meta name="description" content="Vectorem on your PC: Vectorem Vision for your videos and music, PDFs, screenshots, batch rename, timer, notes, tasks and more, in one window. No account, data on your PC.">
 <meta name="theme-color" content="#101010">
 <meta property="og:title" content="Vectorem for Windows">
 <meta property="og:description" content="All your tools. In one place. Now on your PC.">
@@ -630,6 +630,27 @@ details.win-pc ul{margin-top:16px}
 .req{margin-top:28px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,200px),1fr));gap:12px}
 .req div{border:var(--stroke-hair);background:var(--bg-block);padding:12px 14px}
 .req b{display:block;font:800 11px/1 var(--font-ui);letter-spacing:.12em;text-transform:uppercase;color:var(--text-muted);margin-bottom:6px}
+.vision{position:relative;overflow:hidden;background:#0b0b0f;color:#F5F1E8;border-top:var(--stroke-heavy);border-bottom:var(--stroke-heavy)}
+.vision::before{content:"";position:absolute;inset:-20% -10% auto auto;width:70%;height:90%;background:radial-gradient(closest-side,rgba(35,213,255,.22),transparent 70%);pointer-events:none}
+.vision::after{content:"";position:absolute;inset:auto auto -25% -10%;width:60%;height:80%;background:radial-gradient(closest-side,rgba(255,61,203,.18),transparent 70%);pointer-events:none}
+.vision .wrap{position:relative}
+.vision .kicker{color:#08101f;background:#7FE3FF;border-color:#F5F1E8}
+.vision h2{color:#F5F1E8}
+.vision h2 .v-name{display:inline-block;background:linear-gradient(135deg,#7FE3FF,#1B7CFF);color:#08101f;border:3px solid #F5F1E8;box-shadow:6px 6px 0 #F5F1E8;padding:0 .22em;transform:rotate(-1deg)}
+.vision .section-head p{color:rgba(245,241,232,.82)}
+.v-logo{width:64px;height:64px;flex:none}
+.v-head{display:flex;gap:18px;align-items:center}
+.v-shots{margin-top:30px;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:22px}
+@media (max-width:820px){ .v-shots{grid-template-columns:minmax(0,1fr)} }
+.v-shots figure{margin:0;border:3px solid #F5F1E8;box-shadow:8px 8px 0 #1B7CFF;background:#000}
+.v-shots figure:nth-child(2){box-shadow:8px 8px 0 #FF3DCB}
+.v-shots img{display:block;width:100%;height:auto}
+.v-shots figcaption{padding:10px 12px;font:700 13px/1.35 var(--font-ui);color:rgba(245,241,232,.85);border-top:3px solid #F5F1E8;background:#111}
+.v-grid{margin-top:30px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,250px),1fr));gap:16px}
+.v-card{border:2px solid rgba(245,241,232,.9);background:rgba(17,17,22,.92);padding:16px}
+.v-card h3{font:900 14px/1.2 var(--font-ui);letter-spacing:.04em;text-transform:uppercase;margin-bottom:6px;color:#7FE3FF}
+.v-card p{font-size:14px;color:rgba(245,241,232,.85)}
+.v-card .tag{display:inline-block;margin-left:6px;padding:2px 6px;font:800 10px/1.2 var(--font-ui);letter-spacing:.08em;background:#FF3DCB;color:#0b0b0f;vertical-align:middle}
 .faq{margin-top:24px;display:grid;gap:10px}
 .faq details{border:var(--stroke);background:var(--bg-block);box-shadow:var(--shadow-1)}
 .faq summary{cursor:pointer;padding:14px 16px;font:900 14.5px/1.3 var(--font-ui);list-style:none;display:flex;justify-content:space-between;gap:12px}
@@ -657,6 +678,7 @@ kbd{font:700 12px/1 var(--font-mono);padding:2px 5px;border:var(--stroke-hair);b
     </a>
     <nav class="site-nav" aria-label="Sections">
       <a href="#apercu">Preview</a>
+      <a href="#vision">Vision</a>
       <a href="#outils">Tools</a>
       <a href="#telephone">Phone</a>
       <a href="#installer">Install</a>
@@ -673,9 +695,9 @@ kbd{font:700 12px/1 var(--font-mono);padding:2px 5px;border:var(--stroke-hair);b
 <section class="w-hero">
   <div class="wrap">
     <div>
-      <div class="eyebrow-row"><span class="badge live"><span class="dot"></span> Available · 1.1</span><span class="badge">Windows 10 · 11</span></div>
+      <div class="eyebrow-row"><span class="badge live"><span class="dot"></span> Available</span><a class="badge" href="#vision">New: Vectorem Vision</a><span class="badge">Windows 10 · 11</span></div>
       <h1>All your tools.<br><em>In one place.</em></h1>
-      <p class="lead">Vectorem is on your PC: PDFs, screenshots, batch files, video player, timer, notes, tasks… in one window. Turn on what you use, no account, and your data stays on your computer.</p>
+      <p class="lead">Vectorem is on your PC: PDFs, screenshots, batch files, timer, notes, tasks, and Vectorem Vision for your videos and music… in one window. Turn on what you use, no account, and your data stays on your computer.</p>
       <div class="dl-box" id="telecharger">
         <a class="btn btn-primary soon" id="dlBtn" href="#telecharger" aria-disabled="true">Coming soon</a>
         <div class="dl-meta" id="dlMeta"><span class="badge">Windows 10 or 11, 64-bit</span></div>
@@ -712,6 +734,38 @@ kbd{font:700 12px/1 var(--font-mono);padding:2px 5px;border:var(--stroke-hair);b
   </div>
 </section>
 
+<section id="vision" class="vision">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="kicker">New</span>
+      <div class="v-head"><svg class="v-logo" viewBox="0 0 108 108" aria-hidden="true">
+        <defs><linearGradient id="vBlue" x1=".2" y1=".2" x2=".8" y2=".8"><stop offset="0" stop-color="#7FE3FF"/><stop offset="1" stop-color="#1B7CFF"/></linearGradient></defs>
+        <rect width="108" height="108" rx="24" fill="#101010"/>
+        <path d="M0 88L108 42L108 48L0 94Z" fill="#1B7CFF"/><path d="M0 98L108 52L108 74L0 120Z" fill="#1B7CFF"/>
+        <path d="M58 30L86 58L58 86L30 58Z" fill="#101010" stroke="#F5F1E8" stroke-width="4.6"/>
+        <path fill-rule="evenodd" fill="url(#vBlue)" d="M54 26L82 54L54 82L26 54ZM54 42L66 54L54 66L42 54Z"/>
+        <path d="M54 26L82 54L54 82L26 54ZM54 42L66 54L54 66L42 54Z" fill="none" stroke="#F5F1E8" stroke-width="5.6"/>
+        <path d="M50.5 49.5L59 54L50.5 58.5Z" fill="#7FE3FF"/>
+      </svg><h2><span class="v-name">Vectorem Vision</span></h2></div>
+      <p>Vectorem's player, for your videos and music. It has its own icon, opens without going through the app, and can become Windows' default player in two clicks.</p>
+    </div>
+    <div class="v-shots">
+      <figure class="reveal" style="--d:0ms"><img src="../../img/windows/en/vision-video.webp" alt="A video with ambient light and the “Skip intro” button, set once for the whole series." width="1600" height="1000" loading="lazy" decoding="async"><figcaption>A video with ambient light and the “Skip intro” button, set once for the whole series.</figcaption></figure>
+      <figure class="reveal" style="--d:80ms"><img src="../../img/windows/en/vision-musique.webp" alt="Music: the cover, and a real audio spectrum that follows the track. Here the EDM preset, picked from the genre." width="1600" height="1000" loading="lazy" decoding="async"><figcaption>Music: the cover, and a real audio spectrum that follows the track. Here the EDM preset, picked from the genre.</figcaption></figure>
+    </div>
+    <div class="v-grid">
+      <div class="v-card reveal" style="--d:0ms"><h3>Pick up where you left off</h3><p>Your latest files as thumbnails, with the time left. The next episode plays on its own.</p></div>
+      <div class="v-card reveal" style="--d:50ms"><h3>Skip intro and credits</h3><p>Set once per series, then a button, or skip automatically.</p></div>
+      <div class="v-card reveal" style="--d:100ms"><h3>Subtitles made on the PC</h3><p>For a video without subtitles, in 7 languages. Even on a song: the voice is isolated first (optional).</p></div>
+      <div class="v-card reveal" style="--d:150ms"><h3>For watching at night</h3><p>Sleep timer that fades the sound, a “night” sound that keeps voices clear, two subtitles at once.</p></div>
+      <div class="v-card reveal" style="--d:0ms"><h3>Coffee break</h3><p>You lock the PC or unplug the headphones: pause. When you&#x27;re back, 5 seconds rewind.</p></div>
+      <div class="v-card reveal" style="--d:50ms"><h3>Music window</h3><p>Live spectrum, EDM, classical, lo-fi, rock, ambient presets, or your own colours.</p></div>
+      <div class="v-card reveal" style="--d:100ms"><h3>Mini player and ambient light</h3><p>The video in a corner, always on top. Its colours spill around the picture.</p></div>
+      <div class="v-card reveal" style="--d:150ms"><h3>Remote</h3><p>Play, seek, volume and next track from your paired phone.</p></div>
+    </div>
+  </div>
+</section>
+
 <section class="w-sec-alt">
   <div class="wrap">
     <div class="section-head reveal">
@@ -721,9 +775,11 @@ kbd{font:700 12px/1 var(--font-mono);padding:2px 5px;border:var(--stroke-hair);b
     <div class="win-grid">
       <div class="win-card reveal"><h3>Tabs</h3><p>Several tools open side by side, like in a browser. <kbd>Ctrl + K</kbd> to find anything.</p></div>
       <div class="win-card reveal" style="--d:60ms"><h3>Shortcuts everywhere</h3><p>Colour picker, capture, quick note from any app. Keys can be changed.</p><p class="keys"><kbd>Ctrl+Alt+P</kbd> <kbd>Ctrl+Alt+S</kbd> <kbd>Ctrl+Alt+N</kbd></p></div>
-      <div class="win-card reveal" style="--d:120ms"><h3>In the taskbar</h3><p>Timer and Pomodoro progress shows on the icon. Closing the window doesn't stop a countdown.</p></div>
+      <div class="win-card reveal" style="--d:120ms"><h3>In the taskbar</h3><p>Timer and Pomodoro progress shows on the icon. Right-click it: quick note, capture, timer, Vision's latest files.</p></div>
+      <div class="win-card reveal" style="--d:150ms"><h3>Right-click › Vectorem</h3><p>On a file in File Explorer: play it, transcribe it, check its hash, convert images, edit a PDF, send it to your phone.</p></div>
       <div class="win-card reveal" style="--d:180ms"><h3>Desktop widgets</h3><p>Clock, sticky note, calendar, today's tasks, countdown, right on the desktop.</p></div>
       <div class="win-card reveal" style="--d:240ms"><h3>Focus mode</h3><p>25, 50 or 90 minutes: notifications wait until the end, and keep-awake can keep the PC on.</p></div>
+      <div class="win-card reveal" style="--d:270ms"><h3>Like Windows</h3><p>The real Windows 11 “Open” and “Save as” windows, with Quick access and search.</p></div>
       <div class="win-card reveal" style="--d:300ms"><h3>Your way</h3><p>Light or dark theme, accent colour, sidebar, text size, high contrast.</p></div>
     </div>
   </div>
@@ -732,34 +788,35 @@ kbd{font:700 12px/1 var(--font-mono);padding:2px 5px;border:var(--stroke-hair);b
 <section id="outils">
   <div class="wrap">
     <div class="section-head reveal">
-      <span class="kicker">23 tools built for the PC</span>
+      <span class="kicker">24 tools built for the PC</span>
       <h2>What the PC does best</h2>
       <p>On top of the phone's tools, Vectorem for Windows adds the ones that only make sense on a computer.</p>
     </div>
     <div class="tools-grid">
       <div class="tool reveal" style="--d:0ms"><span class="sq system" aria-hidden="true">PDF</span><div><h3>PDF editor</h3><p>Annotate, sign, fill forms, redact, replace text, reorder pages. The original is never overwritten.</p></div></div>
       <div class="tool reveal" style="--d:50ms"><span class="sq system" aria-hidden="true">PDF</span><div><h3>PDF tools</h3><p>Merge, extract pages, images to PDF, shrink a heavy file.</p></div></div>
-      <div class="tool reveal" style="--d:100ms"><span class="sq screen" aria-hidden="true">▶</span><div><h3>Video player</h3><p>Resume where you stopped, bookmarks, chapters, speed, subtitles, snapshots and GIFs.</p></div></div>
-      <div class="tool reveal" style="--d:150ms"><span class="sq screen" aria-hidden="true">◎</span><div><h3>Annotated capture</h3><p>Grab an area, then arrows, frames, text, numbers and blur before saving.</p></div></div>
-      <div class="tool reveal" style="--d:0ms"><span class="sq screen" aria-hidden="true">◆</span><div><h3>Colour picker</h3><p>The colour of any pixel on screen, in HEX, RGB or HSL.</p></div></div>
-      <div class="tool reveal" style="--d:50ms"><span class="sq screen" aria-hidden="true">↔</span><div><h3>Screen ruler</h3><p>Measure anything on screen, in pixels.</p></div></div>
-      <div class="tool reveal" style="--d:100ms"><span class="sq screen" aria-hidden="true">▦</span><div><h3>Window layouts</h3><p>Halves, quarters and thirds from the keyboard, on one or more screens.</p></div></div>
-      <div class="tool reveal" style="--d:150ms"><span class="sq system" aria-hidden="true">Aa</span><div><h3>Batch rename</h3><p>Dozens of files at once, with a preview before applying and an undo.</p></div></div>
-      <div class="tool reveal" style="--d:0ms"><span class="sq system" aria-hidden="true">▣</span><div><h3>Batch images</h3><p>Resize and convert to JPG, PNG or WebP, many images at once.</p></div></div>
-      <div class="tool reveal" style="--d:50ms"><span class="sq system" aria-hidden="true">ℹ</span><div><h3>Metadata</h3><p>Read and strip hidden photo info (location, camera) before sharing.</p></div></div>
-      <div class="tool reveal" style="--d:100ms"><span class="sq system" aria-hidden="true">◔</span><div><h3>Disk usage</h3><p>What fills the disk, folder by folder. Read only.</p></div></div>
-      <div class="tool reveal" style="--d:150ms"><span class="sq system" aria-hidden="true">▤</span><div><h3>Monitor</h3><p>CPU, memory, disk and network in a small always-on-top window.</p></div></div>
-      <div class="tool reveal" style="--d:0ms"><span class="sq time" aria-hidden="true">☕</span><div><h3>Keep awake</h3><p>Keeps the PC awake during a download or a presentation.</p></div></div>
-      <div class="tool reveal" style="--d:50ms"><span class="sq time" aria-hidden="true">◷</span><div><h3>World clocks</h3><p>The time in several cities, and the common slot for a meeting.</p></div></div>
-      <div class="tool reveal" style="--d:100ms"><span class="sq system" aria-hidden="true">#</span><div><h3>File hash</h3><p>SHA-256, SHA-1, MD5: check a downloaded file is intact.</p></div></div>
-      <div class="tool reveal" style="--d:150ms"><span class="sq system" aria-hidden="true">✱</span><div><h3>Passwords</h3><p>Passwords and passphrases generated on the PC. Nothing is stored.</p></div></div>
-      <div class="tool reveal" style="--d:0ms"><span class="sq system" aria-hidden="true">↗</span><div><h3>Launcher</h3><p>Your favourite folders, files and programs, one click or Ctrl + K away.</p></div></div>
-      <div class="tool reveal" style="--d:50ms"><span class="sq system" aria-hidden="true">≈</span><div><h3>Unit converter</h3><p>Lengths, masses, temperatures, bytes… eleven unit families.</p></div></div>
-      <div class="tool reveal" style="--d:100ms"><span class="sq system" aria-hidden="true">&gt;_</span><div><h3>Terminal</h3><p>Maths, graphs, conversions, dates, and commands to drive the app.</p></div></div>
-      <div class="tool reveal" style="--d:150ms"><span class="sq system" aria-hidden="true">▧</span><div><h3>Tidy folders</h3><p>Your rules tidy a folder: by type, date, name. Preview first, undo after.</p></div></div>
-      <div class="tool reveal" style="--d:0ms"><span class="sq system" aria-hidden="true">▥</span><div><h3>Folder copy</h3><p>A copy to a USB stick or another drive: only what changed, even by itself when the drive is plugged in.</p></div></div>
-      <div class="tool reveal" style="--d:50ms"><span class="sq time" aria-hidden="true">◑</span><div><h3>Power timer</h3><p>Shut down, restart or sleep in an hour, or at 11 pm. Cancel it from your phone.</p></div></div>
-      <div class="tool reveal" style="--d:100ms"><span class="sq system" aria-hidden="true">⌘</span><div><h3>Cheat sheet</h3><p>Windows shortcuts, and your own sheets of commands and memos.</p></div></div>
+      <div class="tool reveal" style="--d:100ms"><span class="sq screen" aria-hidden="true">▶</span><div><h3>Vectorem Vision</h3><p>Videos and music: resume where you stopped, skip the intro, sleep timer, generated subtitles, audio spectrum.</p></div></div>
+      <div class="tool reveal" style="--d:150ms"><span class="sq audio" aria-hidden="true">Tx</span><div><h3>Transcribe</h3><p>An audio or video file becomes text or subtitles, on the PC, in 7 languages.</p></div></div>
+      <div class="tool reveal" style="--d:0ms"><span class="sq screen" aria-hidden="true">◎</span><div><h3>Annotated capture</h3><p>Grab an area, then arrows, frames, text, numbers and blur before saving.</p></div></div>
+      <div class="tool reveal" style="--d:50ms"><span class="sq screen" aria-hidden="true">◆</span><div><h3>Colour picker</h3><p>The colour of any pixel on screen, in HEX, RGB or HSL.</p></div></div>
+      <div class="tool reveal" style="--d:100ms"><span class="sq screen" aria-hidden="true">↔</span><div><h3>Screen ruler</h3><p>Measure anything on screen, in pixels.</p></div></div>
+      <div class="tool reveal" style="--d:150ms"><span class="sq screen" aria-hidden="true">▦</span><div><h3>Window layouts</h3><p>Halves, quarters and thirds from the keyboard, on one or more screens.</p></div></div>
+      <div class="tool reveal" style="--d:0ms"><span class="sq system" aria-hidden="true">Aa</span><div><h3>Batch rename</h3><p>Dozens of files at once, with a preview before applying and an undo.</p></div></div>
+      <div class="tool reveal" style="--d:50ms"><span class="sq system" aria-hidden="true">▣</span><div><h3>Batch images</h3><p>Resize and convert to JPG, PNG or WebP, many images at once.</p></div></div>
+      <div class="tool reveal" style="--d:100ms"><span class="sq system" aria-hidden="true">ℹ</span><div><h3>Metadata</h3><p>Read and strip hidden photo info (location, camera) before sharing.</p></div></div>
+      <div class="tool reveal" style="--d:150ms"><span class="sq system" aria-hidden="true">◔</span><div><h3>Disk usage</h3><p>What fills the disk, folder by folder. Read only.</p></div></div>
+      <div class="tool reveal" style="--d:0ms"><span class="sq system" aria-hidden="true">▤</span><div><h3>Monitor</h3><p>CPU, memory, disk and network in a small always-on-top window.</p></div></div>
+      <div class="tool reveal" style="--d:50ms"><span class="sq time" aria-hidden="true">☕</span><div><h3>Keep awake</h3><p>Keeps the PC awake during a download or a presentation.</p></div></div>
+      <div class="tool reveal" style="--d:100ms"><span class="sq time" aria-hidden="true">◷</span><div><h3>World clocks</h3><p>The time in several cities, and the common slot for a meeting.</p></div></div>
+      <div class="tool reveal" style="--d:150ms"><span class="sq system" aria-hidden="true">#</span><div><h3>File hash</h3><p>SHA-256, SHA-1, MD5: check a downloaded file is intact.</p></div></div>
+      <div class="tool reveal" style="--d:0ms"><span class="sq system" aria-hidden="true">✱</span><div><h3>Passwords</h3><p>Passwords and passphrases generated on the PC. Nothing is stored.</p></div></div>
+      <div class="tool reveal" style="--d:50ms"><span class="sq system" aria-hidden="true">↗</span><div><h3>Launcher</h3><p>Your favourite folders, files and programs, one click or Ctrl + K away.</p></div></div>
+      <div class="tool reveal" style="--d:100ms"><span class="sq system" aria-hidden="true">≈</span><div><h3>Unit converter</h3><p>Lengths, masses, temperatures, bytes… eleven unit families.</p></div></div>
+      <div class="tool reveal" style="--d:150ms"><span class="sq system" aria-hidden="true">&gt;_</span><div><h3>Terminal</h3><p>Maths, graphs, conversions, dates, and commands to drive the app.</p></div></div>
+      <div class="tool reveal" style="--d:0ms"><span class="sq system" aria-hidden="true">▧</span><div><h3>Tidy folders</h3><p>Your rules tidy a folder: by type, date, name. Preview first, undo after.</p></div></div>
+      <div class="tool reveal" style="--d:50ms"><span class="sq system" aria-hidden="true">▥</span><div><h3>Folder copy</h3><p>A copy to a USB stick or another drive: only what changed, even by itself when the drive is plugged in.</p></div></div>
+      <div class="tool reveal" style="--d:100ms"><span class="sq time" aria-hidden="true">◑</span><div><h3>Power timer</h3><p>Shut down, restart or sleep in an hour, or at 11 pm. Cancel it from your phone.</p></div></div>
+      <div class="tool reveal" style="--d:150ms"><span class="sq system" aria-hidden="true">⌘</span><div><h3>Cheat sheet</h3><p>Windows shortcuts, and your own sheets of commands and memos.</p></div></div>
     </div>
     <h3 class="reveal" style="margin-top:40px;font:900 13px/1 var(--font-ui);letter-spacing:.12em;text-transform:uppercase">And the ones you already know from Android</h3>
     <div class="also reveal"><span>Stopwatch &amp; timer</span><span>Pomodoro</span><span>Tasks</span><span>Reminders</span><span>Events</span><span>Streaks</span><span>Quick notes</span><span>Clipboard</span><span>Calculator</span><span>QR &amp; text</span><span>Voice recorder</span><span>Whiteboard</span><span>Palette</span><span>Morse</span><span>Randomizer</span><span>Device info</span><span>Network scanner</span><span>Metronome</span><span>Sound meter</span><span>Text toolbox</span></div>
@@ -776,7 +833,7 @@ kbd{font:700 12px/1 var(--font-mono);padding:2px 5px;border:var(--stroke-hair);b
     <div class="phone-grid">
       <div class="win-card reveal"><h3>Your data on both</h3><p>Notes, tasks, streaks, events and reminders synced, edits and deletions included.</p></div>
       <div class="win-card reveal" style="--d:60ms"><h3>Photos and files</h3><p>Phone to PC: “Share › Send to PC”. PC to phone: right-click › Send to › Vectorem.</p></div>
-      <div class="win-card reveal" style="--d:120ms"><h3>Remote</h3><p>Play, volume, next slide, lock the PC, from the phone's PC tab.</p></div>
+      <div class="win-card reveal" style="--d:120ms"><h3>Remote</h3><p>Vectorem Vision, volume, next slide, lock the PC, from the phone's PC tab.</p></div>
       <div class="win-card reveal" style="--d:180ms"><h3>Your PC in your pocket</h3><p>Start a Pomodoro, keep-awake or a Launcher app on the PC, from your phone.</p></div>
     </div>
   </div>
@@ -813,6 +870,8 @@ kbd{font:700 12px/1 var(--font-mono);padding:2px 5px;border:var(--stroke-hair);b
       <details class="reveal"><summary>Do I need an account?</summary><p>No. Nothing to sign up for, nothing to connect.</p></details>
       <details class="reveal"><summary>Where is my data?</summary><p>On your PC, in your user folder (%APPDATA%&#92;Vectorem). It doesn't go to a server. The app checks at most once a day for a new version; you can turn that check off in Settings.</p></details>
       <details class="reveal"><summary>Do I need the Android app?</summary><p>No, Vectorem for Windows works on its own. With a paired phone you get sync, file sending and the remote.</p></details>
+      <details class="reveal"><summary>Can Vectorem Vision play my videos by default?</summary><p>Yes, videos and music. Windows doesn't let an app pick itself: Settings › Startup and window › “Choose” opens the right page, and on Windows 11 a “Set default” button does it all at once.</p></details>
+      <details class="reveal"><summary>Does transcription send my files anywhere?</summary><p>No, it runs on your PC. Only the “isolate the voice” option downloads its model once (166 MB), and only if you turn it on.</p></details>
       <details class="reveal"><summary>Why does Windows show a warning?</summary><p>Because the installer isn't signed with a certificate yet. That's planned.</p></details>
       <details class="reveal"><summary>What about Mac or Linux?</summary><p>Not for now. Windows first.</p></details>
       <details class="reveal"><summary>How do I uninstall?</summary><p>Windows Settings › Apps › Vectorem. Your data stays in %APPDATA%&#92;Vectorem until you delete that folder.</p></details>
@@ -835,7 +894,7 @@ kbd{font:700 12px/1 var(--font-mono);padding:2px 5px;border:var(--stroke-hair);b
 <footer>
   <div class="wrap">
     <div class="foot-meta">
-      <span>© 2026 Vectorem · Windows · 1.0</span>
+      <span>© 2026 Vectorem · Windows</span>
       <span><a href="/en/">Home</a> · <a href="/privacy/">Privacy policy</a> · <a href="mailto:support@vectorem.app">Contact</a> · <a href="/windows/">Français</a></span>
     </div>
   </div>

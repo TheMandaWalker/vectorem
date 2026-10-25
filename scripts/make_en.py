@@ -60,7 +60,7 @@ R('<a class="badge live" href="/windows/"', '<a class="badge live" href="/en/win
 R('aria-label="Vectorem en chiffres"', 'aria-label="Vectorem in numbers"')
 R('<span class="kicker">Vectorem en chiffres</span>', '<span class="kicker">Vectorem in numbers</span>')
 R('<span class="cap">Outils Android</span><small>Dans une seule app</small>', '<span class="cap">Android tools</span><small>In one app</small>')
-R('<span class="cap">Outils en plus sur PC</span><small>45 en tout sur Windows</small>', '<span class="cap">Extra tools on PC</span><small>45 in all on Windows</small>')
+R('<span class="cap">Outils en plus sur PC</span><small>46 en tout sur Windows</small>', '<span class="cap">Extra tools on PC</span><small>46 in all on Windows</small>')
 # ---- nouveautés ----
 R('<span class="kicker">Nouveau · version 1.4</span>', '<span class="kicker">New · version 1.4</span>')
 R('<h2>Quatre outils refaits, une nouvelle icône</h2>', '<h2>Four tools redone, a new icon</h2>')
@@ -140,8 +140,8 @@ R('aria-label="Bande-annonce de Vectorem, 33 secondes, sans son"', 'aria-label="
 # ---- windows ----
 R('<span class="kicker soon">Aperçu</span>', '<span class="kicker soon">Preview</span>')
 R('<h2>Vectorem sur Windows</h2>', '<h2>Vectorem on Windows</h2>')
-R("<p>La même idée sur ton PC : tu actives ce que tu utilises, sans compte, et tes données restent sur l'ordinateur. 45 outils en tout : 22 du téléphone, 23 pensés pour le bureau.</p>",
-  "<p>The same idea on your PC: turn on what you use, no account, and your data stays on the computer. 45 tools in all: 22 from the phone, 23 built for the desktop.</p>")
+R("<p>La même idée sur ton PC : tu actives ce que tu utilises, sans compte, et tes données restent sur l'ordinateur. 46 outils en tout : 22 du téléphone, 24 pensés pour le bureau.</p>",
+  "<p>The same idea on your PC: turn on what you use, no account, and your data stays on the computer. 46 tools in all: 22 from the phone, 24 built for the desktop.</p>")
 R('alt="Vectorem pour Windows : l\'accueil avec les tâches du jour, les séries et le prochain événement"', 'alt="Vectorem for Windows: the home screen with today\'s tasks, streaks and the next event"')
 R('alt="Renommer en lot : douze photos renommées d\'un coup, avec l\'aperçu avant validation"', 'alt="Batch rename: twelve photos renamed at once, with a preview before confirming"')
 R('alt="Espace disque : carte des dossiers qui prennent le plus de place"', 'alt="Disk usage: map of the folders taking the most space"')
@@ -168,8 +168,8 @@ R('<a class="btn btn-primary" id="winDl" href="/windows/">Télécharger pour Win
 R('<a class="btn btn-ghost" href="/windows/">Tout sur la version Windows</a>', '<a class="btn btn-ghost" href="/en/windows/">All about the Windows version</a>')
 R('Windows 10 ou 11, 64 bits. Installateur pas encore signé : Windows peut afficher un avertissement, la page Windows explique quoi faire.', 'Windows 10 or 11, 64-bit. The installer is not signed yet: Windows may show a warning, the Windows page explains what to do.')
 R("(w.size ? ' · ' + Math.round(w.size / 1048576) + ' Mo' : '') + ' · ' + m.textContent;", "(w.size ? ' · ' + Math.round(w.size / 1048576) + ' MB' : '') + ' · ' + m.textContent;")
-R('<summary>Les 23 outils pensés pour le PC</summary>', '<summary>The 23 tools built for the PC</summary>')
-for fr, en in [('Outils PDF','PDF tools'),('Pipette','Colour picker'),("Règle à l'écran",'Screen ruler'),('Renommer en lot','Batch rename'),('Images en lot','Batch images'),('Métadonnées','Metadata'),('Espace disque','Disk usage'),('Moniteur','Monitor'),('Anti-veille','Keep awake'),('Horloges du monde','World clocks'),('Empreinte de fichier','File hash'),('Mots de passe','Passwords'),('Capture annotée','Annotated capture'),('Lanceur','Launcher'),('Convertisseur','Unit converter'),('Lecteur vidéo','Video player'),('Éditeur PDF','PDF editor'),('Terminal','Terminal'),('Rangement des fenêtres','Window layouts'),('Rangement','Tidy folders'),('Copie de dossiers','Folder copy'),('Extinction','Power timer'),('Aide-mémoire','Cheat sheet')]:
+R('<summary>Les 24 outils pensés pour le PC</summary>', '<summary>The 24 tools built for the PC</summary>')
+for fr, en in [('Outils PDF','PDF tools'),('Pipette','Colour picker'),("Règle à l'écran",'Screen ruler'),('Renommer en lot','Batch rename'),('Images en lot','Batch images'),('Métadonnées','Metadata'),('Espace disque','Disk usage'),('Moniteur','Monitor'),('Anti-veille','Keep awake'),('Horloges du monde','World clocks'),('Empreinte de fichier','File hash'),('Mots de passe','Passwords'),('Capture annotée','Annotated capture'),('Lanceur','Launcher'),('Convertisseur','Unit converter'),('Vectorem Vision','Vectorem Vision'),('Transcrire','Transcribe'),('Éditeur PDF','PDF editor'),('Terminal','Terminal'),('Rangement des fenêtres','Window layouts'),('Rangement','Tidy folders'),('Copie de dossiers','Folder copy'),('Extinction','Power timer'),('Aide-mémoire','Cheat sheet')]:
     R('<li><b>◆</b>'+fr+'</li>', '<li><b>◆</b>'+en+'</li>')
 
 # ---- essayer ----
