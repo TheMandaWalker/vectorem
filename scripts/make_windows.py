@@ -67,16 +67,42 @@ PAGE_CSS = """
 .vision .section-head p{color:rgba(245,241,232,.82)}
 .v-logo{width:64px;height:64px;flex:none}
 .v-head{display:flex;gap:18px;align-items:center}
-.v-shots{margin-top:30px;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:22px}
-@media (max-width:820px){ .v-shots{grid-template-columns:minmax(0,1fr)} }
-.v-shots figure{margin:0;border:3px solid #F5F1E8;box-shadow:8px 8px 0 #1B7CFF;background:#000}
-.v-shots figure:nth-child(2){box-shadow:8px 8px 0 #FF3DCB}
-.v-shots img{display:block;width:100%;height:auto}
-.v-shots figcaption{padding:10px 12px;font:700 13px/1.35 var(--font-ui);color:rgba(245,241,232,.85);border-top:3px solid #F5F1E8;background:#111}
+.v-stage{margin-top:34px;display:grid;grid-template-columns:minmax(0,1.55fr) minmax(0,1fr);gap:26px;align-items:start}
+@media (max-width:860px){ .v-stage{grid-template-columns:minmax(0,1fr)} }
+.v-stage figure{margin:0;border:3px solid #F5F1E8;background:#000;box-shadow:10px 10px 0 #1B7CFF}
+.v-stage figure.v-side{box-shadow:10px 10px 0 #FF3DCB;margin-top:56px;transform:rotate(1.2deg)}
+@media (max-width:860px){ .v-stage figure.v-side{margin-top:0;transform:none} }
+.v-stage img{display:block;width:100%;height:auto}
+.v-stage figcaption{padding:10px 12px;font:700 13px/1.35 var(--font-ui);color:rgba(245,241,232,.85);border-top:3px solid #F5F1E8;background:#111}
+.v-stats{margin-top:30px;display:flex;flex-wrap:wrap;gap:10px}
+.v-stats span{border:2px solid #F5F1E8;padding:8px 12px;font:800 12px/1 var(--font-ui);letter-spacing:.08em;text-transform:uppercase;background:#111;color:#F5F1E8}
+.v-stats b{color:#7FE3FF;margin-right:6px}
 .v-grid{margin-top:30px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,250px),1fr));gap:16px}
-.v-card{border:2px solid rgba(245,241,232,.9);background:rgba(17,17,22,.92);padding:16px}
+.v-card{border:2px solid rgba(245,241,232,.9);background:rgba(17,17,22,.92);padding:16px 16px 16px 60px;position:relative}
+.v-card .ic{position:absolute;left:14px;top:16px;width:32px;height:32px;display:grid;place-items:center;border:2px solid #F5F1E8;background:linear-gradient(135deg,#7FE3FF,#1B7CFF);color:#08101f;font:900 15px/1 var(--font-ui)}
+.v-card:nth-child(even) .ic{background:#FF3DCB}
 .v-card h3{font:900 14px/1.2 var(--font-ui);letter-spacing:.04em;text-transform:uppercase;margin-bottom:6px;color:#7FE3FF}
 .v-card p{font-size:14px;color:rgba(245,241,232,.85)}
+.vigie{position:relative;overflow:hidden;background:#101010;color:#F5F1E8;border-bottom:var(--stroke-heavy)}
+.vigie::before{content:"";position:absolute;inset:-30% auto auto -10%;width:60%;height:90%;background:radial-gradient(closest-side,rgba(255,212,38,.16),transparent 70%);pointer-events:none}
+.vigie .wrap{position:relative}
+.vigie .kicker{color:#101010;background:#FFD426;border-color:#F5F1E8}
+.vigie h2{color:#F5F1E8}
+.vigie h2 .g-name{display:inline-block;background:#FFD426;color:#101010;border:3px solid #F5F1E8;box-shadow:6px 6px 0 #F5F1E8;padding:0 .22em;transform:rotate(1deg)}
+.vigie .section-head p{color:rgba(245,241,232,.82)}
+.g-desk{margin-top:30px;border:3px solid #F5F1E8;box-shadow:10px 10px 0 #FFD426;background:linear-gradient(180deg,#2c2c45,#4a3a5e 55%,#7a4c52);aspect-ratio:1520/680;position:relative;overflow:hidden}
+.g-desk img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;object-position:top center;opacity:0;transition:opacity .35s ease}
+.g-desk img.on{opacity:1}
+.g-desk .bar{position:absolute;left:0;right:0;bottom:0;height:9%;background:rgba(16,16,16,.85);border-top:2px solid rgba(245,241,232,.4)}
+.g-tabs{margin-top:18px;display:flex;flex-wrap:wrap;gap:8px}
+.g-tabs button{font:800 12px/1 var(--font-ui);letter-spacing:.08em;text-transform:uppercase;padding:10px 12px;border:2px solid #F5F1E8;background:#1a1a1a;color:#F5F1E8;cursor:pointer;box-shadow:3px 3px 0 #F5F1E8}
+.g-tabs button[aria-pressed="true"]{background:#FFD426;color:#101010}
+.g-tabs button:active{transform:translate(3px,3px);box-shadow:none}
+.g-cap{margin-top:12px;min-height:1.4em;font:700 14px/1.4 var(--font-ui);color:rgba(245,241,232,.85)}
+.g-grid{margin-top:30px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));gap:14px}
+.g-card{border:2px solid rgba(245,241,232,.9);background:#161616;padding:16px}
+.g-card h3{font:900 14px/1.2 var(--font-ui);letter-spacing:.04em;text-transform:uppercase;margin-bottom:6px;color:#FFD426}
+.g-card p{font-size:14px;color:rgba(245,241,232,.85)}
 .v-card .tag{display:inline-block;margin-left:6px;padding:2px 6px;font:800 10px/1.2 var(--font-ui);letter-spacing:.08em;background:#FF3DCB;color:#0b0b0f;vertical-align:middle}
 .faq{margin-top:24px;display:grid;gap:10px}
 .faq details{border:var(--stroke);background:var(--bg-block);box-shadow:var(--shadow-1)}
@@ -147,6 +173,30 @@ VISION_CARDS = [
     (("Télécommande", "Remote"), ("Lecture, avance, volume et piste suivante depuis ton téléphone associé.", "Play, seek, volume and next track from your paired phone."), None),
 ]
 
+VISION_ICONS = ["↺", "⏭", "CC", "☾", "☕", "♫", "▣", "⌁"]
+
+VIGIE_SHOTS = [
+    ("vigie-media", ("Musique", "Music"), ("La musique de n'importe quelle app (Spotify, navigateur, Vision) : pochette, temps, lecture et morceau suivant.", "Music from any app (Spotify, browser, Vision): cover, time, play and next track.")),
+    ("vigie-pomodoro", ("Pomodoro", "Pomodoro"), ("Ton Pomodoro ou ton minuteur, toujours en haut de l'écran, même quand Vectorem est fermé.", "Your Pomodoro or timer, always at the top of the screen, even when Vectorem is closed.")),
+    ("vigie-notif", ("Notifications", "Notifications"), ("Une notification s'affiche 4 secondes dans la Vigie, puis elle se range. Pas de fenêtre en plus.", "A notification shows for 4 seconds in the Vigie, then it's filed away. No extra window.")),
+    ("vigie-notices", ("À relire", "Inbox"), ("Les notifications rangées, avec leurs boutons : Terminée, Dans 10 min, effacer.", "Filed notifications, with their buttons: Done, In 10 min, clear.")),
+    ("vigie-download", ("Téléchargements", "Downloads"), ("Un téléchargement du navigateur suit sa progression, puis propose Ouvrir ou Dossier.", "A browser download shows its progress, then offers Open or Folder.")),
+    ("vigie-shot", ("Captures", "Screenshots"), ("Après Win + Maj + S : la capture arrive dans la Vigie, à annoter, enregistrer ou envoyer au téléphone.", "After Win + Shift + S: the screenshot lands in the Vigie, to annotate, save or send to your phone.")),
+    ("vigie-clipboard", ("Presse-papiers", "Clipboard"), ("Tes 5 derniers textes copiés, recopiés d'un clic. Ce qui ressemble à un mot de passe est masqué.", "Your last 5 copied texts, copied again in one click. Anything that looks like a password is hidden.")),
+    ("vigie-lyrics", ("Paroles", "Lyrics"), ("Paroles synchronisées, à partir d'un fichier .lrc ou de LRCLIB si tu l'actives.", "Synced lyrics, from an .lrc file or from LRCLIB if you turn it on.")),
+    ("vigie-mascot", ("Mascotte", "Mascot"), ("Quand rien ne tourne, une petite mascotte te suit du regard, bâille, puis s'endort.", "When nothing is running, a small mascot follows you with its eyes, yawns, then falls asleep.")),
+    ("vigie-pill", ("Thèmes", "Themes"), ("Languette ou pilule, trois tailles, plusieurs couleurs.", "Tab or pill, three sizes, several colours.")),
+]
+
+VIGIE_CARDS = [
+    (("Volume, luminosité, Verr. Maj", "Volume, brightness, Caps Lock"), ("Une annonce courte à chaque changement, chargeur, batterie faible, Wi-Fi et casque compris.", "A short notice for each change, charger, low battery, Wi-Fi and headphones included.")),
+    (("Mode réunion", "Meeting mode"), ("Micro et caméra allumés : la Vigie le montre et garde les notifications pour après.", "Mic and camera on: the Vigie shows it and holds notifications for later.")),
+    (("Déposer un fichier", "Drop a file"), ("Glisse un fichier sur la Vigie : les mêmes actions que le clic droit de Vectorem.", "Drag a file onto the Vigie: the same actions as Vectorem's right-click menu.")),
+    (("Téléphone associé", "Paired phone"), ("Batterie du téléphone, fichiers reçus avec Ouvrir et Dossier.", "Phone battery, received files with Open and Folder.")),
+    (("Lineum", "Lineum"), ("Pendant que tu dessines dans Lineum : le projet et le temps passé.", "While you draw in Lineum: the project and time spent.")),
+    (("Discrète", "Out of the way"), ("Cachée en plein écran et pendant les captures. Presque aucun calcul au repos.", "Hidden in full screen and during captures. Almost no work when idle.")),
+]
+
 VISION_LOGO = """<svg class="v-logo" viewBox="0 0 108 108" aria-hidden="true">
         <defs><linearGradient id="vBlue" x1=".2" y1=".2" x2=".8" y2=".8"><stop offset="0" stop-color="#7FE3FF"/><stop offset="1" stop-color="#1B7CFF"/></linearGradient></defs>
         <rect width="108" height="108" rx="24" fill="#101010"/>
@@ -184,12 +234,24 @@ def build(lang):
     )
     also = "".join(f"<span>{e(T(*a))}</span>" for a in ALSO)
     vshots = "\n".join(
-        f'''      <figure class="reveal" style="--d:{i * 80}ms"><img src="{up}img/windows/{'' if fr else 'en/'}{name}.webp" alt="{e(T(*cap))}" width="1600" height="1000" loading="lazy" decoding="async"><figcaption>{e(T(*cap))}</figcaption></figure>'''
+        f'''      <figure class="reveal{' v-side' if i else ''}" style="--d:{i * 80}ms"><img src="{up}img/windows/{'' if fr else 'en/'}{name}.webp" alt="{e(T(*cap))}" width="1600" height="1000" loading="lazy" decoding="async"><figcaption>{e(T(*cap))}</figcaption></figure>'''
         for i, (name, cap) in enumerate(VISION_SHOTS)
     )
     vcards = "\n".join(
-        f'''      <div class="v-card reveal" style="--d:{(i % 4) * 50}ms"><h3>{e(T(*title))}</h3><p>{e(T(*text))}</p></div>'''
+        f'''      <div class="v-card reveal" style="--d:{(i % 4) * 50}ms"><span class="ic" aria-hidden="true">{VISION_ICONS[i]}</span><h3>{e(T(*title))}</h3><p>{e(T(*text))}</p></div>'''
         for i, (title, text, _) in enumerate(VISION_CARDS)
+    )
+    gimgs = "\n".join(
+        f'''        <img{' class="on"' if i == 0 else ''} src="{up}img/windows/{name}.webp" alt="{e(T(*cap))}" width="1520" height="680" loading="lazy" decoding="async">'''
+        for i, (name, label, cap) in enumerate(VIGIE_SHOTS)
+    )
+    gtabs = "\n".join(
+        f'''        <button type="button" aria-pressed="{'true' if i == 0 else 'false'}" data-i="{i}" data-cap="{e(T(*cap))}">{e(T(*label))}</button>'''
+        for i, (name, label, cap) in enumerate(VIGIE_SHOTS)
+    )
+    gcards = "\n".join(
+        f'''      <div class="g-card reveal" style="--d:{(i % 3) * 60}ms"><h3>{e(T(*title))}</h3><p>{e(T(*text))}</p></div>'''
+        for i, (title, text) in enumerate(VIGIE_CARDS)
     )
     imgs = "\n".join(
         f'''          <img{' class="on"' if i == 0 else ''} src="{up}img/windows/{'' if fr else 'en/'}{name}.webp" alt="{e(T(*cap))}" width="1600" height="1000" {'decoding="async"' if i == 0 else 'loading="lazy" decoding="async"'}>'''
@@ -237,6 +299,7 @@ def build(lang):
     <nav class="site-nav" aria-label="Sections">
       <a href="#apercu">{T("Aperçu", "Preview")}</a>
       <a href="#vision">Vision</a>
+      <a href="#vigie">Vigie</a>
       <a href="#outils">{T("Outils", "Tools")}</a>
       <a href="#telephone">{T("Téléphone", "Phone")}</a>
       <a href="#installer">{T("Installer", "Install")}</a>
@@ -253,7 +316,7 @@ def build(lang):
 <section class="w-hero">
   <div class="wrap">
     <div>
-      <div class="eyebrow-row"><span class="badge live"><span class="dot"></span> {T("Disponible", "Available")}</span><a class="badge" href="#vision">{T("Nouveau : Vectorem Vision", "New: Vectorem Vision")}</a><span class="badge">Windows 10 · 11</span></div>
+      <div class="eyebrow-row"><span class="badge live"><span class="dot"></span> {T("Disponible", "Available")}</span><a class="badge" href="#vigie">{T("Nouveau : Vectorem Vigie", "New: Vectorem Vigie")}</a><span class="badge">Windows 10 · 11</span></div>
       <h1>{T("Tous tes outils.", "All your tools.")}<br><em>{T("Au même endroit.", "In one place.")}</em></h1>
       <p class="lead">{T("Vectorem est sur ton PC : PDF, captures d'écran, fichiers en lot, minuteur, notes, tâches, et Vectorem Vision pour tes vidéos et ta musique… dans une seule fenêtre. Tu actives ce qui te sert, sans compte, et tes données restent sur ton ordinateur.", "Vectorem is on your PC: PDFs, screenshots, batch files, timer, notes, tasks, and Vectorem Vision for your videos and music… in one window. Turn on what you use, no account, and your data stays on your computer.")}</p>
       <div class="dl-box" id="telecharger">
@@ -289,11 +352,37 @@ def build(lang):
       <div class="v-head">{VISION_LOGO}<h2><span class="v-name">Vectorem Vision</span></h2></div>
       <p>{T("Le lecteur de Vectorem, pour tes vidéos et ta musique. Il a sa propre icône, s'ouvre sans passer par l'app, et peut devenir le lecteur par défaut de Windows en deux clics.", "Vectorem's player, for your videos and music. It has its own icon, opens without going through the app, and can become Windows' default player in two clicks.")}</p>
     </div>
-    <div class="v-shots">
+    <div class="v-stage">
 {vshots}
+    </div>
+    <div class="v-stats reveal">
+      <span><b>{T("Vidéo", "Video")}</b>MP4 · MKV · AVI · MOV · WebM</span>
+      <span><b>{T("Musique", "Music")}</b>MP3 · FLAC · M4A · OGG</span>
+      <span><b>{T("Sous-titres", "Subtitles")}</b>{T("7 langues, générés sur le PC", "7 languages, made on the PC")}</span>
     </div>
     <div class="v-grid">
 {vcards}
+    </div>
+  </div>
+</section>
+
+<section id="vigie" class="vigie">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="kicker">{T("Nouveau", "New")}</span>
+      <h2><span class="g-name">Vectorem Vigie</span></h2>
+      <p>{T("Une languette en haut de l'écran qui montre ce qui tourne : minuteur, musique, téléchargement, notifications. Survole-la pour l'ouvrir, elle se referme toute seule.", "A small tab at the top of the screen that shows what's running: timer, music, download, notifications. Hover to open it, it closes by itself.")}</p>
+    </div>
+    <div class="g-desk reveal" id="gDesk">
+{gimgs}
+      <div class="bar" aria-hidden="true"></div>
+    </div>
+    <div class="g-tabs" role="group" aria-label="{T("Exemples", "Examples")}">
+{gtabs}
+    </div>
+    <p class="g-cap" id="gCap" aria-live="polite">{e(T(*VIGIE_SHOTS[0][2]))}</p>
+    <div class="g-grid">
+{gcards}
     </div>
   </div>
 </section>
@@ -411,6 +500,15 @@ def build(lang):
 
 <script src="/motion.js"></script>
 <script>
+(function(){{
+  var imgs = document.querySelectorAll('#gDesk img'), btns = document.querySelectorAll('.g-tabs button'), cap = document.getElementById('gCap');
+  btns.forEach(function(b){{ b.addEventListener('click', function(){{
+    var i = +b.dataset.i;
+    imgs.forEach(function(im, k){{ im.classList.toggle('on', k === i); }});
+    btns.forEach(function(o){{ o.setAttribute('aria-pressed', o === b ? 'true' : 'false'); }});
+    cap.textContent = b.dataset.cap;
+  }}); }});
+}})();
 (function(){{
   var $ = function(s){{ return document.querySelector(s); }};
   var root = document.documentElement;
