@@ -1,13 +1,16 @@
 #!/usr/bin/env python3
-"""Fabrique la page Windows du site, en français et en anglais, depuis une seule source.
+"""Fabrique la page PC du site (/pc/, ex-/windows/), en français et en anglais, depuis une seule source.
 
-    python3 scripts/make_windows.py   ->  windows/index.html  et  en/windows/index.html
+    python3 scripts/make_pc.py   ->  pc/index.html  et  en/pc/index.html
+                                     + windows/index.html et en/windows/index.html (redirections : l'app et
+                                       d'anciens liens pointent encore vers /windows/)
 
 Le style vient du <style> de index.html (relu à chaque fois : la page suit le site),
 plus quelques règles propres à la page. Les textes sont des couples T("fr", "en").
 Le bouton de téléchargement est piloté par /version.json : s'il contient « download »,
 il devient actif (version, taille, empreinte) ; sinon il affiche « Bientôt ».
 Ton : phrases courtes, pas de « gratuit », « sans pub », « aucune connexion » ; version publique 1.0 depuis le 12/10/2026.
+Ce qui n'est pas encore dans le téléchargement public porte « Arrive en 1.3 » (choix du 01/11/2026). Linux : « bientôt ».
 """
 import html
 import os
@@ -22,7 +25,7 @@ def site_css():
 
 
 PAGE_CSS = """
-/* ============ PAGE WINDOWS ============ */
+/* ============ PAGE PC ============ */
 .w-hero{padding-top:48px;position:relative;overflow:hidden}
 .w-hero .wrap{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:44px;align-items:center}
 .w-hero .wrap>*{min-width:0}
@@ -110,6 +113,23 @@ PAGE_CSS = """
 .faq summary::after{content:"+";font:900 20px/1 var(--font-display)}
 .faq details[open] summary::after{content:"–"}
 .faq details p{padding:0 16px 16px;color:var(--text-body);font-size:14.5px}
+.soon-tag{display:inline-block;padding:3px 8px;border:var(--stroke-hair);background:var(--brand);color:var(--on-brand);font:800 11px/1.2 var(--font-ui);letter-spacing:.08em;text-transform:uppercase;vertical-align:middle}
+.nw{position:relative;overflow:hidden}
+.nw-block{margin-top:34px;display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.5fr);gap:34px;align-items:start}
+.nw-block.flip{grid-template-columns:minmax(0,1.5fr) minmax(0,.9fr)}
+.nw-block.flip .nw-text{order:2}
+@media (max-width:900px){ .nw-block,.nw-block.flip{grid-template-columns:minmax(0,1fr)} .nw-block.flip .nw-text{order:0} }
+.nw-text h3{font:900 clamp(22px,2.6vw,30px)/1.1 var(--font-display);margin:10px 0 10px}
+.nw-text>p{color:var(--text-body);font-size:15.5px}
+.nw-list{margin:16px 0 0;padding:0;list-style:none;display:grid;gap:10px}
+.nw-list li{border:var(--stroke-hair);background:var(--bg-block);padding:10px 12px 10px 38px;position:relative;font-size:14.5px;color:var(--text-body)}
+.nw-list li b{color:var(--text-strong,inherit)}
+.nw-list li::before{content:"";position:absolute;left:12px;top:14px;width:12px;height:12px;background:var(--brand);border:var(--stroke-hair);transform:rotate(45deg)}
+.nw-stage{border:var(--stroke-heavy);box-shadow:var(--shadow-3);background:#0e0f11;position:relative;overflow:hidden}
+.nw-stage img{display:block;width:100%;height:auto;position:absolute;inset:0;opacity:0;transition:opacity .35s ease}
+.nw-stage img.on{position:relative;opacity:1}
+.nw-tabs{margin-top:14px;display:flex;flex-wrap:wrap;gap:8px}
+.nw-cap{margin-top:10px;min-height:1.4em;font:700 14px/1.4 var(--font-ui);color:var(--text-muted)}
 kbd{font:700 12px/1 var(--font-mono);padding:2px 5px;border:var(--stroke-hair);background:var(--bg-block-sunken);white-space:nowrap}
 """
 
@@ -117,6 +137,7 @@ TOOLS = [
     # (catégorie, initiales, (titre fr, en), (texte fr, en))
     ("system", "PDF", ("Éditeur PDF", "PDF editor"), ("Annoter, signer, remplir un formulaire, caviarder, remplacer un texte, réordonner les pages. L'original n'est jamais écrasé.", "Annotate, sign, fill forms, redact, replace text, reorder pages. The original is never overwritten.")),
     ("system", "PDF", ("Outils PDF", "PDF tools"), ("Fusionner, extraire des pages, images vers PDF, alléger un fichier trop lourd.", "Merge, extract pages, images to PDF, shrink a heavy file.")),
+    ("screen", "◇", ("Vectorem Prisme", "Vectorem Prisme"), ("Ta galerie de photos et vidéos, avec recherche en phrases, collections et retouche. Arrive en 1.3.", "Your photo and video gallery, with sentence search, collections and editing. Coming in 1.3.")),
     ("screen", "▶", ("Vectorem Vision", "Vectorem Vision"), ("Vidéos et musique : reprise où tu t'étais arrêté, intro passée, minuteur de sommeil, sous-titres générés, spectre audio.", "Videos and music: resume where you stopped, skip the intro, sleep timer, generated subtitles, audio spectrum.")),
     ("audio", "Tx", ("Transcrire", "Transcribe"), ("Un fichier audio ou vidéo devient du texte ou des sous-titres, sur le PC, en 7 langues.", "An audio or video file becomes text or subtitles, on the PC, in 7 languages.")),
     ("screen", "◎", ("Capture annotée", "Annotated capture"), ("Une zone de l'écran, puis flèches, cadres, texte, numéros et flou avant d'enregistrer.", "Grab an area, then arrows, frames, text, numbers and blur before saving.")),
@@ -197,6 +218,31 @@ VIGIE_CARDS = [
     (("Discrète", "Out of the way"), ("Cachée en plein écran et pendant les captures. Presque aucun calcul au repos.", "Hidden in full screen and during captures. Almost no work when idle.")),
 ]
 
+PRISME_SHOTS = [
+    ("prisme-galerie", ("Galerie", "Gallery"), ("Toutes tes photos et vidéos par mois, avec le plateau à droite pour mettre de côté ce que tu veux envoyer.", "All your photos and videos by month, with the tray on the right to set aside what you want to send.")),
+    ("prisme-recherche", ("Recherche en phrases", "Search in sentences"), ("« photos paysage favoris » : la phrase devient des filtres, et une collection qui se tient à jour toute seule.", "“landscape photos favourites”: the sentence becomes filters, and a collection that keeps itself up to date.")),
+    ("prisme-retouche", ("Retouche", "Edit"), ("Lumière, couleur, détail, effets, avec l'avant / après à côté. L'original n'est touché que si tu le demandes.", "Light, colour, detail, effects, with before / after side by side. The original is only changed if you ask.")),
+    ("prisme-styles", ("Styles", "Styles"), ("12 styles prêts, l'intensité au choix, et les tiens à enregistrer. Un style s'applique aussi à plusieurs photos d'un coup.", "12 ready-made styles, adjustable strength, and your own to save. A style can also go on several photos at once.")),
+]
+
+PRISME_POINTS = [
+    (("Recherche en phrases", "Search in sentences"), ("« vidéos de plus de 2 min en 2024 », « captures de cette semaine » : en français ou en anglais.", "“videos over 2 min in 2024”, “screenshots this week”: in English or French.")),
+    (("Plateau et glisser-déposer", "Tray and drag and drop"), ("Mets des photos de côté, glisse-les vers un outil, l'Explorateur ou un mail.", "Set photos aside, drag them to a tool, File Explorer or an email.")),
+    (("Retouche complète", "Full editing"), ("Réglages, courbes, recadrage, redresser, styles, annuler à volonté. Copie ou original, au choix.", "Adjustments, curves, crop, straighten, styles, unlimited undo. A copy or the original, your choice.")),
+    (("Au clavier", "Keyboard friendly"), ("Flèches, sélection au rectangle, diaporama, infos de l'appareil photo, HEIC et RAW.", "Arrow keys, rectangle selection, slideshow, camera details, HEIC and RAW.")),
+]
+
+STUDIO_SHOTS = [
+    ("studio-home-dark", ("Sombre", "Dark"), ("Le tableau de bord : tâches et séries du jour, activité de la semaine, état du PC, outils récents.", "The dashboard: today's tasks and streaks, the week's activity, PC status, recent tools.")),
+    ("studio-home-light", ("Clair", "Light"), ("La même chose en clair. Le jaune ne sert plus qu'à ce qui est actif.", "The same in light. Yellow is only used for what's active.")),
+]
+
+STUDIO_POINTS = [
+    (("Rail et panneau", "Rail and panel"), ("Tes outils rangés par famille à gauche, repliables. Ctrl + B pour gagner de la place.", "Your tools grouped by family on the left, collapsible. Ctrl + B to make room.")),
+    (("Barre d'état", "Status bar"), ("Ce qui tourne, le processeur, la mémoire, le réseau et l'heure, en bas de la fenêtre.", "What's running, CPU, memory, network and time, at the bottom of the window.")),
+    (("Toute l'app", "The whole app"), ("Outils, Réglages, Vision et la Vigie suivent le même style. Tu changes d'un clic dans les Réglages.", "Tools, Settings, Vision and the Vigie follow the same style. Switch in one click in Settings.")),
+]
+
 VISION_LOGO = """<svg class="v-logo" viewBox="0 0 108 108" aria-hidden="true">
         <defs><linearGradient id="vBlue" x1=".2" y1=".2" x2=".8" y2=".8"><stop offset="0" stop-color="#7FE3FF"/><stop offset="1" stop-color="#1B7CFF"/></linearGradient></defs>
         <rect width="108" height="108" rx="24" fill="#101010"/>
@@ -225,7 +271,7 @@ def build(lang):
 
     up = "../" if fr else "../../"          # vers la racine du site
     home = "/" if fr else "/en/"
-    other = "/en/windows/" if fr else "/windows/"
+    other = "/en/pc/" if fr else "/pc/"
     e = html.escape
 
     tools = "\n".join(
@@ -262,21 +308,44 @@ def build(lang):
         for i, (name, cap, label) in enumerate(SHOTS)
     )
 
+    def stage(shots, sid):
+        imgs_ = "\n".join(
+            f'''        <img{' class="on"' if i == 0 else ''} src="{up}img/windows/{'' if fr else 'en/'}{name}.webp" alt="{e(T(*cap))}" loading="lazy" decoding="async">'''
+            for i, (name, label, cap) in enumerate(shots)
+        )
+        tabs_ = "\n".join(
+            f'''        <button class="chip" type="button" aria-pressed="{'true' if i == 0 else 'false'}" data-i="{i}" data-cap="{e(T(*cap))}">{e(T(*label))}</button>'''
+            for i, (name, label, cap) in enumerate(shots)
+        )
+        return f'''<div class="reveal">
+      <div class="nw-stage" id="{sid}">
+{imgs_}
+      </div>
+      <div class="nw-tabs" data-stage="{sid}" role="group" aria-label="{T("Captures", "Screenshots")}">
+{tabs_}
+      </div>
+      <p class="nw-cap" aria-live="polite">{e(T(*shots[0][2]))}</p>
+    </div>'''
+
+    def points(items):
+        return "\n".join(f"        <li><b>{e(T(*t))}.</b> {e(T(*x))}</li>" for t, x in items)
+
     return f"""<!DOCTYPE html>
 <html lang="{lang}" data-theme="light">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>{T("Vectorem pour Windows — tous tes outils, au même endroit", "Vectorem for Windows — all your tools, in one place")}</title>
-<meta name="description" content="{e(T("Vectorem sur ton PC : Vectorem Vision pour tes vidéos et ta musique, PDF, captures, renommage en lot, minuteur, notes, tâches et plus, dans une seule fenêtre. Sans compte, données sur ton PC.", "Vectorem on your PC: Vectorem Vision for your videos and music, PDFs, screenshots, batch rename, timer, notes, tasks and more, in one window. No account, data on your PC."))}">
+<title>{T("Vectorem pour PC — tous tes outils, au même endroit", "Vectorem for PC — all your tools, in one place")}</title>
+<meta name="description" content="{e(T("Vectorem sur ton PC Windows, et bientôt sous Linux : Prisme pour tes photos, Vision pour tes vidéos et ta musique, PDF, captures, renommage en lot, minuteur, notes, tâches et plus, dans une seule fenêtre. Sans compte, données sur ton PC.", "Vectorem on your Windows PC, and soon on Linux: Prisme for your photos, Vision for your videos and music, PDFs, screenshots, batch rename, timer, notes, tasks and more, in one window. No account, data on your PC."))}">
 <meta name="theme-color" content="#101010">
-<meta property="og:title" content="{e(T("Vectorem pour Windows", "Vectorem for Windows"))}">
+<meta property="og:title" content="{e(T("Vectorem pour PC", "Vectorem for PC"))}">
 <meta property="og:description" content="{e(T("Tous tes outils. Au même endroit. Maintenant sur ton PC.", "All your tools. In one place. Now on your PC."))}">
 <meta property="og:type" content="website">
 <link rel="icon" href="{FAVICON}">
 <link rel="stylesheet" href="{up}fonts.css">
-<link rel="alternate" hreflang="fr" href="https://vectorem.app/windows/">
-<link rel="alternate" hreflang="en" href="https://vectorem.app/en/windows/">
+<link rel="canonical" href="https://vectorem.app{'/pc/' if fr else '/en/pc/'}">
+<link rel="alternate" hreflang="fr" href="https://vectorem.app/pc/">
+<link rel="alternate" hreflang="en" href="https://vectorem.app/en/pc/">
 <script>
 (function(){{
   try {{
@@ -297,6 +366,7 @@ def build(lang):
       <span class="wordmark">Vectorem</span>
     </a>
     <nav class="site-nav" aria-label="Sections">
+      <a href="#nouveautes">{T("Nouveautés", "What's new")}</a>
       <a href="#apercu">{T("Aperçu", "Preview")}</a>
       <a href="#vision">Vision</a>
       <a href="#vigie">Vigie</a>
@@ -316,9 +386,9 @@ def build(lang):
 <section class="w-hero">
   <div class="wrap">
     <div>
-      <div class="eyebrow-row"><span class="badge live"><span class="dot"></span> {T("Disponible", "Available")}</span><a class="badge" href="#vigie">{T("Nouveau : Vectorem Vigie", "New: Vectorem Vigie")}</a><span class="badge">Windows 10 · 11</span></div>
+      <div class="eyebrow-row"><span class="badge live"><span class="dot"></span> {T("Disponible sous Windows", "Available on Windows")}</span><a class="badge" href="#nouveautes">{T("Arrive en 1.3 : Prisme", "Coming in 1.3: Prisme")}</a><span class="badge">{T("Linux : bientôt", "Linux: soon")}</span></div>
       <h1>{T("Tous tes outils.", "All your tools.")}<br><em>{T("Au même endroit.", "In one place.")}</em></h1>
-      <p class="lead">{T("Vectorem est sur ton PC : PDF, captures d'écran, fichiers en lot, minuteur, notes, tâches, et Vectorem Vision pour tes vidéos et ta musique… dans une seule fenêtre. Tu actives ce qui te sert, sans compte, et tes données restent sur ton ordinateur.", "Vectorem is on your PC: PDFs, screenshots, batch files, timer, notes, tasks, and Vectorem Vision for your videos and music… in one window. Turn on what you use, no account, and your data stays on your computer.")}</p>
+      <p class="lead">{T("Vectorem est sur ton PC Windows, et bientôt sous Linux : PDF, captures d'écran, fichiers en lot, minuteur, notes, tâches, Vectorem Vision pour tes vidéos et ta musique, et bientôt Prisme pour tes photos… dans une seule fenêtre. Tu actives ce qui te sert, sans compte, et tes données restent sur ton ordinateur.", "Vectorem is on your Windows PC, and soon on Linux: PDFs, screenshots, batch files, timer, notes, tasks, Vectorem Vision for your videos and music, and soon Prisme for your photos… in one window. Turn on what you use, no account, and your data stays on your computer.")}</p>
       <div class="dl-box" id="telecharger">
         <a class="btn btn-primary soon" id="dlBtn" href="#telecharger" aria-disabled="true">{T("Bientôt disponible", "Coming soon")}</a>
         <div class="dl-meta" id="dlMeta"><span class="badge">{T("Windows 10 ou 11, 64 bits", "Windows 10 or 11, 64-bit")}</span></div>
@@ -345,10 +415,42 @@ def build(lang):
   </div>
 </section>
 
+<section id="nouveautes" class="nw">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="kicker">{T("Arrive en 1.3", "Coming in 1.3")}</span>
+      <h2>{T("Ce qui arrive", "What's coming")}</h2>
+      <p>{T("Déjà dans les versions de test, bientôt dans le téléchargement de cette page.", "Already in test builds, soon in this page's download.")}</p>
+    </div>
+    <div class="nw-block">
+      <div class="nw-text reveal">
+        <span class="soon-tag">{T("Arrive en 1.3", "Coming in 1.3")}</span>
+        <h3>Vectorem Prisme</h3>
+        <p>{T("Une galerie pour les photos et les vidéos de ton PC. Tu cherches en écrivant une phrase, tu ranges en collections qui se tiennent à jour toutes seules, et tu retouches sans quitter la galerie. Quand un outil demande une image, c'est Prisme qui s'ouvre.", "A gallery for the photos and videos on your PC. Search by typing a sentence, group them in collections that keep themselves up to date, and edit without leaving the gallery. When a tool asks for an image, Prisme opens.")}</p>
+        <ul class="nw-list">
+{points(PRISME_POINTS)}
+        </ul>
+      </div>
+      {stage(PRISME_SHOTS, "nwPrisme")}
+    </div>
+    <div class="nw-block flip">
+      <div class="nw-text reveal">
+        <span class="soon-tag">{T("Arrive en 1.3", "Coming in 1.3")}</span>
+        <h3>{T("Le style Studio", "The Studio style")}</h3>
+        <p>{T("Une autre façon de voir Vectorem, plus sobre : graphite, filets fins, un tableau de bord à l'accueil. Pour ceux qui passent la journée dans l'app.", "Another way to see Vectorem, more understated: graphite, thin lines, a dashboard on the home screen. For people who spend the day in the app.")}</p>
+        <ul class="nw-list">
+{points(STUDIO_POINTS)}
+        </ul>
+      </div>
+      {stage(STUDIO_SHOTS, "nwStudio")}
+    </div>
+  </div>
+</section>
+
 <section id="vision" class="vision">
   <div class="wrap">
     <div class="section-head reveal">
-      <span class="kicker">{T("Nouveau", "New")}</span>
+      <span class="kicker">{T("Vidéos et musique", "Videos and music")}</span>
       <div class="v-head">{VISION_LOGO}<h2><span class="v-name">Vectorem Vision</span></h2></div>
       <p>{T("Le lecteur de Vectorem, pour tes vidéos et ta musique. Il a sa propre icône, s'ouvre sans passer par l'app, et peut devenir le lecteur par défaut de Windows en deux clics.", "Vectorem's player, for your videos and music. It has its own icon, opens without going through the app, and can become Windows' default player in two clicks.")}</p>
     </div>
@@ -369,7 +471,7 @@ def build(lang):
 <section id="vigie" class="vigie">
   <div class="wrap">
     <div class="section-head reveal">
-      <span class="kicker">{T("Nouveau", "New")}</span>
+      <span class="kicker">{T("Arrive en 1.3", "Coming in 1.3")}</span>
       <h2><span class="g-name">Vectorem Vigie</span></h2>
       <p>{T("Une languette en haut de l'écran qui montre ce qui tourne : minuteur, musique, téléchargement, notifications. Survole-la pour l'ouvrir, elle se referme toute seule.", "A small tab at the top of the screen that shows what's running: timer, music, download, notifications. Hover to open it, it closes by itself.")}</p>
     </div>
@@ -409,9 +511,9 @@ def build(lang):
 <section id="outils">
   <div class="wrap">
     <div class="section-head reveal">
-      <span class="kicker">{T("24 outils pensés pour le PC", "24 tools built for the PC")}</span>
+      <span class="kicker">{T(f"{len(TOOLS)} outils pensés pour le PC", f"{len(TOOLS)} tools built for the PC")}</span>
       <h2>{T("Ce que le PC fait de mieux", "What the PC does best")}</h2>
-      <p>{T("En plus des outils du téléphone, Vectorem pour Windows ajoute ceux qui n'ont de sens que sur un ordinateur.", "On top of the phone's tools, Vectorem for Windows adds the ones that only make sense on a computer.")}</p>
+      <p>{T("En plus des outils du téléphone, Vectorem pour PC ajoute ceux qui n'ont de sens que sur un ordinateur.", "On top of the phone's tools, Vectorem for PC adds the ones that only make sense on a computer.")}</p>
     </div>
     <div class="tools-grid">
 {tools}
@@ -467,11 +569,12 @@ def build(lang):
     <div class="faq">
       <details class="reveal"><summary>{T("Faut-il un compte ?", "Do I need an account?")}</summary><p>{T("Non. Rien à créer, rien à connecter.", "No. Nothing to sign up for, nothing to connect.")}</p></details>
       <details class="reveal"><summary>{T("Où sont mes données ?", "Where is my data?")}</summary><p>{T("Sur ton PC, dans ton dossier utilisateur (%APPDATA%&#92;Vectorem). Elles ne partent pas sur un serveur. L'app vérifie au plus une fois par jour s'il existe une nouvelle version ; tu peux couper cette vérification dans les Réglages.", "On your PC, in your user folder (%APPDATA%&#92;Vectorem). It doesn't go to a server. The app checks at most once a day for a new version; you can turn that check off in Settings.")}</p></details>
-      <details class="reveal"><summary>{T("Faut-il l'app Android ?", "Do I need the Android app?")}</summary><p>{T("Non, Vectorem pour Windows marche seul. Avec le téléphone associé, tu gagnes la synchronisation, l'envoi de fichiers et la télécommande.", "No, Vectorem for Windows works on its own. With a paired phone you get sync, file sending and the remote.")}</p></details>
+      <details class="reveal"><summary>{T("Faut-il l'app Android ?", "Do I need the Android app?")}</summary><p>{T("Non, Vectorem pour PC marche seul. Avec le téléphone associé, tu gagnes la synchronisation, l'envoi de fichiers et la télécommande.", "No, Vectorem for PC works on its own. With a paired phone you get sync, file sending and the remote.")}</p></details>
       <details class="reveal"><summary>{T("Vectorem Vision peut-il lire mes vidéos par défaut ?", "Can Vectorem Vision play my videos by default?")}</summary><p>{T("Oui, vidéos et musique. Windows ne laisse pas une app se choisir seule : Réglages › Démarrage et fenêtre › « Choisir » ouvre la bonne page, et sous Windows 11 un bouton « Définir par défaut » règle tout d'un coup.", "Yes, videos and music. Windows doesn't let an app pick itself: Settings › Startup and window › “Choose” opens the right page, and on Windows 11 a “Set default” button does it all at once.")}</p></details>
       <details class="reveal"><summary>{T("La transcription envoie-t-elle mes fichiers ?", "Does transcription send my files anywhere?")}</summary><p>{T("Non, elle tourne sur ton PC. Seule l'option « isoler la voix » télécharge une fois son modèle (166 Mo), et seulement si tu l'actives.", "No, it runs on your PC. Only the “isolate the voice” option downloads its model once (166 MB), and only if you turn it on.")}</p></details>
       <details class="reveal"><summary>{T("Pourquoi Windows affiche un avertissement ?", "Why does Windows show a warning?")}</summary><p>{T("Parce que l'installateur n'est pas encore signé par un certificat. C'est prévu.", "Because the installer isn't signed with a certificate yet. That's planned.")}</p></details>
-      <details class="reveal"><summary>{T("Et sur Mac ou Linux ?", "What about Mac or Linux?")}</summary><p>{T("Pas pour l'instant. Windows d'abord.", "Not for now. Windows first.")}</p></details>
+      <details class="reveal"><summary>{T("Et sous Linux ?", "What about Linux?")}</summary><p>{T("Bientôt. La version Linux est en préparation, en paquets .deb (Debian, Ubuntu, Mint) et .rpm (Fedora, openSUSE). Quelques outils restent propres à Windows, comme la Vigie et le Rangement des fenêtres.", "Soon. The Linux version is on its way, as .deb (Debian, Ubuntu, Mint) and .rpm (Fedora, openSUSE) packages. A few tools stay Windows-only, like the Vigie and Window layouts.")}</p></details>
+      <details class="reveal"><summary>{T("Et sur Mac ?", "And on Mac?")}</summary><p>{T("Pas pour l'instant.", "Not for now.")}</p></details>
       <details class="reveal"><summary>{T("Comment désinstaller ?", "How do I uninstall?")}</summary><p>{T("Paramètres Windows › Applications › Vectorem. Tes données restent dans %APPDATA%&#92;Vectorem tant que tu ne supprimes pas ce dossier.", "Windows Settings › Apps › Vectorem. Your data stays in %APPDATA%&#92;Vectorem until you delete that folder.")}</p></details>
     </div>
   </div>
@@ -492,7 +595,7 @@ def build(lang):
 <footer>
   <div class="wrap">
     <div class="foot-meta">
-      <span>© 2026 Vectorem · Windows</span>
+      <span>© 2026 Vectorem · PC</span>
       <span><a href="{home}">{T("Accueil", "Home")}</a> · <a href="{'/confidentialite/' if fr else '/privacy/'}">{T("Politique de confidentialité", "Privacy policy")}</a> · <a href="mailto:support@vectorem.app">{T("Contact", "Contact")}</a> · <a href="{other}">{T("English", "Français")}</a></span>
     </div>
   </div>
@@ -500,6 +603,15 @@ def build(lang):
 
 <script src="/motion.js"></script>
 <script>
+document.querySelectorAll('.nw-tabs').forEach(function(group){{
+  var stage = document.getElementById(group.dataset.stage), imgs = stage.querySelectorAll('img'), btns = group.querySelectorAll('button'), cap = group.nextElementSibling;
+  btns.forEach(function(b){{ b.addEventListener('click', function(){{
+    var i = +b.dataset.i;
+    imgs.forEach(function(im, k){{ im.classList.toggle('on', k === i); }});
+    btns.forEach(function(o){{ o.setAttribute('aria-pressed', o === b ? 'true' : 'false'); }});
+    cap.textContent = b.dataset.cap;
+  }}); }});
+}});
 (function(){{
   var imgs = document.querySelectorAll('#gDesk img'), btns = document.querySelectorAll('.g-tabs button'), cap = document.getElementById('gCap');
   btns.forEach(function(b){{ b.addEventListener('click', function(){{
@@ -553,9 +665,30 @@ def build(lang):
 """
 
 
+def redirect(lang):
+    """/windows/ → /pc/ (même ancre) : l'app Android, des messages et des moteurs de recherche gardent l'ancienne adresse."""
+    to = "/pc/" if lang == "fr" else "/en/pc/"
+    return f"""<!DOCTYPE html>
+<html lang="{lang}">
+<head>
+<meta charset="utf-8">
+<title>Vectorem {'pour' if lang == 'fr' else 'for'} PC</title>
+<meta name="robots" content="noindex">
+<link rel="canonical" href="https://vectorem.app{to}">
+<meta http-equiv="refresh" content="0; url={to}">
+<script>location.replace('{to}' + location.search + location.hash);</script>
+</head>
+<body><p><a href="{to}">Vectorem {'pour' if lang == 'fr' else 'for'} PC</a></p></body>
+</html>
+"""
+
+
 if __name__ == "__main__":
-  for lang, path in (("fr", "windows/index.html"), ("en", "en/windows/index.html")):
+  for lang, path in (("fr", "pc/index.html"), ("en", "en/pc/index.html")):
     out = os.path.join(ROOT, path)
     os.makedirs(os.path.dirname(out), exist_ok=True)
     open(out, "w", encoding="utf-8").write(build(lang))
     print("écrit", path)
+  for lang, path in (("fr", "windows/index.html"), ("en", "en/windows/index.html")):
+    open(os.path.join(ROOT, path), "w", encoding="utf-8").write(redirect(lang))
+    print("redirection", path)
