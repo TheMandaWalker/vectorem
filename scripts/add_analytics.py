@@ -1,7 +1,7 @@
 """Mesure d'audience du site (Cloudflare Web Analytics, sans cookies) : ajoute le script de Cloudflare dans le <head>
 de chaque page, entre deux repères, ou le retire si aucun jeton n'est donné. Idempotent.
 Jeton (public : il est dans le code des pages) dans scripts/analytics.json, {"cloudflare_token": "..."}.
-À relancer après make_en.py / make_windows.py / make_android.py (ils réécrivent les pages)."""
+À relancer après make_en.py / make_pc.py / make_android.py (ils réécrivent les pages)."""
 import json, pathlib, re, sys
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent

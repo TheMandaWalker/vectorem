@@ -595,7 +595,7 @@ details.win-pc ul{margin-top:16px}
   .marquee-track{animation:none}
 }
 
-/* ============ PAGE WINDOWS ============ */
+/* ============ PAGE PC ============ */
 .w-hero{padding-top:48px;position:relative;overflow:hidden}
 .w-hero .wrap{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:44px;align-items:center}
 .w-hero .wrap>*{min-width:0}
@@ -640,16 +640,42 @@ details.win-pc ul{margin-top:16px}
 .vision .section-head p{color:rgba(245,241,232,.82)}
 .v-logo{width:64px;height:64px;flex:none}
 .v-head{display:flex;gap:18px;align-items:center}
-.v-shots{margin-top:30px;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:22px}
-@media (max-width:820px){ .v-shots{grid-template-columns:minmax(0,1fr)} }
-.v-shots figure{margin:0;border:3px solid #F5F1E8;box-shadow:8px 8px 0 #1B7CFF;background:#000}
-.v-shots figure:nth-child(2){box-shadow:8px 8px 0 #FF3DCB}
-.v-shots img{display:block;width:100%;height:auto}
-.v-shots figcaption{padding:10px 12px;font:700 13px/1.35 var(--font-ui);color:rgba(245,241,232,.85);border-top:3px solid #F5F1E8;background:#111}
+.v-stage{margin-top:34px;display:grid;grid-template-columns:minmax(0,1.55fr) minmax(0,1fr);gap:26px;align-items:start}
+@media (max-width:860px){ .v-stage{grid-template-columns:minmax(0,1fr)} }
+.v-stage figure{margin:0;border:3px solid #F5F1E8;background:#000;box-shadow:10px 10px 0 #1B7CFF}
+.v-stage figure.v-side{box-shadow:10px 10px 0 #FF3DCB;margin-top:56px;transform:rotate(1.2deg)}
+@media (max-width:860px){ .v-stage figure.v-side{margin-top:0;transform:none} }
+.v-stage img{display:block;width:100%;height:auto}
+.v-stage figcaption{padding:10px 12px;font:700 13px/1.35 var(--font-ui);color:rgba(245,241,232,.85);border-top:3px solid #F5F1E8;background:#111}
+.v-stats{margin-top:30px;display:flex;flex-wrap:wrap;gap:10px}
+.v-stats span{border:2px solid #F5F1E8;padding:8px 12px;font:800 12px/1 var(--font-ui);letter-spacing:.08em;text-transform:uppercase;background:#111;color:#F5F1E8}
+.v-stats b{color:#7FE3FF;margin-right:6px}
 .v-grid{margin-top:30px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,250px),1fr));gap:16px}
-.v-card{border:2px solid rgba(245,241,232,.9);background:rgba(17,17,22,.92);padding:16px}
+.v-card{border:2px solid rgba(245,241,232,.9);background:rgba(17,17,22,.92);padding:16px 16px 16px 60px;position:relative}
+.v-card .ic{position:absolute;left:14px;top:16px;width:32px;height:32px;display:grid;place-items:center;border:2px solid #F5F1E8;background:linear-gradient(135deg,#7FE3FF,#1B7CFF);color:#08101f;font:900 15px/1 var(--font-ui)}
+.v-card:nth-child(even) .ic{background:#FF3DCB}
 .v-card h3{font:900 14px/1.2 var(--font-ui);letter-spacing:.04em;text-transform:uppercase;margin-bottom:6px;color:#7FE3FF}
 .v-card p{font-size:14px;color:rgba(245,241,232,.85)}
+.vigie{position:relative;overflow:hidden;background:#101010;color:#F5F1E8;border-bottom:var(--stroke-heavy)}
+.vigie::before{content:"";position:absolute;inset:-30% auto auto -10%;width:60%;height:90%;background:radial-gradient(closest-side,rgba(255,212,38,.16),transparent 70%);pointer-events:none}
+.vigie .wrap{position:relative}
+.vigie .kicker{color:#101010;background:#FFD426;border-color:#F5F1E8}
+.vigie h2{color:#F5F1E8}
+.vigie h2 .g-name{display:inline-block;background:#FFD426;color:#101010;border:3px solid #F5F1E8;box-shadow:6px 6px 0 #F5F1E8;padding:0 .22em;transform:rotate(1deg)}
+.vigie .section-head p{color:rgba(245,241,232,.82)}
+.g-desk{margin-top:30px;border:3px solid #F5F1E8;box-shadow:10px 10px 0 #FFD426;background:linear-gradient(180deg,#2c2c45,#4a3a5e 55%,#7a4c52);aspect-ratio:1520/680;position:relative;overflow:hidden}
+.g-desk img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;object-position:top center;opacity:0;transition:opacity .35s ease}
+.g-desk img.on{opacity:1}
+.g-desk .bar{position:absolute;left:0;right:0;bottom:0;height:9%;background:rgba(16,16,16,.85);border-top:2px solid rgba(245,241,232,.4)}
+.g-tabs{margin-top:18px;display:flex;flex-wrap:wrap;gap:8px}
+.g-tabs button{font:800 12px/1 var(--font-ui);letter-spacing:.08em;text-transform:uppercase;padding:10px 12px;border:2px solid #F5F1E8;background:#1a1a1a;color:#F5F1E8;cursor:pointer;box-shadow:3px 3px 0 #F5F1E8}
+.g-tabs button[aria-pressed="true"]{background:#FFD426;color:#101010}
+.g-tabs button:active{transform:translate(3px,3px);box-shadow:none}
+.g-cap{margin-top:12px;min-height:1.4em;font:700 14px/1.4 var(--font-ui);color:rgba(245,241,232,.85)}
+.g-grid{margin-top:30px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));gap:14px}
+.g-card{border:2px solid rgba(245,241,232,.9);background:#161616;padding:16px}
+.g-card h3{font:900 14px/1.2 var(--font-ui);letter-spacing:.04em;text-transform:uppercase;margin-bottom:6px;color:#FFD426}
+.g-card p{font-size:14px;color:rgba(245,241,232,.85)}
 .v-card .tag{display:inline-block;margin-left:6px;padding:2px 6px;font:800 10px/1.2 var(--font-ui);letter-spacing:.08em;background:#FF3DCB;color:#0b0b0f;vertical-align:middle}
 .faq{margin-top:24px;display:grid;gap:10px}
 .faq details{border:var(--stroke);background:var(--bg-block);box-shadow:var(--shadow-1)}
@@ -657,6 +683,23 @@ details.win-pc ul{margin-top:16px}
 .faq summary::after{content:"+";font:900 20px/1 var(--font-display)}
 .faq details[open] summary::after{content:"–"}
 .faq details p{padding:0 16px 16px;color:var(--text-body);font-size:14.5px}
+.soon-tag{display:inline-block;padding:3px 8px;border:var(--stroke-hair);background:var(--brand);color:var(--on-brand);font:800 11px/1.2 var(--font-ui);letter-spacing:.08em;text-transform:uppercase;vertical-align:middle}
+.nw{position:relative;overflow:hidden}
+.nw-block{margin-top:34px;display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.5fr);gap:34px;align-items:start}
+.nw-block.flip{grid-template-columns:minmax(0,1.5fr) minmax(0,.9fr)}
+.nw-block.flip .nw-text{order:2}
+@media (max-width:900px){ .nw-block,.nw-block.flip{grid-template-columns:minmax(0,1fr)} .nw-block.flip .nw-text{order:0} }
+.nw-text h3{font:900 clamp(22px,2.6vw,30px)/1.1 var(--font-display);margin:10px 0 10px}
+.nw-text>p{color:var(--text-body);font-size:15.5px}
+.nw-list{margin:16px 0 0;padding:0;list-style:none;display:grid;gap:10px}
+.nw-list li{border:var(--stroke-hair);background:var(--bg-block);padding:10px 12px 10px 38px;position:relative;font-size:14.5px;color:var(--text-body)}
+.nw-list li b{color:var(--text-strong,inherit)}
+.nw-list li::before{content:"";position:absolute;left:12px;top:14px;width:12px;height:12px;background:var(--brand);border:var(--stroke-hair);transform:rotate(45deg)}
+.nw-stage{border:var(--stroke-heavy);box-shadow:var(--shadow-3);background:#0e0f11;position:relative;overflow:hidden}
+.nw-stage img{display:block;width:100%;height:auto;position:absolute;inset:0;opacity:0;transition:opacity .35s ease}
+.nw-stage img.on{position:relative;opacity:1}
+.nw-tabs{margin-top:14px;display:flex;flex-wrap:wrap;gap:8px}
+.nw-cap{margin-top:10px;min-height:1.4em;font:700 14px/1.4 var(--font-ui);color:var(--text-muted)}
 kbd{font:700 12px/1 var(--font-mono);padding:2px 5px;border:var(--stroke-hair);background:var(--bg-block-sunken);white-space:nowrap}
 
 /* ============ PAGE ANDROID ============ */
@@ -693,7 +736,7 @@ kbd{font:700 12px/1 var(--font-mono);padding:2px 5px;border:var(--stroke-hair);b
       <a href="#outils">Tools</a>
       <a href="#vie-privee">Privacy</a>
       <a href="#faq">FAQ</a>
-      <a href="/en/windows/">Windows</a>
+      <a href="/en/pc/">PC</a>
     </nav>
     <a class="btn btn-primary btn-sm head-cta" href="https://play.google.com/store/apps/details?id=com.vectorem.app&amp;referrer=utm_source%3Dvectorem.app%26utm_medium%3Dsite" target="_blank" rel="noopener">Google Play</a>
     <a class="icon-btn lang-btn" href="/android/" hreflang="fr" lang="fr" aria-label="Version française">FR</a>
@@ -827,7 +870,7 @@ kbd{font:700 12px/1 var(--font-mono);padding:2px 5px;border:var(--stroke-hair);b
         <h2 style="font-size:clamp(22px,3vw,30px);margin-top:6px">Your phone and PC talk to each other</h2>
         <p style="margin-top:8px">Pair Vectorem for Windows by scanning a QR code: notes, tasks and streaks in sync, photos sent to the PC, a remote. Over your Wi-Fi, encrypted, no account.</p>
       </div>
-      <a class="btn btn-primary" href="/en/windows/">Vectorem for Windows</a>
+      <a class="btn btn-primary" href="/en/pc/">Vectorem for PC</a>
     </div>
   </div>
 </section>
@@ -865,7 +908,7 @@ kbd{font:700 12px/1 var(--font-mono);padding:2px 5px;border:var(--stroke-hair);b
   <div class="wrap">
     <div class="foot-meta">
       <span>© 2026 Vectorem · Android</span>
-      <span><a href="/en/">Home</a> · <a href="/en/windows/">Windows</a> · <a href="/confidentialite/#en">Privacy policy</a> · <a href="mailto:support@vectorem.app">Contact</a> · <a href="/android/">Français</a></span>
+      <span><a href="/en/">Home</a> · <a href="/en/pc/">PC</a> · <a href="/confidentialite/#en">Privacy policy</a> · <a href="mailto:support@vectorem.app">Contact</a> · <a href="/android/">Français</a></span>
     </div>
   </div>
 </footer>

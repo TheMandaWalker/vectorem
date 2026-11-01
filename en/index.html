@@ -3,12 +3,50 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- Link previews (Discord and others) -->
+<meta property="og:title" content="Vectorem — All your tools, in one place" />
+<meta property="og:description" content="One app, no account, for Android and Windows. 26 mobile tools and 45 on PC: Pomodoro, calculator, habit streaks, QR..." />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://vectorem.app/en/" />
+<meta property="og:image" content="https://vectorem.app/img/og-vectorem.jpg" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+
+<!-- Discord Component Embed -->
+<script id="discord:component-embed" type="application/json">
+  {
+    "component": {
+      "type": 17,
+      "accent_color": 5793266,
+      "components": [
+        {
+          "type": 10,
+          "content": "# Vectorem\n**All your tools. In one place.**\n\nOne app, no account, no data collection. Turn on only the tools you need (Pomodoro, streaks, calculator, QR...)."
+        },
+        {
+          "type": 1,
+          "components": [
+            {
+              "type": 2,
+              "style": 5,
+              "label": "Get it on Android",
+              "url": "https://play.google.com/store/apps/details?id=com.vectorem.app"
+            },
+            {
+              "type": 2,
+              "style": 5,
+              "label": "Download for Windows",
+              "url": "https://vectorem.app/en/pc/"
+            }
+          ]
+        }
+      ]
+    }
+  }
+</script>
 <title>Vectorem — all your tools, in one place</title>
 <meta name="description" content="Vectorem brings 26 tools for Android together — timer, reminders, habit streaks, equalizer, QR, wheel of fortune — in one modular app, no account. Try them here.">
 <meta name="theme-color" content="#101010">
-<meta property="og:title" content="Vectorem — all your tools, in one place">
-<meta property="og:description" content="A modular Android toolbox: turn on what you use, your data stays on your phone.">
-<meta property="og:type" content="website">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 108 108'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='.2' y1='.2' x2='.8' y2='.8'%3E%3Cstop offset='0' stop-color='%23FFDB70'/%3E%3Cstop offset='1' stop-color='%23D99A00'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='108' height='108' fill='%23101010'/%3E%3Cpath d='M58 30L86 58L58 86L30 58Z' fill='%23101010' stroke='%23F5F1E8' stroke-width='4.6'/%3E%3Cpath fill-rule='evenodd' fill='url(%23g)' d='M54 26L82 54L54 82L26 54ZM54 42L66 54L54 66L42 54Z'/%3E%3Cpath d='M54 26L82 54L54 82L26 54ZM54 42L66 54L54 66L42 54Z' fill='none' stroke='%23F5F1E8' stroke-width='5.6'/%3E%3C/svg%3E">
 <link rel="stylesheet" href="../fonts.css">
 <link rel="canonical" href="https://vectorem.app/en/">
@@ -616,7 +654,7 @@ details.win-pc ul{margin-top:16px}
     </a>
     <nav class="site-nav" id="siteNav" aria-label="Sections">
       <a href="/en/android/">Android</a>
-      <a href="/en/windows/">Windows</a>
+      <a href="/en/pc/">PC</a>
       <a href="#nouveautes">What's new</a>
       <a href="#images">Screens</a>
       <a href="#essayer">Try</a>
@@ -646,14 +684,14 @@ details.win-pc ul{margin-top:16px}
         <span class="badge">No account</span>
         <span class="badge">Local data</span>
         <span class="badge">Available</span>
-        <a class="badge live" href="/en/windows/" style="text-decoration:none"><span class="dot"></span> Windows · 1.0</a>
+        <a class="badge live" href="/en/pc/" style="text-decoration:none"><span class="dot"></span> Windows · 1.0</a>
       </div>
       <h1 class="reveal" style="--d:80ms">All your tools.<br>In one <span class="hl">place.</span></h1>
       <p class="rot-line reveal" style="--d:120ms">One app to <span class="rot" aria-live="polite"><span class="rot-inner"><span class="rot-word" id="rotWord">shape your sound</span></span></span></p>
       <p class="lede reveal" style="--d:160ms">Timer, reminders, habit streaks, equalizer, QR, wheel of fortune… 26 tools in one app. Each one is a module: turn it on, turn it off. The dashboard only shows what you actually use.</p>
       <div class="ctas reveal" style="--d:240ms">
         <a class="btn btn-primary" href="https://play.google.com/store/apps/details?id=com.vectorem.app&amp;referrer=utm_source%3Dvectorem.app%26utm_medium%3Dsite" target="_blank" rel="noopener">Google Play <svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14" /> <path d="m12 5 7 7-7 7" /></svg></a>
-        <a class="btn btn-ghost" href="/en/windows/">Windows version</a>
+        <a class="btn btn-ghost" href="/en/pc/">Windows version</a>
         <a class="btn btn-ghost" href="#essayer">Try the demos</a>
       </div>
     </div>
@@ -821,9 +859,9 @@ details.win-pc ul{margin-top:16px}
         <p>The same idea on your PC: turn on what you use, no account, and your data stays on the computer. 46 tools in all: 22 from the phone, 24 built for the desktop.</p>
       </div>
       <div class="win-dl reveal">
-        <a class="btn btn-primary" id="winDl" href="/en/windows/">Download for Windows</a>
-        <a class="btn btn-ghost" href="/en/windows/">All about the Windows version</a>
-        <p class="win-dl-meta" id="winDlMeta">Windows 10 or 11, 64-bit. The installer is not signed yet: Windows may show a warning, the Windows page explains what to do.</p>
+        <a class="btn btn-primary" id="winDl" href="/en/pc/">Download for Windows</a>
+        <a class="btn btn-ghost" href="/en/pc/">All about the Windows version</a>
+        <p class="win-dl-meta" id="winDlMeta">Windows 10 or 11, 64-bit. The installer is not signed yet: Windows may show a warning, the PC page explains what to do.</p>
       </div>
     </div>
 

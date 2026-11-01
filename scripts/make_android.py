@@ -13,7 +13,7 @@ import html
 import os
 import re
 
-from make_windows import FAVICON, MARK, PAGE_CSS, ROOT, site_css
+from make_pc import FAVICON, MARK, PAGE_CSS, ROOT, site_css
 
 ANDROID_CSS = """
 /* ============ PAGE ANDROID ============ */
@@ -81,7 +81,7 @@ def build(lang):
     up = "../" if fr else "../../"
     home = "/" if fr else "/en/"
     other = "/en/android/" if fr else "/android/"
-    windows = "/windows/" if fr else "/en/windows/"
+    windows = "/pc/" if fr else "/en/pc/"
     privacy = "/confidentialite/" if fr else "/confidentialite/#en"
     e = html.escape
 
@@ -151,7 +151,7 @@ def build(lang):
       <a href="#outils">{T("Outils", "Tools")}</a>
       <a href="#vie-privee">{T("Vie privée", "Privacy")}</a>
       <a href="#faq">FAQ</a>
-      <a href="{windows}">Windows</a>
+      <a href="{windows}">PC</a>
     </nav>
     <a class="btn btn-primary btn-sm head-cta" href="{PLAY}" target="_blank" rel="noopener">Google Play</a>
     <a class="icon-btn lang-btn" href="{other}" hreflang="{'en' if fr else 'fr'}" lang="{'en' if fr else 'fr'}" aria-label="{T("English version", "Version française")}">{T("EN", "FR")}</a>
@@ -238,7 +238,7 @@ def build(lang):
         <h2 style="font-size:clamp(22px,3vw,30px);margin-top:6px">{T("Ton téléphone et ton PC se parlent", "Your phone and PC talk to each other")}</h2>
         <p style="margin-top:8px">{T("Associe Vectorem pour Windows en scannant un QR : notes, tâches et séries synchronisées, photos envoyées au PC, télécommande. Par ton Wi-Fi, chiffré, sans compte.", "Pair Vectorem for Windows by scanning a QR code: notes, tasks and streaks in sync, photos sent to the PC, a remote. Over your Wi-Fi, encrypted, no account.")}</p>
       </div>
-      <a class="btn btn-primary" href="{windows}">{T("Vectorem pour Windows", "Vectorem for Windows")}</a>
+      <a class="btn btn-primary" href="{windows}">{T("Vectorem pour PC", "Vectorem for PC")}</a>
     </div>
   </div>
 </section>
@@ -276,7 +276,7 @@ def build(lang):
   <div class="wrap">
     <div class="foot-meta">
       <span>© 2026 Vectorem · Android</span>
-      <span><a href="{home}">{T("Accueil", "Home")}</a> · <a href="{windows}">Windows</a> · <a href="{privacy}">{T("Politique de confidentialité", "Privacy policy")}</a> · <a href="mailto:support@vectorem.app">{T("Contact", "Contact")}</a> · <a href="{other}">{T("English", "Français")}</a></span>
+      <span><a href="{home}">{T("Accueil", "Home")}</a> · <a href="{windows}">PC</a> · <a href="{privacy}">{T("Politique de confidentialité", "Privacy policy")}</a> · <a href="mailto:support@vectorem.app">{T("Contact", "Contact")}</a> · <a href="{other}">{T("English", "Français")}</a></span>
     </div>
   </div>
 </footer>

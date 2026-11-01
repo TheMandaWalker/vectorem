@@ -21,9 +21,16 @@ R('<html lang="fr" data-theme="light">', '<html lang="en" data-theme="light">')
 R('<title>Vectorem — tous tes outils, au même endroit</title>', '<title>Vectorem — all your tools, in one place</title>')
 R('<meta name="description" content="Vectorem regroupe 26 outils pour Android — minuteur, rappels, séries d\'habitudes, égaliseur, QR, roue de la fortune — dans une seule app modulaire, sans compte. Essaie-les ici.">',
   '<meta name="description" content="Vectorem brings 26 tools for Android together — timer, reminders, habit streaks, equalizer, QR, wheel of fortune — in one modular app, no account. Try them here.">')
-R('<meta property="og:title" content="Vectorem — tous tes outils, au même endroit">', '<meta property="og:title" content="Vectorem — all your tools, in one place">')
-R('<meta property="og:description" content="Une boîte à outils Android modulaire : tu actives ce que tu utilises, tes données restent sur ton téléphone.">',
-  '<meta property="og:description" content="A modular Android toolbox: turn on what you use, your data stays on your phone.">')
+# Aperçus de lien (Open Graph, composant Discord).
+R('<!-- Aperçus de lien (Discord et autres) -->', '<!-- Link previews (Discord and others) -->')
+R('<meta property="og:title" content="Vectorem — Tous tes outils, au même endroit" />', '<meta property="og:title" content="Vectorem — All your tools, in one place" />')
+R('<meta property="og:description" content="Une seule application sans compte pour Android et Windows. 26 outils mobiles et 45 sur PC : Pomodoro, calculatrice, séries d\'habitudes, QR..." />',
+  '<meta property="og:description" content="One app, no account, for Android and Windows. 26 mobile tools and 45 on PC: Pomodoro, calculator, habit streaks, QR..." />')
+R('<meta property="og:url" content="https://vectorem.app/" />', '<meta property="og:url" content="https://vectorem.app/en/" />')
+R('"content": "# Vectorem\\n**Tous tes outils. Au même endroit.**\\n\\nUne seule app sans compte ni collecte de données. Active uniquement les outils dont tu as besoin (Pomodoro, séries, calculatrice, QR...)."',
+  '"content": "# Vectorem\\n**All your tools. In one place.**\\n\\nOne app, no account, no data collection. Turn on only the tools you need (Pomodoro, streaks, calculator, QR...)."')
+R('"label": "Télécharger sur Android"', '"label": "Get it on Android"')
+R('"label": "Télécharger pour Windows",\n              "url": "https://vectorem.app/pc/"', '"label": "Download for Windows",\n              "url": "https://vectorem.app/en/pc/"')
 R('<link rel="stylesheet" href="fonts.css">', '<link rel="stylesheet" href="../fonts.css">\n<link rel="canonical" href="https://vectorem.app/en/">')
 # relative assets
 s = s.replace('src="img/', 'src="../img/').replace('src="videos/', 'src="../videos/').replace('poster="videos/', 'poster="../videos/')
@@ -46,16 +53,16 @@ R('<span class="badge">Sans compte</span>', '<span class="badge">No account</spa
 R('<span class="badge">Données locales</span>', '<span class="badge">Local data</span>')
 R('<span class="badge">Disponible</span>', '<span class="badge">Available</span>')
 R('Windows · 1.0</a>', 'Windows · 1.0</a>')
-R('<a class="btn btn-ghost" href="/windows/">Version Windows</a>', '<a class="btn btn-ghost" href="/en/windows/">Windows version</a>')
+R('<a class="btn btn-ghost" href="/pc/">Version Windows</a>', '<a class="btn btn-ghost" href="/en/pc/">Windows version</a>')
 R('<h1 class="reveal" style="--d:80ms">Tous tes outils.<br>Au même <span class="hl">endroit.</span></h1>', '<h1 class="reveal" style="--d:80ms">All your tools.<br>In one <span class="hl">place.</span></h1>')
 R('<p class="rot-line reveal" style="--d:120ms">Une seule app pour <span', '<p class="rot-line reveal" style="--d:120ms">One app to <span')
 R('id="rotWord">mixer le son</span>', 'id="rotWord">shape your sound</span>')
 R("Minuteur, rappels, séries d'habitudes, égaliseur, QR, roue de la fortune… 26 outils dans une seule app. Chacun est un module : tu l'actives, tu le désactives. Le tableau de bord n'affiche que ce que tu utilises vraiment.",
   "Timer, reminders, habit streaks, equalizer, QR, wheel of fortune… 26 tools in one app. Each one is a module: turn it on, turn it off. The dashboard only shows what you actually use.")
 R('<a class="btn btn-ghost" href="#essayer">Essayer les démos</a>', '<a class="btn btn-ghost" href="#essayer">Try the demos</a>')
-R('<a href="/android/">Android</a>\n      <a href="/windows/">Windows</a>', '<a href="/en/android/">Android</a>\n      <a href="/en/windows/">Windows</a>')
+R('<a href="/android/">Android</a>\n      <a href="/pc/">PC</a>', '<a href="/en/android/">Android</a>\n      <a href="/en/pc/">PC</a>')
 R('<a class="badge live" href="/android/"', '<a class="badge live" href="/en/android/"')
-R('<a class="badge live" href="/windows/"', '<a class="badge live" href="/en/windows/"')
+R('<a class="badge live" href="/pc/"', '<a class="badge live" href="/en/pc/"')
 # ---- chiffres ----
 R('aria-label="Vectorem en chiffres"', 'aria-label="Vectorem in numbers"')
 R('<span class="kicker">Vectorem en chiffres</span>', '<span class="kicker">Vectorem in numbers</span>')
@@ -164,9 +171,9 @@ R('Dans la barre des tâches</h3>', 'In the taskbar</h3>')
 R("<p>La progression du minuteur et du Pomodoro s'affiche sur l'icône. Fermer la fenêtre ne coupe pas un décompte.</p>", "<p>Timer and Pomodoro progress shows on the icon. Closing the window doesn't stop a countdown.</p>")
 R('Avec ton téléphone</h3>', 'With your phone</h3>')
 R('<p>Échange tes notes, tâches et séries entre le téléphone et le PC en scannant un QR. Par ton Wi-Fi, chiffré, sans compte.</p>', '<p>Swap your notes, tasks and streaks between phone and PC by scanning a QR code. Over your Wi-Fi, encrypted, no account.</p>')
-R('<a class="btn btn-primary" id="winDl" href="/windows/">Télécharger pour Windows</a>', '<a class="btn btn-primary" id="winDl" href="/en/windows/">Download for Windows</a>')
-R('<a class="btn btn-ghost" href="/windows/">Tout sur la version Windows</a>', '<a class="btn btn-ghost" href="/en/windows/">All about the Windows version</a>')
-R('Windows 10 ou 11, 64 bits. Installateur pas encore signé : Windows peut afficher un avertissement, la page Windows explique quoi faire.', 'Windows 10 or 11, 64-bit. The installer is not signed yet: Windows may show a warning, the Windows page explains what to do.')
+R('<a class="btn btn-primary" id="winDl" href="/pc/">Télécharger pour Windows</a>', '<a class="btn btn-primary" id="winDl" href="/en/pc/">Download for Windows</a>')
+R('<a class="btn btn-ghost" href="/pc/">Tout sur la version Windows</a>', '<a class="btn btn-ghost" href="/en/pc/">All about the Windows version</a>')
+R('Windows 10 ou 11, 64 bits. Installateur pas encore signé : Windows peut afficher un avertissement, la page PC explique quoi faire.', 'Windows 10 or 11, 64-bit. The installer is not signed yet: Windows may show a warning, the PC page explains what to do.')
 R("(w.size ? ' · ' + Math.round(w.size / 1048576) + ' Mo' : '') + ' · ' + m.textContent;", "(w.size ? ' · ' + Math.round(w.size / 1048576) + ' MB' : '') + ' · ' + m.textContent;")
 R('<summary>Les 24 outils pensés pour le PC</summary>', '<summary>The 24 tools built for the PC</summary>')
 for fr, en in [('Outils PDF','PDF tools'),('Pipette','Colour picker'),("Règle à l'écran",'Screen ruler'),('Renommer en lot','Batch rename'),('Images en lot','Batch images'),('Métadonnées','Metadata'),('Espace disque','Disk usage'),('Moniteur','Monitor'),('Anti-veille','Keep awake'),('Horloges du monde','World clocks'),('Empreinte de fichier','File hash'),('Mots de passe','Passwords'),('Capture annotée','Annotated capture'),('Lanceur','Launcher'),('Convertisseur','Unit converter'),('Vectorem Vision','Vectorem Vision'),('Transcrire','Transcribe'),('Éditeur PDF','PDF editor'),('Terminal','Terminal'),('Rangement des fenêtres','Window layouts'),('Rangement','Tidy folders'),('Copie de dossiers','Folder copy'),('Extinction','Power timer'),('Aide-mémoire','Cheat sheet')]:
