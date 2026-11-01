@@ -10,7 +10,7 @@ plus quelques règles propres à la page. Les textes sont des couples T("fr", "e
 Le bouton de téléchargement est piloté par /version.json : s'il contient « download »,
 il devient actif (version, taille, empreinte) ; sinon il affiche « Bientôt ».
 Ton : phrases courtes, pas de « gratuit », « sans pub », « aucune connexion » ; version publique 1.0 depuis le 12/10/2026.
-Ce qui n'est pas encore dans le téléchargement public porte « Arrive en 1.3 » (choix du 01/11/2026). Linux : « bientôt ».
+Nouveautés de la 1.3 (publique) : « Nouveau en 1.3 ». Linux : « bientôt ».
 """
 import html
 import os
@@ -137,7 +137,7 @@ TOOLS = [
     # (catégorie, initiales, (titre fr, en), (texte fr, en))
     ("system", "PDF", ("Éditeur PDF", "PDF editor"), ("Annoter, signer, remplir un formulaire, caviarder, remplacer un texte, réordonner les pages. L'original n'est jamais écrasé.", "Annotate, sign, fill forms, redact, replace text, reorder pages. The original is never overwritten.")),
     ("system", "PDF", ("Outils PDF", "PDF tools"), ("Fusionner, extraire des pages, images vers PDF, alléger un fichier trop lourd.", "Merge, extract pages, images to PDF, shrink a heavy file.")),
-    ("screen", "◇", ("Vectorem Prisme", "Vectorem Prisme"), ("Ta galerie de photos et vidéos, avec recherche en phrases, collections et retouche. Arrive en 1.3.", "Your photo and video gallery, with sentence search, collections and editing. Coming in 1.3.")),
+    ("screen", "◇", ("Vectorem Prisme", "Vectorem Prisme"), ("Ta galerie de photos et vidéos, avec recherche en phrases, collections et retouche. Nouveau en 1.3.", "Your photo and video gallery, with sentence search, collections and editing. New in 1.3.")),
     ("screen", "▶", ("Vectorem Vision", "Vectorem Vision"), ("Vidéos et musique : reprise où tu t'étais arrêté, intro passée, minuteur de sommeil, sous-titres générés, spectre audio.", "Videos and music: resume where you stopped, skip the intro, sleep timer, generated subtitles, audio spectrum.")),
     ("audio", "Tx", ("Transcrire", "Transcribe"), ("Un fichier audio ou vidéo devient du texte ou des sous-titres, sur le PC, en 7 langues.", "An audio or video file becomes text or subtitles, on the PC, in 7 languages.")),
     ("screen", "◎", ("Capture annotée", "Annotated capture"), ("Une zone de l'écran, puis flèches, cadres, texte, numéros et flou avant d'enregistrer.", "Grab an area, then arrows, frames, text, numbers and blur before saving.")),
@@ -386,9 +386,9 @@ def build(lang):
 <section class="w-hero">
   <div class="wrap">
     <div>
-      <div class="eyebrow-row"><span class="badge live"><span class="dot"></span> {T("Disponible sous Windows", "Available on Windows")}</span><a class="badge" href="#nouveautes">{T("Arrive en 1.3 : Prisme", "Coming in 1.3: Prisme")}</a><span class="badge">{T("Linux : bientôt", "Linux: soon")}</span></div>
+      <div class="eyebrow-row"><span class="badge live"><span class="dot"></span> {T("Disponible sous Windows", "Available on Windows")}</span><a class="badge" href="#nouveautes">{T("Nouveau en 1.3 : Prisme", "New in 1.3: Prisme")}</a><span class="badge">{T("Linux : bientôt", "Linux: soon")}</span></div>
       <h1>{T("Tous tes outils.", "All your tools.")}<br><em>{T("Au même endroit.", "In one place.")}</em></h1>
-      <p class="lead">{T("Vectorem est sur ton PC Windows, et bientôt sous Linux : PDF, captures d'écran, fichiers en lot, minuteur, notes, tâches, Vectorem Vision pour tes vidéos et ta musique, et bientôt Prisme pour tes photos… dans une seule fenêtre. Tu actives ce qui te sert, sans compte, et tes données restent sur ton ordinateur.", "Vectorem is on your Windows PC, and soon on Linux: PDFs, screenshots, batch files, timer, notes, tasks, Vectorem Vision for your videos and music, and soon Prisme for your photos… in one window. Turn on what you use, no account, and your data stays on your computer.")}</p>
+      <p class="lead">{T("Vectorem est sur ton PC Windows, et bientôt sous Linux : PDF, captures d'écran, fichiers en lot, minuteur, notes, tâches, Vectorem Vision pour tes vidéos et ta musique, Prisme pour tes photos… dans une seule fenêtre. Tu actives ce qui te sert, sans compte, et tes données restent sur ton ordinateur.", "Vectorem is on your Windows PC, and soon on Linux: PDFs, screenshots, batch files, timer, notes, tasks, Vectorem Vision for your videos and music, Prisme for your photos… in one window. Turn on what you use, no account, and your data stays on your computer.")}</p>
       <div class="dl-box" id="telecharger">
         <a class="btn btn-primary soon" id="dlBtn" href="#telecharger" aria-disabled="true">{T("Bientôt disponible", "Coming soon")}</a>
         <div class="dl-meta" id="dlMeta"><span class="badge">{T("Windows 10 ou 11, 64 bits", "Windows 10 or 11, 64-bit")}</span></div>
@@ -418,13 +418,13 @@ def build(lang):
 <section id="nouveautes" class="nw">
   <div class="wrap">
     <div class="section-head reveal">
-      <span class="kicker">{T("Arrive en 1.3", "Coming in 1.3")}</span>
-      <h2>{T("Ce qui arrive", "What's coming")}</h2>
-      <p>{T("Déjà dans les versions de test, bientôt dans le téléchargement de cette page.", "Already in test builds, soon in this page's download.")}</p>
+      <span class="kicker">{T("Nouveau en 1.3", "New in 1.3")}</span>
+      <h2>{T("Les nouveautés de la 1.3", "What's new in 1.3")}</h2>
+      <p>{T("Dans le téléchargement de cette page, et en mise à jour depuis l'app.", "In this page's download, and as an update from the app.")}</p>
     </div>
     <div class="nw-block">
       <div class="nw-text reveal">
-        <span class="soon-tag">{T("Arrive en 1.3", "Coming in 1.3")}</span>
+        <span class="soon-tag">{T("Nouveau en 1.3", "New in 1.3")}</span>
         <h3>Vectorem Prisme</h3>
         <p>{T("Une galerie pour les photos et les vidéos de ton PC. Tu cherches en écrivant une phrase, tu ranges en collections qui se tiennent à jour toutes seules, et tu retouches sans quitter la galerie. Quand un outil demande une image, c'est Prisme qui s'ouvre.", "A gallery for the photos and videos on your PC. Search by typing a sentence, group them in collections that keep themselves up to date, and edit without leaving the gallery. When a tool asks for an image, Prisme opens.")}</p>
         <ul class="nw-list">
@@ -435,7 +435,7 @@ def build(lang):
     </div>
     <div class="nw-block flip">
       <div class="nw-text reveal">
-        <span class="soon-tag">{T("Arrive en 1.3", "Coming in 1.3")}</span>
+        <span class="soon-tag">{T("Nouveau en 1.3", "New in 1.3")}</span>
         <h3>{T("Le style Studio", "The Studio style")}</h3>
         <p>{T("Une autre façon de voir Vectorem, plus sobre : graphite, filets fins, un tableau de bord à l'accueil. Pour ceux qui passent la journée dans l'app.", "Another way to see Vectorem, more understated: graphite, thin lines, a dashboard on the home screen. For people who spend the day in the app.")}</p>
         <ul class="nw-list">
@@ -471,7 +471,7 @@ def build(lang):
 <section id="vigie" class="vigie">
   <div class="wrap">
     <div class="section-head reveal">
-      <span class="kicker">{T("Arrive en 1.3", "Coming in 1.3")}</span>
+      <span class="kicker">{T("Nouveau en 1.3", "New in 1.3")}</span>
       <h2><span class="g-name">Vectorem Vigie</span></h2>
       <p>{T("Une languette en haut de l'écran qui montre ce qui tourne : minuteur, musique, téléchargement, notifications. Survole-la pour l'ouvrir, elle se referme toute seule.", "A small tab at the top of the screen that shows what's running: timer, music, download, notifications. Hover to open it, it closes by itself.")}</p>
     </div>
