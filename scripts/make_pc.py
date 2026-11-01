@@ -11,8 +11,13 @@ Le bouton de téléchargement est piloté par /version.json : s'il contient « d
 il devient actif (version, taille, empreinte) ; sinon il affiche « Bientôt ».
 Ton : phrases courtes, pas de « gratuit », « sans pub », « aucune connexion » ; version publique 1.0 depuis le 12/10/2026.
 Nouveautés de la 1.3 (publique) : « Nouveau en 1.3 ». Linux disponible depuis la 1.3 (.deb, .rpm, .tar.gz : clé « linux » de version.json).
+Le système de l'ordinateur est détecté (?os=windows|linux|mac|android|ios pour essayer) : bouton principal pour ce système
+(Linux : .rpm si le navigateur dit Fedora/SUSE…, sinon .deb), les autres en dessous, section Installer sur le bon onglet.
+Le bouton Windows mène à /pc/avertissement/?dl=1 (/en/pc/warning/) : la page lance le téléchargement et explique l'avertissement
+de SmartScreen (schéma dessiné en CSS, pas une capture), avec l'empreinte à comparer.
 """
 import html
+import json
 import os
 import re
 
@@ -38,14 +43,19 @@ PAGE_CSS = """
 .dl-box .btn.soon{background:var(--bg-block-sunken);color:var(--text-muted);box-shadow:none;border-style:dashed;pointer-events:none}
 .dl-meta{display:flex;flex-wrap:wrap;gap:8px}
 .dl-note{font-size:13px;color:var(--text-muted)}
-.dl-linux{display:flex;flex-direction:column;gap:8px;border-top:var(--stroke-hair);padding-top:12px}
-.dl-linux[hidden]{display:none}
-.dl-os{font:700 12px/1 var(--font-ui);letter-spacing:.08em;text-transform:uppercase;color:var(--text-muted)}
-.dl-linux-row{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
-.dl-linux-row a{display:flex;flex-direction:column;gap:2px;padding:10px;border:var(--stroke);background:var(--bg-block-sunken);color:inherit;text-decoration:none;font:800 15px/1.2 var(--font-ui)}
-.dl-linux-row a small{font:500 11.5px/1.3 var(--font-ui);color:var(--text-muted)}
-.dl-linux-row a:hover{transform:translate(-1px,-1px)}
-@media (max-width:520px){.dl-linux-row{grid-template-columns:1fr}}
+.dl-for{font:800 12px/1 var(--font-ui);letter-spacing:.1em;text-transform:uppercase;color:var(--text-muted)}
+.dl-warn{display:flex;gap:10px;align-items:flex-start;border-left:6px solid var(--warning);background:var(--bg-block-sunken);padding:10px 12px;font-size:13.5px;color:var(--text-body)}
+.dl-warn[hidden],.dl-other[hidden]{display:none}
+.dl-warn a{font-weight:800;color:inherit}
+.dl-other{display:flex;flex-direction:column;gap:8px;border-top:var(--stroke-hair);padding-top:12px}
+.dl-other-row{display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:8px}
+.dl-other-row a{display:flex;flex-direction:column;gap:3px;padding:10px;border:var(--stroke-hair);background:var(--bg-block-sunken);color:inherit;text-decoration:none;font:800 14px/1.2 var(--font-ui)}
+.dl-other-row a small{font:500 11.5px/1.3 var(--font-ui);color:var(--text-muted)}
+.dl-other-row a:hover{transform:translate(-1px,-1px);box-shadow:var(--shadow-1)}
+.os-tabs{margin-top:24px;display:flex;flex-wrap:wrap;gap:8px}
+.os-pane[hidden]{display:none}
+.cmd{display:block;margin-top:8px;padding:8px 10px;background:#101010;color:#F5F1E8;font:600 12.5px/1.45 var(--font-mono);overflow-x:auto;white-space:pre;border:var(--stroke-hair)}
+.only-win{display:inline-block;margin-left:6px;padding:2px 6px;border:var(--stroke-hair);font:800 10px/1.2 var(--font-ui);letter-spacing:.08em;text-transform:uppercase;vertical-align:2px;color:var(--text-muted)}
 .dl-sha{font:600 11px/1.4 var(--font-mono);color:var(--text-muted);word-break:break-all}
 .w-sec-alt{background:var(--bg-block-sunken);border-top:var(--stroke-heavy);border-bottom:var(--stroke-heavy)}
 .tools-grid{margin-top:28px;display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,250px),1fr));gap:14px}
@@ -274,11 +284,16 @@ FAVICON = """data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBo
 def build(lang):
     fr = lang == "fr"
 
+    def J(a, b):
+        """Texte pour une chaîne JavaScript (guillemets et apostrophes compris)."""
+        return json.dumps(T(a, b), ensure_ascii=False)
+
     def T(a, b):
         return a if fr else b
 
     up = "../" if fr else "../../"          # vers la racine du site
     home = "/" if fr else "/en/"
+    warn_url = "/pc/avertissement/" if fr else "/en/pc/warning/"
     other = "/en/pc/" if fr else "/pc/"
     e = html.escape
 
@@ -375,10 +390,9 @@ def build(lang):
     </a>
     <nav class="site-nav" aria-label="Sections">
       <a href="#nouveautes">{T("Nouveautés", "What's new")}</a>
-      <a href="#apercu">{T("Aperçu", "Preview")}</a>
+      <a href="#outils">{T("Outils", "Tools")}</a>
       <a href="#vision">Vision</a>
       <a href="#vigie">Vigie</a>
-      <a href="#outils">{T("Outils", "Tools")}</a>
       <a href="#telephone">{T("Téléphone", "Phone")}</a>
       <a href="#installer">{T("Installer", "Install")}</a>
       <a href="#faq">FAQ</a>
@@ -398,10 +412,12 @@ def build(lang):
       <h1>{T("Tous tes outils.", "All your tools.")}<br><em>{T("Au même endroit.", "In one place.")}</em></h1>
       <p class="lead">{T("Vectorem est sur ton PC, sous Windows et Linux : PDF, captures d'écran, fichiers en lot, minuteur, notes, tâches, Vectorem Vision pour tes vidéos et ta musique, Prisme pour tes photos… dans une seule fenêtre. Tu actives ce qui te sert, sans compte, et tes données restent sur ton ordinateur.", "Vectorem is on your PC, on Windows and Linux: PDFs, screenshots, batch files, timer, notes, tasks, Vectorem Vision for your videos and music, Prisme for your photos… in one window. Turn on what you use, no account, and your data stays on your computer.")}</p>
       <div class="dl-box" id="telecharger">
+        <span class="dl-for" id="dlFor">{T("Pour ton ordinateur", "For your computer")}</span>
         <a class="btn btn-primary soon" id="dlBtn" href="#telecharger" aria-disabled="true">{T("Bientôt disponible", "Coming soon")}</a>
-        <div class="dl-meta" id="dlMeta"><span class="badge">{T("Windows 10 ou 11, 64 bits", "Windows 10 or 11, 64-bit")}</span></div>
-        <div class="dl-linux" id="dlLinux" hidden><span class="dl-os">{T("Linux, 64 bits", "Linux, 64-bit")}</span><div class="dl-linux-row" id="dlLinuxRow"></div></div>
+        <div class="dl-meta" id="dlMeta"></div>
+        <p class="dl-warn" id="dlWarn" hidden><span>{T("Windows va afficher un avertissement au lancement : c'est normal pour un installateur pas encore signé.", "Windows will show a warning when you run it: that's normal for an installer that isn't signed yet.")} <a href="{warn_url}">{T("Voir quoi faire", "See what to do")} →</a></span></p>
         <p class="dl-note" id="dlNote">{T("Le téléchargement s'ouvre ici.", "The download opens here.")}</p>
+        <div class="dl-other" id="dlOther" hidden><span class="dl-for">{T("Autres systèmes", "Other systems")}</span><div class="dl-other-row" id="dlOtherRow"></div></div>
         <p class="dl-sha" id="dlSha" hidden></p>
       </div>
     </div>
@@ -456,6 +472,21 @@ def build(lang):
   </div>
 </section>
 
+<section id="outils" class="w-sec-alt">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="kicker">{T(f"{len(TOOLS)} outils pensés pour le PC", f"{len(TOOLS)} tools built for the PC")}</span>
+      <h2>{T("Ce que le PC fait de mieux", "What the PC does best")}</h2>
+      <p>{T("En plus des outils du téléphone, Vectorem pour PC ajoute ceux qui n'ont de sens que sur un ordinateur.", "On top of the phone's tools, Vectorem for PC adds the ones that only make sense on a computer.")}</p>
+    </div>
+    <div class="tools-grid">
+{tools}
+    </div>
+    <h3 class="reveal" style="margin-top:40px;font:900 13px/1 var(--font-ui);letter-spacing:.12em;text-transform:uppercase">{T("Et ceux que tu connais déjà sur Android", "And the ones you already know from Android")}</h3>
+    <div class="also reveal">{also}</div>
+  </div>
+</section>
+
 <section id="vision" class="vision">
   <div class="wrap">
     <div class="section-head reveal">
@@ -498,7 +529,7 @@ def build(lang):
   </div>
 </section>
 
-<section class="w-sec-alt">
+<section id="bureau">
   <div class="wrap">
     <div class="section-head reveal">
       <span class="kicker">{T("Pensé pour le bureau", "Made for the desktop")}</span>
@@ -517,22 +548,7 @@ def build(lang):
   </div>
 </section>
 
-<section id="outils">
-  <div class="wrap">
-    <div class="section-head reveal">
-      <span class="kicker">{T(f"{len(TOOLS)} outils pensés pour le PC", f"{len(TOOLS)} tools built for the PC")}</span>
-      <h2>{T("Ce que le PC fait de mieux", "What the PC does best")}</h2>
-      <p>{T("En plus des outils du téléphone, Vectorem pour PC ajoute ceux qui n'ont de sens que sur un ordinateur.", "On top of the phone's tools, Vectorem for PC adds the ones that only make sense on a computer.")}</p>
-    </div>
-    <div class="tools-grid">
-{tools}
-    </div>
-    <h3 class="reveal" style="margin-top:40px;font:900 13px/1 var(--font-ui);letter-spacing:.12em;text-transform:uppercase">{T("Et ceux que tu connais déjà sur Android", "And the ones you already know from Android")}</h3>
-    <div class="also reveal">{also}</div>
-  </div>
-</section>
-
-<section id="telephone" class="w-sec-alt">
+<section id="telephone">
   <div class="wrap">
     <div class="section-head reveal">
       <span class="kicker">{T("Avec ton téléphone", "With your phone")}</span>
@@ -548,28 +564,49 @@ def build(lang):
   </div>
 </section>
 
-<section id="installer">
+<section id="installer" class="w-sec-alt">
   <div class="wrap">
     <div class="section-head reveal">
       <span class="kicker">{T("Installer", "Install")}</span>
       <h2>{T("Trois étapes, une minute", "Three steps, one minute")}</h2>
     </div>
-    <div class="steps">
-      <div class="step reveal"><div><h3>{T("Télécharge l'installateur", "Download the installer")}</h3><p>{T("Le bouton en haut de la page. Un seul fichier .exe.", "The button at the top of the page. A single .exe file.")}</p></div></div>
-      <div class="step reveal"><div><h3>{T("Lance-le", "Run it")}</h3><p>{T("Installation pour ton compte seulement, sans droits d'administrateur. Un raccourci arrive dans le menu Démarrer et sur le bureau.", "Installs for your account only, no admin rights needed. A shortcut lands in the Start menu and on the desktop.")}</p></div></div>
-      <div class="step reveal"><div><h3>{T("Choisis tes outils", "Pick your tools")}</h3><p>{T("Trois écrans au premier lancement : ce que tu fais souvent, et Vectorem active les bons outils.", "Three screens at first launch: what you often do, and Vectorem turns on the right tools.")}</p></div></div>
+    <div class="os-tabs" id="osTabs" role="group" aria-label="{T("Système", "System")}">
+      <button class="chip" type="button" data-os="windows" aria-pressed="true">Windows</button>
+      <button class="chip" type="button" data-os="linux" aria-pressed="false">Linux</button>
     </div>
-    <div class="warn-box reveal"><b>{T("Avertissement de Windows :", "Windows warning:")}</b> {T("l'installateur n'est pas encore signé, Windows peut donc afficher « Windows a protégé votre ordinateur ». Clique sur « Informations complémentaires », puis « Exécuter quand même ». Tu peux vérifier le fichier avec son empreinte SHA-256, affichée sous le bouton.", "the installer isn't signed yet, so Windows may show “Windows protected your PC”. Click “More info”, then “Run anyway”. You can check the file with its SHA-256 hash, shown under the button.")}</div>
-    <div class="req reveal">
-      <div><b>{T("Système", "System")}</b>Windows 10 {T("ou", "or")} 11, 64 bits</div>
-      <div><b>{T("Installateur", "Installer")}</b>{T("Un fichier .exe d'environ 155 Mo", "One .exe file, about 155 MB")}</div>
-      <div><b>{T("Mises à jour", "Updates")}</b>{T("Réglages › À propos", "Settings › About")}</div>
-      <div><b>{T("Désinstaller", "Uninstall")}</b>{T("Paramètres Windows › Applications", "Windows Settings › Apps")}</div>
+    <div class="os-pane" data-os="windows">
+      <div class="steps">
+        <div class="step"><div><h3>{T("Télécharge l'installateur", "Download the installer")}</h3><p>{T("Le bouton en haut de la page : un seul fichier .exe.", "The button at the top of the page: a single .exe file.")}</p></div></div>
+        <div class="step"><div><h3>{T("Lance-le, malgré l'avertissement", "Run it, despite the warning")}</h3><p>{T("Windows affiche « Windows a protégé votre ordinateur » : « Informations complémentaires », puis « Exécuter quand même ».", "Windows shows “Windows protected your PC”: “More info”, then “Run anyway”.")} <a href="{warn_url}">{T("Pourquoi, et comment vérifier le fichier", "Why, and how to check the file")} →</a></p></div></div>
+        <div class="step"><div><h3>{T("Choisis tes outils", "Pick your tools")}</h3><p>{T("Installation pour ton compte seulement, sans droits d'administrateur. Au premier lancement, dis ce que tu fais souvent : Vectorem active les bons outils.", "Installs for your account only, no admin rights. At first launch, say what you often do: Vectorem turns on the right tools.")}</p></div></div>
+      </div>
+      <div class="req">
+        <div><b>{T("Système", "System")}</b>Windows 10 {T("ou", "or")} 11, 64 bits</div>
+        <div><b>{T("Installateur", "Installer")}</b>{T("Un fichier .exe d'environ 200 Mo", "One .exe file, about 200 MB")}</div>
+        <div><b>{T("Mises à jour", "Updates")}</b>{T("En un clic : Réglages › À propos", "One click: Settings › About")}</div>
+        <div><b>{T("Désinstaller", "Uninstall")}</b>{T("Paramètres Windows › Applications", "Windows Settings › Apps")}</div>
+      </div>
+    </div>
+    <div class="os-pane" data-os="linux" hidden>
+      <div class="steps">
+        <div class="step"><div><h3>{T("Prends le bon paquet", "Get the right package")}</h3><p>{T(".deb pour Debian, Ubuntu, Mint ; .rpm pour Fedora, openSUSE ; .tar.gz pour les autres.", ".deb for Debian, Ubuntu, Mint; .rpm for Fedora, openSUSE; .tar.gz for the rest.")}</p></div></div>
+        <div class="step"><div><h3>{T("Installe-le", "Install it")}</h3><p>{T("Double-clic dans ton gestionnaire de fichiers, ou dans un terminal :", "Double-click it in your file manager, or in a terminal:")}</p><code class="cmd">sudo apt install ./vectorem_*_amd64.deb
+sudo dnf install ./vectorem-*.x86_64.rpm
+tar -xzf vectorem-*-linux-x64.tar.gz &amp;&amp; ./Vectorem/bin/Vectorem</code></div></div>
+        <div class="step"><div><h3>{T("Pour Vectorem Vision", "For Vectorem Vision")}</h3><p>{T("Le lecteur utilise le libmpv de ton système, s'il n'est pas déjà là :", "The player uses your system's libmpv, if it isn't there already:")}</p><code class="cmd">sudo apt install libmpv2      # Debian, Ubuntu, Mint
+sudo dnf install mpv-libs     # Fedora</code></div></div>
+      </div>
+      <div class="req">
+        <div><b>{T("Système", "System")}</b>Linux 64 bits (x86_64)</div>
+        <div><b>{T("Paquets", "Packages")}</b>.deb, .rpm, .tar.gz · {T("environ 100 Mo", "about 100 MB")}</div>
+        <div><b>{T("Mises à jour", "Updates")}</b>{T("Reprendre le paquet sur cette page", "Get the package again from this page")}</div>
+        <div><b>{T("Propres à Windows", "Windows-only")}</b>{T("Vigie, Rangement des fenêtres", "Vigie, Window layouts")}</div>
+      </div>
     </div>
   </div>
 </section>
 
-<section id="faq" class="w-sec-alt">
+<section id="faq">
   <div class="wrap">
     <div class="section-head reveal">
       <span class="kicker">{T("Questions", "Questions")}</span>
@@ -577,14 +614,14 @@ def build(lang):
     </div>
     <div class="faq">
       <details class="reveal"><summary>{T("Faut-il un compte ?", "Do I need an account?")}</summary><p>{T("Non. Rien à créer, rien à connecter.", "No. Nothing to sign up for, nothing to connect.")}</p></details>
-      <details class="reveal"><summary>{T("Où sont mes données ?", "Where is my data?")}</summary><p>{T("Sur ton PC, dans ton dossier utilisateur (%APPDATA%&#92;Vectorem). Elles ne partent pas sur un serveur. L'app vérifie au plus une fois par jour s'il existe une nouvelle version ; tu peux couper cette vérification dans les Réglages.", "On your PC, in your user folder (%APPDATA%&#92;Vectorem). It doesn't go to a server. The app checks at most once a day for a new version; you can turn that check off in Settings.")}</p></details>
+      <details class="reveal"><summary>{T("Où sont mes données ?", "Where is my data?")}</summary><p>{T("Sur ton PC, dans ton dossier utilisateur (%APPDATA%&#92;Vectorem sous Windows, ~/.local/share/vectorem sous Linux). Elles ne partent pas sur un serveur. L'app vérifie au plus une fois par jour s'il existe une nouvelle version ; tu peux couper cette vérification dans les Réglages.", "On your PC, in your user folder (%APPDATA%&#92;Vectorem on Windows, ~/.local/share/vectorem on Linux). It doesn't go to a server. The app checks at most once a day for a new version; you can turn that check off in Settings.")}</p></details>
       <details class="reveal"><summary>{T("Faut-il l'app Android ?", "Do I need the Android app?")}</summary><p>{T("Non, Vectorem pour PC marche seul. Avec le téléphone associé, tu gagnes la synchronisation, l'envoi de fichiers et la télécommande.", "No, Vectorem for PC works on its own. With a paired phone you get sync, file sending and the remote.")}</p></details>
       <details class="reveal"><summary>{T("Vectorem Vision peut-il lire mes vidéos par défaut ?", "Can Vectorem Vision play my videos by default?")}</summary><p>{T("Oui, vidéos et musique. Windows ne laisse pas une app se choisir seule : Réglages › Démarrage et fenêtre › « Choisir » ouvre la bonne page, et sous Windows 11 un bouton « Définir par défaut » règle tout d'un coup.", "Yes, videos and music. Windows doesn't let an app pick itself: Settings › Startup and window › “Choose” opens the right page, and on Windows 11 a “Set default” button does it all at once.")}</p></details>
       <details class="reveal"><summary>{T("La transcription envoie-t-elle mes fichiers ?", "Does transcription send my files anywhere?")}</summary><p>{T("Non, elle tourne sur ton PC. Seule l'option « isoler la voix » télécharge une fois son modèle (166 Mo), et seulement si tu l'actives.", "No, it runs on your PC. Only the “isolate the voice” option downloads its model once (166 MB), and only if you turn it on.")}</p></details>
-      <details class="reveal"><summary>{T("Pourquoi Windows affiche un avertissement ?", "Why does Windows show a warning?")}</summary><p>{T("Parce que l'installateur n'est pas encore signé par un certificat. C'est prévu.", "Because the installer isn't signed with a certificate yet. That's planned.")}</p></details>
+      <details class="reveal"><summary>{T("Pourquoi Windows affiche un avertissement ?", "Why does Windows show a warning?")}</summary><p>{T("Parce que l'installateur n'est pas encore signé par un certificat. Windows prévient pour tout programme récent qui n'en a pas.", "Because the installer isn't signed with a certificate yet. Windows warns about any recent program without one.")} <a href="{warn_url}">{T("Quoi faire, et comment vérifier le fichier", "What to do, and how to check the file")} →</a></p></details>
       <details class="reveal"><summary>{T("Et sous Linux ?", "What about Linux?")}</summary><p>{T("Oui, depuis la 1.3 : paquet .deb (Debian, Ubuntu, Mint), .rpm (Fedora, openSUSE), ou archive .tar.gz pour les autres distributions (lancer Vectorem/bin/Vectorem). Vectorem Vision utilise le libmpv de ton système (paquet libmpv2 ou mpv-libs). Quelques outils restent propres à Windows, comme la Vigie et le Rangement des fenêtres. La mise à jour en un clic n'existe pas encore sous Linux : reprends le paquet sur cette page.", "Yes, since 1.3: .deb package (Debian, Ubuntu, Mint), .rpm (Fedora, openSUSE), or a .tar.gz archive for other distributions (run Vectorem/bin/Vectorem). Vectorem Vision uses your system's libmpv (libmpv2 or mpv-libs package). A few tools stay Windows-only, like the Vigie and Window layouts. One-click updates don't exist on Linux yet: get the package again from this page.")}</p></details>
       <details class="reveal"><summary>{T("Et sur Mac ?", "And on Mac?")}</summary><p>{T("Pas pour l'instant.", "Not for now.")}</p></details>
-      <details class="reveal"><summary>{T("Comment désinstaller ?", "How do I uninstall?")}</summary><p>{T("Paramètres Windows › Applications › Vectorem. Tes données restent dans %APPDATA%&#92;Vectorem tant que tu ne supprimes pas ce dossier.", "Windows Settings › Apps › Vectorem. Your data stays in %APPDATA%&#92;Vectorem until you delete that folder.")}</p></details>
+      <details class="reveal"><summary>{T("Comment désinstaller ?", "How do I uninstall?")}</summary><p>{T("Windows : Paramètres › Applications › Vectorem ; tes données restent dans %APPDATA%&#92;Vectorem. Linux : sudo apt remove vectorem (ou dnf remove vectorem) ; tes données restent dans ~/.local/share/vectorem. Supprime ce dossier pour tout effacer.", "Windows: Settings › Apps › Vectorem; your data stays in %APPDATA%&#92;Vectorem. Linux: sudo apt remove vectorem (or dnf remove vectorem); your data stays in ~/.local/share/vectorem. Delete that folder to erase everything.")}</p></details>
     </div>
   </div>
 </section>
@@ -593,7 +630,7 @@ def build(lang):
   <div class="wrap">
     <h2 class="reveal">{T("Tous tes outils. Au même endroit.", "All your tools. In one place.")}<br><span style="font-size:.6em">{T("Et ce n'est que la bêta.", "And it's only the beta.")}</span></h2>
     <div class="ctas reveal" style="--d:100ms">
-      <a class="btn btn-primary" href="#telecharger">{T("Télécharger pour Windows", "Download for Windows")}</a>
+      <a class="btn btn-primary" id="ctaBtn" href="#telecharger">{T("Télécharger", "Download")}</a>
       <a class="btn btn-ghost" href="{"/android/" if fr else "/en/android/"}">{T("Sur Android", "On Android")}</a>
     </div>
   </div>
@@ -653,30 +690,235 @@ document.querySelectorAll('.nw-tabs').forEach(function(group){{
     tabs.forEach(function(t){{ t.setAttribute('aria-pressed', t === b ? 'true' : 'false'); }});
     cap.textContent = b.dataset.cap;
   }}); }});
+  // Système de l'ordinateur (?os=windows|linux|mac|android|ios pour essayer).
+  var os = (function(){{
+    var q = (location.search.match(/[?&]os=(\w+)/) || [])[1]; if (q) return q;
+    var ua = navigator.userAgent || '', pf = (navigator.userAgentData && navigator.userAgentData.platform) || navigator.platform || '';
+    if (/android/i.test(ua)) return 'android';
+    if (/iphone|ipad|ipod/i.test(ua) || (/mac/i.test(pf) && navigator.maxTouchPoints > 1)) return 'ios';
+    if (/win/i.test(pf) || /windows/i.test(ua)) return 'windows';
+    if (/mac/i.test(pf)) return 'mac';
+    if (/linux|x11|cros/i.test(pf + ' ' + ua)) return 'linux';
+    return 'windows';
+  }})();
+  var rpmLike = /fedora|red hat|suse|centos|rocky|alma/i.test(navigator.userAgent || '');
+  root.setAttribute('data-os', os);
+  document.dispatchEvent(new CustomEvent('vectorem-os', {{detail: os}}));
   // Téléchargement : actif seulement si version.json donne un lien (sinon « Bientôt »).
   fetch('{up}version.json', {{cache:'no-store'}}).then(function(r){{ return r.json(); }}).then(function(v){{
-    var w = v && v.windows; if (!w || !w.download) return;
-    var btn = $('#dlBtn');
-    btn.classList.remove('soon'); btn.removeAttribute('aria-disabled');
-    btn.href = w.download;
-    btn.textContent = '{T("Télécharger pour Windows", "Download for Windows")}';
-    var meta = $('#dlMeta');
-    var add = function(t){{ var s = document.createElement('span'); s.className = 'badge'; s.textContent = t; meta.appendChild(s); }};
-    add('v' + w.version);
-    if (w.size) add(Math.round(w.size / 1048576) + ' {T("Mo", "MB")}');
-    $('#dlNote').textContent = w.notes || '';
-    if (w.sha256) {{ var sh = $('#dlSha'); sh.hidden = false; sh.textContent = 'SHA-256 : ' + w.sha256; }}
-    var l = v.linux; if (!l || !l.files || !l.files.length) return;
-    var row = $('#dlLinuxRow');
-    l.files.forEach(function(f){{
-      var a = document.createElement('a'); a.href = f.download;
+    var w = v && v.windows, l = v && v.linux, mb = function(n){{ return n ? Math.round(n / 1048576) + ' {T("Mo", "MB")}' : ''; }};
+    var opts = [];
+    if (w && w.download) opts.push({{k:'windows', btn:{J("Télécharger pour Windows", "Download for Windows")}, name:'Windows', sub:'Windows 10 {T("ou", "or")} 11', req:'Windows 10 {T("ou", "or")} 11, 64 bits', href:'{warn_url}?dl=1', ver:w.version, size:w.size, sha:w.sha256, notes:w.notes}});
+    ((l && l.files) || []).forEach(function(f){{
       var who = (f['for'] || '').split('|'); who = who[Math.min({T("0", "1")}, who.length - 1)];
-      a.title = 'SHA-256 : ' + f.sha256;
-      a.textContent = f.label;
-      var sm = document.createElement('small'); sm.textContent = who + (f.size ? ' · ' + Math.round(f.size / 1048576) + ' {T("Mo", "MB")}' : '');
-      a.appendChild(sm); row.appendChild(a);
+      opts.push({{k:f.kind, btn:'{T("Télécharger pour Linux", "Download for Linux")} · ' + f.label, name:'Linux ' + f.label, sub:who, req:'Linux 64 bits · ' + who, href:f.download, ver:l.version, size:f.size, sha:f.sha256, notes:w && w.notes}});
     }});
-    $('#dlLinux').hidden = false;
+    if (!opts.length) return;
+    var pick = os === 'linux' ? (rpmLike ? 'rpm' : 'deb') : 'windows';
+    var main = opts.filter(function(o){{ return o.k === pick; }})[0] || opts[0];
+    var btn = $('#dlBtn'), meta = $('#dlMeta');
+    var badge = function(t){{ var s = document.createElement('span'); s.className = 'badge'; s.textContent = t; meta.appendChild(s); }};
+    var rest = opts;
+    if (os === 'mac' || os === 'ios' || os === 'android') {{
+      // Pas d'installateur pour ce système : on le dit, et les liens restent en dessous.
+      $('#dlFor').textContent = os === 'mac' ? {J("Tu es sur un Mac", "You're on a Mac")} : {J("Tu es sur un téléphone", "You're on a phone")};
+      if (os === 'android') {{
+        btn.classList.remove('soon'); btn.removeAttribute('aria-disabled');
+        btn.href = '{"/android/" if fr else "/en/android/"}'; btn.textContent = {J("Vectorem pour Android", "Vectorem for Android")};
+        $('#dlNote').textContent = {J("Vectorem pour PC s'installe sur l'ordinateur : ouvre cette page depuis ton PC, ou prends les liens ci-dessous.", "Vectorem for PC installs on the computer: open this page on your PC, or use the links below.")};
+      }} else {{
+        btn.textContent = os === 'mac' ? {J("Vectorem n'existe pas encore sur Mac", "Vectorem isn't on Mac yet")} : {J("À installer sur un ordinateur", "Install it on a computer")};
+        $('#dlNote').textContent = os === 'mac' ? {J("Il existe sous Windows et Linux, ci-dessous.", "It's available on Windows and Linux, below.")} : {J("Vectorem pour PC s'installe sous Windows ou Linux.", "Vectorem for PC installs on Windows or Linux.")};
+      }}
+    }} else {{
+      $('#dlFor').textContent = main.k === 'windows' ? {J("Pour ton PC Windows", "For your Windows PC")} : {J("Pour ton PC Linux", "For your Linux PC")};
+      btn.classList.remove('soon'); btn.removeAttribute('aria-disabled');
+      btn.href = main.href; btn.textContent = main.btn;
+      badge(main.req); badge('v' + main.ver); if (main.size) badge(mb(main.size));
+      $('#dlNote').textContent = main.notes || '';
+      $('#dlWarn').hidden = main.k !== 'windows';
+      if (main.sha) {{ var sh = $('#dlSha'); sh.hidden = false; sh.textContent = 'SHA-256 : ' + main.sha; }}
+      rest = opts.filter(function(o){{ return o !== main; }});
+      var cta = $('#ctaBtn'); if (cta) {{ cta.href = main.href; cta.textContent = main.btn; }}
+    }}
+    var row = $('#dlOtherRow');
+    rest.forEach(function(o){{
+      var a = document.createElement('a'); a.href = o.href; a.title = 'SHA-256 : ' + o.sha; a.textContent = o.name;
+      var sm = document.createElement('small'); sm.textContent = o.sub + (o.size ? ' · ' + mb(o.size) : ''); a.appendChild(sm); row.appendChild(a);
+    }});
+    $('#dlOther').hidden = !rest.length;
+  }}).catch(function(){{}});
+  // Installer : onglet du système de l'ordinateur.
+  var paneBtns = document.querySelectorAll('#osTabs .chip');
+  var showPane = function(k){{
+    paneBtns.forEach(function(b){{ b.setAttribute('aria-pressed', b.dataset.os === k ? 'true' : 'false'); }});
+    document.querySelectorAll('.os-pane').forEach(function(p){{ p.hidden = p.dataset.os !== k; }});
+  }};
+  paneBtns.forEach(function(b){{ b.addEventListener('click', function(){{ showPane(b.dataset.os); }}); }});
+  showPane(os === 'linux' ? 'linux' : 'windows');
+}})();
+</script>
+</body>
+</html>
+"""
+
+
+WARN_CSS = """
+.wn{padding:40px 0 64px}
+.wn .wrap{max-width:860px}
+.wn h1{font-size:clamp(30px,4.6vw,48px);line-height:1.05;margin-top:14px}
+.wn .lead{margin-top:14px;font-size:17px;color:var(--text-body);max-width:60ch}
+.wn h2{font-size:clamp(22px,3vw,30px);margin-top:48px}
+.wn p{color:var(--text-body)}
+.back{font:800 13px/1 var(--font-ui);letter-spacing:.06em;text-transform:uppercase;color:inherit}
+.dl-state{margin-top:24px;border:var(--stroke-heavy);box-shadow:var(--shadow-2);background:var(--bg-block);padding:16px 18px;display:flex;flex-direction:column;gap:8px}
+.dl-state[hidden]{display:none}
+.dl-state b{font:900 15px/1.2 var(--font-ui);text-transform:uppercase;letter-spacing:.03em}
+.wn-steps{margin-top:22px;display:grid;gap:18px;counter-reset:st}
+.wn-step{display:grid;grid-template-columns:44px minmax(0,1fr);gap:16px;align-items:start;border:var(--stroke);background:var(--bg-block);box-shadow:var(--shadow-1);padding:18px}
+.wn-step::before{counter-increment:st;content:counter(st);width:44px;height:44px;display:grid;place-items:center;background:var(--brand);color:var(--on-brand);border:var(--stroke-hair);font:900 18px/1 var(--font-display)}
+.wn-step h3{font:900 15px/1.25 var(--font-ui);letter-spacing:.03em;text-transform:uppercase;margin-bottom:6px}
+.wn-step p{font-size:14.5px}
+/* Schéma de la fenêtre de Windows (dessin simplifié, pas une capture) */
+.ss{margin-top:14px;max-width:460px;background:#16457a;color:#fff;padding:20px 22px 16px;font:400 14px/1.45 "Segoe UI",system-ui,sans-serif;border:2px solid #0e2f55;box-shadow:var(--shadow-2)}
+.ss .t{font-size:22px;font-weight:300;margin-bottom:10px}
+.ss .m{opacity:.92;font-size:13px}
+.ss .lk{display:inline-block;margin-top:10px;text-decoration:underline;font-size:13px;outline:3px solid var(--brand);outline-offset:3px}
+.ss .row{display:flex;justify-content:flex-end;gap:8px;margin-top:22px}
+.ss .bt{padding:6px 18px;border:1px solid #fff;font-size:13px;background:transparent;color:#fff}
+.ss .bt.hl{outline:3px solid var(--brand);outline-offset:3px}
+.ss .kv{margin-top:10px;font-size:13px;opacity:.92}
+.bw{margin-top:14px;max-width:460px;border:1px solid var(--border-color);background:var(--bg-block-sunken);padding:12px 14px;font:400 13.5px/1.4 system-ui,sans-serif}
+.bw .r{display:flex;justify-content:flex-end;gap:8px;margin-top:10px}
+.bw .bt{padding:4px 12px;border:1px solid var(--border-color);background:var(--bg-block)}
+.bw .bt.hl{outline:3px solid var(--brand);outline-offset:2px}
+.wn .cmd{margin-top:10px}
+.sha-box{margin-top:10px;font:600 12.5px/1.45 var(--font-mono);word-break:break-all;padding:10px 12px;border:var(--stroke-hair);background:var(--bg-block-sunken)}
+"""
+
+
+def warning_page(lang):
+    """Page « Windows va te prévenir » : /pc/avertissement/ et /en/pc/warning/. Avec ?dl=1, lance aussi le téléchargement."""
+    fr = lang == "fr"
+    e = html.escape
+
+    def T(a, b):
+        return a if fr else b
+
+    up = "../../" if fr else "../../../"
+    pc = "/pc/" if fr else "/en/pc/"
+    other = "/en/pc/warning/" if fr else "/pc/avertissement/"
+    path = "/pc/avertissement/" if fr else "/en/pc/warning/"
+    return f"""<!DOCTYPE html>
+<html lang="{lang}" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{T("Installer Vectorem sous Windows : l'avertissement", "Installing Vectorem on Windows: the warning")}</title>
+<meta name="description" content="{e(T("Pourquoi Windows affiche « Windows a protégé votre ordinateur » au lancement de l'installateur de Vectorem, comment continuer, et comment vérifier le fichier.", "Why Windows shows “Windows protected your PC” when you run the Vectorem installer, how to continue, and how to check the file."))}">
+<meta name="theme-color" content="#101010">
+<link rel="icon" href="{FAVICON}">
+<link rel="stylesheet" href="{up}fonts.css">
+<link rel="canonical" href="https://vectorem.app{path}">
+<link rel="alternate" hreflang="fr" href="https://vectorem.app/pc/avertissement/">
+<link rel="alternate" hreflang="en" href="https://vectorem.app/en/pc/warning/">
+<script>
+(function(){{
+  try {{
+    var m = localStorage.getItem('vectorem-theme') || 'system';
+    var dark = m === 'system' ? matchMedia('(prefers-color-scheme: dark)').matches : m === 'dark';
+    document.documentElement.setAttribute('data-theme', dark ? 'dark' : 'light');
+  }} catch (e) {{}}
+}})();
+</script>
+<style>{site_css()}{PAGE_CSS}{WARN_CSS}</style>
+</head>
+<body>
+<header class="site-header" id="siteHeader">
+  <div class="wrap">
+    <a class="brand-link" href="{pc}" aria-label="{T("Vectorem pour PC", "Vectorem for PC")}">
+      {MARK}
+      <span class="wordmark">Vectorem</span>
+    </a>
+    <nav class="site-nav" aria-label="Sections"><a href="{pc}">{T("Vectorem pour PC", "Vectorem for PC")}</a><a href="{pc}#installer">{T("Installer", "Install")}</a><a href="{pc}#faq">FAQ</a></nav>
+    <a class="icon-btn lang-btn" href="{other}" hreflang="{'en' if fr else 'fr'}" lang="{'en' if fr else 'fr'}" aria-label="{T("English version", "Version française")}">{T("EN", "FR")}</a>
+    <button class="icon-btn" id="themeToggle" type="button" aria-label="{T("Changer de thème", "Switch theme")}"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.985 12.486a9 9 0 1 1-9.473-9.472c.405-.022.617.46.402.803a6 6 0 0 0 8.268 8.268c.344-.215.825-.004.803.401" /></svg></button>
+  </div>
+</header>
+
+<main class="wn">
+  <div class="wrap">
+    <a class="back" href="{pc}">← {T("Vectorem pour PC", "Vectorem for PC")}</a>
+    <h1>{T("Windows va te prévenir. Voici quoi faire.", "Windows will warn you. Here's what to do.")}</h1>
+    <p class="lead">{T("L'installateur de Vectorem n'est pas encore signé par un certificat. Windows affiche alors un avertissement au premier lancement. Deux clics suffisent pour continuer.", "The Vectorem installer isn't signed with a certificate yet, so Windows shows a warning the first time you run it. Two clicks are enough to go on.")}</p>
+
+    <div class="dl-state" id="dlState" hidden>
+      <b>{T("Ton téléchargement commence", "Your download is starting")}</b>
+      <p id="dlLine">{T("Si rien ne se passe :", "If nothing happens:")} <a id="dlDirect" href="{pc}#telecharger">{T("télécharger directement", "download directly")}</a>.</p>
+    </div>
+
+    <h2>{T("Les étapes", "The steps")}</h2>
+    <div class="wn-steps">
+      <div class="wn-step"><div>
+        <h3>{T("Le navigateur peut demander une confirmation", "Your browser may ask you to confirm")}</h3>
+        <p>{T("Edge ou Chrome disent parfois que le fichier « n'est pas couramment téléchargé ». Ouvre le menu « … » du téléchargement et choisis « Conserver ».", "Edge or Chrome sometimes say the file “isn't commonly downloaded”. Open the download's “…” menu and choose “Keep”.")}</p>
+        <div class="bw" aria-hidden="true">{T("Vectorem-…-windows.exe n'est pas couramment téléchargé.", "Vectorem-…-windows.exe isn't commonly downloaded.")}<div class="r"><span class="bt">{T("Supprimer", "Delete")}</span><span class="bt hl">{T("Conserver", "Keep")}</span></div></div>
+      </div></div>
+      <div class="wn-step"><div>
+        <h3>{T("Lance l'installateur", "Run the installer")}</h3>
+        <p>{T("Windows affiche « Windows a protégé votre ordinateur ». Clique sur « Informations complémentaires ».", "Windows shows “Windows protected your PC”. Click “More info”.")}</p>
+        <div class="ss" aria-hidden="true"><div class="t">{T("Windows a protégé votre ordinateur", "Windows protected your PC")}</div><div class="m">{T("Microsoft Defender SmartScreen a empêché le démarrage d'une application non reconnue.", "Microsoft Defender SmartScreen prevented an unrecognized app from starting.")}</div><span class="lk">{T("Informations complémentaires", "More info")}</span><div class="row"><span class="bt">{T("Ne pas exécuter", "Don't run")}</span></div></div>
+      </div></div>
+      <div class="wn-step"><div>
+        <h3>{T("« Exécuter quand même »", "“Run anyway”")}</h3>
+        <p>{T("Le nom du fichier apparaît, avec « Éditeur : Éditeur inconnu ». Clique sur « Exécuter quand même » : l'installateur de Vectorem s'ouvre.", "The file name shows up, with “Publisher: Unknown publisher”. Click “Run anyway”: the Vectorem installer opens.")}</p>
+        <div class="ss" aria-hidden="true"><div class="t">{T("Windows a protégé votre ordinateur", "Windows protected your PC")}</div><div class="kv">{T("Application", "App")} : Vectorem-…-windows.exe<br>{T("Éditeur : Éditeur inconnu", "Publisher: Unknown publisher")}</div><div class="row"><span class="bt hl">{T("Exécuter quand même", "Run anyway")}</span><span class="bt">{T("Ne pas exécuter", "Don't run")}</span></div></div>
+      </div></div>
+      <div class="wn-step"><div>
+        <h3>{T("Choisis ce que tu installes", "Choose what to install")}</h3>
+        <p>{T("Vectorem, Vision et la Vigie sont cochés par défaut. L'installation se fait pour ton compte, sans droits d'administrateur. Les mises à jour suivantes se font depuis l'app.", "Vectorem, Vision and the Vigie are ticked by default. It installs for your account, with no admin rights. Later updates happen from the app.")}</p>
+      </div></div>
+    </div>
+
+    <h2>{T("Pourquoi cet avertissement ?", "Why this warning?")}</h2>
+    <p style="margin-top:12px">{T("Windows (SmartScreen) prévient pour tout programme qui n'est pas signé par un certificat d'éditeur, ou qui est encore peu téléchargé. Ce n'est pas un virus détecté : c'est un programme que Windows ne connaît pas encore. La signature de l'installateur est prévue.", "Windows (SmartScreen) warns about any program that isn't signed with a publisher certificate, or that few people have downloaded yet. It isn't a virus being detected: it's a program Windows doesn't know yet. Signing the installer is planned.")}</p>
+
+    <h2>{T("Vérifier le fichier", "Check the file")}</h2>
+    <p style="margin-top:12px">{T("Pour être sûr que le fichier est bien celui publié par Vectorem, compare son empreinte SHA-256. Dans PowerShell :", "To make sure the file is the one Vectorem published, compare its SHA-256 hash. In PowerShell:")}</p>
+    <code class="cmd">Get-FileHash "$env:USERPROFILE\\Downloads\\Vectorem-*-windows.exe"</code>
+    <p style="margin-top:12px">{T("Le résultat doit être exactement :", "The result must be exactly:")}</p>
+    <p class="sha-box" id="shaBox">{T("Empreinte affichée sur la page de téléchargement.", "Hash shown on the download page.")}</p>
+    <p style="margin-top:28px"><a class="btn btn-primary" href="{pc}">{T("Retour à Vectorem pour PC", "Back to Vectorem for PC")}</a></p>
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-meta">
+      <span>© 2026 Vectorem · PC</span>
+      <span><a href="{'/' if fr else '/en/'}">{T("Accueil", "Home")}</a> · <a href="{'/confidentialite/' if fr else '/privacy/'}">{T("Politique de confidentialité", "Privacy policy")}</a> · <a href="mailto:support@vectorem.app">support@vectorem.app</a></span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){{
+  var $ = function(s){{ return document.querySelector(s); }}, root = document.documentElement;
+  $('#themeToggle').addEventListener('click', function(){{
+    var dark = root.getAttribute('data-theme') !== 'dark';
+    root.setAttribute('data-theme', dark ? 'dark' : 'light');
+    try {{ localStorage.setItem('vectorem-theme', dark ? 'dark' : 'light'); }} catch (e) {{}}
+  }});
+  var start = /[?&]dl=1/.test(location.search);
+  fetch('{up}version.json', {{cache:'no-store'}}).then(function(r){{ return r.json(); }}).then(function(v){{
+    var w = v && v.windows; if (!w || !w.download) return;
+    if (w.sha256) $('#shaBox').textContent = w.sha256;
+    $('#dlDirect').href = w.download;
+    if (!start) return;
+    $('#dlState').hidden = false;
+    // Une seule fois : revenir sur la page ne relance pas le téléchargement.
+    try {{ history.replaceState(null, '', location.pathname + location.hash); }} catch (e) {{}}
+    setTimeout(function(){{ location.href = w.download; }}, 400);
   }}).catch(function(){{}});
 }})();
 </script>
@@ -708,6 +950,11 @@ if __name__ == "__main__":
     out = os.path.join(ROOT, path)
     os.makedirs(os.path.dirname(out), exist_ok=True)
     open(out, "w", encoding="utf-8").write(build(lang))
+    print("écrit", path)
+  for lang, path in (("fr", "pc/avertissement/index.html"), ("en", "en/pc/warning/index.html")):
+    out = os.path.join(ROOT, path)
+    os.makedirs(os.path.dirname(out), exist_ok=True)
+    open(out, "w", encoding="utf-8").write(warning_page(lang))
     print("écrit", path)
   for lang, path in (("fr", "windows/index.html"), ("en", "en/windows/index.html")):
     open(os.path.join(ROOT, path), "w", encoding="utf-8").write(redirect(lang))

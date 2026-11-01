@@ -609,14 +609,19 @@ details.win-pc ul{margin-top:16px}
 .dl-box .btn.soon{background:var(--bg-block-sunken);color:var(--text-muted);box-shadow:none;border-style:dashed;pointer-events:none}
 .dl-meta{display:flex;flex-wrap:wrap;gap:8px}
 .dl-note{font-size:13px;color:var(--text-muted)}
-.dl-linux{display:flex;flex-direction:column;gap:8px;border-top:var(--stroke-hair);padding-top:12px}
-.dl-linux[hidden]{display:none}
-.dl-os{font:700 12px/1 var(--font-ui);letter-spacing:.08em;text-transform:uppercase;color:var(--text-muted)}
-.dl-linux-row{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
-.dl-linux-row a{display:flex;flex-direction:column;gap:2px;padding:10px;border:var(--stroke);background:var(--bg-block-sunken);color:inherit;text-decoration:none;font:800 15px/1.2 var(--font-ui)}
-.dl-linux-row a small{font:500 11.5px/1.3 var(--font-ui);color:var(--text-muted)}
-.dl-linux-row a:hover{transform:translate(-1px,-1px)}
-@media (max-width:520px){.dl-linux-row{grid-template-columns:1fr}}
+.dl-for{font:800 12px/1 var(--font-ui);letter-spacing:.1em;text-transform:uppercase;color:var(--text-muted)}
+.dl-warn{display:flex;gap:10px;align-items:flex-start;border-left:6px solid var(--warning);background:var(--bg-block-sunken);padding:10px 12px;font-size:13.5px;color:var(--text-body)}
+.dl-warn[hidden],.dl-other[hidden]{display:none}
+.dl-warn a{font-weight:800;color:inherit}
+.dl-other{display:flex;flex-direction:column;gap:8px;border-top:var(--stroke-hair);padding-top:12px}
+.dl-other-row{display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:8px}
+.dl-other-row a{display:flex;flex-direction:column;gap:3px;padding:10px;border:var(--stroke-hair);background:var(--bg-block-sunken);color:inherit;text-decoration:none;font:800 14px/1.2 var(--font-ui)}
+.dl-other-row a small{font:500 11.5px/1.3 var(--font-ui);color:var(--text-muted)}
+.dl-other-row a:hover{transform:translate(-1px,-1px);box-shadow:var(--shadow-1)}
+.os-tabs{margin-top:24px;display:flex;flex-wrap:wrap;gap:8px}
+.os-pane[hidden]{display:none}
+.cmd{display:block;margin-top:8px;padding:8px 10px;background:#101010;color:#F5F1E8;font:600 12.5px/1.45 var(--font-mono);overflow-x:auto;white-space:pre;border:var(--stroke-hair)}
+.only-win{display:inline-block;margin-left:6px;padding:2px 6px;border:var(--stroke-hair);font:800 10px/1.2 var(--font-ui);letter-spacing:.08em;text-transform:uppercase;vertical-align:2px;color:var(--text-muted)}
 .dl-sha{font:600 11px/1.4 var(--font-mono);color:var(--text-muted);word-break:break-all}
 .w-sec-alt{background:var(--bg-block-sunken);border-top:var(--stroke-heavy);border-bottom:var(--stroke-heavy)}
 .tools-grid{margin-top:28px;display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,250px),1fr));gap:14px}
@@ -730,10 +735,9 @@ kbd{font:700 12px/1 var(--font-mono);padding:2px 5px;border:var(--stroke-hair);b
     </a>
     <nav class="site-nav" aria-label="Sections">
       <a href="#nouveautes">What's new</a>
-      <a href="#apercu">Preview</a>
+      <a href="#outils">Tools</a>
       <a href="#vision">Vision</a>
       <a href="#vigie">Vigie</a>
-      <a href="#outils">Tools</a>
       <a href="#telephone">Phone</a>
       <a href="#installer">Install</a>
       <a href="#faq">FAQ</a>
@@ -753,10 +757,12 @@ kbd{font:700 12px/1 var(--font-mono);padding:2px 5px;border:var(--stroke-hair);b
       <h1>All your tools.<br><em>In one place.</em></h1>
       <p class="lead">Vectorem is on your PC, on Windows and Linux: PDFs, screenshots, batch files, timer, notes, tasks, Vectorem Vision for your videos and music, Prisme for your photos… in one window. Turn on what you use, no account, and your data stays on your computer.</p>
       <div class="dl-box" id="telecharger">
+        <span class="dl-for" id="dlFor">For your computer</span>
         <a class="btn btn-primary soon" id="dlBtn" href="#telecharger" aria-disabled="true">Coming soon</a>
-        <div class="dl-meta" id="dlMeta"><span class="badge">Windows 10 or 11, 64-bit</span></div>
-        <div class="dl-linux" id="dlLinux" hidden><span class="dl-os">Linux, 64-bit</span><div class="dl-linux-row" id="dlLinuxRow"></div></div>
+        <div class="dl-meta" id="dlMeta"></div>
+        <p class="dl-warn" id="dlWarn" hidden><span>Windows will show a warning when you run it: that's normal for an installer that isn't signed yet. <a href="/en/pc/warning/">See what to do →</a></span></p>
         <p class="dl-note" id="dlNote">The download opens here.</p>
+        <div class="dl-other" id="dlOther" hidden><span class="dl-for">Other systems</span><div class="dl-other-row" id="dlOtherRow"></div></div>
         <p class="dl-sha" id="dlSha" hidden></p>
       </div>
     </div>
@@ -850,6 +856,45 @@ kbd{font:700 12px/1 var(--font-mono);padding:2px 5px;border:var(--stroke-hair);b
   </div>
 </section>
 
+<section id="outils" class="w-sec-alt">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="kicker">25 tools built for the PC</span>
+      <h2>What the PC does best</h2>
+      <p>On top of the phone's tools, Vectorem for PC adds the ones that only make sense on a computer.</p>
+    </div>
+    <div class="tools-grid">
+      <div class="tool reveal" style="--d:0ms"><span class="sq system" aria-hidden="true">PDF</span><div><h3>PDF editor</h3><p>Annotate, sign, fill forms, redact, replace text, reorder pages. The original is never overwritten.</p></div></div>
+      <div class="tool reveal" style="--d:50ms"><span class="sq system" aria-hidden="true">PDF</span><div><h3>PDF tools</h3><p>Merge, extract pages, images to PDF, shrink a heavy file.</p></div></div>
+      <div class="tool reveal" style="--d:100ms"><span class="sq screen" aria-hidden="true">◇</span><div><h3>Vectorem Prisme</h3><p>Your photo and video gallery, with sentence search, collections and editing. New in 1.3.</p></div></div>
+      <div class="tool reveal" style="--d:150ms"><span class="sq screen" aria-hidden="true">▶</span><div><h3>Vectorem Vision</h3><p>Videos and music: resume where you stopped, skip the intro, sleep timer, generated subtitles, audio spectrum.</p></div></div>
+      <div class="tool reveal" style="--d:0ms"><span class="sq audio" aria-hidden="true">Tx</span><div><h3>Transcribe</h3><p>An audio or video file becomes text or subtitles, on the PC, in 7 languages.</p></div></div>
+      <div class="tool reveal" style="--d:50ms"><span class="sq screen" aria-hidden="true">◎</span><div><h3>Annotated capture</h3><p>Grab an area, then arrows, frames, text, numbers and blur before saving.</p></div></div>
+      <div class="tool reveal" style="--d:100ms"><span class="sq screen" aria-hidden="true">◆</span><div><h3>Colour picker</h3><p>The colour of any pixel on screen, in HEX, RGB or HSL.</p></div></div>
+      <div class="tool reveal" style="--d:150ms"><span class="sq screen" aria-hidden="true">↔</span><div><h3>Screen ruler</h3><p>Measure anything on screen, in pixels.</p></div></div>
+      <div class="tool reveal" style="--d:0ms"><span class="sq screen" aria-hidden="true">▦</span><div><h3>Window layouts</h3><p>Halves, quarters and thirds from the keyboard, on one or more screens.</p></div></div>
+      <div class="tool reveal" style="--d:50ms"><span class="sq system" aria-hidden="true">Aa</span><div><h3>Batch rename</h3><p>Dozens of files at once, with a preview before applying and an undo.</p></div></div>
+      <div class="tool reveal" style="--d:100ms"><span class="sq system" aria-hidden="true">▣</span><div><h3>Batch images</h3><p>Resize and convert to JPG, PNG or WebP, many images at once.</p></div></div>
+      <div class="tool reveal" style="--d:150ms"><span class="sq system" aria-hidden="true">ℹ</span><div><h3>Metadata</h3><p>Read and strip hidden photo info (location, camera) before sharing.</p></div></div>
+      <div class="tool reveal" style="--d:0ms"><span class="sq system" aria-hidden="true">◔</span><div><h3>Disk usage</h3><p>What fills the disk, folder by folder. Read only.</p></div></div>
+      <div class="tool reveal" style="--d:50ms"><span class="sq system" aria-hidden="true">▤</span><div><h3>Monitor</h3><p>CPU, memory, disk and network in a small always-on-top window.</p></div></div>
+      <div class="tool reveal" style="--d:100ms"><span class="sq time" aria-hidden="true">☕</span><div><h3>Keep awake</h3><p>Keeps the PC awake during a download or a presentation.</p></div></div>
+      <div class="tool reveal" style="--d:150ms"><span class="sq time" aria-hidden="true">◷</span><div><h3>World clocks</h3><p>The time in several cities, and the common slot for a meeting.</p></div></div>
+      <div class="tool reveal" style="--d:0ms"><span class="sq system" aria-hidden="true">#</span><div><h3>File hash</h3><p>SHA-256, SHA-1, MD5: check a downloaded file is intact.</p></div></div>
+      <div class="tool reveal" style="--d:50ms"><span class="sq system" aria-hidden="true">✱</span><div><h3>Passwords</h3><p>Passwords and passphrases generated on the PC. Nothing is stored.</p></div></div>
+      <div class="tool reveal" style="--d:100ms"><span class="sq system" aria-hidden="true">↗</span><div><h3>Launcher</h3><p>Your favourite folders, files and programs, one click or Ctrl + K away.</p></div></div>
+      <div class="tool reveal" style="--d:150ms"><span class="sq system" aria-hidden="true">≈</span><div><h3>Unit converter</h3><p>Lengths, masses, temperatures, bytes… eleven unit families.</p></div></div>
+      <div class="tool reveal" style="--d:0ms"><span class="sq system" aria-hidden="true">&gt;_</span><div><h3>Terminal</h3><p>Maths, graphs, conversions, dates, and commands to drive the app.</p></div></div>
+      <div class="tool reveal" style="--d:50ms"><span class="sq system" aria-hidden="true">▧</span><div><h3>Tidy folders</h3><p>Your rules tidy a folder: by type, date, name. Preview first, undo after.</p></div></div>
+      <div class="tool reveal" style="--d:100ms"><span class="sq system" aria-hidden="true">▥</span><div><h3>Folder copy</h3><p>A copy to a USB stick or another drive: only what changed, even by itself when the drive is plugged in.</p></div></div>
+      <div class="tool reveal" style="--d:150ms"><span class="sq time" aria-hidden="true">◑</span><div><h3>Power timer</h3><p>Shut down, restart or sleep in an hour, or at 11 pm. Cancel it from your phone.</p></div></div>
+      <div class="tool reveal" style="--d:0ms"><span class="sq system" aria-hidden="true">⌘</span><div><h3>Cheat sheet</h3><p>Windows shortcuts, and your own sheets of commands and memos.</p></div></div>
+    </div>
+    <h3 class="reveal" style="margin-top:40px;font:900 13px/1 var(--font-ui);letter-spacing:.12em;text-transform:uppercase">And the ones you already know from Android</h3>
+    <div class="also reveal"><span>Stopwatch &amp; timer</span><span>Pomodoro</span><span>Tasks</span><span>Reminders</span><span>Events</span><span>Streaks</span><span>Quick notes</span><span>Clipboard</span><span>Calculator</span><span>QR &amp; text</span><span>Voice recorder</span><span>Whiteboard</span><span>Palette</span><span>Morse</span><span>Randomizer</span><span>Device info</span><span>Network scanner</span><span>Metronome</span><span>Sound meter</span><span>Text toolbox</span></div>
+  </div>
+</section>
+
 <section id="vision" class="vision">
   <div class="wrap">
     <div class="section-head reveal">
@@ -931,7 +976,7 @@ kbd{font:700 12px/1 var(--font-mono);padding:2px 5px;border:var(--stroke-hair);b
   </div>
 </section>
 
-<section class="w-sec-alt">
+<section id="bureau">
   <div class="wrap">
     <div class="section-head reveal">
       <span class="kicker">Made for the desktop</span>
@@ -950,46 +995,7 @@ kbd{font:700 12px/1 var(--font-mono);padding:2px 5px;border:var(--stroke-hair);b
   </div>
 </section>
 
-<section id="outils">
-  <div class="wrap">
-    <div class="section-head reveal">
-      <span class="kicker">25 tools built for the PC</span>
-      <h2>What the PC does best</h2>
-      <p>On top of the phone's tools, Vectorem for PC adds the ones that only make sense on a computer.</p>
-    </div>
-    <div class="tools-grid">
-      <div class="tool reveal" style="--d:0ms"><span class="sq system" aria-hidden="true">PDF</span><div><h3>PDF editor</h3><p>Annotate, sign, fill forms, redact, replace text, reorder pages. The original is never overwritten.</p></div></div>
-      <div class="tool reveal" style="--d:50ms"><span class="sq system" aria-hidden="true">PDF</span><div><h3>PDF tools</h3><p>Merge, extract pages, images to PDF, shrink a heavy file.</p></div></div>
-      <div class="tool reveal" style="--d:100ms"><span class="sq screen" aria-hidden="true">◇</span><div><h3>Vectorem Prisme</h3><p>Your photo and video gallery, with sentence search, collections and editing. New in 1.3.</p></div></div>
-      <div class="tool reveal" style="--d:150ms"><span class="sq screen" aria-hidden="true">▶</span><div><h3>Vectorem Vision</h3><p>Videos and music: resume where you stopped, skip the intro, sleep timer, generated subtitles, audio spectrum.</p></div></div>
-      <div class="tool reveal" style="--d:0ms"><span class="sq audio" aria-hidden="true">Tx</span><div><h3>Transcribe</h3><p>An audio or video file becomes text or subtitles, on the PC, in 7 languages.</p></div></div>
-      <div class="tool reveal" style="--d:50ms"><span class="sq screen" aria-hidden="true">◎</span><div><h3>Annotated capture</h3><p>Grab an area, then arrows, frames, text, numbers and blur before saving.</p></div></div>
-      <div class="tool reveal" style="--d:100ms"><span class="sq screen" aria-hidden="true">◆</span><div><h3>Colour picker</h3><p>The colour of any pixel on screen, in HEX, RGB or HSL.</p></div></div>
-      <div class="tool reveal" style="--d:150ms"><span class="sq screen" aria-hidden="true">↔</span><div><h3>Screen ruler</h3><p>Measure anything on screen, in pixels.</p></div></div>
-      <div class="tool reveal" style="--d:0ms"><span class="sq screen" aria-hidden="true">▦</span><div><h3>Window layouts</h3><p>Halves, quarters and thirds from the keyboard, on one or more screens.</p></div></div>
-      <div class="tool reveal" style="--d:50ms"><span class="sq system" aria-hidden="true">Aa</span><div><h3>Batch rename</h3><p>Dozens of files at once, with a preview before applying and an undo.</p></div></div>
-      <div class="tool reveal" style="--d:100ms"><span class="sq system" aria-hidden="true">▣</span><div><h3>Batch images</h3><p>Resize and convert to JPG, PNG or WebP, many images at once.</p></div></div>
-      <div class="tool reveal" style="--d:150ms"><span class="sq system" aria-hidden="true">ℹ</span><div><h3>Metadata</h3><p>Read and strip hidden photo info (location, camera) before sharing.</p></div></div>
-      <div class="tool reveal" style="--d:0ms"><span class="sq system" aria-hidden="true">◔</span><div><h3>Disk usage</h3><p>What fills the disk, folder by folder. Read only.</p></div></div>
-      <div class="tool reveal" style="--d:50ms"><span class="sq system" aria-hidden="true">▤</span><div><h3>Monitor</h3><p>CPU, memory, disk and network in a small always-on-top window.</p></div></div>
-      <div class="tool reveal" style="--d:100ms"><span class="sq time" aria-hidden="true">☕</span><div><h3>Keep awake</h3><p>Keeps the PC awake during a download or a presentation.</p></div></div>
-      <div class="tool reveal" style="--d:150ms"><span class="sq time" aria-hidden="true">◷</span><div><h3>World clocks</h3><p>The time in several cities, and the common slot for a meeting.</p></div></div>
-      <div class="tool reveal" style="--d:0ms"><span class="sq system" aria-hidden="true">#</span><div><h3>File hash</h3><p>SHA-256, SHA-1, MD5: check a downloaded file is intact.</p></div></div>
-      <div class="tool reveal" style="--d:50ms"><span class="sq system" aria-hidden="true">✱</span><div><h3>Passwords</h3><p>Passwords and passphrases generated on the PC. Nothing is stored.</p></div></div>
-      <div class="tool reveal" style="--d:100ms"><span class="sq system" aria-hidden="true">↗</span><div><h3>Launcher</h3><p>Your favourite folders, files and programs, one click or Ctrl + K away.</p></div></div>
-      <div class="tool reveal" style="--d:150ms"><span class="sq system" aria-hidden="true">≈</span><div><h3>Unit converter</h3><p>Lengths, masses, temperatures, bytes… eleven unit families.</p></div></div>
-      <div class="tool reveal" style="--d:0ms"><span class="sq system" aria-hidden="true">&gt;_</span><div><h3>Terminal</h3><p>Maths, graphs, conversions, dates, and commands to drive the app.</p></div></div>
-      <div class="tool reveal" style="--d:50ms"><span class="sq system" aria-hidden="true">▧</span><div><h3>Tidy folders</h3><p>Your rules tidy a folder: by type, date, name. Preview first, undo after.</p></div></div>
-      <div class="tool reveal" style="--d:100ms"><span class="sq system" aria-hidden="true">▥</span><div><h3>Folder copy</h3><p>A copy to a USB stick or another drive: only what changed, even by itself when the drive is plugged in.</p></div></div>
-      <div class="tool reveal" style="--d:150ms"><span class="sq time" aria-hidden="true">◑</span><div><h3>Power timer</h3><p>Shut down, restart or sleep in an hour, or at 11 pm. Cancel it from your phone.</p></div></div>
-      <div class="tool reveal" style="--d:0ms"><span class="sq system" aria-hidden="true">⌘</span><div><h3>Cheat sheet</h3><p>Windows shortcuts, and your own sheets of commands and memos.</p></div></div>
-    </div>
-    <h3 class="reveal" style="margin-top:40px;font:900 13px/1 var(--font-ui);letter-spacing:.12em;text-transform:uppercase">And the ones you already know from Android</h3>
-    <div class="also reveal"><span>Stopwatch &amp; timer</span><span>Pomodoro</span><span>Tasks</span><span>Reminders</span><span>Events</span><span>Streaks</span><span>Quick notes</span><span>Clipboard</span><span>Calculator</span><span>QR &amp; text</span><span>Voice recorder</span><span>Whiteboard</span><span>Palette</span><span>Morse</span><span>Randomizer</span><span>Device info</span><span>Network scanner</span><span>Metronome</span><span>Sound meter</span><span>Text toolbox</span></div>
-  </div>
-</section>
-
-<section id="telephone" class="w-sec-alt">
+<section id="telephone">
   <div class="wrap">
     <div class="section-head reveal">
       <span class="kicker">With your phone</span>
@@ -1005,28 +1011,49 @@ kbd{font:700 12px/1 var(--font-mono);padding:2px 5px;border:var(--stroke-hair);b
   </div>
 </section>
 
-<section id="installer">
+<section id="installer" class="w-sec-alt">
   <div class="wrap">
     <div class="section-head reveal">
       <span class="kicker">Install</span>
       <h2>Three steps, one minute</h2>
     </div>
-    <div class="steps">
-      <div class="step reveal"><div><h3>Download the installer</h3><p>The button at the top of the page. A single .exe file.</p></div></div>
-      <div class="step reveal"><div><h3>Run it</h3><p>Installs for your account only, no admin rights needed. A shortcut lands in the Start menu and on the desktop.</p></div></div>
-      <div class="step reveal"><div><h3>Pick your tools</h3><p>Three screens at first launch: what you often do, and Vectorem turns on the right tools.</p></div></div>
+    <div class="os-tabs" id="osTabs" role="group" aria-label="System">
+      <button class="chip" type="button" data-os="windows" aria-pressed="true">Windows</button>
+      <button class="chip" type="button" data-os="linux" aria-pressed="false">Linux</button>
     </div>
-    <div class="warn-box reveal"><b>Windows warning:</b> the installer isn't signed yet, so Windows may show “Windows protected your PC”. Click “More info”, then “Run anyway”. You can check the file with its SHA-256 hash, shown under the button.</div>
-    <div class="req reveal">
-      <div><b>System</b>Windows 10 or 11, 64 bits</div>
-      <div><b>Installer</b>One .exe file, about 155 MB</div>
-      <div><b>Updates</b>Settings › About</div>
-      <div><b>Uninstall</b>Windows Settings › Apps</div>
+    <div class="os-pane" data-os="windows">
+      <div class="steps">
+        <div class="step"><div><h3>Download the installer</h3><p>The button at the top of the page: a single .exe file.</p></div></div>
+        <div class="step"><div><h3>Run it, despite the warning</h3><p>Windows shows “Windows protected your PC”: “More info”, then “Run anyway”. <a href="/en/pc/warning/">Why, and how to check the file →</a></p></div></div>
+        <div class="step"><div><h3>Pick your tools</h3><p>Installs for your account only, no admin rights. At first launch, say what you often do: Vectorem turns on the right tools.</p></div></div>
+      </div>
+      <div class="req">
+        <div><b>System</b>Windows 10 or 11, 64 bits</div>
+        <div><b>Installer</b>One .exe file, about 200 MB</div>
+        <div><b>Updates</b>One click: Settings › About</div>
+        <div><b>Uninstall</b>Windows Settings › Apps</div>
+      </div>
+    </div>
+    <div class="os-pane" data-os="linux" hidden>
+      <div class="steps">
+        <div class="step"><div><h3>Get the right package</h3><p>.deb for Debian, Ubuntu, Mint; .rpm for Fedora, openSUSE; .tar.gz for the rest.</p></div></div>
+        <div class="step"><div><h3>Install it</h3><p>Double-click it in your file manager, or in a terminal:</p><code class="cmd">sudo apt install ./vectorem_*_amd64.deb
+sudo dnf install ./vectorem-*.x86_64.rpm
+tar -xzf vectorem-*-linux-x64.tar.gz &amp;&amp; ./Vectorem/bin/Vectorem</code></div></div>
+        <div class="step"><div><h3>For Vectorem Vision</h3><p>The player uses your system's libmpv, if it isn't there already:</p><code class="cmd">sudo apt install libmpv2      # Debian, Ubuntu, Mint
+sudo dnf install mpv-libs     # Fedora</code></div></div>
+      </div>
+      <div class="req">
+        <div><b>System</b>Linux 64 bits (x86_64)</div>
+        <div><b>Packages</b>.deb, .rpm, .tar.gz · about 100 MB</div>
+        <div><b>Updates</b>Get the package again from this page</div>
+        <div><b>Windows-only</b>Vigie, Window layouts</div>
+      </div>
     </div>
   </div>
 </section>
 
-<section id="faq" class="w-sec-alt">
+<section id="faq">
   <div class="wrap">
     <div class="section-head reveal">
       <span class="kicker">Questions</span>
@@ -1034,14 +1061,14 @@ kbd{font:700 12px/1 var(--font-mono);padding:2px 5px;border:var(--stroke-hair);b
     </div>
     <div class="faq">
       <details class="reveal"><summary>Do I need an account?</summary><p>No. Nothing to sign up for, nothing to connect.</p></details>
-      <details class="reveal"><summary>Where is my data?</summary><p>On your PC, in your user folder (%APPDATA%&#92;Vectorem). It doesn't go to a server. The app checks at most once a day for a new version; you can turn that check off in Settings.</p></details>
+      <details class="reveal"><summary>Where is my data?</summary><p>On your PC, in your user folder (%APPDATA%&#92;Vectorem on Windows, ~/.local/share/vectorem on Linux). It doesn't go to a server. The app checks at most once a day for a new version; you can turn that check off in Settings.</p></details>
       <details class="reveal"><summary>Do I need the Android app?</summary><p>No, Vectorem for PC works on its own. With a paired phone you get sync, file sending and the remote.</p></details>
       <details class="reveal"><summary>Can Vectorem Vision play my videos by default?</summary><p>Yes, videos and music. Windows doesn't let an app pick itself: Settings › Startup and window › “Choose” opens the right page, and on Windows 11 a “Set default” button does it all at once.</p></details>
       <details class="reveal"><summary>Does transcription send my files anywhere?</summary><p>No, it runs on your PC. Only the “isolate the voice” option downloads its model once (166 MB), and only if you turn it on.</p></details>
-      <details class="reveal"><summary>Why does Windows show a warning?</summary><p>Because the installer isn't signed with a certificate yet. That's planned.</p></details>
+      <details class="reveal"><summary>Why does Windows show a warning?</summary><p>Because the installer isn't signed with a certificate yet. Windows warns about any recent program without one. <a href="/en/pc/warning/">What to do, and how to check the file →</a></p></details>
       <details class="reveal"><summary>What about Linux?</summary><p>Yes, since 1.3: .deb package (Debian, Ubuntu, Mint), .rpm (Fedora, openSUSE), or a .tar.gz archive for other distributions (run Vectorem/bin/Vectorem). Vectorem Vision uses your system's libmpv (libmpv2 or mpv-libs package). A few tools stay Windows-only, like the Vigie and Window layouts. One-click updates don't exist on Linux yet: get the package again from this page.</p></details>
       <details class="reveal"><summary>And on Mac?</summary><p>Not for now.</p></details>
-      <details class="reveal"><summary>How do I uninstall?</summary><p>Windows Settings › Apps › Vectorem. Your data stays in %APPDATA%&#92;Vectorem until you delete that folder.</p></details>
+      <details class="reveal"><summary>How do I uninstall?</summary><p>Windows: Settings › Apps › Vectorem; your data stays in %APPDATA%&#92;Vectorem. Linux: sudo apt remove vectorem (or dnf remove vectorem); your data stays in ~/.local/share/vectorem. Delete that folder to erase everything.</p></details>
     </div>
   </div>
 </section>
@@ -1050,7 +1077,7 @@ kbd{font:700 12px/1 var(--font-mono);padding:2px 5px;border:var(--stroke-hair);b
   <div class="wrap">
     <h2 class="reveal">All your tools. In one place.<br><span style="font-size:.6em">And it's only the beta.</span></h2>
     <div class="ctas reveal" style="--d:100ms">
-      <a class="btn btn-primary" href="#telecharger">Download for Windows</a>
+      <a class="btn btn-primary" id="ctaBtn" href="#telecharger">Download</a>
       <a class="btn btn-ghost" href="/en/android/">On Android</a>
     </div>
   </div>
@@ -1110,31 +1137,72 @@ document.querySelectorAll('.nw-tabs').forEach(function(group){
     tabs.forEach(function(t){ t.setAttribute('aria-pressed', t === b ? 'true' : 'false'); });
     cap.textContent = b.dataset.cap;
   }); });
+  // Système de l'ordinateur (?os=windows|linux|mac|android|ios pour essayer).
+  var os = (function(){
+    var q = (location.search.match(/[?&]os=(\w+)/) || [])[1]; if (q) return q;
+    var ua = navigator.userAgent || '', pf = (navigator.userAgentData && navigator.userAgentData.platform) || navigator.platform || '';
+    if (/android/i.test(ua)) return 'android';
+    if (/iphone|ipad|ipod/i.test(ua) || (/mac/i.test(pf) && navigator.maxTouchPoints > 1)) return 'ios';
+    if (/win/i.test(pf) || /windows/i.test(ua)) return 'windows';
+    if (/mac/i.test(pf)) return 'mac';
+    if (/linux|x11|cros/i.test(pf + ' ' + ua)) return 'linux';
+    return 'windows';
+  })();
+  var rpmLike = /fedora|red hat|suse|centos|rocky|alma/i.test(navigator.userAgent || '');
+  root.setAttribute('data-os', os);
+  document.dispatchEvent(new CustomEvent('vectorem-os', {detail: os}));
   // Téléchargement : actif seulement si version.json donne un lien (sinon « Bientôt »).
   fetch('../../version.json', {cache:'no-store'}).then(function(r){ return r.json(); }).then(function(v){
-    var w = v && v.windows; if (!w || !w.download) return;
-    var btn = $('#dlBtn');
-    btn.classList.remove('soon'); btn.removeAttribute('aria-disabled');
-    btn.href = w.download;
-    btn.textContent = 'Download for Windows';
-    var meta = $('#dlMeta');
-    var add = function(t){ var s = document.createElement('span'); s.className = 'badge'; s.textContent = t; meta.appendChild(s); };
-    add('v' + w.version);
-    if (w.size) add(Math.round(w.size / 1048576) + ' MB');
-    $('#dlNote').textContent = w.notes || '';
-    if (w.sha256) { var sh = $('#dlSha'); sh.hidden = false; sh.textContent = 'SHA-256 : ' + w.sha256; }
-    var l = v.linux; if (!l || !l.files || !l.files.length) return;
-    var row = $('#dlLinuxRow');
-    l.files.forEach(function(f){
-      var a = document.createElement('a'); a.href = f.download;
+    var w = v && v.windows, l = v && v.linux, mb = function(n){ return n ? Math.round(n / 1048576) + ' MB' : ''; };
+    var opts = [];
+    if (w && w.download) opts.push({k:'windows', btn:"Download for Windows", name:'Windows', sub:'Windows 10 or 11', req:'Windows 10 or 11, 64 bits', href:'/en/pc/warning/?dl=1', ver:w.version, size:w.size, sha:w.sha256, notes:w.notes});
+    ((l && l.files) || []).forEach(function(f){
       var who = (f['for'] || '').split('|'); who = who[Math.min(1, who.length - 1)];
-      a.title = 'SHA-256 : ' + f.sha256;
-      a.textContent = f.label;
-      var sm = document.createElement('small'); sm.textContent = who + (f.size ? ' · ' + Math.round(f.size / 1048576) + ' MB' : '');
-      a.appendChild(sm); row.appendChild(a);
+      opts.push({k:f.kind, btn:'Download for Linux · ' + f.label, name:'Linux ' + f.label, sub:who, req:'Linux 64 bits · ' + who, href:f.download, ver:l.version, size:f.size, sha:f.sha256, notes:w && w.notes});
     });
-    $('#dlLinux').hidden = false;
+    if (!opts.length) return;
+    var pick = os === 'linux' ? (rpmLike ? 'rpm' : 'deb') : 'windows';
+    var main = opts.filter(function(o){ return o.k === pick; })[0] || opts[0];
+    var btn = $('#dlBtn'), meta = $('#dlMeta');
+    var badge = function(t){ var s = document.createElement('span'); s.className = 'badge'; s.textContent = t; meta.appendChild(s); };
+    var rest = opts;
+    if (os === 'mac' || os === 'ios' || os === 'android') {
+      // Pas d'installateur pour ce système : on le dit, et les liens restent en dessous.
+      $('#dlFor').textContent = os === 'mac' ? "You're on a Mac" : "You're on a phone";
+      if (os === 'android') {
+        btn.classList.remove('soon'); btn.removeAttribute('aria-disabled');
+        btn.href = '/en/android/'; btn.textContent = "Vectorem for Android";
+        $('#dlNote').textContent = "Vectorem for PC installs on the computer: open this page on your PC, or use the links below.";
+      } else {
+        btn.textContent = os === 'mac' ? "Vectorem isn't on Mac yet" : "Install it on a computer";
+        $('#dlNote').textContent = os === 'mac' ? "It's available on Windows and Linux, below." : "Vectorem for PC installs on Windows or Linux.";
+      }
+    } else {
+      $('#dlFor').textContent = main.k === 'windows' ? "For your Windows PC" : "For your Linux PC";
+      btn.classList.remove('soon'); btn.removeAttribute('aria-disabled');
+      btn.href = main.href; btn.textContent = main.btn;
+      badge(main.req); badge('v' + main.ver); if (main.size) badge(mb(main.size));
+      $('#dlNote').textContent = main.notes || '';
+      $('#dlWarn').hidden = main.k !== 'windows';
+      if (main.sha) { var sh = $('#dlSha'); sh.hidden = false; sh.textContent = 'SHA-256 : ' + main.sha; }
+      rest = opts.filter(function(o){ return o !== main; });
+      var cta = $('#ctaBtn'); if (cta) { cta.href = main.href; cta.textContent = main.btn; }
+    }
+    var row = $('#dlOtherRow');
+    rest.forEach(function(o){
+      var a = document.createElement('a'); a.href = o.href; a.title = 'SHA-256 : ' + o.sha; a.textContent = o.name;
+      var sm = document.createElement('small'); sm.textContent = o.sub + (o.size ? ' · ' + mb(o.size) : ''); a.appendChild(sm); row.appendChild(a);
+    });
+    $('#dlOther').hidden = !rest.length;
   }).catch(function(){});
+  // Installer : onglet du système de l'ordinateur.
+  var paneBtns = document.querySelectorAll('#osTabs .chip');
+  var showPane = function(k){
+    paneBtns.forEach(function(b){ b.setAttribute('aria-pressed', b.dataset.os === k ? 'true' : 'false'); });
+    document.querySelectorAll('.os-pane').forEach(function(p){ p.hidden = p.dataset.os !== k; });
+  };
+  paneBtns.forEach(function(b){ b.addEventListener('click', function(){ showPane(b.dataset.os); }); });
+  showPane(os === 'linux' ? 'linux' : 'windows');
 })();
 </script>
 </body>
