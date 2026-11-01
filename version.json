@@ -3,8 +3,38 @@
     "version": "1.3.0",
     "url": "https://vectorem.app/pc/",
     "notes": "Vectorem Prisme (galerie et retouche), Vectorem Vigie, style Studio, Vision plus complet, son de l'ouverture coupé par défaut.",
-    "download": "https://github.com/TheMandaWalker/vectorem/releases/download/PC-1.3/Vectorem-1.3.0.3.exe",
+    "download": "https://github.com/TheMandaWalker/vectorem/releases/download/PC-1.3/Vectorem-1.3.0.3-windows.exe",
     "sha256": "f000a1d0bd43ee192572ca4491535ff26f72f49f57ebc06df7dbd54e4e64e9be",
     "size": 211177472
+  },
+  "linux": {
+    "version": "1.3.0",
+    "url": "https://vectorem.app/pc/",
+    "files": [
+      {
+        "kind": "deb",
+        "label": ".deb",
+        "for": "Debian, Ubuntu, Mint",
+        "download": "https://github.com/TheMandaWalker/vectorem/releases/download/PC-1.3/vectorem_1.3.0-1_amd64.deb",
+        "sha256": "9eaeeb59ee958ac991b2f118c3eba1a41ec9edfb3665ec052ff7cfd42856cf62",
+        "size": 93981512
+      },
+      {
+        "kind": "rpm",
+        "label": ".rpm",
+        "for": "Fedora, openSUSE",
+        "download": "https://github.com/TheMandaWalker/vectorem/releases/download/PC-1.3/vectorem-1.3.0-1.x86_64.rpm",
+        "sha256": "44f2f3ea398ac27202520c55fe78c9fd68b64b0a072d8e970fc95d485051e7b4",
+        "size": 104119190
+      },
+      {
+        "kind": "tar",
+        "label": ".tar.gz",
+        "for": "Toutes distributions|All distributions",
+        "download": "https://github.com/TheMandaWalker/vectorem/releases/download/PC-1.3/vectorem-1.3.0-linux-x64.tar.gz",
+        "sha256": "a9cdf10bf697695dc05fbfbfab6f85162bc76e633fcf81b625f86b701bad5bbe",
+        "size": 104305209
+      }
+    ]
   }
 }

@@ -10,7 +10,7 @@ plus quelques règles propres à la page. Les textes sont des couples T("fr", "e
 Le bouton de téléchargement est piloté par /version.json : s'il contient « download »,
 il devient actif (version, taille, empreinte) ; sinon il affiche « Bientôt ».
 Ton : phrases courtes, pas de « gratuit », « sans pub », « aucune connexion » ; version publique 1.0 depuis le 12/10/2026.
-Nouveautés de la 1.3 (publique) : « Nouveau en 1.3 ». Linux : « bientôt ».
+Nouveautés de la 1.3 (publique) : « Nouveau en 1.3 ». Linux disponible depuis la 1.3 (.deb, .rpm, .tar.gz : clé « linux » de version.json).
 """
 import html
 import os
@@ -38,6 +38,14 @@ PAGE_CSS = """
 .dl-box .btn.soon{background:var(--bg-block-sunken);color:var(--text-muted);box-shadow:none;border-style:dashed;pointer-events:none}
 .dl-meta{display:flex;flex-wrap:wrap;gap:8px}
 .dl-note{font-size:13px;color:var(--text-muted)}
+.dl-linux{display:flex;flex-direction:column;gap:8px;border-top:var(--stroke-hair);padding-top:12px}
+.dl-linux[hidden]{display:none}
+.dl-os{font:700 12px/1 var(--font-ui);letter-spacing:.08em;text-transform:uppercase;color:var(--text-muted)}
+.dl-linux-row{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.dl-linux-row a{display:flex;flex-direction:column;gap:2px;padding:10px;border:var(--stroke);background:var(--bg-block-sunken);color:inherit;text-decoration:none;font:800 15px/1.2 var(--font-ui)}
+.dl-linux-row a small{font:500 11.5px/1.3 var(--font-ui);color:var(--text-muted)}
+.dl-linux-row a:hover{transform:translate(-1px,-1px)}
+@media (max-width:520px){.dl-linux-row{grid-template-columns:1fr}}
 .dl-sha{font:600 11px/1.4 var(--font-mono);color:var(--text-muted);word-break:break-all}
 .w-sec-alt{background:var(--bg-block-sunken);border-top:var(--stroke-heavy);border-bottom:var(--stroke-heavy)}
 .tools-grid{margin-top:28px;display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,250px),1fr));gap:14px}
@@ -336,7 +344,7 @@ def build(lang):
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>{T("Vectorem pour PC — tous tes outils, au même endroit", "Vectorem for PC — all your tools, in one place")}</title>
-<meta name="description" content="{e(T("Vectorem sur ton PC Windows, et bientôt sous Linux : Prisme pour tes photos, Vision pour tes vidéos et ta musique, PDF, captures, renommage en lot, minuteur, notes, tâches et plus, dans une seule fenêtre. Sans compte, données sur ton PC.", "Vectorem on your Windows PC, and soon on Linux: Prisme for your photos, Vision for your videos and music, PDFs, screenshots, batch rename, timer, notes, tasks and more, in one window. No account, data on your PC."))}">
+<meta name="description" content="{e(T("Vectorem sur ton PC Windows ou Linux : Prisme pour tes photos, Vision pour tes vidéos et ta musique, PDF, captures, renommage en lot, minuteur, notes, tâches et plus, dans une seule fenêtre. Sans compte, données sur ton PC.", "Vectorem on your Windows or Linux PC: Prisme for your photos, Vision for your videos and music, PDFs, screenshots, batch rename, timer, notes, tasks and more, in one window. No account, data on your PC."))}">
 <meta name="theme-color" content="#101010">
 <meta property="og:title" content="{e(T("Vectorem pour PC", "Vectorem for PC"))}">
 <meta property="og:description" content="{e(T("Tous tes outils. Au même endroit. Maintenant sur ton PC.", "All your tools. In one place. Now on your PC."))}">
@@ -386,12 +394,13 @@ def build(lang):
 <section class="w-hero">
   <div class="wrap">
     <div>
-      <div class="eyebrow-row"><span class="badge live"><span class="dot"></span> {T("Disponible sous Windows", "Available on Windows")}</span><a class="badge" href="#nouveautes">{T("Nouveau en 1.3 : Prisme", "New in 1.3: Prisme")}</a><span class="badge">{T("Linux : bientôt", "Linux: soon")}</span></div>
+      <div class="eyebrow-row"><span class="badge live"><span class="dot"></span> {T("Disponible sous Windows et Linux", "Available on Windows and Linux")}</span><a class="badge" href="#nouveautes">{T("Nouveau en 1.3 : Prisme", "New in 1.3: Prisme")}</a><a class="badge" href="#telecharger">{T("Nouveau : Linux", "New: Linux")}</a></div>
       <h1>{T("Tous tes outils.", "All your tools.")}<br><em>{T("Au même endroit.", "In one place.")}</em></h1>
-      <p class="lead">{T("Vectorem est sur ton PC Windows, et bientôt sous Linux : PDF, captures d'écran, fichiers en lot, minuteur, notes, tâches, Vectorem Vision pour tes vidéos et ta musique, Prisme pour tes photos… dans une seule fenêtre. Tu actives ce qui te sert, sans compte, et tes données restent sur ton ordinateur.", "Vectorem is on your Windows PC, and soon on Linux: PDFs, screenshots, batch files, timer, notes, tasks, Vectorem Vision for your videos and music, Prisme for your photos… in one window. Turn on what you use, no account, and your data stays on your computer.")}</p>
+      <p class="lead">{T("Vectorem est sur ton PC, sous Windows et Linux : PDF, captures d'écran, fichiers en lot, minuteur, notes, tâches, Vectorem Vision pour tes vidéos et ta musique, Prisme pour tes photos… dans une seule fenêtre. Tu actives ce qui te sert, sans compte, et tes données restent sur ton ordinateur.", "Vectorem is on your PC, on Windows and Linux: PDFs, screenshots, batch files, timer, notes, tasks, Vectorem Vision for your videos and music, Prisme for your photos… in one window. Turn on what you use, no account, and your data stays on your computer.")}</p>
       <div class="dl-box" id="telecharger">
         <a class="btn btn-primary soon" id="dlBtn" href="#telecharger" aria-disabled="true">{T("Bientôt disponible", "Coming soon")}</a>
         <div class="dl-meta" id="dlMeta"><span class="badge">{T("Windows 10 ou 11, 64 bits", "Windows 10 or 11, 64-bit")}</span></div>
+        <div class="dl-linux" id="dlLinux" hidden><span class="dl-os">{T("Linux, 64 bits", "Linux, 64-bit")}</span><div class="dl-linux-row" id="dlLinuxRow"></div></div>
         <p class="dl-note" id="dlNote">{T("Le téléchargement s'ouvre ici.", "The download opens here.")}</p>
         <p class="dl-sha" id="dlSha" hidden></p>
       </div>
@@ -573,7 +582,7 @@ def build(lang):
       <details class="reveal"><summary>{T("Vectorem Vision peut-il lire mes vidéos par défaut ?", "Can Vectorem Vision play my videos by default?")}</summary><p>{T("Oui, vidéos et musique. Windows ne laisse pas une app se choisir seule : Réglages › Démarrage et fenêtre › « Choisir » ouvre la bonne page, et sous Windows 11 un bouton « Définir par défaut » règle tout d'un coup.", "Yes, videos and music. Windows doesn't let an app pick itself: Settings › Startup and window › “Choose” opens the right page, and on Windows 11 a “Set default” button does it all at once.")}</p></details>
       <details class="reveal"><summary>{T("La transcription envoie-t-elle mes fichiers ?", "Does transcription send my files anywhere?")}</summary><p>{T("Non, elle tourne sur ton PC. Seule l'option « isoler la voix » télécharge une fois son modèle (166 Mo), et seulement si tu l'actives.", "No, it runs on your PC. Only the “isolate the voice” option downloads its model once (166 MB), and only if you turn it on.")}</p></details>
       <details class="reveal"><summary>{T("Pourquoi Windows affiche un avertissement ?", "Why does Windows show a warning?")}</summary><p>{T("Parce que l'installateur n'est pas encore signé par un certificat. C'est prévu.", "Because the installer isn't signed with a certificate yet. That's planned.")}</p></details>
-      <details class="reveal"><summary>{T("Et sous Linux ?", "What about Linux?")}</summary><p>{T("Bientôt. La version Linux est en préparation, en paquets .deb (Debian, Ubuntu, Mint) et .rpm (Fedora, openSUSE). Quelques outils restent propres à Windows, comme la Vigie et le Rangement des fenêtres.", "Soon. The Linux version is on its way, as .deb (Debian, Ubuntu, Mint) and .rpm (Fedora, openSUSE) packages. A few tools stay Windows-only, like the Vigie and Window layouts.")}</p></details>
+      <details class="reveal"><summary>{T("Et sous Linux ?", "What about Linux?")}</summary><p>{T("Oui, depuis la 1.3 : paquet .deb (Debian, Ubuntu, Mint), .rpm (Fedora, openSUSE), ou archive .tar.gz pour les autres distributions (lancer Vectorem/bin/Vectorem). Vectorem Vision utilise le libmpv de ton système (paquet libmpv2 ou mpv-libs). Quelques outils restent propres à Windows, comme la Vigie et le Rangement des fenêtres. La mise à jour en un clic n'existe pas encore sous Linux : reprends le paquet sur cette page.", "Yes, since 1.3: .deb package (Debian, Ubuntu, Mint), .rpm (Fedora, openSUSE), or a .tar.gz archive for other distributions (run Vectorem/bin/Vectorem). Vectorem Vision uses your system's libmpv (libmpv2 or mpv-libs package). A few tools stay Windows-only, like the Vigie and Window layouts. One-click updates don't exist on Linux yet: get the package again from this page.")}</p></details>
       <details class="reveal"><summary>{T("Et sur Mac ?", "And on Mac?")}</summary><p>{T("Pas pour l'instant.", "Not for now.")}</p></details>
       <details class="reveal"><summary>{T("Comment désinstaller ?", "How do I uninstall?")}</summary><p>{T("Paramètres Windows › Applications › Vectorem. Tes données restent dans %APPDATA%&#92;Vectorem tant que tu ne supprimes pas ce dossier.", "Windows Settings › Apps › Vectorem. Your data stays in %APPDATA%&#92;Vectorem until you delete that folder.")}</p></details>
     </div>
@@ -657,6 +666,17 @@ document.querySelectorAll('.nw-tabs').forEach(function(group){{
     if (w.size) add(Math.round(w.size / 1048576) + ' {T("Mo", "MB")}');
     $('#dlNote').textContent = w.notes || '';
     if (w.sha256) {{ var sh = $('#dlSha'); sh.hidden = false; sh.textContent = 'SHA-256 : ' + w.sha256; }}
+    var l = v.linux; if (!l || !l.files || !l.files.length) return;
+    var row = $('#dlLinuxRow');
+    l.files.forEach(function(f){{
+      var a = document.createElement('a'); a.href = f.download;
+      var who = (f['for'] || '').split('|'); who = who[Math.min({T("0", "1")}, who.length - 1)];
+      a.title = 'SHA-256 : ' + f.sha256;
+      a.textContent = f.label;
+      var sm = document.createElement('small'); sm.textContent = who + (f.size ? ' · ' + Math.round(f.size / 1048576) + ' {T("Mo", "MB")}' : '');
+      a.appendChild(sm); row.appendChild(a);
+    }});
+    $('#dlLinux').hidden = false;
   }}).catch(function(){{}});
 }})();
 </script>
